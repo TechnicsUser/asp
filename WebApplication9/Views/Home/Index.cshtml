@@ -1,0 +1,413 @@
+﻿@model IEnumerable<WebApplication9.Models.AspNetUser>
+
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<h1>
+    Your Profile Image ..
+
+    <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
+    margin: auto;
+    -moz-border-radius: 60px;
+    border-radius: 100px;
+    padding: 6px;
+    box-shadow: 0px 0px 20px #888;" />
+</h1>
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+<button onclick="getLocation()">Show Map</button>
+
+<div id="mapholder"></div>
+
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyDZ3lksBTFTW4dbhlIe46K2BlM9BgCa9TY"></script>
+
+<script>
+
+    //var myVar = setInterval(getLocation, 1500);
+    //clearInterval(myVar);
+     function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+         }
+    }
+
+    function showPosition(position) {
+
+
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+
+        var latlon = new google.maps.LatLng(lat, lon)
+        var mapholder = document.getElementById('mapholder')
+        mapholder.style.height = '250px';
+        mapholder.style.width = window.screen.availWidth;
+
+        var myOptions = {
+            center: latlon, zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: true,
+            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+
+        }
+        //var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        //var icons = {
+        //    parking: {
+        //        icon: iconBase + 'parking_lot_maps.png',
+        //        scaledSize: new google.maps.Size(10, 10)
+
+        //    },
+        //    library: {
+        //        icon: iconBase + 'library_maps.png'
+        //    },
+        //    info: {
+        //        icon: iconBase + 'fishing.png',
+        //        scaledSize: new google.maps.Size(10, 10)
+
+        //    },
+        //    fish: {
+        //        icon: {
+        //            url: "~/images/3-blue-fish-png-image.png",
+
+        //            //  scaledSize: new google.maps.Size(64, 64)
+        //        }
+        //    }
+        //};
+        //var goldStar = {
+        //    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        //    fillColor: 'yellow',
+        //    fillOpacity: 0.8,
+        //    scale: .2,
+        //    strokeColor: 'gold',
+        //    strokeWeight: 4
+        //};
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+        ////       var marker = new google.maps.Marker({
+        ////           position: latlon, map: map, icon: icons[feature.type].icon,
+        ////title: "You are here!" });
+
+        //var myCenter = new google.maps.LatLng(51.508742, -0.020850);
+        //var marker = new google.maps.Marker({ position: myCenter, map: map, title: "You are here!" });
+        //var myCenter2 = new google.maps.LatLng(52.508742, -0.020050);
+        //var marker = new google.maps.Marker({
+        //    position: myCenter2, icon: goldStar, map: map,
+        //    title: "You are here!"
+        //});
+        // var myCenter3 =        new google.maps.LatLng(53.508742, -0.020050);
+
+
+        //var features = [
+        //    {
+        //        position: latlon,
+        //        type: 'fish'
+        //    }, {
+        //        position: new google.maps.LatLng(51.508742, -0.020850),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91721, 151.22630),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91539, 151.22820),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91747, 151.22912),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91910, 151.22907),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91725, 151.23011),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91872, 151.23089),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91784, 151.23094),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91682, 151.23149),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91790, 151.23463),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91666, 151.23468),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.916988, 151.233640),
+        //        type: 'info'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91662347903106, 151.22879464019775),
+        //        type: 'parking'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.916365282092855, 151.22937399734496),
+        //        type: 'parking'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91665018901448, 151.2282474695587),
+        //        type: 'parking'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.919543720969806, 151.23112279762267),
+        //        type: 'parking'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91608037421864, 151.23288232673644),
+        //        type: 'parking'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91851096391805, 151.2344058214569),
+        //        type: 'parking'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91818154739766, 151.2346203981781),
+        //        type: 'parking'
+        //    }, {
+        //        position: new google.maps.LatLng(-33.91727341958453, 151.23348314155578),
+        //        type: 'library'
+        //    }
+        //];
+        //foreach(var item in Model) {
+        //     var myCenter2 = new google.maps.LatLng(item.LocationLon,item.LocationLat);
+
+        //        var marker = new google.maps.Marker({
+
+        //            position: myCenter2,
+        //            //icon: icons[feature.type].icon,
+        //            map: map
+        //                });
+
+        //    };
+        // Create markers.
+        //var marker = [];
+        //Model.forEach(function (item) {
+        //  //  var lat = "lat: " + item.LocationLat;
+        //  //  var lon = "lng: " + item.LocationLon;
+
+        //    var myCenter2 = new google.maps.LatLng(item.LocationLat, item.LocationLon);
+
+        //    marker.push = myCenter2;
+        //});
+
+        //var myCenter3 = new google.maps.LatLng(53.508742, -0.020050);
+         @foreach(var item in Model) {
+         <text>
+        var marker = new google.maps.Marker({
+            map: map,
+            position: { lat: @item.LocationLat, lng: @item.LocationLon },
+            title: 'Hello World!'
+        });
+        </text>
+
+                     }
+
+                 //  var myCenter2 = new google.maps.LatLng(item.LocationLon, item.LocationLat);
+
+                 //var marker = new google.maps.Marker({
+                 //    position: myCenter3,
+                 //    map: map,
+                 //    animation: google.maps.Animation.BOUNCE
+                 //});
+                 //var markers = [
+                 //    { lat: 51.5048835, lng: -0.1101221 },
+                 //    { lat: 51.5053532, lng: -0.1085023, },
+                 //    { lat: 51.5072948, lng: -0.103489 }
+                 //];
+                 // var bounds = new google.maps.LatLngBounds();
+
+
+
+                 for (var i = 0; i < marker.length; i++) {
+                     var latLng = new google.maps.LatLng(markes[i].lat, marker[i].lng);
+                     marker[i] = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                animation: google.maps.Animation.BOUNCE
+
+            });
+                 //  console.log(i);
+                 }
+             //bounds.extend(markers[i].getPosition());
+             //map.fitBounds(bounds);
+             //var marker = new google.maps.Marker({
+             //    position: myCenter3,
+             //    map: map,
+             //    animation: google.maps.Animation.BOUNCE
+             //});
+             //var infowindow = new google.maps.InfoWindow({
+             //    content: "Hello World!"
+             //});
+
+             //google.maps.event.addListener(marker, 'click', function () {
+             //    map.setZoom(9);
+             //    map.setCenter(marker.getPosition());
+             //});
+             infowindow.open(map, marker);
+
+    }
+
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+   // clearInterval(myVar);
+
+</script>
+
+
+
+
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PasswordHash)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecurityStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LockoutEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessFailedCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationLon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationLat)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach(var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasswordHash)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecurityStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationLon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationLat)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+            }
+
+    </table>*@
