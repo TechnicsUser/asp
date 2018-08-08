@@ -1,5 +1,7 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using Microsoft.AspNet.Identity;
+@using WebApplication9.Models;
 @using WebApplication9.Helpers;
+
 
 
 @if(Request.IsAuthenticated) {
@@ -13,19 +15,26 @@
                     <li>
                         @Html.ActionLink("Manage Account", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
                     </li>
-                    <li class="divider"></li>
-                    @foreach(var theme in Bootstrap.Themes) {
-                        <li><a href="@Url.Action("ChangeTheme", "Profile", new { themename = theme})">@theme</a></li>
-                        }
-                </ul>
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    @*<li>
+                        @foreach(NotificationViewModel notification in ViewBag.Notifications) {
+                        <li><a href=“#”>@notification.NotificationType <span class=“badge badge-@notification.BadgeClass”>@notification.Count</span></a></li>
+                        }*@
+
+
+
+                        <li class="divider"></li>
+                        @foreach(var theme in Bootstrap.Themes) {
+                            <li><a href="@Url.Action("ChangeTheme", "Profile", new { themename = theme})">@theme</a></li>
+                            }
+                    </ul>
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+            }
+        }
+    else {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
         </ul>
         }
-    }
-else {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-    }

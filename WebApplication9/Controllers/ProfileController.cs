@@ -15,8 +15,11 @@ namespace WebApplication9.Controllers
             var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(userStore);
             var user = manager.FindById(User.Identity.GetUserId());
-            user.UserName = themename;
-            manager.Update(user);
+            user.CssTheme = themename;
+            manager.UpdateAsync(user);
+            var ctx = userStore.Context;
+            ctx.SaveChanges();
+
 
             if(Request.UrlReferrer != null) {
                 var returnUrl = Request.UrlReferrer.ToString();

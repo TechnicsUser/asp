@@ -6,13 +6,18 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication9.Filters;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers {
     [RequireHttps]
 
     public class HomeController : Controller {
+
+        [NotificationFilter]
+
         public ActionResult Index() {
+
             userEntities1 db = new userEntities1();
 
             var movies = from m in db.AspNetUsers

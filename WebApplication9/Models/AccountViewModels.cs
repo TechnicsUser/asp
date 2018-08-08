@@ -66,17 +66,17 @@ namespace WebApplication9.Models
 
     {
         public string CssTheme { get; set; }
+
         [Display(Name = "UserPhoto")]
         public byte[] UserPhoto { get; set; }
 
 
         public string LocationLat { get; set; }
         public string LocationLon { get; set; }
-        [Required]
-
-        public string
-           IdUserName { get; set; }
-        [Required]
+ 
+        public string IdUserName { get; set; }
+        [
+        Required]
 
         public string FirstName { get; set; }
         [Required]
