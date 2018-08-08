@@ -160,8 +160,8 @@ namespace WebApplication9.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                         }
                     }
-                        
-                var user = new ApplicationUser { UserPhoto = imageData, UserName = model.IdUserName, Email = model.Email, LastName = model.LastName, FirstName = model.FirstName, LocationLat = model.LocationLat, LocationLon = model.LocationLon };
+                string s = "Darkly";
+                var user = new ApplicationUser { CssTheme= s, UserPhoto = imageData, UserName = model.IdUserName, Email = model.Email, LastName = model.LastName, FirstName = model.FirstName,IdUserName = model.IdUserName, LocationLat = model.LocationLat, LocationLon = model.LocationLon };
 
                 //Here we pass the byte array to user context to store in db 
                // user.UserPhoto = imageData;

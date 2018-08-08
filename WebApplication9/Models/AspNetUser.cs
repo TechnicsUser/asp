@@ -15,22 +15,23 @@ namespace WebApplication9.Models
     public partial class AspNetUser
     {
         public string Id { get; set; }
+        public string CssTheme { get; set; }
+        public byte[] UserPhoto { get; set; }
+        public string IdUserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string LocationLat { get; set; }
+        public string LocationLon { get; set; }
         public string Email { get; set; }
-        public bool EmailConfirmed { get; set; }
+        public Nullable<bool> EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }
         public string SecurityStamp { get; set; }
         public string PhoneNumber { get; set; }
-        public bool PhoneNumberConfirmed { get; set; }
-        public bool TwoFactorEnabled { get; set; }
+        public Nullable<bool> PhoneNumberConfirmed { get; set; }
+        public Nullable<bool> TwoFactorEnabled { get; set; }
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
-        public bool LockoutEnabled { get; set; }
-        public int AccessFailedCount { get; set; }
+        public Nullable<bool> LockoutEnabled { get; set; }
+        public Nullable<int> AccessFailedCount { get; set; }
         public string UserName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string IdUserName { get; set; }
-        public string LocationLon { get; set; }
-        public string LocationLat { get; set; }
-        public byte[] UserPhoto { get; set; }
     }
 }

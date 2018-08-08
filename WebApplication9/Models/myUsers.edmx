@@ -10,23 +10,24 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
-          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="CssTheme" Type="nvarchar(max)" />
+          <Property Name="UserPhoto" Type="varbinary(max)" />
+          <Property Name="IdUserName" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="LocationLat" Type="nvarchar(max)" />
+          <Property Name="LocationLon" Type="nvarchar(max)" />
+          <Property Name="Email" Type="char" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
           <Property Name="SecurityStamp" Type="nvarchar(max)" />
           <Property Name="PhoneNumber" Type="nvarchar(max)" />
-          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
           <Property Name="LockoutEndDateUtc" Type="datetime" />
-          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="150" />
-          <Property Name="LastName" Type="varchar" MaxLength="150" />
-          <Property Name="IdUserName" Type="varchar" MaxLength="150" />
-          <Property Name="LocationLon" Type="varchar" MaxLength="100" />
-          <Property Name="LocationLat" Type="varchar" MaxLength="100" />
-          <Property Name="UserPhoto" Type="varbinary(max)" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="char" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="userModelStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
@@ -41,25 +42,26 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="CssTheme" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LocationLat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LocationLon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="true" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="IdUserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="LocationLon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="LocationLat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="UserPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="userEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="userEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
         </EntityContainer>
       </Schema>
@@ -67,11 +69,18 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities1">
+        <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities2">
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="userModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CssTheme" ColumnName="CssTheme" />
+                <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
+                <ScalarProperty Name="IdUserName" ColumnName="IdUserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="LocationLat" ColumnName="LocationLat" />
+                <ScalarProperty Name="LocationLon" ColumnName="LocationLon" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
@@ -83,12 +92,6 @@
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="IdUserName" ColumnName="IdUserName" />
-                <ScalarProperty Name="LocationLon" ColumnName="LocationLon" />
-                <ScalarProperty Name="LocationLat" ColumnName="LocationLat" />
-                <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

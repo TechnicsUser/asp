@@ -17,7 +17,7 @@
             var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(userStore);
             var user = manager.FindById(User.Identity.GetUserId());
-            theme = user.UserName ?? theme;
+            theme = user.CssTheme ?? theme;
             }
         @Styles.Render(Bootstrap.Bundle(theme))
     }

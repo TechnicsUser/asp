@@ -13,14 +13,15 @@ namespace WebApplication9.Controllers {
 
     public class HomeController : Controller {
         public ActionResult Index() {
-            userEntities1 db = new userEntities1();
+            userEntities2 db = new userEntities2();
 
             var movies = from m in db.AspNetUsers
                          where m.LocationLat != null
                          select m;
 
+          //  return View(movies.ToList());
             return View(movies.ToList());
-             }
+            }
         public FileContentResult UserPhotos() {
             if(User.Identity.IsAuthenticated) {
 

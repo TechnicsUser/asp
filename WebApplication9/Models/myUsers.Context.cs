@@ -13,10 +13,10 @@ namespace WebApplication9.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class userEntities1 : DbContext
+    public partial class userEntities2 : DbContext
     {
-        public userEntities1()
-            : base("name=userEntities1")
+        public userEntities2()
+            : base("name=userEntities2")
         {
         }
     
