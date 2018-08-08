@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201808082013126_db-create.Designer.cs">
       <DependentUpon>201808082013126_db-create.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808082202497_db-create2.cs" />
+    <Compile Include="Migrations\201808082202497_db-create2.Designer.cs">
+      <DependentUpon>201808082202497_db-create2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -392,6 +396,10 @@
     <Content Include="Views\readWrite\Index.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\Notifications\Index.cshtml" />
+    <Content Include="Views\Notifications\Create.cshtml" />
+    <Content Include="Views\Notifications\Delete.cshtml" />
+    <Content Include="Views\Notifications\Details.cshtml" />
+    <Content Include="Views\Notifications\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -412,6 +420,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808082013126_db-create.resx">
       <DependentUpon>201808082013126_db-create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808082202497_db-create2.resx">
+      <DependentUpon>201808082202497_db-create2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
