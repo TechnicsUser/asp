@@ -6,22 +6,26 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication9.Filters;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers {
     [RequireHttps]
 
     public class HomeController : Controller {
+
+        [NotificationFilter]
+
         public ActionResult Index() {
-            userEntities2 db = new userEntities2();
+
+            userEntities1 db = new userEntities1();
 
             var movies = from m in db.AspNetUsers
                          where m.LocationLat != null
                          select m;
 
-          //  return View(movies.ToList());
             return View(movies.ToList());
-            }
+             }
         public FileContentResult UserPhotos() {
             if(User.Identity.IsAuthenticated) {
 
