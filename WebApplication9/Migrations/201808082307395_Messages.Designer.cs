@@ -7,13 +7,13 @@ namespace WebApplication9.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class dbcreate2 : IMigrationMetadata
+    public sealed partial class Messages : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(dbcreate2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Messages));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808082202497_db-create2"; }
+            get { return "201808082307395_Messages"; }
         }
         
         string IMigrationMetadata.Source

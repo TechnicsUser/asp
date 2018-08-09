@@ -13,8 +13,6 @@ namespace WebApplication9.Models
 
         public string CssTheme { get; set; }
 
-        // Here we add a byte to Save the user Profile Pictuer 
-
         public byte[] UserPhoto { get; set; }
 
         public string IdUserName { get; set; }
