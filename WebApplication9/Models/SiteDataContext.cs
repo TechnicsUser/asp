@@ -15,7 +15,10 @@ namespace WebApplication9.Models {
 
         public DbSet<Messages> Messages { get; set; }
         public DbSet<AspNetUser> Users { get; set; }
-    //  public  DbSet<ApplicationIdentity> UserLogins { get; set; }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<Coral> Corals { get; set; }
+        public DbSet<CoralConnection> CoralConnections { get; set; }
+        //  public  DbSet<ApplicationIdentity> UserLogins { get; set; }
         // public object Roles { get; internal set; }
         }
     }
