@@ -16,7 +16,7 @@ namespace WebApplication9.Filters {
             var context = new SiteDataContext();
             var notifications = context.Notifications
                // .Where(n => n.UserId == userId)
-                .Where(n => n.Title == "John Smith was added to the system.")
+                .Where(n => n.Title != null)
                 .GroupBy(n => n.NotificationType)
                 .Select(g => new NotificationViewModel {
                     Count = g.Count(),
