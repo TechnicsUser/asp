@@ -54,12 +54,16 @@ namespace WebApplication9.Models {
 
 
         public string UploadedBy { get; set; }
+        public string Price { get; set; }
+        public string Size { get; set; }
+        public string FragSize { get; set; }
 
         public string CommentId { get; set; }
         public int Likes { get; set; }
         public int DisLikes { get; set; }
+        public int Views { get; set; }
 
-        public bool IsDismissed { get; set; }
+        public bool SoldOut { get; set; }
         public bool FragAvailable { get; set; }
         public string FragAvailableFrom { get; set; }
 
