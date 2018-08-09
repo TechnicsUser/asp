@@ -222,33 +222,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Bootstrap.cs" />
-    <Compile Include="Migrations\201808082307395_Messages.cs" />
-    <Compile Include="Migrations\201808082307395_Messages.Designer.cs">
-      <DependentUpon>201808082307395_Messages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808082316057_Messages2.cs" />
-    <Compile Include="Migrations\201808082316057_Messages2.Designer.cs">
-      <DependentUpon>201808082316057_Messages2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808082333510_dbInitial.cs" />
-    <Compile Include="Migrations\201808082333510_dbInitial.Designer.cs">
-      <DependentUpon>201808082333510_dbInitial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808082339034_dbInitia2.cs" />
-    <Compile Include="Migrations\201808082339034_dbInitia2.Designer.cs">
-      <DependentUpon>201808082339034_dbInitia2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808082347237_dbInitia3.cs" />
-    <Compile Include="Migrations\201808082347237_dbInitia3.Designer.cs">
-      <DependentUpon>201808082347237_dbInitia3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808091038122_db3.cs" />
-    <Compile Include="Migrations\201808091038122_db3.Designer.cs">
-      <DependentUpon>201808091038122_db3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808091047413_db5.cs" />
-    <Compile Include="Migrations\201808091047413_db5.Designer.cs">
-      <DependentUpon>201808091047413_db5.cs</DependentUpon>
+    <Compile Include="Migrations\201808091125222_db4.cs" />
+    <Compile Include="Migrations\201808091125222_db4.Designer.cs">
+      <DependentUpon>201808091125222_db4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -440,26 +416,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808082307395_Messages.resx">
-      <DependentUpon>201808082307395_Messages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808082316057_Messages2.resx">
-      <DependentUpon>201808082316057_Messages2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808082333510_dbInitial.resx">
-      <DependentUpon>201808082333510_dbInitial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808082339034_dbInitia2.resx">
-      <DependentUpon>201808082339034_dbInitia2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808082347237_dbInitia3.resx">
-      <DependentUpon>201808082347237_dbInitia3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808091038122_db3.resx">
-      <DependentUpon>201808091038122_db3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808091047413_db5.resx">
-      <DependentUpon>201808091047413_db5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808091125222_db4.resx">
+      <DependentUpon>201808091125222_db4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
