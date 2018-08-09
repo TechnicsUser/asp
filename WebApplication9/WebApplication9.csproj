@@ -218,6 +218,7 @@
     <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\readWriteController.cs" />
+    <Compile Include="Filters\MessagesFilter.cs" />
     <Compile Include="Filters\NotificationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

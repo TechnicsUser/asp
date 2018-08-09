@@ -15,6 +15,7 @@ namespace WebApplication9.Controllers {
     public class HomeController : Controller {
 
         [NotificationFilter]
+        [MessagesFilter]
 
         public ActionResult Index() {
 
