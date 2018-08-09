@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebApplication9.Models.CoralConnection>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CoralId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RemovedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FragTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FragFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ColonyTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ColonyFrom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoralId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RemovedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FragTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FragFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColonyTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColonyFrom)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ConnectionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ConnectionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ConnectionId })
+        </td>
+    </tr>
+}
+
+</table>
