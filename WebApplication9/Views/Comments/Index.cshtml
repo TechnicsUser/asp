@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WebApplication9.Models.Comments>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RemovedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentViews)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Removed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reports)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Likes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisLikes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RemovedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentViews)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Removed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reports)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Likes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisLikes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CommentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CommentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CommentId })
+        </td>
+    </tr>
+}
+
+</table>

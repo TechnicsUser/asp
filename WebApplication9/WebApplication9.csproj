@@ -212,6 +212,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\CoralConnectionsController.cs" />
+    <Compile Include="Controllers\CoralsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -227,6 +230,10 @@
     <Compile Include="Migrations\201808091125222_db4.cs" />
     <Compile Include="Migrations\201808091125222_db4.Designer.cs">
       <DependentUpon>201808091125222_db4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808092043276_comments.cs" />
+    <Compile Include="Migrations\201808092043276_comments.Designer.cs">
+      <DependentUpon>201808092043276_comments.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -411,6 +418,21 @@
     <Content Include="Views\Messages\Details.cshtml" />
     <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Corals\Create.cshtml" />
+    <Content Include="Views\Corals\Delete.cshtml" />
+    <Content Include="Views\Corals\Details.cshtml" />
+    <Content Include="Views\Corals\Edit.cshtml" />
+    <Content Include="Views\Corals\Index.cshtml" />
+    <Content Include="Views\CoralConnections\Create.cshtml" />
+    <Content Include="Views\CoralConnections\Delete.cshtml" />
+    <Content Include="Views\CoralConnections\Details.cshtml" />
+    <Content Include="Views\CoralConnections\Edit.cshtml" />
+    <Content Include="Views\CoralConnections\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -431,6 +453,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808091125222_db4.resx">
       <DependentUpon>201808091125222_db4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808092043276_comments.resx">
+      <DependentUpon>201808092043276_comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

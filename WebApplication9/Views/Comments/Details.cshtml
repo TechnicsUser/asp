@@ -1,0 +1,114 @@
+﻿@model WebApplication9.Models.Comments
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemovedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemovedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentViews)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentViews)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Removed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Removed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reports)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reports)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Likes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Likes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisLikes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisLikes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CommentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
