@@ -1,0 +1,66 @@
+﻿@model WebApplication9.Models.Messages
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Messages</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDismissed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDismissed)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MessageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

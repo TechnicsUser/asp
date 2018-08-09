@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\readWriteController.cs" />
@@ -398,6 +399,11 @@
     <Content Include="Views\Notifications\Delete.cshtml" />
     <Content Include="Views\Notifications\Details.cshtml" />
     <Content Include="Views\Notifications\Edit.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
