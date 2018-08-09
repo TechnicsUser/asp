@@ -233,6 +233,12 @@
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>myUsers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comments.cs" />
+    <Compile Include="Models\CommentViewModal.cs" />
+    <Compile Include="Models\Coral.cs" />
+    <Compile Include="Models\CoralConnection.cs" />
+    <Compile Include="Models\CoralConnectionViewModal.cs" />
+    <Compile Include="Models\CoralViewModal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Messages.cs" />
