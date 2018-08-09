@@ -16,8 +16,9 @@ namespace WebApplication9.Controllers
             var manager = new UserManager<ApplicationUser>(userStore);
             var user = manager.FindById(User.Identity.GetUserId());
             user.CssTheme = themename;
-            manager.UpdateAsync(user);
+            manager.Update(user);
             var ctx = userStore.Context;
+           
             ctx.SaveChanges();
 
 
