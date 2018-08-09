@@ -1,5 +1,7 @@
 namespace WebApplication9.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,24 +17,33 @@ namespace WebApplication9.Migrations
 
         protected override void Seed(WebApplication9.Models.SiteDataContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            //var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            //var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            //// Create Admin Role
+            //string roleName = "Admins";
+            //IdentityResult roleResult;
 
-            context.Notifications.AddOrUpdate(notification => notification.Title,
-       new Notification {
-           Title = "John Smith was added to the system.",
-           NotificationType = NotificationType.Registration
-           },
-       new Notification {
-           Title = "Susan Peters was added to the system.",
-           NotificationType = NotificationType.Registration
-           },
-       new Notification {
-           Title = "Just an FYI on Thursday’s meeting",
-           NotificationType = NotificationType.Email
-           });
+            //// Check to see if Role Exists, if not create it
+            //if(!RoleManager.RoleExists(roleName)) {
+            //    roleResult = RoleManager.Create(new IdentityRole(roleName));
+            //    }
+            //if(!context.Roles.Any(r => r.Name == "AppAdmin")) {
+            //    var store = new RoleStore<IdentityRole>(context);
+            //    var manager = new RoleManager<IdentityRole>(store);
+            //    var role = new IdentityRole { Name = "AppAdmin" };
+
+            //    manager.Create(role);
+            //    }
+
+            //if(!context.Users.Any(u => u.UserName == "founder")) {
+            //    var store = new UserStore<ApplicationUser>(context);
+            //    var manager = new UserManager<ApplicationUser>(store);
+            //    var user = new ApplicationUser { UserName = "founder" };
+
+            //    manager.Create(user, "ChangeItAsap!");
+            //    manager.AddToRole(user.Id, "AppAdmin");
+            //    }
             }
     }
 }

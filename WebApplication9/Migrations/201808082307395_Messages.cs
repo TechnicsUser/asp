@@ -3,7 +3,7 @@ namespace WebApplication9.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class dbcreate : DbMigration
+    public partial class Messages : DbMigration
     {
         public override void Up()
         {
@@ -16,6 +16,8 @@ namespace WebApplication9.Migrations
                         NotificationType = c.Int(nullable: false),
                         Controller = c.String(),
                         Action = c.String(),
+                        UserId = c.String(),
+                        IsDismissed = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.NotificationId);
             
