@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -50,6 +51,8 @@ namespace WebApplication9.Controllers
         {
             if (ModelState.IsValid)
             {
+                 coralConnection.UserId = User.Identity.GetUserId();
+                coralConnection.CreatedOn = DateTime.Now.ToShortDateString();
                 db.CoralConnections.Add(coralConnection);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,8 +113,10 @@ namespace WebApplication9.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CoralConnection coralConnection = db.CoralConnections.Find(id);
-            db.CoralConnections.Remove(coralConnection);
+            coralConnection.Removed = true;
+            coralConnection.RemovedOn = DateTime.Now.ToShortDateString();
             db.SaveChanges();
+      
             return RedirectToAction("Index");
         }
 

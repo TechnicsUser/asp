@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -50,6 +51,8 @@ namespace WebApplication9.Controllers
         {
             if (ModelState.IsValid)
             {
+                comments.UserId = User.Identity.GetUserId();
+                comments.CommentOn = DateTime.Now.ToShortDateString();
                 db.Comments.Add(comments);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,8 +113,10 @@ namespace WebApplication9.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Comments comments = db.Comments.Find(id);
-            db.Comments.Remove(comments);
+            comments.Removed = true;
+            comments.RemovedOn = DateTime.Now.ToShortDateString();
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
