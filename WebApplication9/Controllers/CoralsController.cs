@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -50,7 +51,9 @@ namespace WebApplication9.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Corals.Add(coral);
+                String ThisUserId = User.Identity.GetUserId();
+                coral.UploadedBy = ThisUserId;
+                 db.Corals.Add(coral);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

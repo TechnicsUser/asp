@@ -54,6 +54,7 @@ namespace WebApplication9.Models {
 
 
         public string UploadedBy { get; set; }
+        public string UploadedOn { get; set; }
         public string Price { get; set; }
         public string Size { get; set; }
         public string FragSize { get; set; }

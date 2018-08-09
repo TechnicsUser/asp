@@ -14,6 +14,7 @@ namespace WebApplication9.Models {
         public string UserId { get; set; }
         public string CreatedOn { get; set; }
         public string RemovedOn { get; set; }
+        public bool Removed { get; set; }
 
 
         public string FragTo { get; set; }
