@@ -150,20 +150,31 @@
     if(item.Name != null) {
 
 
-<div class="col-lg-3" style="float : left" id="item.">
-    <h2>        @Html.DisplayFor(modelItem => item.Name)    </h2>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.CoralId, this)">
+    <h4>        @Html.DisplayFor(modelItem => item.Name)    </h4>
     <hr>
-    <h4>        @Html.DisplayFor(modelItem => item.ScientificName)    </h4>
+    <h5>        @Html.DisplayFor(modelItem => item.ScientificName)    </h5>
 
     <img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />
 
-    <h5>            @Html.DisplayFor(modelItem => item.Details)                       </h5>
+    <h6>            @Html.DisplayFor(modelItem => item.Details)                       </h6>
 
-    @Html.ActionLink("View", "View", new { id = item.CoralId }) |
-    @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+     @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
 </div>
         }
     }
 <div class="col-lg-3" style="float : none"></div>
+<script>
+    function f1(item) {
+
+        window.location = "/Corals/View/" + item;
+
+        @*var url = '@Url.Action("CoralPhoto", "Corals")';
+        url += '?id=' + item;
+        $("#attachments").load(url);*@
+
+           
+    }
+</script>
  

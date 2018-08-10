@@ -23,6 +23,10 @@ namespace WebApplication9.Controllers
             return View(db.Corals.ToList());
         }
 
+        public ActionResult View(int id) {
+            return View(db.Corals.Find(id));
+            }
+
         public FileContentResult CoralPhoto(int id) {
             //   if(User.Identity.IsAuthenticated) {
 
@@ -149,10 +153,21 @@ namespace WebApplication9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral)
+        public ActionResult Edit([Bind(Exclude = "CoralPhoto", Include = "CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral)
         {
             if (ModelState.IsValid)
             {
+                byte[] imageData = null;
+                if(Request.Files.Count > 0) {
+                    HttpPostedFileBase poImgFile = Request.Files["CoralPhoto"];
+
+                    using(var binary = new BinaryReader(poImgFile.InputStream)) {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                        }
+                    }
+                byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+
+                coral.Photo = imageData;
                 db.Entry(coral).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
