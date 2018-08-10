@@ -239,6 +239,18 @@
     <Compile Include="Migrations\201808092151120_comments2.Designer.cs">
       <DependentUpon>201808092151120_comments2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808092234387_comments3.cs" />
+    <Compile Include="Migrations\201808092234387_comments3.Designer.cs">
+      <DependentUpon>201808092234387_comments3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808092245000_comments4.cs" />
+    <Compile Include="Migrations\201808092245000_comments4.Designer.cs">
+      <DependentUpon>201808092245000_comments4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808101312135_db5.cs" />
+    <Compile Include="Migrations\201808101312135_db5.Designer.cs">
+      <DependentUpon>201808101312135_db5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -272,6 +284,7 @@
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\SiteDataContext.cs" />
+    <Compile Include="Models\UserPhotos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -437,6 +450,7 @@
     <Content Include="Views\CoralConnections\Details.cshtml" />
     <Content Include="Views\CoralConnections\Edit.cshtml" />
     <Content Include="Views\CoralConnections\Index.cshtml" />
+    <Content Include="Views\Corals\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -463,6 +477,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808092151120_comments2.resx">
       <DependentUpon>201808092151120_comments2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808092234387_comments3.resx">
+      <DependentUpon>201808092234387_comments3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808092245000_comments4.resx">
+      <DependentUpon>201808092245000_comments4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808101312135_db5.resx">
+      <DependentUpon>201808101312135_db5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

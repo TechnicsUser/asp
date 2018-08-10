@@ -9,7 +9,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CoralId)
@@ -71,71 +72,98 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CoralId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Light)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Flow)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Food)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScientificName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Details)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UploadedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FragSize)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Likes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DisLikes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Views)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoldOut)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FragAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FragAvailableFrom)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
-        </td>
-    </tr>
-}
+    @foreach(var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoralId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Light)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScientificName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FragSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Likes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisLikes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Views)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoldOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FragAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FragAvailableFrom)
+            </td>
+            <td>
+            <td>
+                 <img src="@Url.Action("CoralPhoto", "Corals", new {id=item.CoralId})" width="50" />
 
-</table>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+            </td>
+        </tr>
+        }
+
+</table>*@
+
+@foreach(var item in Model) {
+    if(item.Name != null) {
+
+
+<div class="col-lg-3" style="float : left" id="item.">
+    <h2>        @Html.DisplayFor(modelItem => item.Name)    </h2>
+    <hr>
+    <h4>        @Html.DisplayFor(modelItem => item.ScientificName)    </h4>
+
+    <img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />
+
+    <h5>            @Html.DisplayFor(modelItem => item.Details)                       </h5>
+
+    @Html.ActionLink("View", "View", new { id = item.CoralId }) |
+    @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+</div>
+        }
+    }
+<div class="col-lg-3" style="float : none"></div>
+ 
