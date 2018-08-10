@@ -1,0 +1,153 @@
+﻿@model IEnumerable<WebApplication9.Models.Coral>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Light)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Food)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Growth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScientificName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FragSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Likes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisLikes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Views)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoldOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FragAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FragAvailableFrom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Light)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flow)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Food)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Growth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScientificName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FragSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Likes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisLikes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Views)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoldOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FragAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FragAvailableFrom)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CoralId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CoralId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CoralId })
+        </td>
+    </tr>
+}
+
+</table>

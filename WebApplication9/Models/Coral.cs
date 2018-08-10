@@ -36,6 +36,20 @@ namespace WebApplication9.Models {
             Low,
             None
             }
+        public enum GrowthSpeed {
+
+            /// <summary>
+            ///  change these
+            /// </summary>
+            Extreme,
+            VeryFast,
+            Fast,
+            Modorate,
+            Slow,
+            VerySlow,
+            Low,
+            None
+            }
 
 
         [Key]
@@ -44,12 +58,14 @@ namespace WebApplication9.Models {
         public LightRequirement Light { get; set; }
         public FlowRequirement Flow { get; set; }
         public FoodRequirement Food { get; set; }
+        public GrowthSpeed Growth { get; set; }
 
         public string Name { get; set; }
         public string ScientificName { get; set; }
         public string Details { get; set; }
 
         public int[] PhotoId { get; set; }
+        public byte[] Photo { get; set; }
 
 
 
