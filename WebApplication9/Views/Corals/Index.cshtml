@@ -159,8 +159,9 @@
 
     <h6>            @Html.DisplayFor(modelItem => item.Details)                       </h6>
 
-     @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+    @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
 </div>
         }
     }
