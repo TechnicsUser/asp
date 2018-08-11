@@ -1,174 +1,187 @@
-﻿@model WebApplication9.Models.Coral
+﻿@model List< WebApplication9.Models.CoralPhoto>
+ 
 
 @{
     ViewBag.Title = "View";
 }
 
 <div class="col-lg-12">
+    <div class ="container" style="float : left;">
+   @foreach(var r in Model) {
 
-    <h2>
-        @Html.DisplayFor(model => model.Name)
-    </h2>
-    <hr><br />
-    <h4>
-        @Html.DisplayFor(model => model.ScientificName)
-    </h4>
-    <br />
-    <img src="@Url.Action("CoralPhoto", "Corals", new { id = @Model.CoralId })" width="150" />
+        /**/
 
-    <h5>
-        @Html.DisplayFor(model => model.Details)
-    </h5>
+       if(r.Photo != null) {
+            var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(r.Photo)}";
+            <img src="@imgSrc" alt="@r.UserId" width="150" style="padding: 40px;"/>
+            }
+ 
+}
+    </div>
+    @*<h2>
+             @Html.DisplayFor(model => model.Name)
+         </h2>
+         <hr><br />
+         <h4>
+             @Html.DisplayFor(model => model.ScientificName)
+         </h4>
+         <br />
+         <img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
+         <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
 
-    <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
+         <h5>
+             @Html.DisplayFor(model => model.Details)
+         </h5>
+
+         <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
 
 
-    @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })
+         @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })
 
 
-    @*@Html.ActionLink("View", "View", new { id = item.CoralId }) |*@
-    @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+        Html.ActionLink("View", "View", new { id = item.CoralId }) |
+         @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+             @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
 </div>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Light)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Flow)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Food)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Growth)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.ScientificName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Details)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UploadedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UploadedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FragSize)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Likes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DisLikes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Views)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoldOut)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FragAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FragAvailableFrom)
-        </th>
-        <th></th>
-    </tr>
-
-    
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.LabelFor(model => model.Light, htmlAttributes: new { @class = "control-label col-md-2" })
-            </td>
-            <td>
-                @Html.LabelFor(model => model.CoralId, htmlAttributes: new { @class = "control-label col-md-2" })
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Flow)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Food)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Growth)
-            </td>
-          
-            <td>
-                @Html.DisplayFor(modelItem => item.ScientificName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Details)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UploadedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UploadedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FragSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Likes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisLikes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Views)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FragAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FragAvailableFrom)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
-            </td>
-        </tr>
-     
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Light)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Growth)
+            </th>
 
-</table>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ScientificName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FragSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Likes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisLikes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Views)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoldOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FragAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FragAvailableFrom)
+            </th>
+            <th></th>
+        </tr>
+
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Light, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.CoralId, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Flow)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Growth)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScientificName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FragSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Likes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisLikes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Views)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoldOut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FragAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FragAvailableFrom)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+                </td>
+            </tr>
+
+
+    </table>*@
