@@ -24,7 +24,10 @@ namespace WebApplication9.Controllers
         }
 
         public ActionResult View(int id) {
-            return View(db.Corals.Find(id));
+            SiteDataContext cp = new SiteDataContext();
+            List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).ToList();
+
+            return View( rl);
             }
 
         public FileContentResult CoralPhoto(int id) {
@@ -82,6 +85,57 @@ namespace WebApplication9.Controllers
 
             //    }
             }
+        public FileContentResult CoralPhoto2(int id) {
+            //   if(User.Identity.IsAuthenticated) {
+
+            var coralPhoto = db.CoralPhoto.Find(id);
+            if(coralPhoto.Photo == null) {
+                string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+
+                byte[] imageData = null;
+                FileInfo fileInfo = new FileInfo(fileName);
+                long imageFileLength = fileInfo.Length;
+                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                imageData = br.ReadBytes((int)imageFileLength);
+
+                return File(imageData, "image/png");
+                }
+            byte[] coralImage = coralPhoto.Photo;
+
+            // String userId = User.Identity.GetUserId();
+
+            //if(userId != null) {
+            //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+
+            //    byte[] imageData = null;
+            //    FileInfo fileInfo = new FileInfo(fileName);
+            //    long imageFileLength = fileInfo.Length;
+            //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            //    BinaryReader br = new BinaryReader(fs);
+            //    imageData = br.ReadBytes((int)imageFileLength);
+
+            //    return File(imageData, "image/png");
+
+            //    }
+            // to get the user details to load user Image    
+            //var bdUsers = HttpContext.GetOwinContext().Get<CoralPhoto>();
+            //var userImage = bdUsers.CoralId.(x => x.Id == id).FirstOrDefault();
+
+
+            var CredID = (from sn3 in db.CoralPhoto
+                          where sn3.CoralId == id
+                          select sn3.Photo).First();
+
+
+            return new FileContentResult(CredID, "image/jpeg");
+
+            //SiteDataContext cp = new SiteDataContext();
+            //List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).ToList();
+
+            //return View(rl);
+
+            }
 
 
         // GET: Corals/Details/5
@@ -121,12 +175,27 @@ namespace WebApplication9.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                         }
                     }
-                byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+              //  byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
 
                 coral.Photo = imageData;
                 coral.UploadedBy = User.Identity.GetUserId();
                 db.Corals.Add(coral);
                 db.SaveChanges();
+              
+                foreach(var item in Request.Files) {
+                       CoralPhoto cp = new CoralPhoto();
+                cp.UserId = User.Identity.GetUserId();
+                cp.Photo = coral.Photo;
+                cp.CoralPhotoId = coral.CoralId;
+                cp.CoralId = coral.CoralId;
+                cp.Views = 0;
+                cp.Likes = 0;
+                cp.DisLikes = 0;
+                db.CoralPhoto.Add(cp);
+                db.SaveChanges();
+                    }
+             
+
                 return RedirectToAction("Index");
             }
 

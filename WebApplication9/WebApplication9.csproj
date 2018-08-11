@@ -251,6 +251,10 @@
     <Compile Include="Migrations\201808101312135_db5.Designer.cs">
       <DependentUpon>201808101312135_db5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808111123532_db6.cs" />
+    <Compile Include="Migrations\201808111123532_db6.Designer.cs">
+      <DependentUpon>201808111123532_db6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -261,7 +265,7 @@
     <Compile Include="Models\Coral.cs" />
     <Compile Include="Models\CoralConnection.cs" />
     <Compile Include="Models\CoralConnectionViewModal.cs" />
-    <Compile Include="Models\CoralPhotos.cs" />
+    <Compile Include="Models\CoralPhoto.cs" />
     <Compile Include="Models\CoralViewModal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -487,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808101312135_db5.resx">
       <DependentUpon>201808101312135_db5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808111123532_db6.resx">
+      <DependentUpon>201808111123532_db6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
