@@ -261,6 +261,7 @@
     <Compile Include="Models\Coral.cs" />
     <Compile Include="Models\CoralConnection.cs" />
     <Compile Include="Models\CoralConnectionViewModal.cs" />
+    <Compile Include="Models\CoralPhotos.cs" />
     <Compile Include="Models\CoralViewModal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
