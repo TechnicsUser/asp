@@ -228,17 +228,39 @@ namespace WebApplication9.Controllers
             {
                 byte[] imageData = null;
                 if(Request.Files.Count > 0) {
-                    HttpPostedFileBase poImgFile = Request.Files["CoralPhoto"];
 
-                    using(var binary = new BinaryReader(poImgFile.InputStream)) {
-                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+
+                    for(int i = 0; i < Request.Files.Count; i++) {
+                        var hpf = Request.Files[i];
+                        using(var binary = new BinaryReader(hpf.InputStream)) {
+                            imageData = binary.ReadBytes(hpf.ContentLength);
+                            }
+
+                        CoralPhoto cp = new CoralPhoto();
+                        cp.UserId = User.Identity.GetUserId();
+
+
+                        cp.Photo = imageData;
+                        cp.CoralPhotoId = coral.CoralId;
+                        cp.CoralId = coral.CoralId;
+                        cp.Views = 0;
+                        cp.Likes = 0;
+                        cp.DisLikes = 0;
+                        db.CoralPhoto.Add(cp);
+                        db.SaveChanges();
                         }
+
+
+
                     }
+                     
+
+                    
                 byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
 
-                coral.Photo = imageData;
-                db.Entry(coral).State = EntityState.Modified;
+                 db.Entry(coral).State = EntityState.Modified;
                 db.SaveChanges();
+            
                 return RedirectToAction("Index");
             }
             return View(coral);
