@@ -255,6 +255,10 @@
     <Compile Include="Migrations\201808111123532_db6.Designer.cs">
       <DependentUpon>201808111123532_db6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808131045074_db61.cs" />
+    <Compile Include="Migrations\201808131045074_db61.Designer.cs">
+      <DependentUpon>201808131045074_db61.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -494,6 +498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808111123532_db6.resx">
       <DependentUpon>201808111123532_db6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808131045074_db61.resx">
+      <DependentUpon>201808131045074_db61.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
