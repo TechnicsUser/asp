@@ -222,7 +222,8 @@ namespace WebApplication9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Exclude = "CoralPhoto", Include = "CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral)
+        // Exclude = "CoralPhoto",
+        public ActionResult Edit([Bind( Include = "CoralPhoto, CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral)
         {
             if (ModelState.IsValid)
             {
@@ -256,7 +257,14 @@ namespace WebApplication9.Controllers
                      
 
                     
-                byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+               
+                db.Entry(coral).Entity.Photo = coral.Photo;
+
+                // name
+                //sceientific
+                //details
+                //price
+                //
 
                  db.Entry(coral).State = EntityState.Modified;
                 db.SaveChanges();
