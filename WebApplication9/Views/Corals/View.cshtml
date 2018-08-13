@@ -7,9 +7,10 @@
 
 <head>
 
-<style>
+    <style>
 
-   #myImg {
+/* Style the Image Used to Trigger the Modal */
+#myImg {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
@@ -21,10 +22,10 @@
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
+    z-index: 2; /* Sit on top */
+    padding-top: 10px; /* Location of the box */
+    left: 10px;
+    top: 10px;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
@@ -36,7 +37,7 @@
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
+    width: 90%;
     max-width: 700px;
 }
 
@@ -55,7 +56,7 @@
 /* Add Animation - Zoom in the Modal */
 .modal-content, #caption {
     animation-name: zoom;
-    animation-duration: 1.6s;
+    animation-duration: 0.6s;
 }
 
 @@keyframes zoom {
@@ -64,26 +65,31 @@
 }
 
 /* The Close Button */
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #ff0000;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+        .close {
+            position: absolute;
+            float:left;
+            top: 50px;
+            right: 0px;
+            color: #ff0000;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 1; /* Sit on top */
+        }
 
 .close:hover,
 .close:focus {
-    color: #ff6a00;
+    color: #bbb;
     text-decoration: none;
     cursor: pointer;
 }
 
-
+/* 100% Image Width on Smaller Screens */
+@@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
 }
-
 
 
     </style>
@@ -101,27 +107,32 @@
 
                     var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(r.Photo)}";
                     <div>
-                 <!--      <img id="myImage" src="@imgSrc" alt="@r.UserId" width="150" style="padding: 40px;"-->
-                             <img id="myImg" src="@imgSrc" alt="Snow" style="width:100%;max-width:300px">
+                       
 
-                            
-                        <!-- The Modal -->
-                        <div id="myModal" class="modal">
+                        <!--      <img id="myImage" src="@imgSrc" alt="@r.UserId" width="150" style="padding: 40px;"-->
+                        <img class="myImg" src="@imgSrc" alt="Snow" style="width:80%;max-width:300px" onclick="popUp(3)">
 
-                            <!-- The Close Button -->
-                            <span class="close">&times;</span>
+                    </div>
+                    }
+                }
 
-                            <!-- Modal Content (The Image) -->
-                            <img class="modal-content" id="img01">
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
 
-                            <!-- Modal Caption (Image Text) -->
-                            <div id="caption"></div>
-                        </div>              
+                        <!-- The Close Button -->
+                        <span class="close">X</span>
+
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01">
+
+                        <!-- Modal Caption (Image Text) -->
+                        <div id="caption"></div>
+
 
                     </div>
 
-                    }
-                }
+                
+                
         </div>
     </div>
 
@@ -131,38 +142,45 @@
 
     <script>
 
-        window.onload = function () {
-            // Get the modal
-            var modal = document.getElementById('myModal');
+        function popUp(id) {
 
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
-            var img = document.getElementById('myImg');
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
-            img.onclick = function () {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
+        
+                // Get the modal
+                var modal = document.getElementById('myModal');
+            
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                var img = document.getElementsByClassName('myImg')[id];
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+                img.onclick = function () {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+            }
+            modal.onclick = function () {
+                var ss = document.getElementsByClassName('myImg')[2];
+                modalImg.src = ss;
             }
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-        }
-        function popUp() {
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function () {
+                    modal.style.display = "none";
+                }
+            
+
+
             // alert(this);
             //  document.getElementById("myImage").style.width = "400px";
 
-            $('#myImage').css({
-                right: '300px',
-                top: '450px',
-                border: '1px solid red',
-                width: '600'
-            });
+            //$('#myImage').css({
+            //    right: '300px',
+            //    top: '450px',
+            //    border: '1px solid red',
+            //    width: '600'
+            //});
         }        
         function popDown() {
             //    document.getElementById("myImage").style.width = "150px";
@@ -202,7 +220,7 @@
         Html.ActionLink("View", "View", new { id = item.CoralId }) |
          @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
              @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
-    </div>
+   
 
     @*<p>
             @Html.ActionLink("Create New", "Create")
