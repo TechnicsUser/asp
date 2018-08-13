@@ -26,7 +26,8 @@ namespace WebApplication9.Controllers {
                          select m;
 
             return View(movies.ToList());
-             }
+            // return View();
+            }
         public FileContentResult UserPhotos() {
             if(User.Identity.IsAuthenticated) {
 
