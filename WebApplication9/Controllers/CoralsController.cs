@@ -27,8 +27,13 @@ namespace WebApplication9.Controllers
             SiteDataContext cp = new SiteDataContext();
             byte[] ba = new byte[] { 0x0 };
             List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).Where(x=> x.Photo != ba).ToList();
-
+            Coral thisCoral = db.Corals.Find(id);
+            ViewBag.thisCoral = thisCoral; 
             return View( rl);
+            }
+
+        private ActionResult View(List<CoralPhoto> rl, Coral thisCoral) {
+            throw new NotImplementedException();
             }
 
         public FileContentResult CoralPhoto(int id) {
