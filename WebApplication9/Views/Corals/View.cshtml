@@ -99,6 +99,8 @@
 
     <div class="col-lg-12" id="mainDiv">
         <div class="container" style="float : left;">
+            @{int x = 0;}
+
             @foreach(var r in Model) {
 
                 /**/
@@ -107,49 +109,74 @@
 
                     var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(r.Photo)}";
                     <div>
-                       
+
 
                         <!--      <img id="myImage" src="@imgSrc" alt="@r.UserId" width="150" style="padding: 40px;"-->
-                        <img class="myImg" src="@imgSrc" alt="Snow" style="width:80%;max-width:300px" onclick="popUp(3)">
-
+                        <img class="myImg" src="@imgSrc" alt="@x" id="@x" style="width:80%;max-width:300px" onclick="popUp(this, @x)">
+                        @{x++;}
                     </div>
                     }
                 }
+            <div class="container">
+                <h2>Log-out Glyph</h2>
+                <p>Log-out icon: <span class="glyphicon glyphicon-log-out"></span></p>
+                <p>
+                    Log-out icon as a link:
+                    <a href="#">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
+                </p>
+                <p>
+                    Log-out icon on a button:
+                    <button type="button" class="icon-next">
+                        <span class="glyphicon glyphicon-log-out"></span> Log out
+                    </button>
+                </p>
+                <p>
+                    Log-out icon on a styled link button:
+                    <a href="#" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-log-out"></span> Log out
+                    </a>
+                </p>
+                <p>
+                    Unicode:
+                    <span class="icon-next">&#xe163;</span>
+                </p>
+            </div>
 
-                    <!-- The Modal -->
-                    <div id="myModal" class="modal">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
 
-                        <!-- The Close Button -->
-                        <span class="close">X</span>
+                <!-- The Close Button -->
+                <span class="close">X</span>
 
-                        <!-- Modal Content (The Image) -->
-                        <img class="modal-content" id="img01">
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="img01">
 
-                        <!-- Modal Caption (Image Text) -->
-                        <div id="caption"></div>
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"></div>
 
 
-                    </div>
+            </div>
 
-                
-                
+
+
         </div>
     </div>
-
 
 </body>
 
 
     <script>
 
-        function popUp(id) {
-
+        function popUp(id, number) {
+           
         
                 // Get the modal
                 var modal = document.getElementById('myModal');
             
-                // Get the image and insert it inside the modal - use its "alt" text as a caption
-                var img = document.getElementsByClassName('myImg')[id];
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            var img =id;
                 var modalImg = document.getElementById("img01");
                 var captionText = document.getElementById("caption");
                 img.onclick = function () {
@@ -157,9 +184,14 @@
                     modalImg.src = this.src;
                     captionText.innerHTML = this.alt;
             }
+            x = number;
             modal.onclick = function () {
-                var ss = document.getElementsByClassName('myImg')[2];
-                modalImg.src = ss;
+           //     alert(number +1 );
+                var ss = document.getElementsByClassName("myImg")[x++];
+                //for ( i = 0; i < ss.length; i++) {
+                //    ims = ss[i];
+                //}
+                   modalImg.src = ss.src;
             }
 
                 // Get the <span> element that closes the modal
@@ -168,6 +200,7 @@
                 // When the user clicks on <span> (x), close the modal
                 span.onclick = function () {
                     modal.style.display = "none";
+                    x = 0;
                 }
             
 
