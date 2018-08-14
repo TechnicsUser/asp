@@ -33,6 +33,7 @@ namespace WebApplication9 {
             // Set EnableOptimizations to false for debugging. For more information,
 
             // visit http://go.microsoft.com/fwl...
+            bundles.Add(new StyleBundle("~/Content/css/bootstrap").Include("~/Content/bootstrap.min.css", new CssRewriteUrlTransform()));
 
             BundleTable.EnableOptimizations = true;
             }
