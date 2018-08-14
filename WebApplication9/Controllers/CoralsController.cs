@@ -254,11 +254,14 @@ namespace WebApplication9.Controllers
 
 
                     }
-                     
 
-                    
-               
-                db.Entry(coral).Entity.Photo = coral.Photo;
+
+                var CredID = (from sn3 in db.CoralPhoto
+                              where sn3.CoralId == coral.CoralId
+                              select sn3.Photo).First();
+                db.Entry(coral).Entity.Photo = CredID;
+
+         //       db.Entry(coral).Entity.Name = coral.Name;
 
                 // name
                 //sceientific
