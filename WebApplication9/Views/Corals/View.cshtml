@@ -10,13 +10,25 @@
     <style>
 
 /* Style the Image Used to Trigger the Modal */
-#myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+        .myImg {
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            transition: 1.3s;
+            float: left;
+            width: 300px;
+            max-width: 300px;
+            animation-name: zoom;
+            animation-duration: 1.6s;
+            opacity: 1;
+          
+        }
 
-#myImg:hover {opacity: 0.7;}
+            .myImg:hover {
+                -webkit-filter: brightness(30%); /* Safari */
+                filter: brightness(150%);
+                opacity: 1;
+            }
 
 /* The Modal (background) */
 .modal {
@@ -60,14 +72,20 @@
 }
 
 @@keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+        from {
+            transform: scale(0)
+        }
+
+      
+        to {
+            transform: scale(1)
+        }
 }
 
 /* The Close Button */
         .close {
-            position: absolute;
-            float:left;
+               position: absolute;
+            float: left;
             top: 50px;
             right: 0px;
             color: #ff0000;
@@ -98,7 +116,7 @@
 <body>
 
     <div class="col-lg-12" id="mainDiv">
-        <div class="container" style="float : left;">
+        <div class="container" >
             @{int x = 0;}
 
             @foreach(var r in Model) {
@@ -112,16 +130,16 @@
 
 
                         <!--      <img id="myImage" src="@imgSrc" alt="@r.UserId" width="150" style="padding: 40px;"-->
-                        <img class="myImg" src="@imgSrc" alt="@x" id="@x" style="width:80%;max-width:300px" onclick="popUp(this, @x)">
+                        <img class="myImg" src="@imgSrc" alt="@x" id="@x" onclick="popUp(this, @x)">
                         @{x++;}
                     </div>
                     }
                 }
-            <div class=" icon-next" role="alert">
+            @*<div class=" icon-next" role="alert">
                 <div class="alert alert-warning d-flex flex-row">
                     Enter a valid email address
                 </div>
-            </div>
+            </div>*@
 
             <!-- The Modal -->
             <div id="myModal" class="modal">
