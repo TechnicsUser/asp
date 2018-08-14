@@ -117,31 +117,10 @@
                     </div>
                     }
                 }
-            <div class="container">
-                <h2>Log-out Glyph</h2>
-                <p>Log-out icon: <span class="glyphicon glyphicon-log-out"></span></p>
-                <p>
-                    Log-out icon as a link:
-                    <a href="#">
-                        <span class="glyphicon glyphicon-log-out"></span>
-                    </a>
-                </p>
-                <p>
-                    Log-out icon on a button:
-                    <button type="button" class="icon-next">
-                        <span class="glyphicon glyphicon-log-out"></span> Log out
-                    </button>
-                </p>
-                <p>
-                    Log-out icon on a styled link button:
-                    <a href="#" class="btn btn-info btn-lg">
-                        <span class="glyphicon glyphicon-log-out"></span> Log out
-                    </a>
-                </p>
-                <p>
-                    Unicode:
-                    <span class="icon-next">&#xe163;</span>
-                </p>
+            <div class=" icon-next" role="alert">
+                <div class="alert alert-warning d-flex flex-row">
+                    Enter a valid email address
+                </div>
             </div>
 
             <!-- The Modal -->
@@ -184,14 +163,20 @@
                     modalImg.src = this.src;
                     captionText.innerHTML = this.alt;
             }
-            x = number;
+         var   x = number;
             modal.onclick = function () {
            //     alert(number +1 );
                 var ss = document.getElementsByClassName("myImg")[x++];
                 //for ( i = 0; i < ss.length; i++) {
                 //    ims = ss[i];
                 //}
-                   modalImg.src = ss.src;
+                modalImg.src = ss.src;
+                captionText.innerHTML = ss.alt;
+
+                var count = document.getElementsByClassName("myImg");
+                if (x == count.length) {
+                    x = 0;
+                }
             }
 
                 // Get the <span> element that closes the modal
