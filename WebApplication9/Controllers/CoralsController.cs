@@ -25,7 +25,8 @@ namespace WebApplication9.Controllers
 
         public ActionResult View(int id) {
             SiteDataContext cp = new SiteDataContext();
-            List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).ToList();
+            byte[] ba = new byte[] { 0x0 };
+            List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).Where(x=> x.Photo != ba).ToList();
 
             return View( rl);
             }
