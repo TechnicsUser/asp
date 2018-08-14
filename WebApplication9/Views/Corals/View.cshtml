@@ -1,8 +1,9 @@
 ﻿@model List<WebApplication9.Models.CoralPhoto>
-
+ 
 
 @{
     ViewBag.Title = "View";
+    
 }
 
 <head>
@@ -26,7 +27,7 @@
 
             .myImg:hover {
                 -webkit-filter: brightness(30%); /* Safari */
-                filter: brightness(150%);
+                filter: brightness(125%);
                 opacity: 1;
             }
 
@@ -116,8 +117,16 @@
 <body>
 
     <div class="col-lg-12" id="mainDiv">
-        <div class="container" >
+        <div class="container">
             @{int x = 0;}
+
+            <h2>
+                @ViewBag.thisCoral.Name
+            </h2>
+            <hr><br />
+            <h4>
+                @ViewBag.thisCoral.ScientificName
+            </h4>
 
             @foreach(var r in Model) {
 
@@ -136,10 +145,10 @@
                     }
                 }
             @*<div class=" icon-next" role="alert">
-                <div class="alert alert-warning d-flex flex-row">
-                    Enter a valid email address
-                </div>
-            </div>*@
+            <div class="alert alert-warning d-flex flex-row">
+                Enter a valid email address
+            </div>
+        </div>*@
 
             <!-- The Modal -->
             <div id="myModal" class="modal">
@@ -160,7 +169,29 @@
 
         </div>
     </div>
+    <div>
 
+        <h2>
+            @ViewBag.thisCoral.Details
+        </h2>
+        <hr><br />
+            <h4>
+                @ViewBag.thisCoral.Price
+            </h4>
+        <br />
+        @*<img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
+        <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
+
+        <h5>
+            @Html.DisplayFor(model => model.Details)
+        </h5>
+
+        <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
+
+
+        @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })*@
+
+    </div>
 </body>
 
 
@@ -250,12 +281,12 @@
          <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
 
 
-         @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })
+         @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })*@
 
 
-        Html.ActionLink("View", "View", new { id = item.CoralId }) |
+        @*Html.ActionLink("View", "View", new { id = item.CoralId }) |*@
          @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-             @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+             @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
    
 
     @*<p>
