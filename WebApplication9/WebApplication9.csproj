@@ -460,6 +460,7 @@
     <Content Include="Views\CoralConnections\Edit.cshtml" />
     <Content Include="Views\CoralConnections\Index.cshtml" />
     <Content Include="Views\Corals\View.cshtml" />
+    <Content Include="Views\Home\users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
