@@ -28,6 +28,19 @@ namespace WebApplication9.Controllers {
             return View(movies.ToList());
             // return View();
             }
+
+        public ActionResult Users() {
+
+            userEntities1 db = new userEntities1();
+
+            var movies = from m in db.AspNetUsers
+                         where m.LocationLat != null
+                         select m;
+
+            return View(movies.ToList());
+            // return View();
+            }
+
         public FileContentResult UserPhotos() {
             if(User.Identity.IsAuthenticated) {
 
