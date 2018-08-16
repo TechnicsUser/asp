@@ -16,10 +16,19 @@ namespace WebApplication9.Controllers
         private userEntities1 db = new userEntities1();
 
         // GET: AspNetUsers
-        public async Task<ActionResult> Index()
-        {
+        public async Task<ActionResult> Index() {
             return View(await db.AspNetUsers.ToListAsync());
-        }
+            }
+
+
+        // GET: AspNetUsers
+   
+        public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
+            AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+
+
+            return View(aspNetUser);
+            }
 
         // GET: AspNetUsers/Details/5
         public async Task<ActionResult> Details(string id)

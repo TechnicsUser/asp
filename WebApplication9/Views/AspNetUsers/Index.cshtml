@@ -8,8 +8,8 @@
 @foreach(var item in Model) {
     if(item.UserName != null) {
 
-
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item, this)">
+        //onclick="f1(@item.Id, this)"
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" >
     <h4>        @Html.DisplayFor(modelItem => item.UserName)    </h4>
     <hr>
     <h5>        @Html.DisplayFor(modelItem => item.FirstName)    </h5>
@@ -17,6 +17,9 @@
     <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
 
     <h6>            @Html.DisplayFor(modelItem => item.PhoneNumber)                       </h6>
+
+    @Html.ActionLink("View", "ViewUser", new { id = item.Id }) |
+
 
     @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
         @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
@@ -27,8 +30,9 @@
 <div class="col-lg-3" style="float : none"></div>
 <script>
     function f1(item) {
+ 
 
-        window.location = "/AspNetUsers/Details/" + item;
+        window.location = "/AspNetUsers/ViewUser/" + item;
 
         @*var url = '@Url.Action("CoralPhoto", "Corals")';
         url += '?id=' + item;
