@@ -5,6 +5,38 @@
 }
 
 <h2>Index</h2>
+@foreach(var item in Model) {
+    if(item.UserName != null) {
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item, this)">
+    <h4>        @Html.DisplayFor(modelItem => item.UserName)    </h4>
+    <hr>
+    <h5>        @Html.DisplayFor(modelItem => item.FirstName)    </h5>
+
+    <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
+
+    <h6>            @Html.DisplayFor(modelItem => item.PhoneNumber)                       </h6>
+
+    @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+</div>
+        }
+    }
+<div class="col-lg-3" style="float : none"></div>
+<script>
+    function f1(item) {
+
+        window.location = "/AspNetUsers/Details/" + item;
+
+        @*var url = '@Url.Action("CoralPhoto", "Corals")';
+        url += '?id=' + item;
+        $("#attachments").load(url);*@
+
+
+    }
+</script>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -65,65 +97,65 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PasswordHash)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecurityStamp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccessFailedCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationLon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationLat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserPhoto)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach(var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordHash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecurityStamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccessFailedCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationLon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationLat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhoto)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+        }
 
 </table>
