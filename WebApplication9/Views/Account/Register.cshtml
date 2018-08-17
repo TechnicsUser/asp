@@ -10,7 +10,7 @@
         var x1 = document.getElementById("reg");
         x1.addEventListener("click", getGeo, false);
 
-    }
+ }
     function getGeo() {
         var x = document.getElementById("geo");
         if (navigator.geolocation) {
@@ -55,11 +55,26 @@
     <div class="form-group">
         @*@Html.LabelFor(m => m.LocationLon, new { @class = "col-md-2 control-label" })*@
         <div class="col-md-10">
-            @Html.HiddenFor(m => m.LocationLon, new { @class = "form-control", @id = "longitude" })
+            @*@Html.HiddenFor(m => m.LocationLon, new { @class = "form-control", @id = "longitude" })*@
 
 
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LocationLon, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LocationLon, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LocationLat, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LocationLat, new { @class = "form-control" })
+        </div>
+    </div>
+
+
 
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
@@ -127,9 +142,9 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-                   @*IdUserName = c.String(nullable: false, maxLength: 128),
-                    FirstName = c.String(nullable: false, maxLength: 128),
-                    LastName = c.String(nullable: false, maxLength: 128),
-                    LocationLat = c.String(nullable: false, maxLength: 128),
-                    LocationLon = c.String(nullable: false, maxLength: 128),
-                    UserPhoto = c.Binary(nullable: false, maxLength: 128),*@
+@*IdUserName = c.String(nullable: false, maxLength: 128),
+    FirstName = c.String(nullable: false, maxLength: 128),
+    LastName = c.String(nullable: false, maxLength: 128),
+    LocationLat = c.String(nullable: false, maxLength: 128),
+    LocationLon = c.String(nullable: false, maxLength: 128),
+    UserPhoto = c.Binary(nullable: false, maxLength: 128),*@
