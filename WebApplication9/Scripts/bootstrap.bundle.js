@@ -53,7 +53,7 @@
         }));
       }
 
-        ownKeys.(function (key) {
+        ownKeys(function (key) {
         _defineProperty(target, key, source[key]);
       });
     }
