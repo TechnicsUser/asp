@@ -27,17 +27,27 @@ namespace WebApplication9
         // Use NuGet to install SendGrid (Basic C# client lib) 
         private async Task configSendGridasync(IdentityMessage message) {
 
+            // --------------------------------------------------------------
+            //      this worked
+
+         //   var apiKey = "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";
+
+              var apiKey = "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";
 
 
-            var apiKey = "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";
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("test@example.com", "Example User");
+            var from = new EmailAddress("test@example.com", "Admin");
             var subject = message.Subject;
             var to = new EmailAddress(message.Destination, "Example User");
-            var plainTextContent = "and easy to do anywhere, even with C#";
+            var plainTextContent = "Saving the reef one frag at a time.";
             var htmlContent = message.Body;
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
+            
+            //-----------------------------------------------------------
+
+
+
 
             //var apiKey = ConfigurationManager.AppSettings["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"];//Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
             //var client = new SendGridClient(apiKey);
@@ -110,12 +120,13 @@ namespace WebApplication9
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
+                
             };
 
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 2,
+                RequiredLength = 6,
                 //RequireNonLetterOrDigit = true,
                 //RequireDigit = true,
                 //RequireLowercase = true,

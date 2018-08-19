@@ -13,7 +13,7 @@ namespace WebApplication9.Controllers
 {
     public class AspNetUsersController : Controller
     {
-        private userEntities1 db = new userEntities1();
+        private userEntities2 db = new userEntities2();
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index() {

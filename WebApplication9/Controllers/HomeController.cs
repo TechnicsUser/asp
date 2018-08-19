@@ -19,7 +19,7 @@ namespace WebApplication9.Controllers {
 
         public ActionResult Index() {
 
-            userEntities1 db = new userEntities1();
+            userEntities2 db = new userEntities2();
 
             var movies = from m in db.AspNetUsers
                          where m.LocationLat != null
@@ -31,7 +31,7 @@ namespace WebApplication9.Controllers {
 
         public ActionResult Users() {
 
-            userEntities1 db = new userEntities1();
+            userEntities2 db = new userEntities2();
 
             var movies = from m in db.AspNetUsers
                          where m.LocationLat != null
