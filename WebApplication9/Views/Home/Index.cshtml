@@ -1,6 +1,71 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AirA-u7WHW14oPJFbJBL3pQbMDhZXMmzx0OqkaIhM1LK1y5n8X2nAKSm_mae3KGs'></script>
+<script type='text/javascript'>
+    var map;
+    function loadMapScenario() {
+        map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+            //center: new Microsoft.Maps.Location(47.6149, -122.1941)
+
+        });
+        var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(47.6149, -122.1941));
+        map.entities.push(pin);
+
+
+                 @foreach(var item in Model) {
+             if(item.LocationLat != null & item.LocationLon != null) {
+
+         <text>
+        var center = new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon );
+        var base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcCAYAAACUJBTQAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQbECUudScMXAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAACGUlEQVRIx+3Wy2sTURTH8e/NTDIzaZMxadMWhyBUSheiiyo+QPpHuHIhdOfSP8GlbkXEhTv/gNau3LgRurEIUqlWU2ubh7evPEg6NjOZJHNdlIgLo11YRcj5A84Hfpx7zxFKKcUJlw7gOM6JAVLKIwTg4avbfxy4c/UJABH+Qg2QAfKfI98f48vc/CCuATJA/iEilFKq3/q98XTk2I0W5qp916/41SHhOM6xoIW5KlLK/t/K6oNbwlAdknELYSZpxTMkxrO4XoCUUv0O6gHlYkjHWxF+yyWTsKit57CGbbTMGSJWepTh05PIRof3mxLNjNP0Pdp+i9ziIyGl7BtFD1hdOqRdei5ijW2shkSvS8LAJTM2gh4JiWzvFNksFdAsA3s0Ram4TrtZJxnXCLwKWSF+CvWAt89czmffiEQ0gGYZzSuTX3tNx60Q1Pcxwyb67JUL7Jb38VsdojETz2ux8W6JqG6iJaOoGLTr98WP0fWAsZgQ849v8mnZYeriLNinwAup722RsW12cysYiRT62voGwymbbsQgMZREcMD1yzN4nkctrNEV4HbrTKeFKNeOJlFKiXtwV2ganJvKkF8rsvxiEd8P0FSTiXQa2wxJxEz2yl/QA2Mc2Qihq7NdqdE5rJAc2ufsZBbTiIIGXWXTVeCIa0glMQwh8vl7hMDHD5+Zmb7E16ZPtVrFilnsFLY42CngTDhEohbfALpF/s+4JwbyAAAAAElFTkSuQmCC';
+
+        var pin = new Microsoft.Maps.Pushpin(center, {
+            icon: base64Image,
+            anchor: new Microsoft.Maps.Point(12, 39)
+        });
+
+        @*var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon ));
+        icon: "Images/noImg.png",
+            anchor: new Microsoft.Maps.Point(12, 39),*@
+        Microsoft.Maps.Events.addHandler(pin, 'mouseover', function () { highlight('@item.UserName'); });
+       
+        map.entities.push(pin);
+
+
+
+
+        </text>
+                         }
+                     }
+
+
+        //var center = new Microsoft.Maps.Location(47.6149, -122.1941);
+        //var pushpin = new Microsoft.Maps.Pushpin(center, null);
+        //map.entities.push(pushpin);
+    }
+    function highlight(id) {
+        //Highlight the mouse event div to indicate that the event has fired.
+        document.getElementById("pushpinMouseover").innerHTML = id;
+        //Remove the highlighting after a second.
+       // setTimeout(function () { document.getElementById(id).style.background = 'white'; }, 1000);
+    }
+    window.onload = function(){
+       loadMapScenario();
+    }
+
+
+</script>
+
+
+<div id='printoutPanel'></div>
+
+<div id='myMap' style='width: 600px; height: 300px;'></div>
+
+<div id="pushpinMouseover">mouseover</div>
+
+
+
 <h1>
     Your Profile Image ..
 
@@ -42,6 +107,8 @@
 <button onclick="getLocation()">Show Map</button>
 
 <div id="mapholder"></div>
+
+<div id="myMap" style="position:relative;width:100%;height:500px;"></div>
 
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyDZ3lksBTFTW4dbhlIe46K2BlM9BgCa9TY"></script>
 
@@ -220,8 +287,8 @@
                 position: { lat: @item.LocationLat, lng: @item.LocationLon },
                 title: 'Hello World!'
             });
-    
-                
+
+
         </text>
                          }
                      }
