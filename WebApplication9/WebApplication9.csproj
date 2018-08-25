@@ -473,6 +473,7 @@
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\AspNetUsers\ViewUser.cshtml" />
     <Content Include="Views\Home\ViewUser.cshtml" />
+    <Content Include="Views\Home\Paramaters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

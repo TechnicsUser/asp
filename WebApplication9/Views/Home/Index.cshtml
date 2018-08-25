@@ -9,44 +9,58 @@
             //center: new Microsoft.Maps.Location(47.6149, -122.1941)
 
         });
-        var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(47.6149, -122.1941));
-        map.entities.push(pin);
+        var pin2 = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(47.6149, -122.1941));
+        map.entities.push(pin2);
 
 
-                 @foreach(var item in Model) {
+     @foreach(var item in Model) {
              if(item.LocationLat != null & item.LocationLon != null) {
 
-         <text>
-        var center = new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon );
-        var base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcCAYAAACUJBTQAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQbECUudScMXAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAACGUlEQVRIx+3Wy2sTURTH8e/NTDIzaZMxadMWhyBUSheiiyo+QPpHuHIhdOfSP8GlbkXEhTv/gNau3LgRurEIUqlWU2ubh7evPEg6NjOZJHNdlIgLo11YRcj5A84Hfpx7zxFKKcUJlw7gOM6JAVLKIwTg4avbfxy4c/UJABH+Qg2QAfKfI98f48vc/CCuATJA/iEilFKq3/q98XTk2I0W5qp916/41SHhOM6xoIW5KlLK/t/K6oNbwlAdknELYSZpxTMkxrO4XoCUUv0O6gHlYkjHWxF+yyWTsKit57CGbbTMGSJWepTh05PIRof3mxLNjNP0Pdp+i9ziIyGl7BtFD1hdOqRdei5ijW2shkSvS8LAJTM2gh4JiWzvFNksFdAsA3s0Ram4TrtZJxnXCLwKWSF+CvWAt89czmffiEQ0gGYZzSuTX3tNx60Q1Pcxwyb67JUL7Jb38VsdojETz2ux8W6JqG6iJaOoGLTr98WP0fWAsZgQ849v8mnZYeriLNinwAup722RsW12cysYiRT62voGwymbbsQgMZREcMD1yzN4nkctrNEV4HbrTKeFKNeOJlFKiXtwV2ganJvKkF8rsvxiEd8P0FSTiXQa2wxJxEz2yl/QA2Mc2Qihq7NdqdE5rJAc2ufsZBbTiIIGXWXTVeCIa0glMQwh8vl7hMDHD5+Zmb7E16ZPtVrFilnsFLY42CngTDhEohbfALpF/s+4JwbyAAAAAElFTkSuQmCC';
+                 <text>
+                var center = new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon );
+                var base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcCAYAAACUJBTQAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQbECUudScMXAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAACGUlEQVRIx+3Wy2sTURTH8e/NTDIzaZMxadMWhyBUSheiiyo+QPpHuHIhdOfSP8GlbkXEhTv/gNau3LgRurEIUqlWU2ubh7evPEg6NjOZJHNdlIgLo11YRcj5A84Hfpx7zxFKKcUJlw7gOM6JAVLKIwTg4avbfxy4c/UJABH+Qg2QAfKfI98f48vc/CCuATJA/iEilFKq3/q98XTk2I0W5qp916/41SHhOM6xoIW5KlLK/t/K6oNbwlAdknELYSZpxTMkxrO4XoCUUv0O6gHlYkjHWxF+yyWTsKit57CGbbTMGSJWepTh05PIRof3mxLNjNP0Pdp+i9ziIyGl7BtFD1hdOqRdei5ijW2shkSvS8LAJTM2gh4JiWzvFNksFdAsA3s0Ram4TrtZJxnXCLwKWSF+CvWAt89czmffiEQ0gGYZzSuTX3tNx60Q1Pcxwyb67JUL7Jb38VsdojETz2ux8W6JqG6iJaOoGLTr98WP0fWAsZgQ849v8mnZYeriLNinwAup722RsW12cysYiRT62voGwymbbsQgMZREcMD1yzN4nkctrNEV4HbrTKeFKNeOJlFKiXtwV2ganJvKkF8rsvxiEd8P0FSTiXQa2wxJxEz2yl/QA2Mc2Qihq7NdqdE5rJAc2ufsZBbTiIIGXWXTVeCIa0glMQwh8vl7hMDHD5+Zmb7E16ZPtVrFilnsFLY42CngTDhEohbfALpF/s+4JwbyAAAAAElFTkSuQmCC';
 
-        var pin = new Microsoft.Maps.Pushpin(center, {
-            icon: base64Image,
-            anchor: new Microsoft.Maps.Point(12, 39)
-        });
+                var pin = new Microsoft.Maps.Pushpin(center, {
+                    icon: base64Image,
+                   // anchor: new Microsoft.Maps.Point(12, 39),
+                 });
+               // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+                var infobox = new Microsoft.Maps.Infobox(center, {
+                    title: '@item.LocationLat',
+                    description: '@item.UserName', visible: false
+                });
+                infobox.setMap(map);
+                Microsoft.Maps.Events.addHandler(pin, 'click', function () {
+                    infobox.setOptions({ visible: true });
+                });
+                @*var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon ));
+                icon: "Images/noImg.png",
+                    anchor: new Microsoft.Maps.Point(12, 39),*@
+                Microsoft.Maps.Events.addHandler(pin, 'mouseover', function () { highlight('@item.UserName'); });
 
-        @*var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon ));
-        icon: "Images/noImg.png",
-            anchor: new Microsoft.Maps.Point(12, 39),*@
-        Microsoft.Maps.Events.addHandler(pin, 'mouseover', function () { highlight('@item.UserName'); });
-       
-        map.entities.push(pin);
+                map.entities.push(pin);
 
 
 
 
         </text>
-                         }
-                     }
+             }
+        }
 
 
         //var center = new Microsoft.Maps.Location(47.6149, -122.1941);
         //var pushpin = new Microsoft.Maps.Pushpin(center, null);
         //map.entities.push(pushpin);
     }
+
     function highlight(id) {
         //Highlight the mouse event div to indicate that the event has fired.
         document.getElementById("pushpinMouseover").innerHTML = id;
+        var myid = Model.find(function (model) { return model.get("UserName") === id; });
+        document.getElementById("myid").innerHTML = myid.UserName;
+
+;
+
         //Remove the highlighting after a second.
        // setTimeout(function () { document.getElementById(id).style.background = 'white'; }, 1000);
     }
@@ -60,9 +74,10 @@
 
 <div id='printoutPanel'></div>
 
-<div id='myMap' style='width: 600px; height: 300px;'></div>
+<div id='myMap' style='width: 1200px; height: 300px;'></div>
 
 <div id="pushpinMouseover">mouseover</div>
+<div id="myid">myid</div>
 
 
 

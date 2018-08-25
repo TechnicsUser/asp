@@ -29,6 +29,12 @@ namespace WebApplication9.Controllers {
             // return View();
             }
 
+        public ActionResult Paramaters() {
+            ViewData["Message"] = "Your Paramaters page.";
+
+            return View();
+            }
+
         public ActionResult Users() {
 
             userEntities2 db = new userEntities2();
