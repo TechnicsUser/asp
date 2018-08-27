@@ -91,23 +91,23 @@ namespace WebApplication9.Controllers
 
             //    }
             }
-        public FileContentResult CoralPhoto2(int id) {
+        public FileContentResult CoralPhoto2(int id, int number) {
             //   if(User.Identity.IsAuthenticated) {
 
-            var coralPhoto = db.CoralPhoto.Find(id);
-            if(coralPhoto.Photo == null) {
-                string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+            //  var coralPhoto = db.CoralPhoto.Find(id);
+            //if(coralPhoto.Photo == null) {
+            //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
 
-                byte[] imageData = null;
-                FileInfo fileInfo = new FileInfo(fileName);
-                long imageFileLength = fileInfo.Length;
-                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                imageData = br.ReadBytes((int)imageFileLength);
+            //    byte[] imageData = null;
+            //    FileInfo fileInfo = new FileInfo(fileName);
+            //    long imageFileLength = fileInfo.Length;
+            //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            //    BinaryReader br = new BinaryReader(fs);
+            //    imageData = br.ReadBytes((int)imageFileLength);
 
-                return File(imageData, "image/png");
-                }
-            byte[] coralImage = coralPhoto.Photo;
+            //    return File(imageData, "image/png");
+            //    }
+            // byte[] coralImage = coralPhoto.Photo;
 
             // String userId = User.Identity.GetUserId();
 
@@ -129,12 +129,15 @@ namespace WebApplication9.Controllers
             //var userImage = bdUsers.CoralId.(x => x.Id == id).FirstOrDefault();
 
 
-            var CredID = (from sn3 in db.CoralPhoto
-                          where sn3.CoralId == id
-                          select sn3.Photo).First();
+            var coralPhoto = (from sn3 in db.CoralPhoto
+                              where sn3.CoralId == id
+                              select sn3.Photo).ToList();
+            byte[] coralImage = coralPhoto[number];
 
 
-            return new FileContentResult(CredID, "image/jpeg");
+            //var mylist = db.CoralPhoto.ToList();
+            //    var photo = mylist.First().Photo;
+            return new FileContentResult(coralImage, "image/jpeg");
 
             //SiteDataContext cp = new SiteDataContext();
             //List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).ToList();
@@ -189,7 +192,9 @@ namespace WebApplication9.Controllers
                         CoralPhoto cp = new CoralPhoto();
                         cp.UserId = User.Identity.GetUserId();
 
-
+                        if(i == 0) {
+                            coral.Photo = imageData;
+                            }
                         cp.Photo = imageData;
                         
                           cp.CoralId = coral.CoralId;
