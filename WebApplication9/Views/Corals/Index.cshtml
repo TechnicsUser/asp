@@ -28,7 +28,12 @@
     #details {
     
      }
-
+    #btn{
+        background: none;
+        color: red;
+        transform:scale(1.5);
+        border: none;
+    }
     #my-carousel {
         display: inline-block;
         position: sticky;
@@ -301,14 +306,24 @@
 
         <span>             @Html.DisplayFor(modelItem => item.Details)   </span>
 
-        @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
             @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+            @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
     </div>
     <div id="sliders" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
         <input type="range" min="1" max="100" value="50" />
-      
 
+        <button id="btn" type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <span class="badge">42</span>
+        </button>
+        <a href="#">Inbox <span class="badge">42</span></a>
+
+        <button class="btn btn-primary" type="button">
+            Connections <span class="badge">@item.Likes</span>
+
+        </button>
+        <span class="halflings halflings-group">aaa</span>
 
     </div>
 
@@ -318,7 +333,25 @@
     }
 
     }
-
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
 
     <script>
     function f1(item) {

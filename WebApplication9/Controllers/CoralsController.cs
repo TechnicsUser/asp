@@ -10,6 +10,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication9.Models;
+using PagedList;
+
 
 namespace WebApplication9.Controllers
 {
@@ -22,6 +24,45 @@ namespace WebApplication9.Controllers
         {
             return View(db.Corals.ToList());
         }
+        public ViewResult Index1(string sortOrder, string currentFilter, string searchString, int? page) {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "UploadedOn";
+
+            if(searchString != null) {
+                page = 1;
+                }
+            else {
+                searchString = currentFilter;
+                }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var students = from s in db.Corals
+                           select s;
+            if(!String.IsNullOrEmpty(searchString)) {
+                students = students.Where(s => s.Name.Contains(searchString)
+                                       || s.ScientificName.Contains(searchString));
+                }
+            switch(sortOrder) {
+                case "name_desc":
+                students = students.OrderByDescending(s => s.Name);
+                break;
+                case "UploadedOn":
+                students = students.OrderBy(s => s.UploadedOn);
+                break;
+                case "date_desc":
+                students = students.OrderByDescending(s => s.UploadedOn);
+                break;
+                default:  // Name ascending 
+                students = students.OrderBy(s => s.ScientificName);
+                break;
+                }
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
+            }
 
         public ActionResult View(int id) {
             SiteDataContext cp = new SiteDataContext();
