@@ -2,6 +2,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
+
 @{
     ViewBag.Title = "Students";
 }
@@ -16,19 +17,22 @@
         -webkit-appearance: none;
         -webkit-border-radius: 10px;
         background-image: -webkit-linear-gradient(top,red,blue, red);
-        margin: 25px;
-        
+        /*margin: 25px;*/
     }
 
     #myContainer {
         display: flex;
     }
+
     #sliders {
         display: flex;
     }
-    .myRangeText{
-        font-size:10px;
+
+    .myRangeText {
+        font-size: 14px;
+        margin-right: 15px;
     }
+
     #details {
     }
 
@@ -46,16 +50,17 @@
         padding: 0px;
         margin: 0px;
     }
-    .pagination > li > a{
-        color:black;
-        background-color:coral;
-        
+
+    .pagination > li > a {
+        color: black;
+        background-color: coral;
     }
+
     .pagination > .active > a {
         background-color: lightcoral;
     }
-    
-    
+
+
     .panel.noborder {
         /*border: none;*/
         box-shadow: none;
@@ -92,11 +97,12 @@
     .carousel-inner /*.item img[src$=".svg"]*/ {
         width: 100%;
     }
+
     .carousel.slide {
         padding-left: 0px;
         padding-right: 0px;
-         
-        }
+    }
+
     .carousel-indicators li {
         border: 5px solid #ccc;
     }
@@ -117,12 +123,17 @@
     }
 </style>
 <script>
-        function f1(item) {
+
+    function f1(item) {
 
         window.location = "/Corals/View/" + item;
 
     }
 </script>
+
+<script>window._epn = { campaign: 5338370125 };</script>
+<script src="https://epnt.ebay.com/static/epn-smart-tools.js"></script>
+
 <h2>Coral</h2>
 
 <p>
@@ -134,19 +145,7 @@
         <input type="submit" value="Search" />
     </p>
     }
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Name", "Index1", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-             Name
-        </th>
-        <th>
-            @Html.ActionLink("Added on", "Index1", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th></th>
-    </tr>*@
+
 @Html.ActionLink("Name", "Index1", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
 @Html.ActionLink("Added on", "Index1", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
 
@@ -155,161 +154,177 @@
     if(item.Name != null) {
 
         @*class="col-lg-3 col-md-4 col-sm-6 col-xs-12" onclick="f1(@item.CoralId, this)"   style="float : left" *@
-    <div id="myContainer">
-        <div id="my-carousel" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" onclick="f1(@item.CoralId, this)">
-            <div class="panel panel-default">
-                @*<div class="panel-heading"><H1 />@item.Name</div>*@
-                <div class="panel-body">
+        <div id="myContainer">
+            <div id="my-carousel" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" onclick="f1(@item.CoralId, this)">
+                <div class="panel panel-default">
+                    @*<div class="panel-heading"><H1 />@item.Name</div>*@
+                    <div class="panel-body">
 
 
-                    @*onmouseover="myfunction();"*@
-                    @*class="carousel slide col-lg-6 col-md-6 col-sm-6"*@
-                    <div id="my-carousel-@item.CoralId" class="carousel slide col-lg-12 col-md-12 col-sm-12" data-ride="carousel" data-interval="6000">
-                        <!-- Indicators -->
+                        @*onmouseover="myfunction();"*@
+                        @*class="carousel slide col-lg-6 col-md-6 col-sm-6"*@
+                        <div id="my-carousel-@item.CoralId" class="carousel slide col-lg-12 col-md-12 col-sm-12" data-ride="carousel" data-interval="6000">
+                            <!-- Indicators -->
 
-                        <ol class="carousel-indicators">
-                            <li data-target="#my-carousel-@item.CoralId" data-slide-to="0" class="active"></li>
-                            <li data-target="#my-carousel-@item.CoralId" data-slide-to="1"></li>
-                            <li data-target="#my-carousel-@item.CoralId" data-slide-to="2"></li>
-                        </ol>
+                            <ol class="carousel-indicators">
+                                <li data-target="#my-carousel-@item.CoralId" data-slide-to="0" class="active"></li>
+                                <li data-target="#my-carousel-@item.CoralId" data-slide-to="1"></li>
+                                <li data-target="#my-carousel-@item.CoralId" data-slide-to="2"></li>
+                            </ol>
 
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
 
-                            <div class="item active">
-                                <img alt="First slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 1 })">
-                                <div class="carousel-caption">
+                                <div class="item active">
+                                    <img alt="First slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 1 })">
+                                    <div class="carousel-caption">
+
+                                    </div>
 
                                 </div>
+                                <div class="item">
+                                    <img alt="Second slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 2 })">
+                                    <div class="carousel-caption">
+                                        @*<h3>Caption heading 2</h3>
+                                            <p>Morbi eget libero quis metus consectetur semper.</p>*@
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img alt="Third slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 3 })">
+                                    <div class="carousel-caption">
+                                        p*4>lorem
 
-                            </div>
-                            <div class="item">
-                                <img alt="Second slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 2 })">
-                                <div class="carousel-caption">
-                                    @*<h3>Caption heading 2</h3>
-                                    <p>Morbi eget libero quis metus consectetur semper.</p>*@
+                                        @*<h3>Caption heading 3</h3>
+                                            <p>Suspendisse ullamcorper massa eget eleifend iaculis.</p>*@
+                                    </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <img alt="Third slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 3 })">
-                                <div class="carousel-caption">
-                                    @*<h3>Caption heading 3</h3>
-                                    <p>Suspendisse ullamcorper massa eget eleifend iaculis.</p>*@
-                                </div>
-                            </div>
+
+                            @*Controls*@
+                            @*<a class="left carousel-control"  href="#my-carousel-@item.CoralId" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#my-carousel-@item.CoralId" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>*@
                         </div>
+                        @*<h2 />  Star Polyp Care<br/>
+                            <h3/> Star Polyps are a common beauty that is iconic in the hobby. It is hard to find a seasoned aquarist that has not owned green star polyps (or GSP for short) at one point or another in their enjoyment of reef aquariums. They are a hardy soft coral that grows quickly in encrusting mats. They do best in strong flow as their base tends to attract algae growth.*@
 
-                        @*Controls*@
-                        @*<a class="left carousel-control"  href="#my-carousel-@item.CoralId" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#my-carousel-@item.CoralId" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>*@
+
                     </div>
-                    @*<h2 />  Star Polyp Care<br/>
-                    <h3/> Star Polyps are a common beauty that is iconic in the hobby. It is hard to find a seasoned aquarist that has not owned green star polyps (or GSP for short) at one point or another in their enjoyment of reef aquariums. They are a hardy soft coral that grows quickly in encrusting mats. They do best in strong flow as their base tends to attract algae growth.*@
 
+                </div>
+            </div>
+
+            <div id="details" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+
+
+                <h4>           @Html.DisplayFor(modelItem => item.Name)   </h4>
+
+                <span>             @Html.DisplayFor(modelItem => item.Details)   </span>
+
+                @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+            </div>
+
+
+
+
+
+            <div id="myContainer" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+                <div class="myRangeText">Flow </div>
+
+                <div id="slide">
+
+                    @switch(@item.Flow) {
+                        case WebApplication9.Models.Coral.FlowRequirement.Max:<text>
+                            <input type="range" min="1" max="100" value="100" disabled="disabled" />
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.High:<text>
+                            <input type="range" min="1" max="100" value="70" disabled="disabled" />
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.Modorate:
+                        <text>
+                            <input type="range" min="1" max="100" value="50" disabled="disabled" />
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.Low:
+                        <text>
+                            <input type="range" min="1" max="100" value="30" disabled="disabled" />
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.None:
+                        <text>
+                            <input type="range" min="1" max="100" value="0" disabled="disabled" />
+
+                        </text>
+                        break;
+                        default:
+                        <text>
+                            <input type="range" min="1" max="100" value="0" disabled="disabled" />
+
+                        </text>
+                        break;
+                        }
+
+                    <div class="myRangeText">Light </div>
+                    @switch(item.Light) {
+                        case WebApplication9.Models.Coral.LightRequirement.Max:
+                        <input type="range" min="1" max="100" value="100" disabled="disabled" />
+
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.High:
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.Modorate:
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.Low:
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.None:
+                        break;
+                        default:
+                        break;
+                        }
+                    @*<input id="myRange" type="range" min="1" max="40" disabled="disabled" />*@
+                    @* <input type="range" min="1" max="100" value="70" />
+                        <input type="range" min="1" max="100" value="30" />
+                        <input type="range" min="1" max="100" value="50" />
+                        @item.Flow*@
 
                 </div>
 
             </div>
-        </div>
 
-        <div id="details" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-
-            <h4>           @Html.DisplayFor(modelItem => item.Name)   </h4>
-
-            <span>             @Html.DisplayFor(modelItem => item.Details)   </span>
-
-            @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-            @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
-        </div>
-
-
-       
-        
-
-        <div id="sliders" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-            <div>   <span class="myRangeText">Flow</span> </div>
-            <div>
-                @switch(@item.Flow) {
-                    case WebApplication9.Models.Coral.FlowRequirement.Max:<text>
-                        <input type="range" min="1" max="100" value="100" disabled="disabled" />
-
-                    </text>
-                    break;
-                    case WebApplication9.Models.Coral.FlowRequirement.High:<text>
-                        <input type="range" min="1" max="100" value="70" disabled="disabled" />
-
-                    </text>
-                    break;
-                    case WebApplication9.Models.Coral.FlowRequirement.Modorate:
-                    <text>
-                        <input type="range" min="1" max="100" value="50" disabled="disabled" />
-
-                    </text>
-                    break;
-                    case WebApplication9.Models.Coral.FlowRequirement.Low:
-                    <text>
-                        <input type="range" min="1" max="100" value="30" disabled="disabled" />
-
-                    </text>
-                    break;
-                    case WebApplication9.Models.Coral.FlowRequirement.None:
-                    <text>
-                        <input type="range" min="1" max="100" value="0" disabled="disabled" />
-
-                    </text>
-                    break;
-                    default:
-                    <text>
-                        <input type="range" min="1" max="100" value="0" disabled="disabled" />
-
-                    </text>
-                    break;
-                    }
-
-                @switch(item.Light) {
-                    case WebApplication9.Models.Coral.LightRequirement.Max:
-                    break;
-                    case WebApplication9.Models.Coral.LightRequirement.High:
-                    break;
-                    case WebApplication9.Models.Coral.LightRequirement.Modorate:
-                    break;
-                    case WebApplication9.Models.Coral.LightRequirement.Low:
-                    break;
-                    case WebApplication9.Models.Coral.LightRequirement.None:
-                    break;
-                    default:
-                    break;
-                    }
-                <input id="myRange" type="range" min="1" max="40" disabled="disabled" />
-                @* <input type="range" min="1" max="100" value="70" />
-        <input type="range" min="1" max="100" value="30" />
-        <input type="range" min="1" max="100" value="50" />
-        @item.Flow*@
-
-            </div>
 
         </div>
-
-
-    </div>
 
 
 
         }
     }
-
+<button id="btn" type="button" class="btn btn-default" aria-label="Left Align">
+    <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+    <span class="badge">42</span>
+</button>
 
 @*</table>*@
 <br />
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+<img src="~/Images/led.jpg"  alt="Alternate Text" />
+<a href="https://rover.ebay.com/rover/1/5282-53468-19255-0/1?mpre=https%3A%2F%2Fwww.ebay.ie%2Fitm%2FMars-165W-Dimmable-LED-Aquarium-Light-Full-Spectrum-for-Reef-Coral-Marine-SPS%2F281794081225%3Fhash%3Ditem419c3c71c9%3Ag%3A35EAAOSw5YNZslCJ&campid=5338370125&toolid=20008">content</a>
+<img src="~/Images/noun_flow_80254.png"  width="50" />
+@*<img src="~/Images/flow_80254.png" width="50" style="opacity: 0.5;"/>*@
+<a href="https://rover.ebay.com/rover/1/711-53200-19255-0/1?ff3=4&toolid=11800&pub=5575423520&campid=5338370125&mpre=https%3A%2F%2Fepn.ebay.com%2Fcampaigns">content2</a>
+  Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index1",
-        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@Html.PagedListPager(Model, page => Url.Action("Index1",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

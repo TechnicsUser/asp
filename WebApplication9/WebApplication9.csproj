@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="eBay.Service, Version=3.1065.0.0, Culture=neutral, PublicKeyToken=1d9d786a5932eaf0, processorArchitecture=MSIL">
+      <HintPath>..\packages\eBay.3.1065.0\lib\net40\eBay.Service.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.6.4\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
@@ -336,7 +339,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\flow_80254.png" />
+    <Content Include="Images\led.jpg" />
     <Content Include="Images\noImg.png" />
+    <Content Include="Images\noun_flow_80254.png" />
     <Content Include="Models\myUsers.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>myUsers.edmx</DependentUpon>
