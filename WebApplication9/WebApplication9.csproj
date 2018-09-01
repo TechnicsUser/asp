@@ -340,9 +340,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\flow_80254.png" />
+    <Content Include="Images\giphy.gif" />
     <Content Include="Images\led.jpg" />
     <Content Include="Images\noImg.png" />
     <Content Include="Images\noun_flow_80254.png" />
+    <Content Include="Images\sun.gif" />
     <Content Include="Models\myUsers.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>myUsers.edmx</DependentUpon>

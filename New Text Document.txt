@@ -1,0 +1,22 @@
+
+
+coral connections
+mine    add, view, edit delete
+anyuser  view
+
+
+
+user options
+- theme
+- display on map
+- show 
+- show paramaters
+- searchable
+
+
+
+paramaters
+mine    add, view, edit delete
+anyuser  view
+
+followers
