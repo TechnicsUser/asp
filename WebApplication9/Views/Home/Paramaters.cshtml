@@ -7,32 +7,53 @@
 <head>
     <style>
         .holder {
-         
+            /*display: flex;*/
             width: 100%;
             height: 270px;
-            position: relative;
-            padding-top: 10px;
+            /*position: relative;*/
+            padding: 10px;
+           
         }
+            .holder > *:first-child {
+                /*align-self: stretch;
+                height: 370px;
+                padding: 25px;*/
+            }
         #zoomNumber {
-            position:inherit;
+            /*position:inherit;*/
              /*top: 220px;
             left:840px;*/
-            width: 100px;
+                  width: 70px;
             height: 30px;
              border: 0px;
             z-index: 100;
             background-color:white;
+             margin:20px;
         }
-    
+        .myBtn{
+            /*column-count: 3;*/
+            display: block;
+        }
+
+        input[type=color] {
+            padding: 0px;
+            margin: 10px;
+        }
 
      
 
  
-        .frame, .frame2 {
+        .frame {
+            top: 0px;
+            left:0px;
+            position: relative;
             width: 100%;
             height: 100%;
             background-color: black;
-        }
+            border: 5px solid black;
+             z-index: -1;
+             
+         }
 
         .bar {
             position: absolute;
@@ -62,9 +83,10 @@
             var str = myFrame.src;
             var start = "https://thingspeak.com/channels/459687/charts/";
             var chartNumber = str.substring(46, 47);
-            var color = "?bgcolor=%23";
-            var pick = "ff0000";
-            var color2 = "&color=%23d62020&dynamic=true&width=auto&results=";
+            var color = str.substring(47, 81);
+
+          
+            var part = "&dynamic=true&width=auto&results=";
             var type = "&type=line&update=";
             var title = "&title=";
             var titleResult = str.substring(132, 137);
@@ -73,11 +95,12 @@
             var res = str.substring(0, 114);
             var ult = str.substring(116, 136);
             
-      
+            var test = "&timescale=daily";
 
-            myFrame.src = start + chartNumber + color + pick + color2 + value + type + value;
+            myFrame.src = start + chartNumber + color + part + value + type + value ;
             console.log(titleResult);
             console.log(chartNumber);
+            document.getElementById("firstColor").innerHTML = "test";
         }
         function changeBgColor(value, frame) {
             myFrame = frame;
@@ -89,7 +112,9 @@
             var res = value.substring(1, 7);
 
             var pick = res;
-            var color2 = "&color=%23d62020&dynamic=true&width=auto&results=";
+            var color2 = "&color=%23";
+            var lineColor = str.substring(75, 81);
+            var part = "&dynamic=true&width=auto&results=";
             var type = "&type=line&update=";
             var title = "&title=";
             var titleResult = str.substring(132, 137);
@@ -99,76 +124,84 @@
 
 
 
-            myFrame.src = start + chartNumber + color + pick + color2 + "10" + type + "10";
-            console.log(res);
-            console.log(chartNumber);
-        }
+            myFrame.src = start + chartNumber + color + pick + color2 + lineColor + part + "10" + type + "10";
+            console.log(lineColor);
+         }
         function changeColor(value, frame) {
-            https://thingspeak.com/channels/459687/charts/1?bgcolor=%23000000&color=%23d62020&dynamic=true&results=30&type=line&update=15&title=Humid
-
+ 
             myFrame = frame;
 
             var str = myFrame.src;
             var start = "https://thingspeak.com/channels/459687/charts/";
             var chartNumber = str.substring(46, 47);
-            var color = str.substring(47, 74);
-            var t = str.re
+             var color = str.substring(47, 75);
+
             var res = value.substring(1, 7);
 
-            var pick = res;
-            var color2 = "&color=%23d62020&dynamic=true&width=auto&results=";
+            var color2 = "&dynamic=true&width=auto&results=";
             var type = "&type=line&update=";
             var title = "&title=";
             var titleResult = str.substring(132, 137);
 
 
-            var ult = str.substring(116, 136);
-
-
-
-            myFrame.src = start + chartNumber + color + pick + color2 + "10" + type + "10";
-            console.log(res);
+            myFrame.src = start + chartNumber + color + res + color2 + "10" + type + "10";
             console.log(color);
+            console.log(res);
+            console.log(start + chartNumber + color  + res + color2 + "10" + type + "10");
+  
         }
     </script>
 </head>
 <body>
- 
+
     <div class="holder">
 
-        <iframe class="frame" id="first" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/1?bgcolor=%23000000&color=%23d62020&dynamic=true&results=30&type=line&update=15&title=Humid">   </iframe>
-        <input type="number" id="zoomNumber" name="zoom" min="10" max="50" onchange="zoom(this.value, document.getElementById('first'))">
-        <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('first') )">
-        <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('first') )">
+        <iframe class="frame" align="left"  id="first" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/1?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Humid">   </iframe>
 
+        <div class="myBtn">
+            <input type="number" id="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('first'))">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('first') )">
+            <input type="color" id="firstColor" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('first') )">
 
+        </div>
 
 
     </div>
     <br />
     <br />
 
-    <div class="holder col-12">
+    <div class="holder">
 
-        <iframe class="frame" id="second" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/2?bgcolor=%23000000&color=%23d62020&dynamic=true&results=30&type=line&update=15&title=Humid"></iframe>
-        <input type="number" id="zoomNumber" name="zoom" min="10" max="50" onchange="zoom(this.value, document.getElementById('second'))">
+        <iframe class="frame" id="second" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/2?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Humid"></iframe>
+        <input type="number" id="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('second'))">
+        <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('second') )">
+        <input type="color"  name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('second') )">
 
 
     </div>
 
     <br />
+    <br />
 
-    <div>
-        <iframe id="third" width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/3?bgcolor=%23000030&color=%23d62020&dynamic=true&max=30&min=20&results=20&type=line&update=15"></iframe>
-        <input type="number" id="zoomNumber" name="zoom" min="10" max="50" onchange="zoom(this.value, document.getElementById('third'))">
-
-    </div>
-
-    <div>
-        <iframe id="forth" width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/4?bgcolor=%23000000&color=%23d620040&dynamic=true&max=9.5&min=7.5&results=20&type=line&dynamic=true&update=15"></iframe>
-        <input type="number" id="zoomNumber" name="zoom" min="10" max="50" onchange="zoom(this.value, document.getElementById('forth'))">
+    <div class="holder">
+        <iframe class="frame" id="third" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/3?bgcolor=%23000030&color=%23d62020&dynamic=true&width=auto&results=20&type=line&update=15"></iframe>
+        <input type="number" id="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('third'))">
+        <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('third') )">
+        <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('third') )">
 
     </div>
+    <br />
+    <br />
+
+    <div class="holder">
+        <iframe class="frame" id="forth" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/4?bgcolor=%23000000&color=%23d620040&dynamic=true&width=auto&results=20&type=line&dynamic=true&update=15"></iframe>
+        <input type="number" id="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('forth'))">
+        <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('forth') )">
+        <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('forth') )">
+
+    </div>
+    <br />
+    <br />
 
     <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/232538"></iframe>
     @*<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/plugins/232544"></iframe>
