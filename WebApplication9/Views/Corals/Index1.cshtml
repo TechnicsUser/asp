@@ -13,7 +13,9 @@
     }
 
     .img-zoom-container {
-        position: relative;
+        position: absolute;
+        top: 200px;
+        left: 250px;
     }
 
     .img-zoom-lens {
@@ -220,7 +222,8 @@
 </p>
 
 <div class="img-zoom-container">
-     <img id="myimage" src="~/Images/flow_80254.png" width="300" height="240" alt="Girl">
+     @*<img id="myimage" src="~/Images/flow_80254.png" width="300" height="240" alt="Girl">*@
+
     <div id="myresult" class="img-zoom-result"></div>
 </div>
 
@@ -271,16 +274,18 @@
 
                                 </div>
                                     <div class="item">
-                                        <img alt="Second slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 2 })">
+                                        <img id="second" alt="Second slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 2 })"
+                                              onmouseover='imageZoom("second", "myresult")' >
                                         <div class="carousel-caption">
                                             @*<h3>Caption heading 2</h3>
                     <p>Morbi eget libero quis metus consectetur semper.</p>*@
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img alt="Third slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 3 })">
+                                        <img id="third" alt="Third slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 3 })"
+                                               onmouseover='imageZoom("third", "myresult")'>
                                         <div class="carousel-caption">
-                                            p*4>lorem
+                                          
 
                                             @*<h3>Caption heading 3</h3>
                     <p>Suspendisse ullamcorper massa eget eleifend iaculis.</p>*@
