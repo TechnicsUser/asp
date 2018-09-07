@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication9.Models
@@ -65,28 +66,31 @@ namespace WebApplication9.Models
     public class RegisterViewModel
 
     {
+         
         public string CssTheme { get; set; }
 
-        [Display(Name = "UserPhoto")]
+        [Display(Name = "User photo")]
         public byte[] UserPhoto { get; set; }
 
 
         public string LocationLat { get; set; }
         public string LocationLon { get; set; }
- 
-        public string IdUserName { get; set; }
-        [
-        Required]
 
-        public string FirstName { get; set; }
         [Required]
+        [DisplayName("User name")]
+        public string IdUserName { get; set; }
 
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
        
 
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+ 
         public string Email { get; set; }
 
         [Required]

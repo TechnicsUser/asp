@@ -1,21 +1,33 @@
 ﻿@model PagedList.IPagedList<WebApplication9.Models.Coral>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @{
     ViewBag.Title = "Students";
 }
 <style>
 
-    * {
+    /** {
         box-sizing: border-box;
     }
+    .checked, .checked:before {
+        color: orange;
+        font-size: 20px;
+        background-image: url(/Images/giphy.gif); /*-webkit-linear-gradient(top,red,blue, red);
+        -webkit-background-clip: inherit;
+        -webkit-background-: inherit;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px #FAB6D3;
+        background-size: 10%;
+    }
+    */
 
     .img-zoom-container {
         position: absolute;
         top: 200px;
-        left: 250px;
+        left: 50px;
+        z-index:100;
     }
 
     .img-zoom-lens {
@@ -33,25 +45,46 @@
         height: 300px;
     }
 
-    footer {
-        /*position: absolute;
-        bottom: 0;
-        padding: 20px;*/
-    }
 
-    input[type=range] {
+    input[type=range]  {
         -webkit-appearance: none;
         -webkit-border-radius: 10px;
+        /* background-image: url(/Images/giphy.gif);   -webkit-linear-gradient(top,red,blue, red);*/
+        margin: 25px;
+    }
+
+    .flow {
         background-image: url(/Images/giphy.gif); /*-webkit-linear-gradient(top,red,blue, red);*/
-        /*margin: 25px;*/
+        opacity: 0.2;
+        height: 30px;
+        width: 100%;
+    }
+
+    .light {
+        background-image: url(/Images/giphyLight.gif); /*-webkit-linear-gradient(top,red,blue, red);*/
+        opacity: 0.5;
     }
 
     #myContainer {
         display: flex;
     }
 
-    #sliders {
+
+
+    #slide {
         display: flex;
+        flex-direction: row;
+        vertical-align:central;
+        /*text-align:center;*/
+        flex: 1 30%;
+        flex: 2 70%;
+     }
+        #slide > img {
+            width: 50px;
+            height: 75px;
+        }
+    #sliders {
+        /*align-self: auto;*/
     }
 
     .myRangeText {
@@ -214,18 +247,21 @@
 
 <script>window._epn = { campaign: 5338370125 };</script>
 <script src="https://epnt.ebay.com/static/epn-smart-tools.js"></script>
- 
+
 <h2>Coral</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-scissors"></span>
 
 <div class="img-zoom-container">
-     @*<img id="myimage" src="~/Images/flow_80254.png" width="300" height="240" alt="Girl">*@
+    @*<img id="myimage" src="~/Images/flow_80254.png" width="300" height="240" alt="Girl">*@
 
     <div id="myresult" class="img-zoom-result"></div>
 </div>
+<img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDQ3LjQwNyA0Ny40MDciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ3LjQwNyA0Ny40MDc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDcuMDc0LDQuNDU5QzQyLjk1MywwLjMzOCwzNS4yMDcsMC4zMzgsMjcuODYsNC4xMTZjLTAuMjY2LDMuNjAxLDEuMDg0LDcuNDU0LDQuMDExLDEwLjM4MSAgICBjMi4yOTksMi4yOTgsNS4xNjksMy42MTksOC4wNDEsMy45NThDNDUuNTAyLDExLjcwOCw0OC40NDIsNS44MjYsNDcuMDc0LDQuNDU5eiBNMzkuMzA5LDcuMDYgICAgYy0wLjYzMywwLjYzMy0xLjY1OCwwLjYzMy0yLjI5LDAuMDAyYy0wLjYzNC0wLjYzMy0wLjYzNC0xLjY1OSwwLTIuMjkyYzAuNjMyLTAuNjMzLDEuNjU3LTAuNjMzLDIuMjkxLDAgICAgQzM5Ljk0MSw1LjQwMywzOS45NDEsNi40MjksMzkuMzA5LDcuMDZ6IiBmaWxsPSIjRDgwMDI3Ii8+CgkJPHBhdGggZD0iTTI1LjE5Niw1LjY2NmMtMC41NDIsMC4zNTQtMS4wNzksMC43MjktMS42MSwxLjEyNWwtMS4yNi0wLjY2NGMtMS4wOTktMC41NzUtMi40NS0wLjM3Ni0zLjMyOCwwLjUwMWwtOC44NjIsOC44NjIgICAgYy0wLjYzOSwwLjYzOS0wLjkyOCwxLjU0Ny0wLjc5MiwyLjQ0YzAuMTM3LDAuODkxLDAuNjkyLDEuNjY4LDEuNDkxLDIuMDg3bDIuMDEsMS4wNTNjLTIuMDE0LDQuNjk2LTMuMTA3LDkuMjk3LTMuNDA1LDEyLjIxMSAgICBsLTguNzUsMy4wMWMtMC4zOTUsMC4xMzUtMC42NjcsMC40OTUtMC42ODksMC45MTFjLTAuMDIyLDAuNDE3LDAuMjA5LDAuODA2LDAuNTg2LDAuOTgybDMuODE2LDEuNzk3ICAgIGMwLjc0NywwLjM1MiwxLjM0NiwwLjk1MiwxLjY5OCwxLjY5OGwxLjc5NywzLjgxNWMwLjE3NywwLjM3NiwwLjU2NiwwLjYwOCwwLjk4MSwwLjU4NmMwLjQxNy0wLjAyMiwwLjc3Ny0wLjI5NiwwLjkxMy0wLjY4OCAgICBsMy4wMTMtOC43NjRjNC4xMDgtMC42NzcsMTEuMjM0LTMuODE3LDE3LjQyMy04LjU0NmwwLjY5MywyLjE0YzAuMTI1LDAuMzg3LDAuNDM5LDAuNjc3LDAuODM1LDAuNzcyICAgIGMwLjM5NiwwLjA5NiwwLjgwOS0wLjAyNSwxLjA5OC0wLjMxMmwwLjc0MS0wLjc0MmMwLjU3LTAuNTcxLDAuOTIxLTEuMzI3LDAuOTc3LTIuMTMzbDAuMjYyLTMuNzYyICAgIGMxLjA4MS0xLjA4OSwyLjEwNi0yLjE3OSwzLjA3NC0zLjI2Yy0yLjg1NS0wLjY2Mi01LjYyMS0yLjEzOS03LjkwNC00LjQyMkMyNi45ODEsMTMuMzM5LDI1LjM2NCw5LjQ2OSwyNS4xOTYsNS42NjZ6IiBmaWxsPSIjRDgwMDI3Ii8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
 
 @using(Html.BeginForm("Index1", "Corals", FormMethod.Get)) {
     <p>
@@ -265,44 +301,44 @@
 
                                 <div class="item active">
 
-                                        <img id="first" alt="First slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 1 })"
-                                             onmouseover='imageZoom("first", "myresult")'>
+                                    <img id="first" alt="First slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 1 })"
+                                         onmouseover='imageZoom("first", "myresult")'>
 
-                                        <div class="carousel-caption">
+                                    <div class="carousel-caption">
 
-                                        </div>
+                                    </div>
 
                                 </div>
-                                    <div class="item">
-                                        <img id="second" alt="Second slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 2 })"
-                                              onmouseover='imageZoom("second", "myresult")' >
-                                        <div class="carousel-caption">
-                                            @*<h3>Caption heading 2</h3>
-                    <p>Morbi eget libero quis metus consectetur semper.</p>*@
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <img id="third" alt="Third slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 3 })"
-                                               onmouseover='imageZoom("third", "myresult")'>
-                                        <div class="carousel-caption">
-                                          
-
-                                            @*<h3>Caption heading 3</h3>
-                    <p>Suspendisse ullamcorper massa eget eleifend iaculis.</p>*@
-                                        </div>
+                                <div class="item">
+                                    <img id="second" alt="Second slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 2 })"
+                                         onmouseover='imageZoom("second", "myresult")'>
+                                    <div class="carousel-caption">
+                                        @*<h3>Caption heading 2</h3>
+                                            <p>Morbi eget libero quis metus consectetur semper.</p>*@
                                     </div>
                                 </div>
+                                <div class="item">
+                                    <img id="third" alt="Third slide" src="@Url.Action("CoralPhoto2", "Corals", new { id = item.CoralId, number = 3 })"
+                                         onmouseover='imageZoom("third", "myresult")'>
+                                    <div class="carousel-caption">
 
-                                @*Controls*@
-                                @*<a class="left carousel-control"  href="#my-carousel-@item.CoralId" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#my-carousel-@item.CoralId" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>*@
+
+                                        @*<h3>Caption heading 3</h3>
+                                            <p>Suspendisse ullamcorper massa eget eleifend iaculis.</p>*@
+                                    </div>
+                                </div>
                             </div>
+
+                            @*Controls*@
+                            @*<a class="left carousel-control"  href="#my-carousel-@item.CoralId" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#my-carousel-@item.CoralId" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>*@
+                        </div>
                         @*<h2 />  Star Polyp Care<br/>
                             <h3/> Star Polyps are a common beauty that is iconic in the hobby. It is hard to find a seasoned aquarist that has not owned green star polyps (or GSP for short) at one point or another in their enjoyment of reef aquariums. They are a hardy soft coral that grows quickly in encrusting mats. They do best in strong flow as their base tends to attract algae growth.*@
 
@@ -319,47 +355,82 @@
 
                 <details>            @Html.DisplayFor(modelItem => item.Details)  </details>
 
-                @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+                @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+
+
             </div>
 
 
 
 
 
-            <div id="myContainer" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <div id="sliderContainer" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 
-                <div class="myRangeText">Flow </div>
+
+                @*<div class="myRangeText">Flow </div>*@
 
                 <div id="slide">
 
                     @switch(@item.Flow) {
                         case WebApplication9.Models.Coral.FlowRequirement.Max:<text>
-                            <input type="range" min="1" max="100" value="100" disabled="disabled" />
+                            @*<span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>*@
+                            <img src="~/Images/noun_flow_80254.png"  />
+
+                            <input type="range" min="1" max="100" value="100" disabled="disabled" class="flow" />
+                            @*<img src="~/Images/noun_flow_80254.png" width="50" height="50"/>*@
 
                         </text>
                         break;
                         case WebApplication9.Models.Coral.FlowRequirement.High:<text>
-                            <input type="range" min="1" max="100" value="70" disabled="disabled" />
+                            @*<input type="range" min="1" max="100" value="70" disabled="disabled" class="flow" />*@
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+
 
                         </text>
                         break;
                         case WebApplication9.Models.Coral.FlowRequirement.Modorate:
                         <text>
-                            <input type="range" min="1" max="100" value="50" disabled="disabled" />
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                            @*<input type="range" min="1" max="100" value="50" disabled="disabled" class="flow" />*@
 
                         </text>
                         break;
                         case WebApplication9.Models.Coral.FlowRequirement.Low:
                         <text>
-                            <input type="range" min="1" max="100" value="30" disabled="disabled" />
+                            @*<input type="range" min="1" max="100" value="30" disabled="disabled" class="flow" />*@
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
 
                         </text>
                         break;
                         case WebApplication9.Models.Coral.FlowRequirement.None:
                         <text>
-                            <input type="range" min="1" max="100" value="0" disabled="disabled" />
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                            @*<input type="range" min="1" max="100" value="0" disabled="disabled" class="flow" />*@
 
                         </text>
                         break;
@@ -370,31 +441,31 @@
                         </text>
                         break;
                         }
-
-                    <div class="myRangeText">Light </div>
-                    @switch(item.Light) {
-                        case WebApplication9.Models.Coral.LightRequirement.Max:
-                        <input type="range" min="1" max="100" value="100" disabled="disabled" />
-
-                        break;
-                        case WebApplication9.Models.Coral.LightRequirement.High:
-                        break;
-                        case WebApplication9.Models.Coral.LightRequirement.Modorate:
-                        break;
-                        case WebApplication9.Models.Coral.LightRequirement.Low:
-                        break;
-                        case WebApplication9.Models.Coral.LightRequirement.None:
-                        break;
-                        default:
-                        break;
-                        }
-                    @*<input id="myRange" type="range" min="1" max="40" disabled="disabled" />*@
-                    @* <input type="range" min="1" max="100" value="70" />
-                        <input type="range" min="1" max="100" value="30" />
-                        <input type="range" min="1" max="100" value="50" />
-                        @item.Flow*@
-
                 </div>
+
+                <div class="myRangeText">Light </div>
+                @switch(item.Light) {
+                    case WebApplication9.Models.Coral.LightRequirement.Max:
+                    <input type="range" min="1" max="100" value="100" disabled="disabled" class="light" />
+
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.High:
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.Modorate:
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.Low:
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.None:
+                    break;
+                    default:
+                    break;
+                    }
+                @*<input id="myRange" type="range" min="1" max="40" disabled="disabled" />*@
+                @* <input type="range" min="1" max="100" value="70" />
+        <input type="range" min="1" max="100" value="30" />
+        <input type="range" min="1" max="100" value="50" />
+        @item.Flow*@
+
 
             </div>
 
@@ -413,7 +484,7 @@
 @*</table>*@
 <br />
 <img src="~/Images/giphy.gif" width="75" height="50" />
-<img src="~/Images/sun.gif" width="75" height="50"  />
+<img src="~/Images/sun.gif" width="75" height="50" />
 <img src="~/Images/led.jpg" alt="Alternate Text" />
 <a href="https://rover.ebay.com/rover/1/5282-53468-19255-0/1?mpre=https%3A%2F%2Fwww.ebay.ie%2Fitm%2FMars-165W-Dimmable-LED-Aquarium-Light-Full-Spectrum-for-Reef-Coral-Marine-SPS%2F281794081225%3Fhash%3Ditem419c3c71c9%3Ag%3A35EAAOSw5YNZslCJ&campid=5338370125&toolid=20008">content</a>
 <img src="~/Images/noun_flow_80254.png" width="50" />

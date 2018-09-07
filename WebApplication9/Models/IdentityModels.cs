@@ -15,6 +15,7 @@ namespace WebApplication9.Models
 
         public byte[] UserPhoto { get; set; }
 
+
         public string IdUserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

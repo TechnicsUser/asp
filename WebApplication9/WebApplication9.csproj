@@ -326,8 +326,8 @@
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.custom.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -339,7 +339,6 @@
     <Content Include="Content\Themes\Stock\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
@@ -347,10 +346,13 @@
     </Content>
     <Content Include="Images\flow_80254.png" />
     <Content Include="Images\giphy.gif" />
+    <Content Include="Images\giphyLight.gif" />
     <Content Include="Images\led.jpg" />
     <Content Include="Images\noImg.png" />
     <Content Include="Images\noun_flow_80254.png" />
     <Content Include="Images\sun.gif" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
     <Content Include="Models\myUsers.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>myUsers.edmx</DependentUpon>
@@ -381,14 +383,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <EntityDeploy Include="Models\myUsers.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>myUsers.Designer.cs</LastGenOutput>
@@ -402,7 +396,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Connected Services\Application Insights\ConnectedService.json" />
-    <None Include="Properties\PublishProfiles\coralLogger - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\reef-connect - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
@@ -505,6 +499,7 @@
     <Content Include="Views\Home\ViewUser.cshtml" />
     <Content Include="Views\Home\Paramaters.cshtml" />
     <Content Include="Views\Corals\Index1.cshtml" />
+    <Content Include="Views\Shared\_Fotter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

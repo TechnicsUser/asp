@@ -291,28 +291,29 @@
 
         <h4>           @Html.DisplayFor(modelItem => item.Name)   </h4>
 
-        <span>             @Html.DisplayFor(modelItem => item.Details)   </span>
+        <details>             @Html.DisplayFor(modelItem => item.Details)   </details>
 
         @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-            @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+        @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+
+        <div id="sliders" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <input type="range" min="1" max="100" value="50" />
+
+            <button id="btn" type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true">48</span>
+                @*<span class="badge">42</span>*@
+            </button>
+            <a href="#">Inbox <span class="badge">42</span></a>
+
+            <button class="btn btn-primary" type="button">
+                Connections <span class="badge">@item.Likes </span>
+
+            </button>
+
+
+        </div>
     </div>
-    <div id="sliders" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <input type="range" min="1" max="100" value="50" />
-
-        <button id="btn" type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
-            <span class="badge">42</span>
-        </button>
-        <a href="#">Inbox <span class="badge">42</span></a>
-
-        <button class="btn btn-primary" type="button">
-            Connections <span class="badge">@item.Likes</span>
-
-        </button>
- 
-    </div>
-
 
     </div>
 

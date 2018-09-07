@@ -1,8 +1,12 @@
 
 
 coral connections
-mine    add, view, edit delete
-anyuser  view
+-mine    add, view, edit delete
+-anyuser  view
+
+nominate coral of the month
+
+coral courier
 
 
 
@@ -12,11 +16,29 @@ user options
 - show 
 - show paramaters
 - searchable
-
+- display tank details
 
 
 paramaters
 mine    add, view, edit delete
 anyuser  view
 
+
+
 followers
+
+
+
+
+user tank
+-coral list
+-fish list
+-photos
+-details
+-links
+-light schedule
+-equipment
+-energy consuption
+-dose schedule
+-dose suppliments
+-cost calculator

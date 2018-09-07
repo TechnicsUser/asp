@@ -161,7 +161,7 @@ namespace WebApplication9.Controllers
                         }
                     }
                 string s = "Darkly";
-                var user = new ApplicationUser { CssTheme= s, UserPhoto = imageData, UserName = model.IdUserName, Email = model.Email, LastName = model.LastName, FirstName = model.FirstName,IdUserName = model.IdUserName, LocationLat = model.LocationLat, LocationLon = model.LocationLon };
+                var user = new ApplicationUser { CssTheme= s, UserPhoto = imageData, UserName = model.Email, Email = model.Email, LastName = model.LastName, FirstName = model.FirstName,IdUserName = model.IdUserName, LocationLat = model.LocationLat, LocationLon = model.LocationLon };
 
                 //Here we pass the byte array to user context to store in db 
                // user.UserPhoto = imageData;

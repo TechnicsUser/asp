@@ -10,16 +10,19 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello ! <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello @User.Identity.GetUserName()   ! <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li>
                         @Html.ActionLink("Manage Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                     </li>
-                    @*<li>
-                        @foreach(NotificationViewModel notification in ViewBag.Notifications) {
-                        <li><a href=“#”>@notification.NotificationType <span class=“badge badge-@notification.BadgeClass”>@notification.Count</span></a></li>
-                        }*@
+                    <li>
+                       @if(ViewBag.Notifications != null) {
 
+
+                        foreach(NotificationViewModel notification in ViewBag.Notifications) {
+                        <li><a href=“#”>@notification.NotificationType <span class=“badge badge-@notification.BadgeClass”>@notification.Count</span></a></li>
+                            }
+                           }
 
 
                         <li class="divider"></li>

@@ -4,13 +4,32 @@
 }
 
 <h2>@ViewBag.Title.</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script>
+    function readURL(input) {
+        alert("hi");
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                //$('.blah').attr('src', e.target.result);
+                var output = document.getElementById('blah');
+                output.src = reader.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+   
+
     window.onload = function () {
 
         var x1 = document.getElementById("reg");
         x1.addEventListener("click", getGeo, false);
 
- }
+    };
     function getGeo() {
         var x = document.getElementById("geo");
         if (navigator.geolocation) {
@@ -77,23 +96,23 @@
 
 
     <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        @*@Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })*@
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First name" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        @*@Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })*@
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" , @placeholder = "Last name" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.IdUserName, new { @class = "col-md-2 control-label" })
+        @*@Html.LabelFor(m => m.IdUserName, new { @class = "col-md-2 control-label" })*@
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.IdUserName, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.IdUserName, new { @class = "form-control", @placeholder = "User name" } )
         </div>
     </div>
 
@@ -101,28 +120,29 @@
         @Html.LabelFor(m => m.UserPhoto, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
 
-            <input type="file" name="UserPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+            <input type="file" name="UserPhoto" class="imgInp" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" onchange="readURL(this)" />
 
+        </div>
+    </div>
+    <img id="blah" src="#" alt="" width="100"/>
+
+    <div class="form-group">
+        @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "E-mail" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        @*@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })*@
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm password" })
         </div>
     </div>
     <div class="form-group">
