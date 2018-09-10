@@ -1,4 +1,7 @@
-﻿@{
+﻿@*81.17.241.5
+91.210.232.224*@
+
+@{
     ViewBag.Title = "Home Page";
 }
 <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AirA-u7WHW14oPJFbJBL3pQbMDhZXMmzx0OqkaIhM1LK1y5n8X2nAKSm_mae3KGs'></script>
@@ -13,40 +16,43 @@
         map.entities.push(pin2);
 
 
-     @foreach(var item in Model) {
+     @if(Model != null) {
+
+
+         foreach(var item in Model) {
              if(item.LocationLat != null & item.LocationLon != null) {
 
-                 <text>
-                var center = new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon );
-                var base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcCAYAAACUJBTQAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQbECUudScMXAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAACGUlEQVRIx+3Wy2sTURTH8e/NTDIzaZMxadMWhyBUSheiiyo+QPpHuHIhdOfSP8GlbkXEhTv/gNau3LgRurEIUqlWU2ubh7evPEg6NjOZJHNdlIgLo11YRcj5A84Hfpx7zxFKKcUJlw7gOM6JAVLKIwTg4avbfxy4c/UJABH+Qg2QAfKfI98f48vc/CCuATJA/iEilFKq3/q98XTk2I0W5qp916/41SHhOM6xoIW5KlLK/t/K6oNbwlAdknELYSZpxTMkxrO4XoCUUv0O6gHlYkjHWxF+yyWTsKit57CGbbTMGSJWepTh05PIRof3mxLNjNP0Pdp+i9ziIyGl7BtFD1hdOqRdei5ijW2shkSvS8LAJTM2gh4JiWzvFNksFdAsA3s0Ram4TrtZJxnXCLwKWSF+CvWAt89czmffiEQ0gGYZzSuTX3tNx60Q1Pcxwyb67JUL7Jb38VsdojETz2ux8W6JqG6iJaOoGLTr98WP0fWAsZgQ849v8mnZYeriLNinwAup722RsW12cysYiRT62voGwymbbsQgMZREcMD1yzN4nkctrNEV4HbrTKeFKNeOJlFKiXtwV2ganJvKkF8rsvxiEd8P0FSTiXQa2wxJxEz2yl/QA2Mc2Qihq7NdqdE5rJAc2ufsZBbTiIIGXWXTVeCIa0glMQwh8vl7hMDHD5+Zmb7E16ZPtVrFilnsFLY42CngTDhEohbfALpF/s+4JwbyAAAAAElFTkSuQmCC';
+                    <text>
+                        var center = new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon );
+                        var base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcCAYAAACUJBTQAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wQbECUudScMXAAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAACGUlEQVRIx+3Wy2sTURTH8e/NTDIzaZMxadMWhyBUSheiiyo+QPpHuHIhdOfSP8GlbkXEhTv/gNau3LgRurEIUqlWU2ubh7evPEg6NjOZJHNdlIgLo11YRcj5A84Hfpx7zxFKKcUJlw7gOM6JAVLKIwTg4avbfxy4c/UJABH+Qg2QAfKfI98f48vc/CCuATJA/iEilFKq3/q98XTk2I0W5qp916/41SHhOM6xoIW5KlLK/t/K6oNbwlAdknELYSZpxTMkxrO4XoCUUv0O6gHlYkjHWxF+yyWTsKit57CGbbTMGSJWepTh05PIRof3mxLNjNP0Pdp+i9ziIyGl7BtFD1hdOqRdei5ijW2shkSvS8LAJTM2gh4JiWzvFNksFdAsA3s0Ram4TrtZJxnXCLwKWSF+CvWAt89czmffiEQ0gGYZzSuTX3tNx60Q1Pcxwyb67JUL7Jb38VsdojETz2ux8W6JqG6iJaOoGLTr98WP0fWAsZgQ849v8mnZYeriLNinwAup722RsW12cysYiRT62voGwymbbsQgMZREcMD1yzN4nkctrNEV4HbrTKeFKNeOJlFKiXtwV2ganJvKkF8rsvxiEd8P0FSTiXQa2wxJxEz2yl/QA2Mc2Qihq7NdqdE5rJAc2ufsZBbTiIIGXWXTVeCIa0glMQwh8vl7hMDHD5+Zmb7E16ZPtVrFilnsFLY42CngTDhEohbfALpF/s+4JwbyAAAAAElFTkSuQmCC';
 
                 var pin = new Microsoft.Maps.Pushpin(center, {
-                    icon: base64Image,
-                   // anchor: new Microsoft.Maps.Point(12, 39),
-                 });
-               // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+                            icon: base64Image,
+                       // anchor: new Microsoft.Maps.Point(12, 39),
+                     });
+                   // var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
                 var infobox = new Microsoft.Maps.Infobox(center, {
-                    title: '@item.LocationLat',
-                    description: '@item.UserName', visible: false
-                });
-                infobox.setMap(map);
+                            title: '@item.LocationLat',
+                        description: '@item.UserName', visible: false
+                    });
+                    infobox.setMap(map);
                 Microsoft.Maps.Events.addHandler(pin, 'click', function () {
-                    infobox.setOptions({ visible: true });
-                });
+                            infobox.setOptions({ visible: true });
+                        });
                 @*var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location( @item.LocationLat,  @item.LocationLon ));
                 icon: "Images/noImg.png",
                     anchor: new Microsoft.Maps.Point(12, 39),*@
-                Microsoft.Maps.Events.addHandler(pin, 'mouseover', function () { highlight('@item.UserName'); });
+                Microsoft.Maps.Events.addHandler(pin, 'mouseover', function () {highlight('@item.UserName'); });
 
-                map.entities.push(pin);
+                        map.entities.push(pin);
 
 
 
 
         </text>
+                 }
              }
-        }
-
+         }
 
         //var center = new Microsoft.Maps.Location(47.6149, -122.1941);
         //var pushpin = new Microsoft.Maps.Pushpin(center, null);
@@ -84,7 +90,7 @@
 <h1>
     Your Profile Image ..
 
-    <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
+    <img src="@Url.Action("UserPhotos", "Home")" style="width:160px;height:160px; background: #FFFFFF;
     margin: auto;
     -moz-border-radius: 60px;
     border-radius: 100px;
@@ -291,23 +297,26 @@
         //});
 
         //var myCenter3 = new google.maps.LatLng(53.508742, -0.020050);
-         @foreach(var item in Model) {
-             if(item.LocationLat != null & item.LocationLon != null) {
+         @if(Model != null){
 
-         <text>
+
+                         foreach(var item in Model) {
+                             if(item.LocationLat != null & item.LocationLon != null) {
+
+         < text >
 
 
             var marker = new google.maps.Marker({
                 map: map,
                 position: { lat: @item.LocationLat, lng: @item.LocationLon },
                 title: 'Hello World!'
-            });
+                            });
 
 
-        </text>
+        </ text >
+                                         }
                          }
                      }
-
 
 
                  //  var myCenter2 = new google.maps.LatLng(item.LocationLon, item.LocationLat);
@@ -328,172 +337,53 @@
 
                  for (var i = 0; i < marker.length; i++) {
                      var latLng = new google.maps.LatLng(markes[i].lat, marker[i].lng);
-                     marker[i] = new google.maps.Marker({
+                 marker[i] = new google.maps.Marker({
                 position: latLng,
                 map: map,
                 animation: google.maps.Animation.BOUNCE
 
-            });
+                 });
                  //  console.log(i);
                  }
-             //bounds.extend(markers[i].getPosition());
-             //map.fitBounds(bounds);
-             //var marker = new google.maps.Marker({
-             //    position: myCenter3,
-             //    map: map,
-             //    animation: google.maps.Animation.BOUNCE
-             //});
-             //var infowindow = new google.maps.InfoWindow({
-             //    content: "Hello World!"
-             //});
+         //bounds.extend(markers[i].getPosition());
+         //map.fitBounds(bounds);
+         //var marker = new google.maps.Marker({
+         //    position: myCenter3,
+         //    map: map,
+         //    animation: google.maps.Animation.BOUNCE
+         //});
+         //var infowindow = new google.maps.InfoWindow({
+         //    content: "Hello World!"
+         //});
 
-             //google.maps.event.addListener(marker, 'click', function () {
-             //    map.setZoom(9);
-             //    map.setCenter(marker.getPosition());
-             //});
-             infowindow.open(map, marker);
+         //google.maps.event.addListener(marker, 'click', function () {
+         //    map.setZoom(9);
+         //    map.setCenter(marker.getPosition());
+         //});
+         infowindow.open(map, marker);
 
     }
 
 
     function showError(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                x.innerHTML = "User denied the request for Geolocation."
-                break;
-            case error.POSITION_UNAVAILABLE:
-                x.innerHTML = "Location information is unavailable."
-                break;
-            case error.TIMEOUT:
-                x.innerHTML = "The request to get user location timed out."
-                break;
-            case error.UNKNOWN_ERROR:
-                x.innerHTML = "An unknown error occurred."
-                break;
-        }
-    }
+             switch (error.code) {
+                 case error.PERMISSION_DENIED:
+                 x.innerHTML = "User denied the request for Geolocation."
+                     break;
+                 case error.POSITION_UNAVAILABLE:
+                 x.innerHTML = "Location information is unavailable."
+                     break;
+                 case error.TIMEOUT:
+                 x.innerHTML = "The request to get user location timed out."
+                     break;
+                 case error.UNKNOWN_ERROR:
+                 x.innerHTML = "An unknown error occurred."
+                     break;
+                 }
+             }
    // clearInterval(myVar);
 
 </script>
 
 
 
-
-
-
-
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-<table class="table">
-    <tr>
-        @*   <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailConfirmed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PasswordHash)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecurityStamp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LockoutEnabled)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccessFailedCount)
-            </th>  *@
-        <th>
-            @*@Html.DisplayNameFor(model => model.UserName)*@
-        </th>
-        @*       <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LastName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IdUserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LocationLon)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LocationLat)
-                </th>
-                <th></th>
-            </tr>*@
-
-        @foreach(var item in Model) {
-        <tr>
-            @*    <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PasswordHash)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SecurityStamp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AccessFailedCount)
-                </td> *@
-            <td>
-                @*@Html.DisplayFor(modelItem => item.UserName)*@
-            </td>
-            @*    <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdUserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocationLon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocationLat)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>*@
-        </tr>
-        }
-
-    </table>

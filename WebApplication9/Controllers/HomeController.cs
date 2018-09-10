@@ -10,23 +10,22 @@ using WebApplication9.Filters;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers {
-    [RequireHttps]
-
+ 
     public class HomeController : Controller {
 
         [NotificationFilter]
         [MessagesFilter]
 
         public ActionResult Index() {
+            SiteDataContext db2 = new SiteDataContext();
+            //userEntities2 db = new userEntities2();
 
-            userEntities2 db = new userEntities2();
-
-            var movies = from m in db.AspNetUsers
+            var movies = from m in db2.Users
                          where m.LocationLat != null
                          select m;
 
             return View(movies.ToList());
-            // return View();
+         //   return View();
             }
 
         public ActionResult Paramaters() {

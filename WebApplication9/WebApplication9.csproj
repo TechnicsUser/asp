@@ -243,45 +243,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Bootstrap.cs" />
-    <Compile Include="Migrations\201808091125222_db4.cs" />
-    <Compile Include="Migrations\201808091125222_db4.Designer.cs">
-      <DependentUpon>201808091125222_db4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808092043276_comments.cs" />
-    <Compile Include="Migrations\201808092043276_comments.Designer.cs">
-      <DependentUpon>201808092043276_comments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808092151120_comments2.cs" />
-    <Compile Include="Migrations\201808092151120_comments2.Designer.cs">
-      <DependentUpon>201808092151120_comments2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808092234387_comments3.cs" />
-    <Compile Include="Migrations\201808092234387_comments3.Designer.cs">
-      <DependentUpon>201808092234387_comments3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808092245000_comments4.cs" />
-    <Compile Include="Migrations\201808092245000_comments4.Designer.cs">
-      <DependentUpon>201808092245000_comments4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808101312135_db5.cs" />
-    <Compile Include="Migrations\201808101312135_db5.Designer.cs">
-      <DependentUpon>201808101312135_db5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808111123532_db6.cs" />
-    <Compile Include="Migrations\201808111123532_db6.Designer.cs">
-      <DependentUpon>201808111123532_db6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808131045074_db61.cs" />
-    <Compile Include="Migrations\201808131045074_db61.Designer.cs">
-      <DependentUpon>201808131045074_db61.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808201907310_db7.cs" />
-    <Compile Include="Migrations\201808201907310_db7.Designer.cs">
-      <DependentUpon>201808201907310_db7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808231848163_db8.cs" />
-    <Compile Include="Migrations\201808231848163_db8.Designer.cs">
-      <DependentUpon>201808231848163_db8.cs</DependentUpon>
+    <Compile Include="Migrations\201809101716219_Initial.cs" />
+    <Compile Include="Migrations\201809101716219_Initial.Designer.cs">
+      <DependentUpon>201809101716219_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -396,6 +360,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Connected Services\Application Insights\ConnectedService.json" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\reef-connect - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
@@ -516,39 +481,12 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808091125222_db4.resx">
-      <DependentUpon>201808091125222_db4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092043276_comments.resx">
-      <DependentUpon>201808092043276_comments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092151120_comments2.resx">
-      <DependentUpon>201808092151120_comments2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092234387_comments3.resx">
-      <DependentUpon>201808092234387_comments3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092245000_comments4.resx">
-      <DependentUpon>201808092245000_comments4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808101312135_db5.resx">
-      <DependentUpon>201808101312135_db5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808111123532_db6.resx">
-      <DependentUpon>201808111123532_db6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808131045074_db61.resx">
-      <DependentUpon>201808131045074_db61.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808201907310_db7.resx">
-      <DependentUpon>201808201907310_db7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808231848163_db8.resx">
-      <DependentUpon>201808231848163_db8.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\201809101716219_Initial.resx">
+      <DependentUpon>201809101716219_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
