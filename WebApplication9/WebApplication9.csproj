@@ -260,6 +260,7 @@
     <Compile Include="Models\CoralConnection.cs" />
     <Compile Include="Models\CoralConnectionViewModal.cs" />
     <Compile Include="Models\CoralPhoto.cs" />
+    <Compile Include="Models\coralPhotoView.cs" />
     <Compile Include="Models\CoralViewModal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

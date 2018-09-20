@@ -24,7 +24,20 @@ namespace WebApplication9.Controllers
         {
             return View(db.Corals.ToList());
         }
-        public ViewResult Index1(string sortOrder, string currentFilter, string searchString, int? page) {
+        public ActionResult coralPhotoView(int?  id) {
+            SiteDataContext cp = new SiteDataContext();
+            byte[] ba = new byte[] { 0x0 };
+            List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToList();
+            Coral thisCoral = db.Corals.Find(id);
+            ViewBag.thisCoral = thisCoral;
+            Coral c = db.Corals.Find(id);
+            return View(rl, c);
+
+
+            }
+
+
+            public ViewResult Index1(string sortOrder, string currentFilter, string searchString, int? page) {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "UploadedOn";
@@ -64,17 +77,17 @@ namespace WebApplication9.Controllers
             return View(students.ToPagedList(pageNumber, pageSize));
             }
 
-        public ActionResult View(int id) {
+        public ActionResult View(int? id) {
             SiteDataContext cp = new SiteDataContext();
             byte[] ba = new byte[] { 0x0 };
             List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).Where(x=> x.Photo != ba).ToList();
             Coral thisCoral = db.Corals.Find(id);
-            ViewBag.thisCoral = thisCoral; 
+            ViewBag.thisCoral = thisCoral;
             return View( rl);
             }
 
         private ActionResult View(List<CoralPhoto> rl, Coral thisCoral) {
-            throw new NotImplementedException();
+            return View(rl, thisCoral);
             }
 
         public FileContentResult CoralPhoto(int id) {
