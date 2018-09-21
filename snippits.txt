@@ -1,0 +1,245 @@
+
+            <div id="sliderContainer" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+
+                @*<div class="myRangeText">Flow </div>*@
+
+                <div id="slide">
+
+                    @switch(@item.Flow) {
+                        case WebApplication9.Models.Coral.FlowRequirement.Max:<text>
+                            @*<span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>*@
+                            <img src="~/Images/noun_flow_80254.png"  />
+
+                            <input type="range" min="1" max="100" value="100" disabled="disabled" class="flow" />
+                            @*<img src="~/Images/noun_flow_80254.png" width="50" height="50"/>*@
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.High:<text>
+                            @*<input type="range" min="1" max="100" value="70" disabled="disabled" class="flow" />*@
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.Modorate:
+                        <text>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                            @*<input type="range" min="1" max="100" value="50" disabled="disabled" class="flow" />*@
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.Low:
+                        <text>
+                            @*<input type="range" min="1" max="100" value="30" disabled="disabled" class="flow" />*@
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.None:
+                        <text>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                            @*<input type="range" min="1" max="100" value="0" disabled="disabled" class="flow" />*@
+
+                        </text>
+                        break;
+                        default:
+                        <text>
+                            <input type="range" min="1" max="100" value="0" disabled="disabled" />
+
+                        </text>
+                        break;
+                        }
+                </div>
+
+                <div class="myRangeText">Light </div>
+                @switch(item.Light) {
+                    case WebApplication9.Models.Coral.LightRequirement.Max:
+                    <input type="range" min="1" max="100" value="100" disabled="disabled" class="light" />
+
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.High:
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.Modorate:
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.Low:
+                    break;
+                    case WebApplication9.Models.Coral.LightRequirement.None:
+                    break;
+                    default:
+                    break;
+                    }
+                @*<input id="myRange" type="range" min="1" max="40" disabled="disabled" />*@
+                @* <input type="range" min="1" max="100" value="70" />
+        <input type="range" min="1" max="100" value="30" />
+        <input type="range" min="1" max="100" value="50" />
+        @item.Flow*@
+
+
+            </div>
+
+
+
+
+
+
+
+coral Index
+
+   <div id="details" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+
+
+
+                <details>
+                    @Html.DisplayFor(modelItem => item.Details)
+                    <br />
+                    Flow :
+
+                    @switch(@item.Flow) {
+                        case WebApplication9.Models.Coral.FlowRequirement.Max:<text>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.High:<text>
+                            @*<input type="range" min="1" max="100" value="70" disabled="disabled" class="flow" />*@
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.Modorate:
+                        <text>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                            @*<input type="range" min="1" max="100" value="50" disabled="disabled" class="flow" />*@
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.Low:
+                        <text>
+                            @*<input type="range" min="1" max="100" value="30" disabled="disabled" class="flow" />*@
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+
+                        </text>
+                        break;
+                        case WebApplication9.Models.Coral.FlowRequirement.None:
+                        <text>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                            @*<input type="range" min="1" max="100" value="0" disabled="disabled" class="flow" />*@
+
+                        </text>
+                        break;
+                        default:
+                        <text>
+                            <span class="fa fa-star"></span>
+
+                        </text>
+                        break;
+                        }
+                    <br />
+                    Light:
+                    @switch(item.Light) {
+                        case WebApplication9.Models.Coral.LightRequirement.Max:
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.High:
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star "></span>
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.Modorate:
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.Low:
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        break;
+                        case WebApplication9.Models.Coral.LightRequirement.None:
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        break;
+                        default:
+                        break;
+                        }
+
+
+
+
+
+
+
+
+                </details>
+                <br>
+
+                @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+
+
+            </div>
