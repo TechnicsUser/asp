@@ -12,14 +12,11 @@ namespace WebApplication9.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Notification
+    public partial class C__MigrationHistory
     {
-        public int NotificationId { get; set; }
-        public string Title { get; set; }
-        public int NotificationType { get; set; }
-        public string Controller { get; set; }
-        public string Action { get; set; }
-        public string UserId { get; set; }
-        public bool IsDismissed { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

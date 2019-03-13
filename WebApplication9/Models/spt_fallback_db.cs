@@ -12,14 +12,15 @@ namespace WebApplication9.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Notification
+    public partial class spt_fallback_db
     {
-        public int NotificationId { get; set; }
-        public string Title { get; set; }
-        public int NotificationType { get; set; }
-        public string Controller { get; set; }
-        public string Action { get; set; }
-        public string UserId { get; set; }
-        public bool IsDismissed { get; set; }
+        public string xserver_name { get; set; }
+        public System.DateTime xdttm_ins { get; set; }
+        public System.DateTime xdttm_last_ins_upd { get; set; }
+        public Nullable<short> xfallback_dbid { get; set; }
+        public string name { get; set; }
+        public short dbid { get; set; }
+        public short status { get; set; }
+        public short version { get; set; }
     }
 }

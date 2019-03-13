@@ -12,14 +12,20 @@ namespace WebApplication9.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Notification
+    public partial class Comment
     {
-        public int NotificationId { get; set; }
-        public string Title { get; set; }
-        public int NotificationType { get; set; }
-        public string Controller { get; set; }
-        public string Action { get; set; }
+        public string CommentId { get; set; }
+        public int Type { get; set; }
         public string UserId { get; set; }
-        public bool IsDismissed { get; set; }
+        public string CreatedOn { get; set; }
+        public string RemovedOn { get; set; }
+        public string CommentOn { get; set; }
+        public string CommentTitle { get; set; }
+        public string CommentText { get; set; }
+        public int CommentViews { get; set; }
+        public bool Removed { get; set; }
+        public int Reports { get; set; }
+        public int Likes { get; set; }
+        public int DisLikes { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace WebApplication9.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Notification
+    public partial class Message
     {
-        public int NotificationId { get; set; }
+        public int MessageId { get; set; }
         public string Title { get; set; }
-        public int NotificationType { get; set; }
-        public string Controller { get; set; }
-        public string Action { get; set; }
+        public int MessageType { get; set; }
+        public string MessageTo { get; set; }
+        public string MessageFrom { get; set; }
         public string UserId { get; set; }
         public bool IsDismissed { get; set; }
     }

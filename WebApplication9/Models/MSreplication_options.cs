@@ -12,14 +12,13 @@ namespace WebApplication9.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Notification
+    public partial class MSreplication_options
     {
-        public int NotificationId { get; set; }
-        public string Title { get; set; }
-        public int NotificationType { get; set; }
-        public string Controller { get; set; }
-        public string Action { get; set; }
-        public string UserId { get; set; }
-        public bool IsDismissed { get; set; }
+        public string optname { get; set; }
+        public bool value { get; set; }
+        public int major_version { get; set; }
+        public int minor_version { get; set; }
+        public int revision { get; set; }
+        public int install_failures { get; set; }
     }
 }

@@ -14,9 +14,9 @@ namespace WebApplication9.Models
     
     public partial class AspNetUser
     {
-        public string CssTheme { get; set; }
         public string Id { get; set; }
-         public byte[] UserPhoto { get; set; }
+        public string CssTheme { get; set; }
+        public byte[] UserPhoto { get; set; }
         public string IdUserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
