@@ -44,8 +44,7 @@
                         <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
                     </li>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+              
                     <li>@Html.ActionLink("Coral", "Index", "Corals")</li>
                     <li>@Html.ActionLink("Users", "Index", "AspNetUsers")</li>
 
@@ -61,7 +60,7 @@
         @RenderBody()
         <hr />
         <footer>
-            @Html.Partial("_Fotter")
+            @Html.Partial("_Footer")
             <p>&copy; @DateTime.Now.Year - Coral Connect</p>
         </footer>
     </div>

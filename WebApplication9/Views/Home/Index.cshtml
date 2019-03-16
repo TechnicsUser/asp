@@ -5,41 +5,55 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h1>
-    Your Profile Image ..
-
-    <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
-    margin: auto;
-    -moz-border-radius: 60px;
-    border-radius: 100px;
-    padding: 6px;
-    box-shadow: 0px 0px 20px #888;" />
-</h1>
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+    <div class="col-md-6">
+        <div class="jumbotron">
+            <h3>Highlighted Tank</h3>
+            <p class="lead">Highlighted Tank voted by users</p>
+
+            <img src="~/Images/highlighted.jpg" alt="" width="375" height="200" />
+            <p><a href="https://asp.net" class="btn btn-primary btn-lg">See more &raquo;</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        <div class="jumbotron">
+            <h3>Most Viewed Tank</h3>
+            <p class="lead">Highlighted Tank voted by users</p>
+
+            <img src="~/Images/highlighted2.jpg" alt="" width="375" height="200" />
+            <p><a href="https://asp.net" class="btn btn-primary btn-lg">See more &raquo;</a></p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>Fish</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Buy and sell fish
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a></p>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-3">
+        <h2>Coral</h2>
+        <p>
+            Buy and sell coral
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-3">
+        <h2>Equpment</h2>
+        <p>Buy and sell equipment</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">See more &raquo;</a></p>
+    </div>
+    <div class="col-md-3">
+        <h2>Education</h2>
+        <p>Learn or Teach</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">I'm in &raquo;</a></p>
     </div>
 </div>
 
@@ -299,115 +313,115 @@
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-    <table class="table">
-        <tr>
-            @*   <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </th>  *@
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            @*       <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+<table class="table">
+    <tr>
+        @*   <th>
+                @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdUserName)
+                @Html.DisplayNameFor(model => model.PasswordHash)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LocationLon)
+                @Html.DisplayNameFor(model => model.SecurityStamp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LocationLat)
+                @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
-            <th></th>
-        </tr>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LockoutEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessFailedCount)
+            </th>  *@
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        @*       <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdUserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocationLon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocationLat)
+                </th>
+                <th></th>
+            </tr>*@
 
-            @foreach(var item in Model) {
+        @foreach(var item in Model) {
         <tr>
             @*    <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PasswordHash)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecurityStamp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccessFailedCount)
-        </td> *@
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasswordHash)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecurityStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             @*    <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationLon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationLat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>*@
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationLon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationLat)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>*@
         </tr>
-            }
+        }
 
     </table>
