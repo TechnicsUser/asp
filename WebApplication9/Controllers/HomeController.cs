@@ -62,7 +62,7 @@ namespace WebApplication9.Controllers {
                     }
                 // to get the user details to load user Image    
                 var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
-                var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
+                var userImage = bdUsers.Users.Where(x => x.UserId == userId).FirstOrDefault();
 
                 return new FileContentResult(userImage.UserPhoto, "image/jpeg");
                 }
