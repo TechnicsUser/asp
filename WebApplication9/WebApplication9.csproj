@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201808131045074_db61.Designer.cs">
       <DependentUpon>201808131045074_db61.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903162151136_csstheme.cs" />
+    <Compile Include="Migrations\201903162151136_csstheme.Designer.cs">
+      <DependentUpon>201903162151136_csstheme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -512,6 +516,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808131045074_db61.resx">
       <DependentUpon>201808131045074_db61.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903162151136_csstheme.resx">
+      <DependentUpon>201903162151136_csstheme.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

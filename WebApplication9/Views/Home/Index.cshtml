@@ -6,23 +6,27 @@
     ViewBag.Title = "Home Page";
 }
 
+<button onclick="getLocation()">Show Map</button>
+
+<div id="mapholder"></div>
+
 <div class="row">
     <div class="col-md-6">
-        <div class="jumbotron">
+        <div class="jumbotron"style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
             <h3>Highlighted Tank</h3>
-            <p class="lead">Highlighted Tank voted by users</p>
+            <p class="lead">Tank voted by users</p>
 
-            <img src="~/Images/highlighted.jpg" alt="" width="375" height="200" />
+            <img src="~/Images/highlighted.jpg" alt=""  style="width: 100%; "/>
             <p><a href="https://asp.net" class="btn btn-primary btn-lg">See more &raquo;</a></p>
         </div>
     </div>
     <div class="col-md-6">
 
-        <div class="jumbotron">
+        <div class="jumbotron" style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
             <h3>Most Viewed Tank</h3>
-            <p class="lead">Highlighted Tank voted by users</p>
+            <p class="lead">Most viewed this week</p>
 
-            <img src="~/Images/highlighted2.jpg" alt="" width="375" height="200" />
+            <img src="~/Images/highlighted2.jpg" alt="" style="width:100%; padding-top:25px;" />
             <p><a href="https://asp.net" class="btn btn-primary btn-lg">See more &raquo;</a></p>
         </div>
     </div>
@@ -31,19 +35,35 @@
 
 <div class="row">
     <div class="col-md-3">
-        <h2>Fish</h2>
-        <p>
-            Buy and sell fish
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a></p>
+        <h2 style="text-align-last:center;">Fish</h2>
+       <ul>
+
+        <li>Track down that fish you've been looking for.</li>
+        <li>Let people know about your rare find.</li>
+        <li>Share what your local fish store has on sale.</li>
+        </ul>
+            
+    <p  style="text-align-last:center;" >
+        <a class="btn btn-default"href="https://go.microsoft.com/fwlink/?LinkId=301865">Something fishy &raquo;</a>
+    </p>
 
     </div>
-    <div class="col-md-3">
-        <h2>Coral</h2>
+
+    <div class="col-md-3" >
+        <h2  style="text-align-last:center;">Coral</h2>
         <p>
-            Buy and sell coral
+            <ul>
+
+                <li>Sell your frags.</li>
+                <li>Show off your new addition.</li>
+                <li>Let people know what your looking for.</li>
+                <li>Pre-order your frags.</li>
+                <li>Create coral connections</li>
+            </ul>
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a></p>
+        <p style="text-align-last:center;">
+        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a>
+        </p>
     </div>
     <div class="col-md-3">
         <h2>Equpment</h2>
@@ -57,9 +77,7 @@
     </div>
 </div>
 
-<button onclick="getLocation()">Show Map</button>
 
-<div id="mapholder"></div>
 
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyDZ3lksBTFTW4dbhlIe46K2BlM9BgCa9TY"></script>
 
