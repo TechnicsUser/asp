@@ -39,16 +39,17 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
-                    </li>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-              
-                    <li>@Html.ActionLink("Coral", "Index", "Corals")</li>
-                    <li>@Html.ActionLink("Users", "Index", "AspNetUsers")</li>
+                @*<ul class="nav navbar-nav">
+        <li>
+            <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
+        </li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-                </ul>
+        <li>@Html.ActionLink("Coral", "Index", "Corals")</li>
+        <li>@Html.ActionLink("Users", "Index", "AspNetUsers")</li>
+        @*<li>@Html.ActionLink("Notifications", "Index", "Notifications")</li>*@
+
+                @*</ul>*@
                 <div class="navbar-collapse collapse">
                     @Html.Partial("_MenuPartial")
                     @Html.Partial("_LoginPartial")

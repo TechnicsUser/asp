@@ -7,47 +7,60 @@
 
  
 <ul class="nav navbar-nav ">
-    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        <li>@Html.ActionLink("My Peeps", "Index", "Simple")</li>*@
+
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Coral", "Index", "Corals")</li>
+    <li>@Html.ActionLink("Users", "Index", "AspNetUsers")</li>
+    <li>@Html.ActionLink("Notifications", "Index", "Notifications")</li>
+    <li>@Html.ActionLink("Messages", "Index", "Messages")</li>
+
+</ul>
+<br /><br />
+<ul class="nav navbar-nav " style="align-items:baseline,center;">
+
 
     @if(ViewBag.Notifications != null) {
+
+
         foreach(NotificationViewModel notification in ViewBag.Notifications) {
-    <li>
-        <a href="@Url.Action("Index", "Notifications" )">Notifications</a>
-        @*<a href="@Url.Action("Index", "Messages")">Messages</a>*@
 
-        @*@notification.NotificationType
-        <span class="badge badge-@notification.BadgeClass">
-            @notification.Count
-        </span>*@
+            <li style="align-self:baseline;">
+                @*<a href="@Url.Action("Index", "Messages")">Messages</a>
+                    <a href="@Url.Action("Index", "Notifications" )">Notifications</a>
 
-    </li>
+                *@
+
+                @notification.NotificationType
+                <span class="badge badge-@notification.BadgeClass">
+                    @notification.Count
+                </span>
+
+            </li>
             }
 
         }
 
 
-    @if(ViewBag.Messages != null) {
-       // foreach(MessagesViewModel message in ViewBag.Messages) {
-            <li class="divider">
-                <a href="@Url.Action("Index", "Messages")">Messages</a>
 
-                @*@notification.NotificationType
-                    <span class="badge badge-@notification.BadgeClass">
-                        @notification.Count
-                    </span>*@
+    @if(ViewBag.Messages != null) {
+        @*<a href="@Url.Action("Index", "Messages")">Messages</a>*@
+
+        foreach(MessagesViewModel message in ViewBag.Messages) {
+            <li class="divider">
+
+                @message.MessageType
+                <span class="badge badge-@message.BadgeClass">
+                    @message.Count
+                </span>
 
             </li>
-        //    }
+            }
 
         }
 
-
-
-
-
-
-
     </ul>
+
+
+
+
+
