@@ -6,7 +6,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<button onclick="getLocation()">Show Map</button>
+<button onclick="getLocation()" style="position:absolute; top:150px;">Show Map</button>
 
 <div id="mapholder"></div>
 
@@ -382,11 +382,11 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AccessFailedCount)
-            </th>  *@
+            </th>  
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-        @*       <th>
+               <th>
                     @Html.DisplayNameFor(model => model.FirstName)
                 </th>
                 <th>
@@ -435,11 +435,11 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AccessFailedCount)
-                </td> *@
+                </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
-            @*    <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
                 <td>

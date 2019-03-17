@@ -1,4 +1,7 @@
 ﻿@model WebApplication9.Models.IndexViewModel
+
+@using WebApplication9.Helpers;
+
 @{
     ViewBag.Title = "Manage";
 }
@@ -6,7 +9,7 @@
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
-         See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+         @*See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>*@
 <h1>
     Your Profile Image ..
 
@@ -17,6 +20,10 @@
     padding: 6px;
     box-shadow: 0px 0px 20px #888;" />
 </h1>
+
+@foreach(var theme in Bootstrap.Themes) {
+    <li><a href="@Url.Action("ChangeTheme", "Profile", new { themename = theme})">@theme</a></li>
+    }
 <div>
     <h4>Change your account settings</h4>
     <hr />

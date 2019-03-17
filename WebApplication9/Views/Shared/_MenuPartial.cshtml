@@ -6,17 +6,17 @@
 
 
  
-<ul class="nav navbar-nav ">
+<ul class="nav navbar-nav " style="margin-bottom:0px;">
 
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
     <li>@Html.ActionLink("Coral", "Index", "Corals")</li>
+
     <li>@Html.ActionLink("Users", "Index", "AspNetUsers")</li>
-    <li>@Html.ActionLink("Notifications", "Index", "Notifications")</li>
-    <li>@Html.ActionLink("Messages", "Index", "Messages")</li>
+
 
 </ul>
-<br /><br />
-<ul class="nav navbar-nav " style="align-items:baseline,center;">
+
+@*<ul class="nav navbar-nav " style="align-items:baseline,center;">
 
 
     @if(ViewBag.Notifications != null) {
@@ -25,10 +25,7 @@
         foreach(NotificationViewModel notification in ViewBag.Notifications) {
 
             <li style="align-self:baseline;">
-                @*<a href="@Url.Action("Index", "Messages")">Messages</a>
-                    <a href="@Url.Action("Index", "Notifications" )">Notifications</a>
-
-                *@
+          
 
                 @notification.NotificationType
                 <span class="badge badge-@notification.BadgeClass">
@@ -43,7 +40,6 @@
 
 
     @if(ViewBag.Messages != null) {
-        @*<a href="@Url.Action("Index", "Messages")">Messages</a>*@
 
         foreach(MessagesViewModel message in ViewBag.Messages) {
             <li class="divider">
@@ -58,7 +54,7 @@
 
         }
 
-    </ul>
+    </ul>*@
 
 
 
