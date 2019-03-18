@@ -144,14 +144,24 @@ namespace WebApplication9.Controllers
             }
 
         public FileContentResult CoralPhoto3(int id, int number) {
-            var CredID = (from sn3 in db.CoralPhoto
-                          where sn3.CoralId == id
-                          orderby sn3.Likes descending
+            try {
+                var CredID = (from sn3 in db.CoralPhoto
+                              where sn3.CoralId == id
+                              orderby sn3.Likes descending
 
-                          select sn3.Photo).Skip(number).First();
+                              select sn3.Photo).Skip(number).First();
 
 
-            return new FileContentResult(CredID, "image/jpeg");
+                return new FileContentResult(CredID, "image/jpeg");
+                }
+            catch {
+                var CredID = (from sn3 in db.CoralPhoto
+                              where sn3.CoralId == id
+                              select sn3.Photo).First();
+
+
+                return new FileContentResult(CredID, "image/jpeg");
+                }
 
             }
 
