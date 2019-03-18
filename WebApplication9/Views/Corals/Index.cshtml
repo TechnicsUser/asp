@@ -4,165 +4,247 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container"></div><div class="container-fluid">
+     </div>
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+    </div>
+ 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        @*<li class="active"><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>*@
+        <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Coral Type <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+        <li><a href="#">All</a></li>
+        <li><a href="#">Soft</a></li>
+        <li><a href="#">Lps</a></li>
+        <li><a href="#">Sps</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Near me</a></li>
+        <li class="divider"></li>
+        <li><a href="#">One more separated link</a></li>
+        </ul>
+        </li>
+        </ul>
 
+        <div class="checkbox navbar-btn navbar-left  ">
+            <label class="navbar-link" for="filterUnfulfilled">
+                <input type="checkbox" class="autosubmit" id="Soft" value="true">
+                Soft
+            </label>
+
+            <label class="navbar-link" for="filterUnfulfilled">
+                <input type="checkbox" class="autosubmit" id="Lps" value="true">
+                Lps
+            </label>
+
+            <label class="navbar-link" for="filterUnfulfilled">
+                <input type="checkbox" class="autosubmit" id="Sps" value="true">
+                Sps
+            </label>
+
+            <label class="navbar-link" for="filterUnfulfilled">
+                <input type="checkbox" class="autosubmit" id="Near me" value="true">
+                Near me
+            </label>
+        </div>
+                 <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <div class="checkbox navbar-btn">
+                        <label class="navbar-link" for="filterUnfulfilled">
+                            <input type="checkbox" class="autosubmit" id="filterUnfulfilled" value="true">
+                            For Sale Only
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+ 
+        @*</div>*@
+    </div><!-- /.navbar-collapse -->
+</nav>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
 @*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CoralId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Light)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Flow)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Food)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScientificName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Details)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UploadedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FragSize)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Likes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DisLikes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Views)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoldOut)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FragAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FragAvailableFrom)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach(var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CoralId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Light)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Flow)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Food)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScientificName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Details)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UploadedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FragSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Likes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisLikes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Views)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoldOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FragAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FragAvailableFrom)
-            </td>
-            <td>
-            <td>
-                 <img src="@Url.Action("CoralPhoto", "Corals", new {id=item.CoralId})" width="50" />
-
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.CoralId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Light)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScientificName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FragSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Likes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisLikes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Views)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoldOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FragAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FragAvailableFrom)
+            </th>
+            <th></th>
         </tr>
-        }
 
-</table>*@
+        @foreach(var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoralId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Light)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flow)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScientificName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FragSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Likes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisLikes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Views)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoldOut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FragAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FragAvailableFrom)
+                </td>
+                <td>
+                <td>
+                     <img src="@Url.Action("CoralPhoto", "Corals", new {id=item.CoralId})" width="50" />
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+                </td>
+            </tr>
+            }
+
+    </table>*@
 
 @foreach(var item in Model) {
     if(item.Name != null) {
 
 
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.CoralId, this)">
-    <h4>        @Html.DisplayFor(modelItem => item.Name)    </h4>
-    <hr>
-    <h5>        @Html.DisplayFor(modelItem => item.ScientificName)    </h5>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.CoralId, this)">
+            <h4>        @Html.DisplayFor(modelItem => item.Name)    </h4>
+            <hr>
+            <h5>        @Html.DisplayFor(modelItem => item.ScientificName)    </h5>
 
-    <img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />
+            <img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />
 
-    <h6>            @Html.DisplayFor(modelItem => item.Details)                       </h6>
+            <h6>            @Html.DisplayFor(modelItem => item.Details)                       </h6>
 
-    @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-    @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-    @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
-</div>
+            @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+        </div>
         }
     }
 <div class="col-lg-3" style="float : none"></div>
@@ -175,7 +257,6 @@
         url += '?id=' + item;
         $("#attachments").load(url);*@
 
-           
+
     }
 </script>
- 
