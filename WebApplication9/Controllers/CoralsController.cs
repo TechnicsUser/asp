@@ -205,7 +205,7 @@ namespace WebApplication9.Controllers
               //  byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
 
                 coral.Photo = imageData;
-                coral.UploadedBy = User.Identity.GetUserId();
+                coral.UploadedBy = User.Identity.Name;
                 db.Corals.Add(coral);
                 db.SaveChanges();
               
@@ -237,11 +237,17 @@ namespace WebApplication9.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Coral coral = db.Corals.Find(id);
+
+            if(User.Identity.Name == coral.UploadedBy) {
+
+                return View(coral);
+
+                }
             if (coral == null)
             {
                 return HttpNotFound();
             }
-            return View(coral);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
         // POST: Corals/Edit/5
