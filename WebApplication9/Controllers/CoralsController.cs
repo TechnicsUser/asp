@@ -11,25 +11,22 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication9.Models;
 
-namespace WebApplication9.Controllers
-{
-    public class CoralsController : Controller
-    {
+namespace WebApplication9.Controllers {
+    public class CoralsController : Controller {
         private SiteDataContext db = new SiteDataContext();
 
         // GET: Corals
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View(db.Corals.ToList());
-        }
+            }
 
         public ActionResult View(int id) {
             SiteDataContext cp = new SiteDataContext();
             byte[] ba = new byte[] { 0x0 };
-            List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).Where(x=> x.Photo != ba).ToList();
+            List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToList();
             Coral thisCoral = db.Corals.Find(id);
-            ViewBag.thisCoral = thisCoral; 
-            return View( rl);
+            ViewBag.thisCoral = thisCoral;
+            return View(rl);
             }
 
         private ActionResult View(List<CoralPhoto> rl, Coral thisCoral) {
@@ -54,29 +51,29 @@ namespace WebApplication9.Controllers
                 }
             byte[] coralImage = coral.Photo;
 
-           // String userId = User.Identity.GetUserId();
+            // String userId = User.Identity.GetUserId();
 
-                //if(userId != null) {
-                //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+            //if(userId != null) {
+            //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
 
-                //    byte[] imageData = null;
-                //    FileInfo fileInfo = new FileInfo(fileName);
-                //    long imageFileLength = fileInfo.Length;
-                //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                //    BinaryReader br = new BinaryReader(fs);
-                //    imageData = br.ReadBytes((int)imageFileLength);
+            //    byte[] imageData = null;
+            //    FileInfo fileInfo = new FileInfo(fileName);
+            //    long imageFileLength = fileInfo.Length;
+            //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            //    BinaryReader br = new BinaryReader(fs);
+            //    imageData = br.ReadBytes((int)imageFileLength);
 
-                //    return File(imageData, "image/png");
+            //    return File(imageData, "image/png");
 
-                //    }
-                // to get the user details to load user Image    
-                //var bdUsers = HttpContext.GetOwinContext().Get<Coral>();
-                //var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
-
-               
+            //    }
+            // to get the user details to load user Image    
+            //var bdUsers = HttpContext.GetOwinContext().Get<Coral>();
+            //var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
 
 
-                return new FileContentResult(coralImage, "image/jpeg");
+
+
+            return new FileContentResult(coralImage, "image/jpeg");
             //    }
             //else {
             //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
@@ -165,34 +162,29 @@ namespace WebApplication9.Controllers
 
             }
 
-            // GET: Corals/Details/5
-            public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
+        // GET: Corals/Details/5
+        public ActionResult Details(int? id) {
+            if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                }
             Coral coral = db.Corals.Find(id);
-            if (coral == null)
-            {
+            if(coral == null) {
                 return HttpNotFound();
-            }
+                }
             return View(coral);
-        }
+            }
 
         // GET: Corals/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create() {
             return View();
-        }
+            }
 
         // POST: Corals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Exclude = "CoralPhoto", Include = "CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral)
-        {
+        public ActionResult Create([Bind(Exclude = "CoralPhoto", Include = "CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral) {
             if(ModelState.IsValid) {
                 byte[] imageData = null;
                 if(Request.Files.Count > 0) {
@@ -202,40 +194,38 @@ namespace WebApplication9.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                         }
                     }
-              //  byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+                //  byte[] smallArray = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
 
                 coral.Photo = imageData;
                 coral.UploadedBy = User.Identity.Name;
                 db.Corals.Add(coral);
                 db.SaveChanges();
-              
+
                 foreach(var item in Request.Files) {
-                       CoralPhoto cp = new CoralPhoto();
-                cp.UserId = User.Identity.GetUserId();
-                cp.Photo = coral.Photo;
-                cp.CoralPhotoId = coral.CoralId;
-                cp.CoralId = coral.CoralId;
-                cp.Views = 0;
-                cp.Likes = 0;
-                cp.DisLikes = 0;
-                db.CoralPhoto.Add(cp);
-                db.SaveChanges();
+                    CoralPhoto cp = new CoralPhoto();
+                    cp.UserId = User.Identity.GetUserId();
+                    cp.Photo = coral.Photo;
+                    cp.CoralPhotoId = coral.CoralId;
+                    cp.CoralId = coral.CoralId;
+                    cp.Views = 0;
+                    cp.Likes = 0;
+                    cp.DisLikes = 0;
+                    db.CoralPhoto.Add(cp);
+                    db.SaveChanges();
                     }
-             
+
 
                 return RedirectToAction("Index");
-            }
+                }
 
             return View(coral);
-        }
+            }
 
         // GET: Corals/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(int? id) {
+            if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                }
             Coral coral = db.Corals.Find(id);
 
             if(User.Identity.Name == coral.UploadedBy) {
@@ -243,12 +233,11 @@ namespace WebApplication9.Controllers
                 return View(coral);
 
                 }
-            if (coral == null)
-            {
+            if(coral == null) {
                 return HttpNotFound();
-            }
+                }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
+            }
 
         // POST: Corals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -256,10 +245,8 @@ namespace WebApplication9.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         // Exclude = "CoralPhoto",
-        public ActionResult Edit([Bind( Include = "CoralPhoto, CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit([Bind(Include = "CoralPhoto, CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral) {
+            if(ModelState.IsValid) {
                 byte[] imageData = null;
                 if(Request.Files.Count > 0) {
 
@@ -294,7 +281,7 @@ namespace WebApplication9.Controllers
                               select sn3.Photo).First();
                 db.Entry(coral).Entity.Photo = CredID;
 
-         //       db.Entry(coral).Entity.Name = coral.Name;
+                //       db.Entry(coral).Entity.Name = coral.Name;
 
                 // name
                 //sceientific
@@ -302,47 +289,41 @@ namespace WebApplication9.Controllers
                 //price
                 //
 
-                 db.Entry(coral).State = EntityState.Modified;
+                db.Entry(coral).State = EntityState.Modified;
                 db.SaveChanges();
-            
+
                 return RedirectToAction("Index");
-            }
+                }
             return View(coral);
-        }
+            }
 
         // GET: Corals/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Delete(int? id) {
+            if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                }
             Coral coral = db.Corals.Find(id);
-            if (coral == null)
-            {
+            if(coral == null) {
                 return HttpNotFound();
-            }
+                }
             return View(coral);
-        }
+            }
 
         // POST: Corals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
+        public ActionResult DeleteConfirmed(int id) {
             Coral coral = db.Corals.Find(id);
             db.Corals.Remove(coral);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
             }
+
+        protected override void Dispose(bool disposing) {
+            if(disposing) {
+                db.Dispose();
+                }
             base.Dispose(disposing);
+            }
         }
     }
-}

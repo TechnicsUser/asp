@@ -216,10 +216,10 @@
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\CoralConnectionsController.cs" />
     <Compile Include="Controllers\CoralsController.cs" />
+    <Compile Include="Controllers\FishController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
-    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\readWriteController.cs" />
     <Compile Include="Filters\MessagesFilter.cs" />
@@ -228,41 +228,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Bootstrap.cs" />
-    <Compile Include="Migrations\201808091125222_db4.cs" />
-    <Compile Include="Migrations\201808091125222_db4.Designer.cs">
-      <DependentUpon>201808091125222_db4.cs</DependentUpon>
+    <Compile Include="Migrations\201903190946471_Initial.cs" />
+    <Compile Include="Migrations\201903190946471_Initial.Designer.cs">
+      <DependentUpon>201903190946471_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808092043276_comments.cs" />
-    <Compile Include="Migrations\201808092043276_comments.Designer.cs">
-      <DependentUpon>201808092043276_comments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808092151120_comments2.cs" />
-    <Compile Include="Migrations\201808092151120_comments2.Designer.cs">
-      <DependentUpon>201808092151120_comments2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808092234387_comments3.cs" />
-    <Compile Include="Migrations\201808092234387_comments3.Designer.cs">
-      <DependentUpon>201808092234387_comments3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808092245000_comments4.cs" />
-    <Compile Include="Migrations\201808092245000_comments4.Designer.cs">
-      <DependentUpon>201808092245000_comments4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808101312135_db5.cs" />
-    <Compile Include="Migrations\201808101312135_db5.Designer.cs">
-      <DependentUpon>201808101312135_db5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808111123532_db6.cs" />
-    <Compile Include="Migrations\201808111123532_db6.Designer.cs">
-      <DependentUpon>201808111123532_db6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808131045074_db61.cs" />
-    <Compile Include="Migrations\201808131045074_db61.Designer.cs">
-      <DependentUpon>201808131045074_db61.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903162151136_csstheme.cs" />
-    <Compile Include="Migrations\201903162151136_csstheme.Designer.cs">
-      <DependentUpon>201903162151136_csstheme.cs</DependentUpon>
+    <Compile Include="Migrations\201903190949061_fish2.cs" />
+    <Compile Include="Migrations\201903190949061_fish2.Designer.cs">
+      <DependentUpon>201903190949061_fish2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -276,6 +248,7 @@
     <Compile Include="Models\CoralConnectionViewModal.cs" />
     <Compile Include="Models\CoralPhoto.cs" />
     <Compile Include="Models\CoralViewModal.cs" />
+    <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Messages.cs" />
@@ -475,6 +448,11 @@
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\AspNetUsers\ViewUser.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Fish\Create.cshtml" />
+    <Content Include="Views\Fish\Delete.cshtml" />
+    <Content Include="Views\Fish\Details.cshtml" />
+    <Content Include="Views\Fish\Edit.cshtml" />
+    <Content Include="Views\Fish\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -493,32 +471,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808091125222_db4.resx">
-      <DependentUpon>201808091125222_db4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903190946471_Initial.resx">
+      <DependentUpon>201903190946471_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092043276_comments.resx">
-      <DependentUpon>201808092043276_comments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092151120_comments2.resx">
-      <DependentUpon>201808092151120_comments2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092234387_comments3.resx">
-      <DependentUpon>201808092234387_comments3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808092245000_comments4.resx">
-      <DependentUpon>201808092245000_comments4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808101312135_db5.resx">
-      <DependentUpon>201808101312135_db5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808111123532_db6.resx">
-      <DependentUpon>201808111123532_db6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808131045074_db61.resx">
-      <DependentUpon>201808131045074_db61.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903162151136_csstheme.resx">
-      <DependentUpon>201903162151136_csstheme.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903190949061_fish2.resx">
+      <DependentUpon>201903190949061_fish2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

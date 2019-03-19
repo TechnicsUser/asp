@@ -6,17 +6,15 @@
     ViewBag.Title = "Home Page";
 }
 
-<button onclick="getLocation()" style="position:absolute; top:150px;">Show Map</button>
 
-<div id="mapholder"></div>
 
 <div class="row">
     <div class="col-md-6">
-        <div class="jumbotron"style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
+        <div class="jumbotron" style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
             <h3>Highlighted Tank</h3>
             <p class="lead">Tank voted by users</p>
 
-            <img src="~/Images/highlighted.jpg" alt=""  style="width: 100%; "/>
+            <img src="~/Images/highlighted.jpg" alt="" style="width: 100%; " />
             <p><a href="https://asp.net" class="btn btn-primary btn-lg">See more &raquo;</a></p>
         </div>
     </div>
@@ -32,25 +30,28 @@
     </div>
 </div>
 
+<button onclick="getLocation()" style="position:absolute; top:150px; left:0px">Show Map</button>
 
-<div class="row"  style="text-align-last:center;">
+<div id="mapholder"></div>
+
+<div class="row" style="text-align-last:center;">
     <div class="col-md-3 col-sm-6">
         <h2>Fish</h2>
-       <ul>
+        <ul>
 
-        <li>Track down that fish you've been looking for.</li>
-        <li>Let people know about your rare find.</li>
-        <li>Share what your local fish store has on sale.</li>
+            <li>Track down that fish you've been looking for.</li>
+            <li>Let people know about your rare find.</li>
+            <li>Share what your local fish store has on sale.</li>
         </ul>
-            
-    <p >
-        <a class="btn btn-default"href="https://go.microsoft.com/fwlink/?LinkId=301865">Something fishy &raquo;</a>
-    </p>
+
+        <p>
+            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Something fishy &raquo;</a>
+        </p>
 
     </div>
 
-    <div class="col-md-3 col-sm-6"  style="text-align-last:center;">
-        <h2 >Coral</h2>
+    <div class="col-md-3 col-sm-6" style="text-align-last:center;">
+        <h2>Coral</h2>
         <p>
             <ul>
 
@@ -61,14 +62,14 @@
                 <li>Create coral connections</li>
             </ul>
         </p>
-        <p >
-        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a>
+        <p>
+            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a>
         </p>
     </div>
-    <div class="col-md-3 col-sm-6  col-xs-12"  style="text-align-last:center;">
-        <h2   >Equipment</h2>
+    <div class="col-md-3 col-sm-6  col-xs-12" style="text-align-last:center;">
+        <h2>Equipment</h2>
         <p>
-            <ul >
+            <ul>
                 <li>Buy pre-loved equipment.</li>
                 <li>Sell when you've upgraded.</li>
                 <li>Let people know what you need.</li>
@@ -76,12 +77,12 @@
                 <li>Coming soon </li>
             </ul>
         </p>
-        <p >
-        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">See more &raquo;</a>
+        <p>
+            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">See more &raquo;</a>
         </p>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12"  style="text-align-last:center;">
-        <h2  >Forum</h2>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align-last:center;">
+        <h2>Forum</h2>
         <p>
             <ul>
                 <li>Meet local reefers</li>
@@ -92,7 +93,7 @@
             </ul>
         </p>
         <p>
-        <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">I'm in &raquo;</a>
+            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">I'm in &raquo;</a>
         </p>
     </div>
 </div>
@@ -354,111 +355,111 @@
 <table class="table">
     <tr>
         @*   <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailConfirmed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PasswordHash)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecurityStamp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LockoutEnabled)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccessFailedCount)
-            </th>  
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-               <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
+                    @Html.DisplayNameFor(model => model.Email)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LastName)
+                    @Html.DisplayNameFor(model => model.EmailConfirmed)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IdUserName)
+                    @Html.DisplayNameFor(model => model.PasswordHash)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LocationLon)
+                    @Html.DisplayNameFor(model => model.SecurityStamp)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LocationLat)
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
                 </th>
-                <th></th>
-            </tr>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LockoutEnabled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccessFailedCount)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+                   <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdUserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationLon)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationLat)
+                    </th>
+                    <th></th>
+                </tr>*@
 
         @foreach(var item in Model) {
         <tr>
             @*    <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PasswordHash)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecurityStamp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PasswordHash)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SecurityStamp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AccessFailedCount)
-                </td> 
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdUserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocationLon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocationLat)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdUserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationLon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationLat)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>*@
         </tr>
         }
 

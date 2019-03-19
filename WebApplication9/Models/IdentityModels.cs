@@ -44,5 +44,7 @@ namespace WebApplication9.Models
         }
 
         public System.Data.Entity.DbSet<WebApplication9.Models.Coral> Corals { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Fish> Fish { get; set; }
         }
 }
