@@ -1,0 +1,556 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<html>
+<head>
+    <style>
+        .holder {
+            display: flex;
+            width: 100%;
+            height: 270px;
+            position: relative;
+            padding: 10px;
+           
+        }
+            .holder > *:first-child {
+                /*align-self: stretch;
+                height: 370px;
+                padding: 25px;*/
+            }
+        .zoomNumber {
+            /*position:inherit;*/
+             /*top: 220px;
+            left:840px;*/
+                  width: 70px;
+            height: 30px;
+             border: 0px;
+            z-index: 100;
+            background-color:white;
+             margin:20px;
+        }
+        .myBtn {
+            /*column-count: 3;*/
+            display: block;
+            position: absolute;
+            left:500px;
+
+        }
+
+        input[type=color] {
+            padding: 0px;
+            margin: 10px;
+        }
+
+     
+
+ 
+        .frame {
+            top: 0px;
+            left:0px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            border: 5px solid black;
+             z-index: -1;
+             
+         }
+
+        .bar {
+            position: absolute;
+            top: 210px;
+            left: 340px;
+            width: 100px;
+            height: 30px;
+            background-color: blue;
+            border: 0px;
+        }
+
+           
+            .bar2 {
+            position: relative;
+            top: 210px;
+            left: 140px;
+            width: 100px;
+            height: 30px;
+            /*background-color: blue;*/
+            border: 0px;
+        }
+        .topnav{
+            display: none;
+        }
+    </style>
+    <script>
+        function zoom(value,  frame) {
+            myFrame = frame;
+ 
+            var str = myFrame.src;
+            var start = "https://thingspeak.com/channels/459687/charts/";
+            var chartNumber = str.substring(46, 47);
+            var color = str.substring(47, 81);
+
+          
+            var part = "&dynamic=true&width=auto&results=";
+            var type = "&type=line&update=";
+            var title = "&title=";
+            var titleResult = str.substring(132, 137);
+
+
+            var res = str.substring(0, 114);
+            var ult = str.substring(116, 136);
+            
+            var test = "&timescale=daily";
+
+            myFrame.src = start + chartNumber + color + part + value + type + value ;
+            console.log(titleResult);
+            console.log(chartNumber);
+            document.getElementById("firstColor").innerHTML = "test";
+        }
+        function changeBgColor(value, frame) {
+            myFrame = frame;
+
+            var str = myFrame.src;
+            var start = "https://thingspeak.com/channels/459687/charts/";
+            var chartNumber = str.substring(46, 47);
+            var color = "?bgcolor=%23";
+            var res = value.substring(1, 7);
+
+            var pick = res;
+            var color2 = "&color=%23";
+            var lineColor = str.substring(75, 81);
+            var part = "&dynamic=true&width=auto&results=";
+            var type = "&type=line&update=";
+            var title = "&title=";
+            var titleResult = str.substring(132, 137);
+
+
+            var ult = str.substring(116, 136);
+
+
+
+            myFrame.src = start + chartNumber + color + pick + color2 + lineColor + part + "10" + type + "10";
+            console.log(lineColor);
+         }
+        function changeColor(value, frame) {
+ 
+            myFrame = frame;
+
+            var str = myFrame.src;
+            var start = "https://thingspeak.com/channels/459687/charts/";
+            var chartNumber = str.substring(46, 47);
+             var color = str.substring(47, 75);
+
+            var res = value.substring(1, 7);
+
+            var color2 = "&dynamic=true&width=auto&results=";
+            var type = "&type=line&update=";
+            var title = "&title=";
+            var titleResult = str.substring(132, 137);
+
+
+            myFrame.src = start + chartNumber + color + res + color2 + "10" + type + "10";
+            console.log(color);
+            console.log(res);
+            console.log(start + chartNumber + color  + res + color2 + "10" + type + "10");
+  
+        }
+    </script>
+</head>
+<body>
+
+    <div class="holder">
+
+        <iframe class="frame" align="left"  id="first" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/1?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Humid">   </iframe>
+
+        <div class="test">
+            <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('first'))">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('first') )">
+            <input type="color" id="firstColor" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('first') )">
+
+        </div>
+
+
+    </div>
+    <br />
+    <br />
+
+    <div class="holder">
+
+        <iframe class="frame" id="second" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/2?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Humid"></iframe>
+      
+        <div class="myBtn">
+            <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('second'))">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('second') )">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('second') )">
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+
+    <div class="holder">
+        <iframe class="frame" id="third" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/3?bgcolor=%23000030&color=%23d62020&dynamic=true&width=auto&results=20&type=line&update=15"></iframe>
+        <div class="myBtn">
+            <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('third'))">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('third') )">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('third') )">
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="holder">
+        <iframe class="frame" id="forth" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/4?bgcolor=%23000000&color=%23d620040&dynamic=true&width=auto&results=20&type=line&dynamic=true&update=15"></iframe>
+        <div class="myBtn">
+            <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('forth'))">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('forth') )">
+            <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('forth') )">
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/232538"></iframe>
+    @*<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/plugins/232544"></iframe>
+
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/plugins/232544"></iframe>*@
+
+    <!-- increment button -->
+    @*<input type='button' name='add' id="add" value='+' />*@
+    <!-- quantity input -->
+    <input name='qty' id='qty' style="text-align:center;" type="text" value="1" autocomplete="off" size="2">
+    <!-- decrement button -->
+    <input type='button' name='subtract' id="subtract" value='-' />
+    <input type='button' name='button2' id="button2" value='button  2' />
+    <input type='button' name='button3' id="back" value='button  ' />
+
+
+    <div>    Humidity :     </div>
+    <div id="output2h"></div>
+    <br />
+    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+        Phosphates<br />
+        <span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+    </button>
+
+    <div id="collapse" class="collapse">
+        <div id="barchart_div" style="border: 1px solid #ccc"></div>
+
+    </div>
+
+
+    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+        Open collapse
+    </button>
+    <div id="collapse1" class="collapse">
+        <div id="curve_chart"></div>
+
+    </div>
+
+    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+        Open collapse
+    </button>
+    <div id="collapse2" class="collapse">
+        <div id="piechart_div" style="border: 1px solid #ccc"></div>
+    </div>
+
+</body>
+</html>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+@*<script type="text/javascript">
+    //$(document).ready(function () {
+
+    //    $("button2").click(function () {
+
+    //    });
+    //});
+
+
+    var forwardAmount, backAmount, currentFrame;
+    window.onload = function () {
+        forwardAmount = document.getElementById("qty");
+        currentFrame = document.getElementById("frame3");
+        document.getElementById("add").addEventListener("click", goForward, false);
+        document.getElementById("subtract").addEventListener("click", goBack, false);
+        document.getElementById("back").addEventListener("click", Back, false);
+        document.getElementById("button2").addEventListener("click", button2, false);
+
+
+
+    }
+    function button2() {
+        alert("Your field was updated!");
+        //var oReq = new XMLHttpRequest();
+        //var str = "http://203.159.0.30:3000/channels/4?api_key:L3LFIPAZYWNVU3XM?name=Updated";
+        //oReq.open("PUT", str);
+        //oReq.send();
+        //alert("Your field was updated!"); location.reload();
+
+        //$.post("https://api.thingspeak.com/update.json",
+        //        {
+        //            api_key: "L3LFIPAZYWNVU3XM",
+        //            field5: "8.8"
+        //            //field5: $("#test").val()
+        //        },
+        //        function () {
+        //            alert("Your field was updated!"); location.reload();
+        //        });
+
+    }
+    function goBack() {
+        alert("Your field was updated!");
+      //  var oReq = new XMLHttpRequest();
+      //  var str = "http://203.159.0.30:3000/update/5?api_key:L3LFIPAZYWNVU3XM?field5=9";
+      //  oReq.open("POST", str);
+      ////  oReq.send();
+      //  alert("Your field was updated!"); location.reload();
+
+
+
+        var xmlhttp = new XMLHttpRequest();
+        //var myVar = [];
+        //var cars;
+        //var dataNew;
+        var myObj;
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+               // myObj = JSON.parse(this.responseText);
+
+                api_key = L3LFIPAZYWNVU3XM;
+                field5 = 73;
+
+                //$('#output').text(myObj.feeds[0].created_at);
+                //$('#output1').text(myObj.feeds[0].entry_id);
+                //$('#output2').text(myObj.feeds[0].field1);
+                //$('#outputh').text(myObj.feeds[0].field2);
+
+                //$('#output3').text(myObj.feeds[1].created_at);
+                //$('#output4').text(myObj.feeds[1].entry_id);
+                //$('#output5').text(myObj.feeds[1].field1);
+             //   $('#output2h').text(myObj.feeds[0].field1);
+                //  myVar = parseFloat(myObj.feeds[0].field1);
+
+                //   cars = [myObj.feeds[1].entry_id, parseFloat( myVar) , parseFloat( myObj.feeds[0].field2)];
+            }
+        };
+        xmlhttp.open("POST", "http://203.159.0.30:3000/update", true);
+        xmlhttp.send();
+
+
+
+  //      forwardAmount = document.getElementById("qty").value;
+
+        //   var str = "https://thingspeak.com/channels/459687/charts/4?bgcolor=%23009090&color=%23d62020&dynamic=true&max=30&min=20&results=" + forwardAmount + "&type=line";
+ //       var str = " https://thingspeak.com/channels/459687/charts/4?bgcolor=%23000000&color=%23d620040&dynamic=true&max=9.5&min=7.5&results= " + forwardAmount + "&type=line";
+  //      currentFrame.src = str;
+            // "https://thingspeak.com/channels/459687/charts/4?bgcolor=%23009090&color=%23d62020&dynamic=true&max=30&min=20&results=6&type=line"
+
+    }
+    function goForward() {
+        //var oReq = new XMLHttpRequest();
+        //var str = "http://203.159.0.30:3000/update/5?api_key:L3LFIPAZYWNVU3XM?field5=9";
+        //oReq.open("PUT", str);
+        //oReq.send();
+        //alert("Your field was updated!"); location.reload();
+
+        forwardAmount = document.getElementById("qty").value;
+
+     //   var str = "https://thingspeak.com/channels/459687/charts/4?bgcolor=%23009090&color=%23d62020&dynamic=true&max=30&min=20&results=" + "-" + forwardAmount + "&type=line";
+     //   currentFrame.src = str;
+      //  currentFrame.src = "https://thingspeak.com/channels/459687/charts/4?bgcolor=%23909090&color=%23d62020&dynamic=true&max=30&min=20&results=240&type=line";
+        currentFrame.src = " https://thingspeak.com/channels/459687/charts/4?bgcolor=%23000000&color=%23d620040&dynamic=true&max=9.5&min=7.5&results=200&type=line";
+    }
+   // function signin_Click() {
+       // var v = 200;
+
+  //      document.getElementById('frame3').setAttribute('src', "https://thingspeak.com/channels/459687/charts/4?bgcolor=%23400090&color=%23d620040&dynamic=true&max=9.5&min=7.5&results=2000&type=line");
+         //var oiFrame = document.getElementById(frame3);
+        //oiFrame.src = "https://thingspeak.com/channels/459687/charts/4?bgcolor=%23400090&color=%23d620040&dynamic=true&max=9.5&min=7.5&results=-20&type=line";
+
+
+  //  }
+</script>*@
+@*<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>*@
+
+
+@*<script type="text/javascript">
+
+
+        var xmlhttp = new XMLHttpRequest();
+        //var myVar = [];
+        //var cars;
+        //var dataNew;
+        var myObj;
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+
+
+                //$('#output').text(myObj.feeds[0].created_at);
+                //$('#output1').text(myObj.feeds[0].entry_id);
+                //$('#output2').text(myObj.feeds[0].field1);
+                //$('#outputh').text(myObj.feeds[0].field2);
+
+                //$('#output3').text(myObj.feeds[1].created_at);
+                //$('#output4').text(myObj.feeds[1].entry_id);
+                //$('#output5').text(myObj.feeds[1].field1);
+                $('#output2h').text(myObj.feeds[0].field1);
+                //  myVar = parseFloat(myObj.feeds[0].field1);
+
+                //   cars = [myObj.feeds[1].entry_id, parseFloat( myVar) , parseFloat( myObj.feeds[0].field2)];
+            }
+        };
+        xmlhttp.open("GET", "https://api.thingspeak.com/channels/459687/feeds.json?api_key=FLOEBAJEKQS0Q27F&results=7", true);
+        xmlhttp.send();
+
+        // Load Charts and the corechart and barchart packages.
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        // Draw the pie chart and bar chart when Charts is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            var myI = parseInt(myObj.feeds[0].field1)
+            var myI1 = parseInt(myObj.feeds[1].field1)
+            data.addRows([
+           [myObj.feeds[0].field1, myI],
+              [myObj.feeds[1].field1, myI1]
+            ]);
+
+            var piechart_options = {
+                title: 'Pie Chart: How Much Pizza I Ate Last Night',
+                width: 400,
+                height: 300
+            };
+            var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+            piechart.draw(data, piechart_options);
+
+            //-------------------------------------------------------------
+            var data2 = new google.visualization.DataTable();
+            dataNew = new google.visualization.DataTable(myObj);
+            dataNew.addColumn('string', 'field1');
+            dataNew.addColumn('number', 'entry_id');
+            dataNew.addRows([
+              [myObj.feeds[0].field1, 3],
+              [myObj.feeds[1].field1, 1]
+            ]);
+
+            data2.addColumn('string', 'Topping');
+            data2.addColumn('number', 'Slices');
+            data2.addRows([
+              ['Mushrooms', 13],
+              ['Onions', 1],
+              ['Olives', 11],
+              ['Zucchini', 1],
+              ['Pepperoni', 2]
+            ]);
+
+
+
+
+            var barchart_options = {
+                title: 'Barchart: How Much Pizza I Ate Last Night',
+                width: 400,
+                height: 300,
+                legend: 'none'
+            };
+            var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+            barchart.draw(dataNew, barchart_options);
+            //-----------------------------------------------------------------
+            //var num123 = parseFloat(myObj.feeds[0].field1);
+            //var num1234 = parseFloat(myObj.feeds[0].field2);
+            //var myArr = [myObj.feeds[0].created_at, num123, num1234];
+            //var sub = myObj.feeds[0].created_at.substring(5, 10);  // date
+
+
+            var data3 = google.visualization.arrayToDataTable([
+                 ['Day', 'Last Week', 'This Week'],
+              [myObj.feeds[0].created_at.substring(11, 16), parseFloat(myObj.feeds[0].field1), parseFloat(myObj.feeds[0].field2)],
+              [myObj.feeds[1].created_at.substring(11, 16), parseFloat(myObj.feeds[1].field1), parseFloat(myObj.feeds[1].field2)],
+              [myObj.feeds[2].created_at.substring(11, 16), parseFloat(myObj.feeds[2].field1), parseFloat(myObj.feeds[2].field2)],
+              [myObj.feeds[3].created_at.substring(11, 16), parseFloat(myObj.feeds[3].field1), parseFloat(myObj.feeds[3].field2)],
+              [myObj.feeds[4].created_at.substring(11, 16), parseFloat(myObj.feeds[4].field1), parseFloat(myObj.feeds[4].field2)],
+              [myObj.feeds[5].created_at.substring(11, 16), parseFloat(myObj.feeds[5].field1), parseFloat(myObj.feeds[5].field2)],
+              [myObj.feeds[6].created_at.substring(11, 16), parseFloat(myObj.feeds[6].field1), parseFloat(myObj.feeds[6].field2)],
+
+          // ['Tuesday', 10.0, 8.00],
+                // ['Wednesday', 7.7, 27.9],
+                // ['Thursday', 7.9, 8.2],
+                // ['Friday', 7.9, 8.1],
+                // ['Saturday', 7.7, 7.9],
+                //myArr
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Box Office Earnings in First Two Weeks of Opening',
+                    subtitle: 'in millions of dollars (USD)'
+                },
+                width: 700,
+                height: 300
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data3, options);
+        }
+    </script>*@
+
+
+
+
+
+
+
+
+
+
+
+@*<!DOCTYPE html>
+    <html>
+
+    <body>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <h1>My Web Page</h1>
+
+        <div id="piechart"></div>
+
+    </body>
+    </html>
+    <script type="text/javascript">
+    // Load google charts
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Draw the chart and set the chart values
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work', 8],
+      ['Friends', 2],
+      ['Eat', 2],
+      ['TV', 3],
+      ['Gym', 2],
+      ['Sleep', 7]
+    ]);
+
+      // Optional; add a title and set the width and height of the chart
+      var options = {'title':'My Average Day', 'width':400, 'height':300};
+
+      // Display the chart inside the <div> element with id="piechart"
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+    }
+    </script>*@

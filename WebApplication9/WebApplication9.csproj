@@ -220,6 +220,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\ParamController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\readWriteController.cs" />
     <Compile Include="Filters\MessagesFilter.cs" />
@@ -453,6 +454,7 @@
     <Content Include="Views\Fish\Details.cshtml" />
     <Content Include="Views\Fish\Edit.cshtml" />
     <Content Include="Views\Fish\Index.cshtml" />
+    <Content Include="Views\Param\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
