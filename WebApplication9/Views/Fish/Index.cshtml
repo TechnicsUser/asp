@@ -15,7 +15,7 @@
     if(item.Name != null) {
 
 
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.Type, this)">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.FishId, this)">
             <h4>        @Html.DisplayFor(modelItem => item.Name)    </h4>
             <hr>
             <h5>        @Html.DisplayFor(modelItem => item.ScientificName)    </h5>
@@ -32,20 +32,17 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="~/Images/highlighted.jpg" />
-                        @*<img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" />*@
+                         <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 0  })" />
                     </div>
 
                     <div class="item">
-                        <img src="~/Images/highlighted.jpg" />
 
-                        @*<img src="@Url.Action("CoralPhoto3", "Corals", new { id = item.CoralId, number = 1 })" />*@
+                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 1  })" />
                     </div>
 
                     <div class="item">
-                        <img src="~/Images/highlighted.jpg" />
-
-                        @*<img src="@Url.Action("CoralPhoto3", "Corals", new { id = item.CoralId, number = 2 })" />*@
+ 
+                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 2  })" />
                     </div>
                 </div>
 
@@ -221,3 +218,15 @@
         }
 
 </table>
+<script>
+    function f1(item) {
+
+        window.location = "/Fish/View/" + item;
+
+        @*var url = '@Url.Action("CoralPhoto", "Corals")';
+        url += '?id=' + item;
+        $("#attachments").load(url);*@
+
+
+    }
+</script>

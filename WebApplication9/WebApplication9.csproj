@@ -461,6 +461,7 @@
     <Content Include="Views\Fish\Edit.cshtml" />
     <Content Include="Views\Fish\Index.cshtml" />
     <Content Include="Views\Param\Index.cshtml" />
+    <Content Include="Views\Fish\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
