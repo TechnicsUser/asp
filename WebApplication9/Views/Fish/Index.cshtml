@@ -9,6 +9,76 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+@foreach(var item in Model) {
+    if(item.Name != null) {
+
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.Type, this)">
+            <h4>        @Html.DisplayFor(modelItem => item.Name)    </h4>
+            <hr>
+            <h5>        @Html.DisplayFor(modelItem => item.ScientificName)    </h5>
+
+            @*<img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />*@
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="~/Images/highlighted.jpg" />
+                        @*<img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" />*@
+                    </div>
+
+                    <div class="item">
+                        <img src="~/Images/highlighted.jpg" />
+
+                        @*<img src="@Url.Action("CoralPhoto3", "Corals", new { id = item.CoralId, number = 1 })" />*@
+                    </div>
+
+                    <div class="item">
+                        <img src="~/Images/highlighted.jpg" />
+
+                        @*<img src="@Url.Action("CoralPhoto3", "Corals", new { id = item.CoralId, number = 2 })" />*@
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                @*<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>*@
+            </div>
+
+            <h6>            @Html.DisplayFor(modelItem => item.Details)                       </h6>
+
+            @if(User.Identity.Name == item.UploadedBy) {
+                <div>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CoralId })*@
+                </div>
+
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+
+                }
+
+            @*@Html.ActionLink("Details", "Details", new { id = item.CoralId })*@
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |*@
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+
+        </div>
+        }
+    }
+<div></div>
 <table class="table">
     <tr>
         <th>
@@ -18,14 +88,14 @@
             @Html.DisplayNameFor(model => model.TankSize)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Flow)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Food)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Growth)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Flow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Growth)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -77,77 +147,77 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TankSize)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Flow)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Food)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Growth)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScientificName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Details)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UploadedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UploadedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FishSize)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Likes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DisLikes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Views)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoldOut)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FishAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FishAvailableFrom)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FishId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FishId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FishId })
-        </td>
-    </tr>
-}
+    @foreach(var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TankSize)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Flow)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Food)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Growth)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScientificName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FishSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Likes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisLikes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Views)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoldOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FishAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FishAvailableFrom)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FishId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FishId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FishId })
+            </td>
+        </tr>
+        }
 
 </table>

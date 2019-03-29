@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201903190949061_fish2.Designer.cs">
       <DependentUpon>201903190949061_fish2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903291914368_fishphoto.cs" />
+    <Compile Include="Migrations\201903291914368_fishphoto.Designer.cs">
+      <DependentUpon>201903291914368_fishphoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -250,6 +254,7 @@
     <Compile Include="Models\CoralPhoto.cs" />
     <Compile Include="Models\CoralViewModal.cs" />
     <Compile Include="Models\Fish.cs" />
+    <Compile Include="Models\fishPhoto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Messages.cs" />
@@ -275,6 +280,7 @@
     <Compile Include="Models\UserPhotos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -478,6 +484,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903190949061_fish2.resx">
       <DependentUpon>201903190949061_fish2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291914368_fishphoto.resx">
+      <DependentUpon>201903291914368_fishphoto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
