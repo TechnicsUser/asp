@@ -57,14 +57,14 @@
                     </a>*@
             </div>
 
-            <h6>            @Html.DisplayFor(modelItem => item.Details)                       </h6>
+            <p>            @Html.DisplayFor(modelItem => item.Details)                       </p>
 
             @if(User.Identity.Name == item.UploadedBy) {
                 <div>
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CoralId })*@
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FishId })
                 </div>
 
-                @*@Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.FishId })
 
                 }
 
@@ -99,12 +99,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ScientificName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Details)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo)
-        </th>
+   
         <th>
             @Html.DisplayNameFor(model => model.UploadedBy)
         </th>
@@ -167,12 +162,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ScientificName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Details)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo)
-            </td>
+            
+           
             <td>
                 @Html.DisplayFor(modelItem => item.UploadedBy)
             </td>
@@ -230,3 +221,9 @@
 
     }
 </script>
+<style>
+    .item > img {
+        /*width: 150px;
+        height: 100px;*/
+    }
+</style>

@@ -1,4 +1,7 @@
-﻿@model WebApplication9.Models.Fish
+﻿@using WebApplication9.Models;
+
+
+@model WebApplication9.Models.Fish
 
 @{
     ViewBag.Title = "Edit";
@@ -6,12 +9,25 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("Edit", "Fish", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-{
+@using(Html.BeginForm("Edit", "Fish", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Fish</h4>
+
+    @*@foreach(var item in ViewBag.fl as List<fishPhoto>) {
+        <img src=@item />
+
+
+        }*@
+    @for(int i = 0; i < ViewBag.count; i++) {
+        <img src="@Url.Action("FishPhoto", "Fish", new { id = Model.FishId, number = i  })" />
+
+
+        }
+
+   
+
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.FishId)
@@ -79,18 +95,23 @@
             @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(m => m.Photo, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
 
-            <label for="files">Select Image</label>
-
             <input type="file" name="FishPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" multiple />
 
-            @*<input id="files" style="visibility:hidden;" type="file">*@
         </div>
     </div>
 
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    @*<input type='file' multiple />*@
+
+    <div id="myImg">
+    </div>
     <div class="form-group">
         @Html.LabelFor(model => model.UploadedBy, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -197,8 +218,31 @@
         </div>
     </div>
 </div>
-}
+    }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    $(function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                for (var i = 0; i < this.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[i]);
+                }
+            }
+        });
+    });
+
+    function imageIsLoaded(e) {
+        $('#myImg').append('<img src=' + e.target.result + '>');
+    }
+</script>
+<style>
+     img {
+        width: 250px;
+        height: 200px;
+    }
+</style>

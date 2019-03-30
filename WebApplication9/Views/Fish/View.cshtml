@@ -175,10 +175,19 @@
             @ViewBag.thisFish.Details
         </h2>
         <hr><br />
-            <h4>
-                @ViewBag.thisFish.Price
-            </h4>
+        <h4>
+            @ViewBag.thisFish.Price
+        </h4>
         <br />
+
+        @if(User.Identity.Name == @ViewBag.thisFish.UploadedBy) {
+            <div>
+                @Html.ActionLink("Edit", "Edit", new { id = @ViewBag.thisFish.FishId })
+            </div>
+
+            @Html.ActionLink("Delete", "Delete", new { id = @ViewBag.thisFish.FishId })
+
+            }
         @*<img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
         <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
 

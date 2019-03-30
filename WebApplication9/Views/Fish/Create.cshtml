@@ -9,98 +9,83 @@
 @using(Html.BeginForm("Create", "Fish", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Fish</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TankSize, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.TankSize, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TankSize, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Flow, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-horizontal">
+        <h4>Fish</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Flow, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Flow, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Food, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TankSize, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Food, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Food, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.TankSize, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TankSize, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Flow, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.Flow, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Flow, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Food, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.Food, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Food, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Growth, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.Growth, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Growth, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Growth, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ScientificName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Growth, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Growth, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ScientificName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ScientificName, "", new { @class = "text-danger" })
             </div>
-        </div>*@
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ScientificName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ScientificName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ScientificName, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
             </div>
-        </div>*@
-    <div class="form-group">
-        @Html.LabelFor(m => m.Photo, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-
-            <input type="file" name="FishPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" multiple />
-
         </div>
-    </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    @*<input type='file' multiple />*@
- 
-        <div id="myImg"   width="50" height="50">
-        </div>
- 
 
         @*<div class="form-group">
                 @Html.LabelFor(model => model.UploadedBy, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -150,7 +135,7 @@
                 </div>
             </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Likes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Likes, new { htmlAttributes = new { @class = "form-control" } })
@@ -172,7 +157,7 @@
                 @Html.EditorFor(model => model.Views, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Views, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.SoldOut, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -201,6 +186,22 @@
                 @Html.ValidationMessageFor(model => model.FishAvailableFrom, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Photo, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+
+                <input type="file" name="FishPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" multiple />
+
+            </div>
+        </div>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        @*<input type='file' multiple />*@
+
+        <div id="myImg">
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -209,36 +210,31 @@
         </div>
     </div>
     }
-    <form method=post enctype=multipart/form-data>
-        <p>
-            <input type=file name=file id=selected onclick=printFiles() multiple>
-            <input type=submit value=Upload>
-        </p>
-    </form>
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
 
-    <script>
-        $(function () {
-            $(":file").change(function () {
-                if (this.files && this.files[0]) {
-                    for (var i = 0; i < this.files.length; i++) {
-                        var reader = new FileReader();
-                        reader.onload = imageIsLoaded;
-                        reader.readAsDataURL(this.files[i]);
-                    }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    $(function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                for (var i = 0; i < this.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[i]);
                 }
-            });
+            }
         });
+    });
 
-        function imageIsLoaded(e) {
-            $('#myImg').append('<img src=' + e.target.result + '>');
-        }
-    </script>
+    function imageIsLoaded(e) {
+        $('#myImg').append('<img src=' + e.target.result + '>');
+    }
+</script>
 <style>
     #myImg > img {
-        width : 250px ;
-        height : 200px;
+        width: 250px;
+        height: 200px;
     }
 </style>
