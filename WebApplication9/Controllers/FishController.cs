@@ -187,12 +187,45 @@ namespace WebApplication9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]/* Flow,Food,Growth,*/
-        public async Task<ActionResult> Edit([Bind(Include = "FishId,Type,TankSize,Name,ScientificName,Details,Photo,UploadedBy,UploadedOn,Price,Size,FishSize,CommentId,Likes,DisLikes,Views,SoldOut,FishAvailable,FishAvailableFrom")] Fish fish)
+        public async Task<ActionResult> Edit([Bind(Include = "FishPhoto,FishId,Type,TankSize,Name,ScientificName,Details,Photo,UploadedBy,UploadedOn,Price,Size,FishSize,CommentId,Likes,DisLikes,Views,SoldOut,FishAvailable,FishAvailableFrom")] Fish fish)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(fish).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+
+                byte[] imageData = null;
+                if(Request.Files.Count > 0) {
+
+
+                    for(int i = 0; i < Request.Files.Count; i++) {
+                        var hpf = Request.Files[i];
+                        using(var binary = new BinaryReader(hpf.InputStream)) {
+                            imageData = binary.ReadBytes(hpf.ContentLength);
+                            }
+
+                        fishPhoto cp = new fishPhoto();
+                        cp.UserId = User.Identity.GetUserId();
+                        cp.Photo = imageData;
+                        //cp.FishPhotoId = fish.FishId;
+                        cp.FishId = fish.FishId;
+                        cp.Views = 0;
+                        cp.Likes = 0;
+                        cp.DisLikes = 0;
+                        db2.FishPhoto.Add(cp);
+                        db2.SaveChanges();
+                        }
+
+
+
+                    }
+
+
+                //var CredID = (from sn3 in db2.FishPhoto
+                //              where sn3.FishId == fish.FishId
+                //              select sn3.Photo).First();
+                //db2.Entry(fish).Entity.Photo = CredID;
+
+                db2.Entry(fish).State = EntityState.Modified;
+                await db2.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(fish);
