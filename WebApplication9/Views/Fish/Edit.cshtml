@@ -21,12 +21,13 @@
 
         }*@
     @for(int i = 0; i < ViewBag.count; i++) {
-        <img src="@Url.Action("FishPhoto", "Fish", new { id = Model.FishId, number = i  })" />
+        <img id="@i" data-bind="@Model.FishId" src="@Url.Action("FishPhoto", "Fish", new { id = Model.FishId, number = i  })" />
 
 
         }
 
-   
+
+    <img src="~/Images/noImg.png" class="remove-img"/>
 
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -239,6 +240,43 @@
     function imageIsLoaded(e) {
         $('#myImg').append('<img src=' + e.target.result + '>');
     }
+
+
+    $('img').click(function (e) {
+
+        var result = confirm("Want to delete?");
+        if (result) {
+            //Logic to delete the item
+           var id = $(this).attr("id"); // now we need the data-id to retrieve the identifier for the item to delete              
+            var num = $(this).attr("data-bind");
+            $.post("/Fish/DeleteItem", { id: id , num :num });
+           // var id = model.Id; //if you want to pass an Id parameter
+ 
+            $(this).remove();
+
+        }
+
+        //If you want to remove all images
+        //$(this).parent().find('img').remove();
+    });
+
+    function confirmDeleteVersion() {
+        var recordToDelete = $(this).attr("data-id"); // now we need the data-id to retrieve the identifier for the item to delete              
+        $("#dialog-confirm").dialog({
+            resizable: false,
+            height: 200,
+            modal: true,
+            buttons: {
+                "Delete": function () {
+                    $(this).dialog("close");
+                    $.post("/Fish/DeleteItem", { id: recordToDelete }, DeleteSuccessfull);
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    };
 </script>
 <style>
      img {

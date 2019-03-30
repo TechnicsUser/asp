@@ -264,7 +264,19 @@ namespace WebApplication9.Controllers {
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+        [HttpPost, ActionName("DeleteItem")]
+        public void DeleteItem(int id, int num) {
+            //find photo
+            List<fishPhoto> fl = db2.FishPhoto.Where(x => x.FishId == num).ToList();
 
+
+            //remove
+            db2.FishPhoto.Remove(fl[id]);
+            //update
+            db2.SaveChangesAsync();
+
+
+            }
         protected override void Dispose(bool disposing) {
             if(disposing) {
                 db.Dispose();
