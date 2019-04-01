@@ -191,7 +191,10 @@ namespace WebApplication9.Controllers {
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]/* Flow,Food,Growth,*/
-        public async Task<ActionResult> Edit([Bind(Include = "FishPhoto,FishId,Type,TankSize,Name,ScientificName,Details,Photo,UploadedBy,UploadedOn,Price,Size,FishSize,CommentId,Likes,DisLikes,Views,SoldOut,FishAvailable,FishAvailableFrom")] Fish fish) {
+        //[Bind(Exclude = "CommentId,Likes,DisLikes,Views,UploadedBy, UploadedOn", Include = "FishPhoto,FishId,Type,TankSize,Name,ScientificName,Details,Photo,Price,Size,FishSize,SoldOut,FishAvailable,FishAvailableFrom")]
+        //[Bind(Include = "Type,TankSize,Name,ScientificName,Details,Price,FishSize,SoldOut,FishAvailable,FishAvailableFrom")]
+        public async Task<ActionResult> Edit([Bind(Include = "FishId,Type,TankSize,Name,ScientificName,Details,Photo,Price,Size,FishSize,SoldOut,FishAvailable,FishAvailableFrom")]
+Fish fish) {
             if(ModelState.IsValid) {
 
                 byte[] imageData = null;
@@ -225,9 +228,11 @@ namespace WebApplication9.Controllers {
                 //              where sn3.FishId == fish.FishId
                 //              select sn3.Photo).First();
                 //db2.Entry(fish).Entity.Photo = CredID;
+                // fish.UploadedBy = User.Identity.Name;
+             ModelState.Remove("UploadedBy"); // This will remove the key 
+                                      db.Entry(fish).State = EntityState.Modified;
 
-                db2.Entry(fish).State = EntityState.Modified;
-                await db2.SaveChangesAsync();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
                 }
             return View(fish);
