@@ -171,14 +171,26 @@
     </div>
     <div>
 
-        <h2>
+        <p>
             @ViewBag.thisFish.Details
-        </h2>
+        </p>
         <hr><br />
         <h4>
-            @ViewBag.thisFish.Price
+            Price : € @ViewBag.thisFish.Price
         </h4>
-        <br />
+        <h4>
+            Likes : @ViewBag.thisFish.Likes
+        </h4>
+        <h4>
+            Views : @ViewBag.thisFish.Views
+        </h4>
+        <h4>
+            Contact : @ViewBag.thisFish.UploadedBy
+        </h4>
+        <h4>
+            Sold  : @ViewBag.thisFish.SoldOut
+        </h4>
+        <hr><br />
 
         @if(User.Identity.Name == @ViewBag.thisFish.UploadedBy) {
             <div>
@@ -272,6 +284,12 @@
 
 
     </script>
+<style>
+     img {
+        width: 150px;
+        height: 220px;
+    }
+</style>
     @*<h2>
              @Html.DisplayFor(model => model.Name)
          </h2>
