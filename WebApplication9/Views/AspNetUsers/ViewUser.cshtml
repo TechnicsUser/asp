@@ -119,30 +119,31 @@
             @{int x = 0;}
 
             <h2>
-                @Model.UserName; </h2>
+                @Model.UserName;
+            </h2>
             <hr><br />
             <h4>
                 @Model.FirstName
             </h4>
 
-         
-
-                @if(Model.UserPhoto != null) {
-
-                    var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.UserPhoto)}";
-                    <div>
 
 
-                         <img class="myImg" src="@imgSrc" alt="@x" id="@x" onclick="popUp(this, @x)">
-                        @{x++;}
-                    </div>
-                    }
-             
+            @if(Model.UserPhoto != null) {
+
+                var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.UserPhoto)}";
+                <div>
+
+
+                    <img class="myImg" src="@imgSrc" alt="@x" id="@x" onclick="popUp(this, @x)">
+                    @{x++;}
+                </div>
+                }
+
             @*<div class=" icon-next" role="alert">
-                    <div class="alert alert-warning d-flex flex-row">
-                        Enter a valid email address
-                    </div>
-                </div>*@
+                <div class="alert alert-warning d-flex flex-row">
+                    Enter a valid email address
+                </div>
+            </div>*@
 
             <!-- The Modal -->
             <div id="myModal" class="modal">
@@ -162,6 +163,9 @@
 
 
         </div>
+        Fish Adds : @ViewBag.flSize;
+        Coral Adds : @ViewBag.clSize;
+
     </div>
     <div>
 

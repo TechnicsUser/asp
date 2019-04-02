@@ -14,6 +14,8 @@ namespace WebApplication9.Controllers
     public class AspNetUsersController : Controller
     {
         private userEntities1 db = new userEntities1();
+        private ApplicationDbContext db2 = new ApplicationDbContext();
+
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index() {
@@ -24,7 +26,15 @@ namespace WebApplication9.Controllers
         // GET: AspNetUsers
    
         public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
+
             AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+
+            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == aspNetUser.UserName).ToList();
+            ViewBag.flSize = fl.Count;
+            List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == aspNetUser.UserName).ToList();
+            ViewBag.clSize = fl.Count;
+
+
 
 
             return View(aspNetUser);

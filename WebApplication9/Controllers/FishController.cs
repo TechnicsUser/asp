@@ -90,7 +90,7 @@ namespace WebApplication9.Controllers {
                 await db.SaveChangesAsync();
 
                 byte[] imageData = null;
-                if(Request.Files.Count >= 1) {
+                if(Request.Files.Count > 0 && Request.Files[0].ContentLength > 0) {
                     for(int i = 0; i < Request.Files.Count; i++) {
                         var hpf = Request.Files[i];
                         using(var binary = new BinaryReader(hpf.InputStream)) {

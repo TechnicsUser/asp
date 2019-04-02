@@ -7,14 +7,31 @@
 <h2>Index</h2>
 @foreach(var item in Model) {
     if(item.UserName != null) {
+        var imgSrc = "";
+        try {
+              imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(item.UserPhoto)}";
+
+            }
+        catch {
+              imgSrc = "../Images/noImg.png";
+
+            }
+
 
         //onclick="f1(@item.Id, this)"
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" >
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.Id, this)">
     <h4>        @Html.DisplayFor(modelItem => item.UserName)    </h4>
     <hr>
     <h5>        @Html.DisplayFor(modelItem => item.FirstName)    </h5>
 
-    <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
+    <img class="myImg" src="@imgSrc"  height="50" style="width:160px;height:160px; background: #FFFFFF;
+    margin: auto;
+    -moz-border-radius: 60px;
+    border-radius: 100px;
+    padding: 6px;
+    box-shadow: 0px 0px 20px #888;"/>
+
+    @*<img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />*@
 
     <h6>            @Html.DisplayFor(modelItem => item.PhoneNumber)                       </h6>
 

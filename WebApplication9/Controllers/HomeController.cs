@@ -18,14 +18,15 @@ namespace WebApplication9.Controllers {
         [MessagesFilter]
 
         public ActionResult Index() {
+            //ViewData["Message"] = "Your contact page.";
 
             userEntities1 db = new userEntities1();
 
-            var movies = from m in db.AspNetUsers
+            var users = from m in db.AspNetUsers
                          where m.LocationLat != null
                          select m;
 
-            return View(movies.ToList());
+            return View(users.ToList());
             // return View();
             }
 
@@ -33,11 +34,11 @@ namespace WebApplication9.Controllers {
 
             userEntities1 db = new userEntities1();
 
-            var movies = from m in db.AspNetUsers
-                         where m.LocationLat != null
+            var users = from m in db.AspNetUsers
+                         where m.Id != null
                          select m;
 
-            return View(movies.ToList());
+            return View(users.ToList());
             // return View();
             }
 
@@ -47,19 +48,19 @@ namespace WebApplication9.Controllers {
 
                 String userId = User.Identity.GetUserId();
 
-                if(userId == null) {
-                    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+                //if(userId == null) {
+                //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
 
-                    byte[] imageData = null;
-                    FileInfo fileInfo = new FileInfo(fileName);
-                    long imageFileLength = fileInfo.Length;
-                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                    BinaryReader br = new BinaryReader(fs);
-                    imageData = br.ReadBytes((int)imageFileLength);
+                //    byte[] imageData = null;
+                //    FileInfo fileInfo = new FileInfo(fileName);
+                //    long imageFileLength = fileInfo.Length;
+                //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                //    BinaryReader br = new BinaryReader(fs);
+                //    imageData = br.ReadBytes((int)imageFileLength);
 
-                    return File(imageData, "image/png");
+                //    return File(imageData, "image/png");
 
-                    }
+                //    }
                 // to get the user details to load user Image    
                 var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
                 var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();

@@ -153,7 +153,7 @@ namespace WebApplication9.Controllers
             if(ModelState.IsValid) {
                 // To convert the user uploaded Photo as Byte Array before save to DB 
                 byte[] imageData = null;
-                if(Request.Files.Count > 0) {
+                if(Request.Files.Count > 0 && Request.Files[0].ContentLength > 0) {
                     HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
 
                     using(var binary = new BinaryReader(poImgFile.InputStream)) {
