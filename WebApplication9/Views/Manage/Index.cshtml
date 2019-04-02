@@ -9,7 +9,7 @@
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
-         @*See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>*@
+@*See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>*@
 <h1>
     Your Profile Image ..
 
@@ -26,6 +26,9 @@
     }
 <div>
     <h4>Change your account settings</h4>
+    <div>
+        <input type="file" name="FishPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" multiple />
+    </div>
     <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
@@ -103,3 +106,23 @@
         </dd>
     </dl>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+    $(function () {
+        $(":file").change(function () {
+            window.alert("sometext");
+            imageIsLoaded();
+
+        });
+    });
+    function imageIsLoaded( ) {
+@{
+}
+    }
+  @*@Url.Action("Manage", "ChangeImage");
+            },*@
+
+
+
+</script>

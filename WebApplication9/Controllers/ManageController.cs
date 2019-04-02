@@ -98,6 +98,12 @@ namespace WebApplication9.Controllers
             }
             return RedirectToAction("ManageLogins", new { Message = message });
         }
+        
+             public ActionResult ChangeImage() {
+
+
+            return View();
+            }
 
         //
         // GET: /Manage/AddPhoneNumber
