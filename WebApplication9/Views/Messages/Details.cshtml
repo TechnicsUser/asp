@@ -53,33 +53,10 @@
             @Html.DisplayFor(model => model.Content)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDismissed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDismissed)
-        </dd>
-     
-        <dt>
-            @Html.DisplayNameFor(model => model.RecieverDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RecieverDeleted)
-        </dd>
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.SenderDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SenderDeleted)
-        </dd>
+   
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MessageId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

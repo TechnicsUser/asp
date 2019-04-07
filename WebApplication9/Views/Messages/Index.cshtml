@@ -4,8 +4,8 @@
     ViewBag.Title = "Messages";
 }
 
-
-<p>
+<h2>Messages</h2>
+<p class="">
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -31,32 +31,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageFrom)
-        </td>
+    @foreach(var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageFrom)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDismissed)
-        </td>
-        <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDismissed)
+            </td>
+            <td>
 
-            @Html.ActionLink("View", "Details", new { id = item.MessageId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
-        </td>
-    </tr>
-}
+                @Html.ActionLink("View", "Details", new { id = item.MessageId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
+            </td>
+        </tr>
+        }
 
 </table>

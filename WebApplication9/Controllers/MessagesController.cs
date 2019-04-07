@@ -77,36 +77,7 @@ namespace WebApplication9.Controllers
             return View(messages);
         }
 
-        // GET: Messages/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Messages messages = db.Messages.Find(id);
-            if (messages == null)
-            {
-                return HttpNotFound();
-            }
-            return View(messages);
-        }
-
-        // POST: Messages/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MessageId,Title,MessageType,MessageTo,MessageFrom,UserId,IsDismissed")] Messages messages)
-        {
-            if (ModelState.IsValid)
-            {
-                //db.Entry(messages).State = EntityState.Modified;
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
-            }
-            return View(messages);
-        }
+ 
 
         // GET: Messages/Delete/5
         public ActionResult Delete(int? id)
