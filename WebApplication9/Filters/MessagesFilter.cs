@@ -18,6 +18,7 @@ namespace WebApplication9.Filters {
             var context = new SiteDataContext();
             var messages = context.Messages
                  .Where(n => n.MessageTo == userId)
+                 .Where(x => x.RecieverDeleted == false)
                 .Where(n => n.Title != null)
                .Where(n => n.IsDismissed == false)
                 .GroupBy(n => n.MessageType)

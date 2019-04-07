@@ -11,29 +11,6 @@
     <h4>Messages</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MessageType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MessageType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MessageTo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MessageTo)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.MessageFrom)
@@ -44,19 +21,30 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserId)
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsDismissed)
+            @Html.DisplayNameFor(model => model.Content)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsDismissed)
+            @Html.DisplayFor(model => model.Content)
         </dd>
 
     </dl>

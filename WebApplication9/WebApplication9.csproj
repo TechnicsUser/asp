@@ -40,7 +40,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -245,6 +245,18 @@
     <Compile Include="Migrations\201904041814243_web.cs" />
     <Compile Include="Migrations\201904041814243_web.Designer.cs">
       <DependentUpon>201904041814243_web.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904070737255_messageEdit.cs" />
+    <Compile Include="Migrations\201904070737255_messageEdit.Designer.cs">
+      <DependentUpon>201904070737255_messageEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904070743513_messageEdit1.cs" />
+    <Compile Include="Migrations\201904070743513_messageEdit1.Designer.cs">
+      <DependentUpon>201904070743513_messageEdit1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904070812179_messagesModelChanged.cs" />
+    <Compile Include="Migrations\201904070812179_messagesModelChanged.Designer.cs">
+      <DependentUpon>201904070812179_messagesModelChanged.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -498,6 +510,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904041814243_web.resx">
       <DependentUpon>201904041814243_web.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904070737255_messageEdit.resx">
+      <DependentUpon>201904070737255_messageEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904070743513_messageEdit1.resx">
+      <DependentUpon>201904070743513_messageEdit1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904070812179_messagesModelChanged.resx">
+      <DependentUpon>201904070812179_messagesModelChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,10 +19,18 @@ namespace WebApplication9.Views.Notifications
         // GET: Notifications
         public async Task<ActionResult> Index()
         {
-             var id = User.Identity.GetUserId();
-             List<Notification> ml = await db.Notifications.Where(x => x.UserId == id).ToListAsync();
 
-            return View(ml);
+            if(User.Identity.IsAuthenticated) {
+
+
+                var id = User.Identity.GetUserId();
+                List<Notification> ml = await db.Notifications.Where(x => x.UserId == id).ToListAsync();
+
+                return View(ml);
+                }
+            return RedirectToAction("Login", "Account");
+
+
         }
 
         // GET: Notifications/Details/5
@@ -43,7 +51,15 @@ namespace WebApplication9.Views.Notifications
         // GET: Notifications/Create
         public ActionResult Create()
         {
-            return View();
+            if(User.Identity.IsAuthenticated) {
+
+
+                return View();
+                }
+            return RedirectToAction("Login", "Account");
+
+
+         
         }
 
         // POST: Notifications/Create

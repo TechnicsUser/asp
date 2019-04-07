@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<WebApplication9.Models.Messages>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Messages";
 }
 
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,19 +11,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageTo)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.MessageFrom)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsDismissed)
@@ -35,27 +34,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageTo)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.MessageFrom)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.UserId)
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsDismissed)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MessageId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MessageId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MessageId })
+
+            @Html.ActionLink("View", "Details", new { id = item.MessageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
         </td>
     </tr>
 }
