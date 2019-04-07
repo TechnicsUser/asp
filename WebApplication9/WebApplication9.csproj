@@ -45,6 +45,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -241,6 +242,10 @@
     <Compile Include="Migrations\201903291914368_fishphoto.Designer.cs">
       <DependentUpon>201903291914368_fishphoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904041814243_web.cs" />
+    <Compile Include="Migrations\201904041814243_web.Designer.cs">
+      <DependentUpon>201904041814243_web.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -351,6 +356,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\coralLogger - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-2.2.4-vsdoc.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
@@ -382,6 +388,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -447,7 +454,6 @@
     <Content Include="Views\CoralConnections\Edit.cshtml" />
     <Content Include="Views\CoralConnections\Index.cshtml" />
     <Content Include="Views\Corals\View.cshtml" />
-    <Content Include="Views\Home\users.cshtml" />
     <Content Include="Views\AspNetUsers\Create.cshtml" />
     <Content Include="Views\AspNetUsers\Delete.cshtml" />
     <Content Include="Views\AspNetUsers\Details.cshtml" />
@@ -489,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903291914368_fishphoto.resx">
       <DependentUpon>201903291914368_fishphoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904041814243_web.resx">
+      <DependentUpon>201904041814243_web.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

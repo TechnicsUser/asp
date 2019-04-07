@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -17,7 +18,10 @@ namespace WebApplication9.Controllers
         // GET: Messages
         public ActionResult Index()
         {
-            return View(db.Messages.ToList());
+            var id = User.Identity.GetUserId();
+            List<Messages> ml = db.Messages.Where(x => x.MessageTo == id).ToList();
+
+            return View(ml);
         }
 
         // GET: Messages/Details/5

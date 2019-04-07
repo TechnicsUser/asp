@@ -17,8 +17,9 @@ namespace WebApplication9.Filters {
 
             var context = new SiteDataContext();
             var messages = context.Messages
-                // .Where(n => n.UserId == userId)test
+                 .Where(n => n.MessageTo == userId)
                 .Where(n => n.Title != null)
+               .Where(n => n.IsDismissed == false)
                 .GroupBy(n => n.MessageType)
                 .Select(g => new MessagesViewModel {
                     Count = g.Count(),

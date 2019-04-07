@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication9.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WebApplication9.Views.Notifications
 {
@@ -18,7 +19,10 @@ namespace WebApplication9.Views.Notifications
         // GET: Notifications
         public async Task<ActionResult> Index()
         {
-            return View(await db.Notifications.ToListAsync());
+             var id = User.Identity.GetUserId();
+             List<Notification> ml = await db.Notifications.Where(x => x.UserId == id).ToListAsync();
+
+            return View(ml);
         }
 
         // GET: Notifications/Details/5

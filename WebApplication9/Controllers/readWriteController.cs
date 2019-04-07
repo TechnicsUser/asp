@@ -13,11 +13,11 @@ namespace WebApplication9.Controllers
         public ActionResult Index() {
             userEntities1 db = new userEntities1();
 
-            var movies = from m in db.AspNetUsers
+            var u = from m in db.AspNetUsers
                          where m.LocationLat != null
                          select m;
 
-            return View(movies.ToList());
+            return View(u.ToList());
 
             }
 
