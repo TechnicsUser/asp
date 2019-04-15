@@ -73,7 +73,13 @@ namespace WebApplication9.Controllers {
 
         // GET: Fish/Create
         public ActionResult Create() {
-            return View();
+            var model = new Fish()
+            {
+
+                TankSize = Fish.TankSizeRequirement.None,
+            };
+return View(model);
+           // return View();
             }
 
         // POST: Fish/Create
