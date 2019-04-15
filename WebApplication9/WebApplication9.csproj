@@ -230,33 +230,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Bootstrap.cs" />
-    <Compile Include="Migrations\201903190946471_Initial.cs" />
-    <Compile Include="Migrations\201903190946471_Initial.Designer.cs">
-      <DependentUpon>201903190946471_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201904151142575_inital.cs" />
+    <Compile Include="Migrations\201904151142575_inital.Designer.cs">
+      <DependentUpon>201904151142575_inital.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903190949061_fish2.cs" />
-    <Compile Include="Migrations\201903190949061_fish2.Designer.cs">
-      <DependentUpon>201903190949061_fish2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903291914368_fishphoto.cs" />
-    <Compile Include="Migrations\201903291914368_fishphoto.Designer.cs">
-      <DependentUpon>201903291914368_fishphoto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904041814243_web.cs" />
-    <Compile Include="Migrations\201904041814243_web.Designer.cs">
-      <DependentUpon>201904041814243_web.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904070737255_messageEdit.cs" />
-    <Compile Include="Migrations\201904070737255_messageEdit.Designer.cs">
-      <DependentUpon>201904070737255_messageEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904070743513_messageEdit1.cs" />
-    <Compile Include="Migrations\201904070743513_messageEdit1.Designer.cs">
-      <DependentUpon>201904070743513_messageEdit1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904070812179_messagesModelChanged.cs" />
-    <Compile Include="Migrations\201904070812179_messagesModelChanged.Designer.cs">
-      <DependentUpon>201904070812179_messagesModelChanged.cs</DependentUpon>
+    <Compile Include="Migrations\201904151147393_seed.cs" />
+    <Compile Include="Migrations\201904151147393_seed.Designer.cs">
+      <DependentUpon>201904151147393_seed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -499,26 +479,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903190946471_Initial.resx">
-      <DependentUpon>201903190946471_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904151142575_inital.resx">
+      <DependentUpon>201904151142575_inital.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903190949061_fish2.resx">
-      <DependentUpon>201903190949061_fish2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903291914368_fishphoto.resx">
-      <DependentUpon>201903291914368_fishphoto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904041814243_web.resx">
-      <DependentUpon>201904041814243_web.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904070737255_messageEdit.resx">
-      <DependentUpon>201904070737255_messageEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904070743513_messageEdit1.resx">
-      <DependentUpon>201904070743513_messageEdit1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904070812179_messagesModelChanged.resx">
-      <DependentUpon>201904070812179_messagesModelChanged.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904151147393_seed.resx">
+      <DependentUpon>201904151147393_seed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,6 +7,7 @@ namespace WebApplication9.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<WebApplication9.Models.SiteDataContext>
     {
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
@@ -14,6 +15,15 @@ namespace WebApplication9.Migrations
 
         protected override void Seed(WebApplication9.Models.SiteDataContext context)
         {
+            context.Corals.AddOrUpdate(x => x.CoralId,
+        new Models.Coral() { CoralId = 1, Name = "Toadstool" },
+        new Models.Coral() { CoralId = 2, Name = "Kenya Tree", },
+        new Models.Coral() { CoralId = 3, Name = "Mushroom" },
+        new Models.Coral() { CoralId = 4, Name = "Gsp" },
+                new Models.Coral() { CoralId = 5, Name = "Psp" }
+
+
+        );
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
