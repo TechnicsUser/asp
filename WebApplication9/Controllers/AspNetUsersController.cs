@@ -16,6 +16,7 @@ namespace WebApplication9.Controllers
         private userEntities1 db = new userEntities1();
         private ApplicationDbContext db2 = new ApplicationDbContext();
 
+        [Authorize]
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index() {

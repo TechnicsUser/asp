@@ -3,7 +3,7 @@ namespace WebApplication9.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class inital : DbMigration
+    public partial class test : DbMigration
     {
         public override void Up()
         {
@@ -169,38 +169,13 @@ namespace WebApplication9.Migrations
                     })
                 .PrimaryKey(t => t.NotificationId);
             
-            CreateTable(
-                "dbo.AspNetUsers",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        CssTheme = c.String(),
-                        Email = c.String(),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        IdUserName = c.String(),
-                        LocationLon = c.String(),
-                        LocationLat = c.String(),
-                        UserPhoto = c.Binary(),
-                    })
-                .PrimaryKey(t => t.Id);
+           
             
         }
         
         public override void Down()
         {
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Notifications");
+             DropTable("dbo.Notifications");
             DropTable("dbo.Messages");
             DropTable("dbo.fishPhotoes");
             DropTable("dbo.Fish");

@@ -18,17 +18,16 @@ namespace WebApplication9.Controllers {
         [MessagesFilter]
 
         public ActionResult Index() {
-            //ViewData["Message"] = "Your contact page.";
 
             userEntities1 db = new userEntities1();
 
             var users = from m in db.AspNetUsers
-                         where m.LocationLat != null
-                         select m;
+                        where m.LocationLat != null
+                        select m;
 
             return View(users.ToList());
-            // return View();
-            }
+        }
+
 
         public ActionResult Users() {
 
@@ -39,7 +38,6 @@ namespace WebApplication9.Controllers {
                          select m;
 
             return View(users.ToList());
-            // return View();
             }
 
         public FileContentResult UserPhotos() {
@@ -48,20 +46,6 @@ namespace WebApplication9.Controllers {
 
                 String userId = User.Identity.GetUserId();
 
-                //if(userId == null) {
-                //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
-
-                //    byte[] imageData = null;
-                //    FileInfo fileInfo = new FileInfo(fileName);
-                //    long imageFileLength = fileInfo.Length;
-                //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                //    BinaryReader br = new BinaryReader(fs);
-                //    imageData = br.ReadBytes((int)imageFileLength);
-
-                //    return File(imageData, "image/png");
-
-                //    }
-                // to get the user details to load user Image    
                 var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
                 var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
 
@@ -80,7 +64,6 @@ namespace WebApplication9.Controllers {
 
                 }
             }
-        [Authorize]
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
 
