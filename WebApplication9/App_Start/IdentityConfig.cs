@@ -29,12 +29,12 @@ namespace WebApplication9
 
 
 
-            var apiKey = "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";
+            var apiKey = "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";
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("test@example.com", "Example User");
+            var from = new EmailAddress("admin@reef-connect.com", "Example User");
             var subject = message.Subject;
-            var to = new EmailAddress(message.Destination, "Example User");
-            var plainTextContent = "and easy to do anywhere, even with C#";
+            var to = new EmailAddress(message.Destination, "Reef-Connect");
+            var plainTextContent = "welcome...";
             var htmlContent = message.Body;
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
