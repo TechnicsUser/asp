@@ -70,6 +70,7 @@ namespace WebApplication9.Controllers {
                 }
             return View(fish);
             }
+        [Authorize]
 
         // GET: Fish/Create
         public ActionResult Create() {

@@ -19,13 +19,23 @@ namespace WebApplication9.Controllers
         [Authorize]
 
         // GET: AspNetUsers
-        public async Task<ActionResult> Index() {
-            return View(await db.AspNetUsers.ToListAsync());
-            }
+        public ActionResult Index()
+        {
+            //return View(await db.AspNetUsers.ToListAsync());
+
+            userEntities1 db = new userEntities1();
+
+            var users = from m in db.AspNetUsers
+                        where m.LocationLat != null
+                        select m;
+
+            return View(users.ToList());
+
+        }
 
 
         // GET: AspNetUsers
-   
+
         public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
 
             AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
