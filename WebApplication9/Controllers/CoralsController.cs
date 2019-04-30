@@ -18,7 +18,7 @@ namespace WebApplication9.Controllers {
         // GET: Corals
         public ActionResult Index() {
             return View(db.Corals.ToList());
-            }
+        }
 
         public ActionResult View(int id) {
             SiteDataContext cp = new SiteDataContext();
@@ -27,11 +27,11 @@ namespace WebApplication9.Controllers {
             Coral thisCoral = db.Corals.Find(id);
             ViewBag.thisCoral = thisCoral;
             return View(rl);
-            }
+        }
 
         private ActionResult View(List<CoralPhoto> rl, Coral thisCoral) {
             throw new NotImplementedException();
-            }
+        }
 
 
 
@@ -45,7 +45,7 @@ namespace WebApplication9.Controllers {
 
 
                 return new FileContentResult(CredID, "image/jpeg");
-                }
+            }
             catch {
                 var CredID = (from sn3 in db.CoralPhoto
                               where sn3.CoralId == id
@@ -53,23 +53,24 @@ namespace WebApplication9.Controllers {
 
 
                 return new FileContentResult(CredID, "image/jpeg");
-                }
-
             }
+
+        }
 
         // GET: Corals/Details/5
         public ActionResult Details(int? id) {
-            if(id == null) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-            Coral coral = db.Corals.Find(id);
-            if(coral == null) {
-                return HttpNotFound();
-                }
-            return View(coral);
             }
+            Coral coral = db.Corals.Find(id);
+            if (coral == null) {
+                return HttpNotFound();
+            }
+            return View(coral);
+        }
 
         // GET: Corals/Create
+        [Authorize]
         public ActionResult Create() {
             return View();
             }

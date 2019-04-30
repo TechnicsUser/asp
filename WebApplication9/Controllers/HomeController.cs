@@ -29,6 +29,7 @@ namespace WebApplication9.Controllers {
             return View();
         }
 
+        [Authorize]
 
         public ActionResult Users() {
 
@@ -70,6 +71,7 @@ namespace WebApplication9.Controllers {
 
             return View();
             }
+        [Authorize]
 
         public ActionResult Contact() {
             ViewBag.Message = "Your contact page.";

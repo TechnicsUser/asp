@@ -7,127 +7,131 @@
     }
 
     footer {
-        position: relative;
-        margin-top: -2px; /* negative value of footer height */
+        position: center;
+        margin-top: -30px; /* negative value of footer height */
         height: 150px;
         clear: both;
         padding-top: 20px;
         color: #fff;
     } 
 </style>
-<footer class="page-footer font-small indigo" >
+<body>
+    <footer class="page-footer font-small indigo">
 
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
 
-        <!-- Grid row -->
-        <div class="row">
+            <!-- Grid row -->
+            <div class="row">
 
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
 
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Navigation</h5>
 
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Fish</a>
-                    </li>
-                    <li>
-                        <a href="#!">Coral</a>
-                    </li>
+                    <ul class="list-unstyled">
 
-                    <li>
-                        <a href="#!">Equipment</a>
-                    </li>
+                        <li>@Html.ActionLink("Fish", "Index", "Fish")</li>
 
-                    <li>
-                        <a href="#!">Forum</a>
-                    </li>
-                </ul>
+
+
+                        <li>@Html.ActionLink("Coral", "Index", "Corals")</li>
+
+
+
+                        <li>
+                            <a href="#!">Equipment</a>
+                        </li>
+
+                        <li>
+                            <a href="#!">Forum</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                @*<hr class="clearfix w-100 d-md-none">*@
+
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Reef Savers</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://www.coralrestoration.org/">Coral Restoration</a>
+
+                        </li>
+                        <li>
+                            <a href="https://www.adeproject.org/what-is-ade">ADE</a>
+                        </li>
+                        <li>
+                            <a href="https://www.volunteerworld.com/en/volunteer-abroad/coral-reef">Dream Opportunities</a>
+                        </li>
+                        <li>
+                            <a href="http://www.savecoralreefs.org/v2/">Save Coral Reefs</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                @*<hr class="clearfix w-100 d-md-none">*@
+
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Forums</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://www.reef2reef.com/">Reef2Reef</a>
+                        </li>
+                        <li>
+                            <a href="http://www.reefcentral.com/forums/">Reef Central</a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.nano-reef.com/forums/">Nano Reef</a>
+                        </li>
+                        <li>
+                            <a href="https://www.ultimatereef.net/">Ultimate Reef</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                @*<hr class="clearfix w-100 d-md-none">*@
+
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Account</a>
+                        </li>
+                        <li>@Html.ActionLink("Messages", "Index", "Messages")</li>
+
+
+
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
 
             </div>
-            <!-- Grid column -->
-            @*<hr class="clearfix w-100 d-md-none">*@
-
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Reef Savers</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="https://www.coralrestoration.org/">Coral Restoration</a>
-
-                    </li>
-                    <li>
-                        <a href="https://www.adeproject.org/what-is-ade">ADE</a>
-                    </li>
-                    <li>
-                        <a href="https://www.volunteerworld.com/en/volunteer-abroad/coral-reef">Dream Opportunities</a>
-                    </li>
-                    <li>
-                        <a href="http://www.savecoralreefs.org/v2/">Save Coral Reefs</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-            @*<hr class="clearfix w-100 d-md-none">*@
-
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-            @*<hr class="clearfix w-100 d-md-none">*@
-
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Account</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-
-                </ul>
-
-            </div>
-            <!-- Grid column -->
+            <!-- Grid row -->
 
         </div>
-        <!-- Grid row -->
 
-    </div>
-
-</footer>
-<!-- Footer -->
+    </footer>
+    <!-- Footer -->
+</body>

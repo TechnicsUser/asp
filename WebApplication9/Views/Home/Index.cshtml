@@ -44,11 +44,11 @@
             <li>Share what your local fish store has on sale.</li>
         </ul>
 
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Something fishy &raquo;</a>
-        </p>
+        <p class="btn btn-default">
+            @Html.ActionLink("Something fishy", "Index", "Fish")
+            </p>
 
-    </div>
+</div>
 
     <div class="col-md-3 col-sm-6" style="text-align-last:center;">
         <h2>Coral</h2>
@@ -62,9 +62,10 @@
                 <li>Create coral connections</li>
             </ul>
         </p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Eye candy &raquo;</a>
+        <p class="btn btn-default">
+            @Html.ActionLink("Eye candy", "Index", "Corals")
         </p>
+ 
     </div>
     <div class="col-md-3 col-sm-6  col-xs-12" style="text-align-last:center;">
         <h2>Equipment</h2>
@@ -77,8 +78,8 @@
                 <li>Coming soon </li>
             </ul>
         </p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">See more &raquo;</a>
+        <p class="btn btn-default">
+            @Html.ActionLink("See more", "Index", "Corals")
         </p>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12" style="text-align-last:center;">
@@ -92,9 +93,10 @@
                 <li>The beginner tips we all forget.</li>
             </ul>
         </p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">I'm in &raquo;</a>
+        <p class="btn btn-default">
+            @Html.ActionLink("I'm in ", "Index", "Corals")
         </p>
+ 
     </div>
 </div>
 
