@@ -21,8 +21,8 @@ namespace WebApplication9.Models
         public string LastName { get; set; }
         public string LocationLat { get; set; }
         public string LocationLon { get; set; }
-        public DateTime LastLoginTime { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public DateTime? LastLoginTime { get; set; }
+        public DateTime? RegistrationDate { get; set; }
 
 
 

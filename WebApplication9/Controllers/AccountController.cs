@@ -169,11 +169,11 @@ namespace WebApplication9.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                         }
                     }
-                        
+ 
                 var user = new ApplicationUser { UserPhoto = imageData, UserName = model.IdUserName,
                     IdUserName = model.IdUserName, Email = model.Email, LastName = model.LastName,
-              FirstName = model.FirstName, LocationLat = model.LocationLat, LocationLon = model.LocationLon
-                ,LastLoginTime = model.LastLoginTime,     RegistrationDate = @DateTime.Now
+              FirstName = model.FirstName, LocationLat = model.LocationLat, LocationLon = model.LocationLon,
+                    RegistrationDate = DateTime.Now.Date
                 };
 
                 //Here we pass the byte array to user context to store in db 
@@ -183,6 +183,7 @@ namespace WebApplication9.Controllers
                 if (result.Succeeded)
                 {
                     ApplicationDbContext db = new ApplicationDbContext();
+
 
                     Notification n = new Notification {
                         Title = "Welcome to the community " + @user.IdUserName + " !!!",

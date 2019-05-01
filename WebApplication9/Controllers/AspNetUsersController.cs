@@ -43,11 +43,12 @@ namespace WebApplication9.Controllers
 
         ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
 
-            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == id).ToList();
+            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
             ViewBag.flSize = fl.Count;
-            List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == id).ToList();
+            List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
             ViewBag.clSize = cl.Count;
             ViewBag.lastOnline = temp.LastLoginTime;
+            ViewBag.RegistrationDate = temp.RegistrationDate;
 
 
             return View(aspNetUser);
