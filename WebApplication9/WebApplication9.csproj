@@ -387,6 +387,7 @@
       <DependentUpon>myUsers.edmx</DependentUpon>
       <LastGenOutput>myUsers.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\myUsers.edmx.sql" />
     <Content Include="Models\myUsers.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>myUsers.edmx</DependentUpon>

@@ -170,7 +170,7 @@ namespace WebApplication9.Controllers
                         }
                     }
  
-                var user = new ApplicationUser { UserPhoto = imageData, UserName = model.IdUserName,
+                var user = new ApplicationUser {CssTheme = "Darkly", UserPhoto = imageData, UserName = model.IdUserName,
                     IdUserName = model.IdUserName, Email = model.Email, LastName = model.LastName,
               FirstName = model.FirstName, LocationLat = model.LocationLat, LocationLon = model.LocationLon,
                     RegistrationDate = DateTime.Now.Date
@@ -183,7 +183,7 @@ namespace WebApplication9.Controllers
                 if (result.Succeeded)
                 {
                     ApplicationDbContext db = new ApplicationDbContext();
-
+ 
 
                     Notification n = new Notification {
                         Title = "Welcome to the community " + @user.IdUserName + " !!!",

@@ -21,6 +21,7 @@ namespace WebApplication9.Controllers
         // GET: AspNetUsers
         public async Task<ActionResult> Index()
         {
+ 
             return View(await db.AspNetUsers.ToListAsync());
 
 
