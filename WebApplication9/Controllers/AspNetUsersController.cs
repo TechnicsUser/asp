@@ -38,14 +38,16 @@ namespace WebApplication9.Controllers
 
         public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
 
-            AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+         AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+         ApplicationDbContext db2 = new ApplicationDbContext();
 
-            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == aspNetUser.UserName).ToList();
+        ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
+
+            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == id).ToList();
             ViewBag.flSize = fl.Count;
-            List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == aspNetUser.UserName).ToList();
+            List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == id).ToList();
             ViewBag.clSize = cl.Count;
-
-
+            ViewBag.lastOnline = temp.LastLoginTime;
 
 
             return View(aspNetUser);
