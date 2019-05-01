@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication9.Models;
@@ -18,6 +20,7 @@ namespace WebApplication9.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
 
         public AccountController()
@@ -59,6 +62,7 @@ namespace WebApplication9.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -74,14 +78,19 @@ namespace WebApplication9.Controllers
             {
                 return View(model);
             }
-
+            
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
+                    ApplicationUser temp = db.Users.Where(x => x.UserName == model.Email).First();
+                    temp.LastLoginTime = System.DateTime.Now;
+                    db.SaveChanges();
                     return RedirectToLocal(returnUrl);
+
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -161,7 +170,11 @@ namespace WebApplication9.Controllers
                         }
                     }
                         
-                var user = new ApplicationUser { UserPhoto = imageData, UserName = model.IdUserName, IdUserName = model.IdUserName, Email = model.Email, LastName = model.LastName, FirstName = model.FirstName, LocationLat = model.LocationLat, LocationLon = model.LocationLon };
+                var user = new ApplicationUser { UserPhoto = imageData, UserName = model.IdUserName,
+                    IdUserName = model.IdUserName, Email = model.Email, LastName = model.LastName,
+              FirstName = model.FirstName, LocationLat = model.LocationLat, LocationLon = model.LocationLon
+                ,LastLoginTime = model.LastLoginTime,     RegistrationDate = @DateTime.Now
+                };
 
                 //Here we pass the byte array to user context to store in db 
                // user.UserPhoto = imageData;

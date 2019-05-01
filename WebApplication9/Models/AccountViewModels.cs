@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication9.Models
@@ -82,7 +83,9 @@ namespace WebApplication9.Models
         [Required]
 
         public string LastName { get; set; }
-       
+        public DateTime LastLoginTime { get; set; }
+        public DateTime RegistrationDate { get; set; }
+
 
         [Required]
         [EmailAddress]

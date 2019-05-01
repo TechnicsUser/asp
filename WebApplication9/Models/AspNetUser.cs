@@ -33,5 +33,7 @@ namespace WebApplication9.Models
         public string LocationLon { get; set; }
         public string LocationLat { get; set; }
         public byte[] UserPhoto { get; set; }
+  
+
     }
 }

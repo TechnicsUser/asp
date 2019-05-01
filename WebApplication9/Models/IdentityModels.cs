@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -20,6 +21,9 @@ namespace WebApplication9.Models
         public string LastName { get; set; }
         public string LocationLat { get; set; }
         public string LocationLon { get; set; }
+        public DateTime LastLoginTime { get; set; }
+        public DateTime RegistrationDate { get; set; }
+
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

@@ -43,7 +43,7 @@ namespace WebApplication9.Controllers
             List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == aspNetUser.UserName).ToList();
             ViewBag.flSize = fl.Count;
             List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == aspNetUser.UserName).ToList();
-            ViewBag.clSize = fl.Count;
+            ViewBag.clSize = cl.Count;
 
 
 
@@ -77,10 +77,11 @@ namespace WebApplication9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,IdUserName,LocationLon,LocationLat,UserPhoto")] AspNetUser aspNetUser)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,IdUserName,LocationLon,LocationLat,UserPhoto,LastLoginTime,RegistrationDate")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
+                
                 db.AspNetUsers.Add(aspNetUser);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

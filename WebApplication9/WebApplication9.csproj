@@ -289,9 +289,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Bootstrap.cs" />
-    <Compile Include="Migrations\201904281933508_test.cs" />
-    <Compile Include="Migrations\201904281933508_test.Designer.cs">
-      <DependentUpon>201904281933508_test.cs</DependentUpon>
+    <Compile Include="Migrations\201905011617495_login.cs" />
+    <Compile Include="Migrations\201905011617495_login.Designer.cs">
+      <DependentUpon>201905011617495_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011622099_login-force.cs" />
+    <Compile Include="Migrations\201905011622099_login-force.Designer.cs">
+      <DependentUpon>201905011622099_login-force.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011638020_login1.cs" />
+    <Compile Include="Migrations\201905011638020_login1.Designer.cs">
+      <DependentUpon>201905011638020_login1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011639348_login2.cs" />
+    <Compile Include="Migrations\201905011639348_login2.Designer.cs">
+      <DependentUpon>201905011639348_login2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -544,12 +556,21 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904281933508_test.resx">
-      <DependentUpon>201904281933508_test.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\201905011617495_login.resx">
+      <DependentUpon>201905011617495_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011622099_login-force.resx">
+      <DependentUpon>201905011622099_login-force.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011638020_login1.resx">
+      <DependentUpon>201905011638020_login1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011639348_login2.resx">
+      <DependentUpon>201905011639348_login2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

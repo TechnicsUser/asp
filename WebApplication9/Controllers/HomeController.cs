@@ -10,7 +10,7 @@ using WebApplication9.Filters;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers {
-    [RequireHttps]
+    //[RequireHttps]
 
     public class HomeController : Controller {
 
@@ -22,18 +22,6 @@ namespace WebApplication9.Controllers {
             return View();
         }
 
-        [Authorize]
-
-        //public ActionResult Users() {
-
-        //    userEntities1 db = new userEntities1();
-
-        //    var users = from m in db.AspNetUsers
-        //                 where m.Id != null
-        //                 select m;
-
-        //    return View(users.ToList());
-        //    }
 
         public FileContentResult UserPhotos() {
             if(User.Identity.IsAuthenticated) {
@@ -60,15 +48,13 @@ namespace WebApplication9.Controllers {
                 }
             }
         public ActionResult About() {
-            ViewBag.Message = "Your application description page.";
-
+ 
             return View();
             }
-        [Authorize]
+        //[Authorize]
 
         public ActionResult Contact() {
-            ViewBag.Message = "Your contact page.";
-
+ 
             return View();
             }
         }
