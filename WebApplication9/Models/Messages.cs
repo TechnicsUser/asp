@@ -37,7 +37,9 @@ namespace WebApplication9.Models {
         public bool RecieverDeleted { get; set; }
 
         public bool IsReported { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? DismissedOn { get; set; }
 
 
-        }
+    }
     }

@@ -18,8 +18,10 @@ namespace WebApplication9.Models {
         public string Action { get; set; }
         public string UserId { get; set; }
         public bool IsDismissed { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? DismissedOn { get; set; }
 
-        }
+    }
 
-        }
+}
    

@@ -67,6 +67,7 @@ namespace WebApplication9.Controllers
                 if(ModelState.IsValid) {
                     messages.UserId = User.Identity.GetUserId();
                     messages.MessageFrom = User.Identity.Name;
+                    messages.CreatedOn = DateTime.Now;
                     db.Messages.Add(messages);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -101,7 +102,7 @@ namespace WebApplication9.Controllers
         {
             Messages messages = db.Messages.Find(id);
             // db.Messages.Remove(messages);              var id = User.Identity.GetUserId();
-
+            messages.DismissedOn = DateTime.Now;
             if(messages.MessageTo == User.Identity.GetUserId()) messages.RecieverDeleted = true;
             //if(messages.MessageTo == User.Identity.GetUserId()) messages.SenderDeleted = true;
             db.SaveChanges();

@@ -71,6 +71,7 @@ namespace WebApplication9.Views.Notifications
         {
             if (ModelState.IsValid)
             {
+                notification.CreatedOn = DateTime.Now;
                 db.Notifications.Add(notification);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -106,7 +107,9 @@ namespace WebApplication9.Views.Notifications
         {
             Notification notification = await db.Notifications.FindAsync(id);
 
-            if(notification.UserId == User.Identity.GetUserId()) notification.IsDismissed = true;
+            if(notification.UserId == User.Identity.GetUserId())
+             notification.IsDismissed = true;
+            notification.DismissedOn = DateTime.Now;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
 
