@@ -317,6 +317,10 @@
     <Compile Include="Migrations\201905020655267_messagesTime.Designer.cs">
       <DependentUpon>201905020655267_messagesTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905022052271_details.cs" />
+    <Compile Include="Migrations\201905022052271_details.Designer.cs">
+      <DependentUpon>201905022052271_details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -592,6 +596,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905020655267_messagesTime.resx">
       <DependentUpon>201905020655267_messagesTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905022052271_details.resx">
+      <DependentUpon>201905022052271_details.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

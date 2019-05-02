@@ -63,6 +63,16 @@ namespace WebApplication9.Models {
         public string Name { get; set; }
         public string ScientificName { get; set; }
         public string Details { get; set; }
+        public string DetailsShortened { get {
+
+                return Details.ToString().Substring(0,50);
+
+
+            }
+
+        }
+ 
+
 
         public int[] PhotoId { get; set; }
         public byte[] Photo { get; set; }

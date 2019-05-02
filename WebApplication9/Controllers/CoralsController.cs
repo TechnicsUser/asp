@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication9.Models;
@@ -16,14 +17,14 @@ namespace WebApplication9.Controllers {
         private SiteDataContext db = new SiteDataContext();
 
         // GET: Corals
-        public ActionResult Index() {
-            return View(db.Corals.ToList());
+        public async Task<ActionResult> Index() {
+            return  View(await db.Corals.ToListAsync());
         }
 
-        public ActionResult View(int id) {
+        public async Task<ActionResult> View(int id) {
             SiteDataContext cp = new SiteDataContext();
             byte[] ba = new byte[] { 0x0 };
-            List<CoralPhoto> rl = cp.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToList();
+            List<CoralPhoto> rl = await cp.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToListAsync();
             Coral thisCoral = db.Corals.Find(id);
             ViewBag.thisCoral = thisCoral;
             return View(rl);
@@ -35,18 +36,21 @@ namespace WebApplication9.Controllers {
 
 
 
-        public FileContentResult CoralPhoto3(int id, int number) {
+        public   FileContentResult CoralPhoto3(int id, int number) {
             try {
-                var CredID = (from sn3 in db.CoralPhoto
+           //   CoralPhoto rl = await db.CoralPhoto.Where(x => x.CoralId == id).Skip(number).FirstAsync();
+
+                var pic =   (from  sn3 in db.CoralPhoto
                               where sn3.CoralId == id
                               orderby sn3.Likes descending
 
                               select sn3.Photo).Skip(number).First();
 
 
-                return new FileContentResult(CredID, "image/jpeg");
+                return new FileContentResult(pic, "image/jpeg");
             }
             catch {
+
                 var CredID = (from sn3 in db.CoralPhoto
                               where sn3.CoralId == id
                               select sn3.Photo).First();
