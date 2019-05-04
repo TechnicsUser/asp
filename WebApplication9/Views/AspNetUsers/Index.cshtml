@@ -24,14 +24,13 @@
 
     function showPosition(position) {
 
-
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
 
         var latlon = new google.maps.LatLng(lat, lon)
         var mapholder = document.getElementById('mapholder')
         mapholder.style.height = '250px';
-        mapholder.style.width = window.screen.availWidth;
+        mapholder.style.width = window.screen.width;
 
         var myOptions = {
             center: latlon, zoom: 5,
@@ -40,33 +39,37 @@
             navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
 
         }
-   
-        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-   
-            var markers = [];
 
-         @foreach(var item in Model) {
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+
+           var markers = [];
+
+         @foreach (var item in Model)
+         {
+             if (item.LocationLat != null)
+             {
+
+
          <text>
         var marker = new google.maps.Marker({
             map: map,
             position: { lat: @item.LocationLat, lng: @item.LocationLon },
-            title: '@item.UserName',
- 
-        }).addListener('click', (function () {
+            title: '@item.UserName'
+
+        })
+           .addListener('click', (function () {
             //   map.setZoom(9);
             window.location.href = "/AspNetUsers/ViewUser/" + "@item.Id";
         }))
         markers.push(marker);
 
         </text>
+                 }
+             }
 
 
-                     }
+         }
 
-
-
-    }
- 
     function showError(error) {
         switch (error.code) {
             case error.PERMISSION_DENIED:
@@ -83,8 +86,7 @@
                 break;
         }
     }
-   // clearInterval(myVar);
-
+      window.onload = getLocation;
 </script>
 
 
@@ -93,11 +95,12 @@
 }
 <br />
 <div class="col-lg-12">
-    <button onclick="getLocation()">Show Map</button>
+    @*<button onclick="getLocation()">Show Map</button>*@
     @*style="position:absolute; top:150px; left:0px"*@
 </div>
 
-<div id="mapholder"></div>
+<div class="col-lg-12" id="mapholder"></div>
+
 @foreach (var item in Model)
 {
     if (item.UserName != null)
