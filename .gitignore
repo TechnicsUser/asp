@@ -263,3 +263,6 @@ __pycache__/
 *.pyc
 /WebApplication9/App_Start/IdentityConfig.cs
 /WebApplication9/App_Start/Startup.Auth.cs
+/WebApplication9/Web.config
+/WebApplication9/Web.Debug.config
+/WebApplication9/Web.Release.config
