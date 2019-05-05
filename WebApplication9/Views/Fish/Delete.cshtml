@@ -7,100 +7,55 @@
 <style>
 
     /* Style the Image Used to Trigger the Modal */
-    .myImg {
+    img {
         border-radius: 50px;
         padding: 10px;
         cursor: pointer;
         transition: 1.3s;
         float: left;
-        width: 300px;
-        max-width: 300px;
+        width: 150px;
+        max-width: 150px;
         animation-name: zoom;
         animation-duration: 1.6s;
         opacity: 1;
     }
 
-        .myImg:hover {
+        img:hover {
             -webkit-filter: brightness(30%); /* Safari */
             filter: brightness(125%);
             opacity: 1;
         }
 
-    /* The Modal (background) */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 2; /* Sit on top */
-        padding-top: 10px; /* Location of the box */
-        left: 10px;
-        top: 10px;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-    }
-
-    /* Modal Content (Image) */
-    .modal-content {
-        margin: auto;
-        display: block;
-        width: 90%;
-        max-width: 700px;
-    }
-
-    /* Caption of Modal Image (Image Text) - Same Width as the Image */
-    #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: #ccc;
-        padding: 10px 0;
-        height: 150px;
-    }
-
-    /* Add Animation - Zoom in the Modal */
-    .modal-content, #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-    }
-
-    @@keyframes zoom {
-        from {
-            transform: scale(0)
-        }
 
 
-        to {
-            transform: scale(1)
-        }
-    }
-
-    /* The Close Button */
-    .close {
-        position: absolute;
-        float: left;
-        top: 50px;
-        right: 0px;
-        color: #ff0000;
-        font-size: 50px;
-        font-weight: bold;
-        transition: 0.3s;
-        z-index: 1; /* Sit on top */
-    }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
 
     /* 100% Image Width on Smaller Screens */
     @@media only screen and (max-width: 700px) {
-        .modal-content {
+        /* Style the Image Used to Trigger the Modal */
+        img {
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            transition: 1.3s;
+            float: left;
+            width: 300px;
+            max-width: 300px;
+            animation-name: zoom;
+            animation-duration: 1.6s;
+            opacity: 1;
+        }
+
+            img:hover {
+                -webkit-filter: brightness(30%); /* Safari */
+                filter: brightness(125%);
+                opacity: 1;
+            }
+    }
+
+    @@media (min-width: 1800px) {
+
+
+        .col-lg-6 {
             width: 100%;
         }
     }
@@ -109,50 +64,25 @@
 
 
 
-    <div class="col-lg-12" id="mainDiv">
-        <div class="container">
+<div class="col-xl-12" id="mainDiv">
+
+    <div class=" col-xl-12">
+        <div class="col-xl-4">
             @{int x = 0;}
 
             <h2>
                 @Model.Name
             </h2>
             <hr><br />
-                <h4>
-                    @Model.ScientificName
-                </h4>
+            <h4>
+                @Model.ScientificName
+            </h4>
             <img src="@Url.Action("FishPhoto", "Fish", new { id = @Model.FishId, number = 0  })" />
-
-         
-            @*<div class=" icon-next" role="alert">
-            <div class="alert alert-warning d-flex flex-row">
-                Enter a valid email address
-            </div>
-        </div>*@
-
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-
-                <!-- The Close Button -->
-                <span class="close">X</span>
-
-                <!-- Modal Content (The Image) -->
-                <img class="modal-content" id="img01">
-
-                <!-- Modal Caption (Image Text) -->
-                <div id="caption"></div>
-
-
-            </div>
-
-
-
         </div>
-  
-    
-        <p>
-            @Model.Details
-        </p>
-        <hr><br />
+
+
+        <div class=" col-xl-4 ">
+
             <h4>
                 Price : €  @Model.Price
             </h4>
@@ -163,24 +93,31 @@
                 Views : @Model.Views
             </h4>
             <h4>
-                Contact :  @Model.UploadedBy
+                Connections : Coming Soon
             </h4>
             <h4>
                 Sold  :  @Model.SoldOut
             </h4>
-        <hr><br />
-        <h2>Delete</h2>
-
-        <h3>Are you sure you want to delete this?</h3>
-        <div>
-
-
-            @using(Html.BeginForm()) {
-                @Html.AntiForgeryToken()
-
-                <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Back to List", "Index")
-                </div>
-                }
         </div>
+
+        <div class="col-xl-4 ">
+            @Model.Details
+        </div>
+
+    </div>
+</div>
+
+<hr><br />
+<div class="col-xl-12">
+    <h3>Are you sure you want to delete this?</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

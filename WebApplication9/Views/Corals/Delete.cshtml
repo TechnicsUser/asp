@@ -4,165 +4,120 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+    <style>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Coral</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+        /* Style the Image Used to Trigger the Modal */
+        img {
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            transition: 1.3s;
+            float: left;
+            width: 150px;
+            max-width: 150px;
+            animation-name: zoom;
+            animation-duration: 1.6s;
+            opacity: 1;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
+            img:hover {
+                -webkit-filter: brightness(30%); /* Safari */
+                filter: brightness(125%);
+                opacity: 1;
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Light)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Light)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Flow)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Flow)
-        </dd>
+        /* 100% Image Width on Smaller Screens */
+        @@media only screen and (max-width: 700px) {
+            /* Style the Image Used to Trigger the Modal */
+            img {
+                border-radius: 50px;
+                padding: 10px;
+                cursor: pointer;
+                transition: 1.3s;
+                float: left;
+                width: 300px;
+                max-width: 300px;
+                animation-name: zoom;
+                animation-duration: 1.6s;
+                opacity: 1;
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Food)
-        </dt>
+                img:hover {
+                    -webkit-filter: brightness(30%); /* Safari */
+                    filter: brightness(125%);
+                    opacity: 1;
+                }
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Food)
-        </dd>
+        @@media (min-width: 1800px) {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            .col-lg-6 {
+                width: 100%;
+            }
+        }
+    </style>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ScientificName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ScientificName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Details)
-        </dd>
+    <div class="col-xl-12" id="mainDiv">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UploadedBy)
-        </dt>
+        <div class=" col-xl-12">
+            <div class="col-xl-4">
+                @{int x = 0;}
 
-        <dd>
-            @Html.DisplayFor(model => model.UploadedBy)
-        </dd>
+                <h2>
+                    @Model.Name
+                </h2>
+                <hr><br />
+                <h4>
+                    @Model.ScientificName
+                </h4>
+                <img src="@Url.Action("CoralPhoto3", "Corals", new { id = @Model.CoralId, number = 0  })" />
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <div class=" col-xl-4 ">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
+                <h4>
+                    Price : €  @Model.Price
+                </h4>
+                <h4>
+                    Likes :  @Model.Likes
+                </h4>
+                <h4>
+                    Views : @Model.Views
+                </h4>
+                <h4>
+                    Connections : Coming Soon
+                </h4>
+                <h4>
+                    Sold  :  @Model.SoldOut
+                </h4>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
+            <div class="col-xl-4 ">
+                @Model.Details
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FragSize)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FragSize)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CommentId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CommentId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Likes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Likes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DisLikes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DisLikes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SoldOut)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoldOut)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FragAvailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FragAvailable)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FragAvailableFrom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FragAvailableFrom)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
         </div>
-    }
-</div>
+    </div>
+
+    <hr><br />
+    <div class="col-xl-12">
+        <h3>Are you sure you want to delete this?</h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
