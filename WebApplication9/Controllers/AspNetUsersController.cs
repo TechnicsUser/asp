@@ -19,18 +19,9 @@ namespace WebApplication9.Controllers
         [Authorize]
 
         // GET: AspNetUsers
-        public async Task<ActionResult> Index()
-        {
- 
-            return View(await db.AspNetUsers.ToListAsync());
-
-
-            //var users = from m in db.AspNetUsers
-            //            where m.LocationLat != null
-            //            select m;
-
-            //return View(users.ToList());
-
+        public async Task<ActionResult> Index() {
+             return View(await db.AspNetUsers.ToListAsync());
+            
         }
 
 
@@ -41,7 +32,7 @@ namespace WebApplication9.Controllers
          AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
          ApplicationDbContext db2 = new ApplicationDbContext();
 
-        ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
+         ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
 
             List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
             ViewBag.flSize = fl.Count;

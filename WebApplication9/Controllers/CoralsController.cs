@@ -30,9 +30,9 @@ namespace WebApplication9.Controllers {
             return View(rl);
         }
 
-        private ActionResult View(List<CoralPhoto> rl, Coral thisCoral) {
-            throw new NotImplementedException();
-        }
+        //private ActionResult View(List<CoralPhoto> rl, Coral thisCoral) {
+        //    throw new NotImplementedException();
+        //}
 
 
 
