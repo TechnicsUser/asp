@@ -50,7 +50,10 @@ namespace WebApplication9.Controllers
                 _userManager = value;
             }
         }
-         public ActionResult ChangeUserPhoto()
+
+
+        //[HttpPost, ActionName("ChangeUserPhoto")]
+        public ActionResult ChangeUserPhoto()
         {
          
                 byte[] imageData = null;
