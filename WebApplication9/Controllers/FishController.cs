@@ -127,7 +127,7 @@ return View(model);
                 }
             Fish fish = await db.Fish.FindAsync(id);
             List<fishPhoto> fl = db2.FishPhoto.Where(x => x.FishId == id).ToList();
-            ViewBag.fl = fl;
+           // ViewBag.fl = fl;
             ViewBag.count = fl.Count();
             if(fish == null) {
                 return HttpNotFound();

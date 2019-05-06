@@ -27,6 +27,9 @@ namespace WebApplication9.Controllers {
             List<CoralPhoto> rl = await cp.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToListAsync();
             Coral thisCoral = db.Corals.Find(id);
             ViewBag.thisCoral = thisCoral;
+            thisCoral.Views++;
+            db.Entry(thisCoral).State = EntityState.Modified;
+           await db.SaveChangesAsync();
             return View(rl);
         }
 
@@ -135,8 +138,11 @@ namespace WebApplication9.Controllers {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
             Coral coral = db.Corals.Find(id);
+            List<CoralPhoto> fl = db.CoralPhoto.Where(x => x.CoralId == id).ToList();
+            // ViewBag.fl = fl;
+            ViewBag.count = fl.Count();
 
-            if(User.Identity.Name == coral.UploadedBy) {
+            if (User.Identity.Name == coral.UploadedBy) {
 
                 return View(coral);
 
@@ -156,10 +162,10 @@ namespace WebApplication9.Controllers {
         public ActionResult Edit([Bind(Include = "CoralPhoto, CoralId,Type,Light,Flow,Food,Name,ScientificName,Details,UploadedBy,Price,Size,FragSize,CommentId,Likes,DisLikes,Views,SoldOut,FragAvailable,FragAvailableFrom")] Coral coral) {
             if(ModelState.IsValid) {
                 byte[] imageData = null;
-                if(Request.Files.Count > 0) {
+                if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
+                { 
 
-
-                    for(int i = 0; i < Request.Files.Count; i++) {
+                    for (int i = 0; i < Request.Files.Count; i++) {
                         var hpf = Request.Files[i];
                         using(var binary = new BinaryReader(hpf.InputStream)) {
                             imageData = binary.ReadBytes(hpf.ContentLength);
@@ -168,7 +174,6 @@ namespace WebApplication9.Controllers {
                         CoralPhoto cp = new CoralPhoto();
                         cp.UserId = User.Identity.GetUserId();
 
-                                        coral.UploadedBy = User.Identity.Name;
 
                         cp.Photo = imageData;
                         cp.CoralPhotoId = coral.CoralId;
@@ -185,10 +190,10 @@ namespace WebApplication9.Controllers {
                     }
 
 
-                var CredID = (from sn3 in db.CoralPhoto
-                              where sn3.CoralId == coral.CoralId
-                              select sn3.Photo).First();
-                db.Entry(coral).Entity.Photo = CredID;
+                //var CredID = (from sn3 in db.CoralPhoto
+                //              where sn3.CoralId == coral.CoralId
+                //              select sn3.Photo).First();
+                //db.Entry(coral).Entity.Photo = CredID;
 
                 //       db.Entry(coral).Entity.Name = coral.Name;
 
@@ -197,6 +202,7 @@ namespace WebApplication9.Controllers {
                 //details
                 //price
                 //
+                coral.UploadedBy = User.Identity.Name; // ************** FIX THIS **********************
 
                 db.Entry(coral).State = EntityState.Modified;
                 db.SaveChanges();
@@ -227,6 +233,16 @@ namespace WebApplication9.Controllers {
             db.SaveChanges();
             return RedirectToAction("Index");
             }
+        [HttpPost, ActionName("DeleteItem")]
+        public void DeleteItem(int id, int num)
+        {
+            //find photo
+            List<CoralPhoto> fl = db.CoralPhoto.Where(x => x.CoralId == num).ToList();
+            //remove
+            db.CoralPhoto.Remove(fl[id]);
+            //update
+            db.SaveChanges();
+        }
 
         protected override void Dispose(bool disposing) {
             if(disposing) {
