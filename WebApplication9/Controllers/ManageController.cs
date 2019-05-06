@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -49,7 +50,31 @@ namespace WebApplication9.Controllers
                 _userManager = value;
             }
         }
+         public ActionResult ChangeUserPhoto()
+        {
+         
+                byte[] imageData = null;
+                if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
+                {
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        var hpf = Request.Files[i];
+                        using (var binary = new BinaryReader(hpf.InputStream))
+                        {
+                            imageData = binary.ReadBytes(hpf.ContentLength);
+                        }
+                    }
+                }
 
+                String userId = User.Identity.GetUserId();
+                var db = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+                var userImage = db.Users.Where(x => x.Id == userId).FirstOrDefault();
+                userImage.UserPhoto = imageData;
+                db.SaveChanges();
+
+            return RedirectToAction("Index","Manage");
+
+        }
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -66,6 +91,7 @@ namespace WebApplication9.Controllers
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
+
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),

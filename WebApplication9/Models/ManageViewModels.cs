@@ -7,6 +7,8 @@ namespace WebApplication9.Models
 {
     public class IndexViewModel
     {
+        [Display(Name = "User Photo")]
+        public byte[] UserPhoto { get; set; }
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }

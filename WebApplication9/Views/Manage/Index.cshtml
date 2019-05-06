@@ -5,29 +5,45 @@
 @{
     ViewBag.Title = "Manage";
 }
+    <script src="~/Scripts/site.js"></script>
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 @*See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>*@
-<h1>
-    Your Profile Image ..
-
-    <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
+<style>
+    img{
+        width:160px;height:160px;
+        background: #FFFFFF;
     margin: auto;
     -moz-border-radius: 60px;
     border-radius: 100px;
     padding: 6px;
-    box-shadow: 0px 0px 20px #888;" />
+    box-shadow: 0px 0px 20px #888;
+
+    }
+</style>
+<h1>
+    Your Profile Image ..
+
+    <img src="@Url.Action("UserPhotos", "Home" )" style="" />
 </h1>
 
 @foreach(var theme in Bootstrap.Themes) {
     <li><a href="@Url.Action("ChangeTheme", "Profile", new { themename = theme})">@theme</a></li>
     }
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Change your profile picture</h4>
     <div>
-        <input type="file" name="FishPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" multiple />
+        @using (Html.BeginForm("ChangeUserPhoto", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="file" />
+            <div id="myImg">  </div>
+            <input type="submit" value="Change" />
+
+
+        }
+        @*<input type="file" name="FishPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" multiple />*@
     </div>
     <hr />
     <dl class="dl-horizontal">
@@ -44,11 +60,11 @@
         </dd>
 
 
-        <dt>External Logins:</dt>
+        @*<dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
             @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
+        </dd>*@
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
 
@@ -77,12 +93,12 @@
                 }
             </dd>
         *@
-        <dt>Two-Factor Authentication:</dt>
+        @*<dt>Two-Factor Authentication:</dt>
         <dd>
             <p>
                 There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
                 for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
+            </p>*@
             @*@if (Model.TwoFactor)
                 {
                     using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -102,13 +118,30 @@
                         <input type="submit" value="Enable" class="btn btn-link" />
                         </text>
                     }
-                }*@
-        </dd>
+                }
+        </dd>*@
     </dl>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <script>
+        $(function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                for (var i = 0; i < this.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[i]);
+                }
+            }
+        });
+    });
+
+    function imageIsLoaded(e) {
+        $('#myImg').html('<img src=' + e.target.result + '>');
+    }
+
+</script>
+@*<script>
     $(function () {
         $(":file").change(function () {
             window.alert("sometext");
@@ -117,12 +150,12 @@
         });
     });
     function imageIsLoaded( ) {
-@{
-}
+     var num = $(this).attr("data-bind");
+            $.post("/Manage/ChangeUserPhoto", {  num :num });
     }
-  @*@Url.Action("Manage", "ChangeImage");
-            },*@
+  @Url.Action("Manage", "ChangeImage");
+            },
 
 
 
-</script>
+</script>*@
