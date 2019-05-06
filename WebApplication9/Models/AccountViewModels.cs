@@ -68,7 +68,7 @@ namespace WebApplication9.Models
     {
         public string CssTheme { get; set; }
 
-        [Display(Name = "UserPhoto")]
+        [Display(Name = "User Photo")]
         public byte[] UserPhoto { get; set; }
 
 
