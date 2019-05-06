@@ -2,20 +2,35 @@
 @using WebApplication9.Models;
 @using WebApplication9.Helpers;
 
+<style>
+    #smallImage {
+        width: 60px;
+        height: 60px;
+        background: #FFFFFF;
+        margin: auto;
+        -moz-border-radius: 60px;
+        border-radius: 60px;
+        padding: 2px;
+        box-shadow: 0px 0px 20px #888;
+    }
+</style>
 
 
-
-@if(Request.IsAuthenticated) {
-    using(Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
+            <li><img id="smallImage" src="@Url.Action("UserPhotos", "Home" )" /></li>
+
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     @this.User.Identity.GetUserName()
-                    
-                    
-                                  <span class="caret"></span>
+
+
+                    <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
 
@@ -41,9 +56,10 @@
 
 
 
-                    @foreach(var theme in Bootstrap.Themes) {
+                    @foreach (var theme in Bootstrap.Themes)
+                    {
                         <li><a href="@Url.Action("ChangeTheme", "Profile", new { themename = theme})">@theme</a></li>
-                        }
+                    }
 
 
 
@@ -54,11 +70,12 @@
                 </ul>
             </li>
         </ul>
-        }
     }
-else {
+}
+else
+{
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
-    }
+}

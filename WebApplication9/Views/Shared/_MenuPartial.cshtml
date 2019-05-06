@@ -4,57 +4,49 @@
 @using System.Web;
 @using WebApplication9.Models;
 
+<style>
+        #notifications, #messages {
+         margin: 20px;
+    }
+    #notifications > a, #messages > a {
+        color: blue;
+     }
+</style>
 
- 
 <ul class="nav navbar-nav " style="margin-bottom:0px;">
 
-    <li>@Html.ActionLink("Home", "Index", "Home")</li>
     <li>@Html.ActionLink("Coral", "Index", "Corals")</li>
     <li>@Html.ActionLink("Fish", "Index", "Fish")</li>
-
     <li>@Html.ActionLink("Users", "Index", "AspNetUsers")</li>
-
-
 </ul>
 
-<ul class="nav navbar-nav " style="align-items:baseline,center;">
-
-
-    @if(ViewBag.Notifications != null) {
-
-
-        foreach(NotificationViewModel notification in ViewBag.Notifications) {
-
-            <li style="align-self:baseline;">
-          <h6>Notifications</h6>
-
-                @*@notification.NotificationType*@
-                <span class="badge badge-@notification.BadgeClass">
-                    @notification.Count
-                </span>
-
+<ul id="notifications" class="nav navbar-nav ">
+    @if (ViewBag.Notifications != null)
+    {
+        foreach (NotificationViewModel notification in ViewBag.Notifications)
+        {
+            <li class="badge badge-@notification.BadgeClass">
+                @notification.Count
             </li>
+            if (@notification.Count == 1) { @Html.ActionLink("Notification", "Index", "Notifications") }
+            else       {                @Html.ActionLink("Notifications", "Index", "Notifications")    }
+                    }
             }
+</ul>
 
-        }
-
- 
-    @if(ViewBag.Messages != null) {
-
-        foreach(MessagesViewModel message in ViewBag.Messages) {
-            <li class="divider">
-                <h6>Messages</h6>
-                @*@message.MessageType*@
-                <span class="badge badge-@message.BadgeClass">
-                    @message.Count
-                </span>
-
+<ul id="messages" class="nav navbar-nav">
+    @if (ViewBag.Messages != null)
+    {
+        foreach (MessagesViewModel message in ViewBag.Messages)
+        {
+            <li class="badge badge-@message.BadgeClass">
+                @message.Count
             </li>
-            }
-
+            if (message.Count == 1){   @Html.ActionLink("Message", "Index", "Messages")  }
+            else{    @Html.ActionLink("Messages", "Index", "Messages")         }
         }
-
-    </ul>
+    }
+</ul>
 
 
 

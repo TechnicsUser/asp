@@ -9,6 +9,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication9.Filters;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers {
@@ -16,7 +17,8 @@ namespace WebApplication9.Controllers {
         private ApplicationDbContext db = new ApplicationDbContext();
         private SiteDataContext db2 = new SiteDataContext();
 
-
+        [NotificationFilter]
+        [MessagesFilter]
         // GET: Fish
         public async Task<ActionResult> Index() {
             return View(await db.Fish.ToListAsync());

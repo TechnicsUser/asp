@@ -10,12 +10,15 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication9.Filters;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers {
     public class CoralsController : Controller {
         private SiteDataContext db = new SiteDataContext();
 
+        [NotificationFilter]
+        [MessagesFilter]
         // GET: Corals
         public async Task<ActionResult> Index() {
             return  View(await db.Corals.ToListAsync());
