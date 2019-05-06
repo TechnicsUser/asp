@@ -3,7 +3,39 @@
 @{
     ViewBag.Title = "Index";
 }
+    <style>
+            /*.carousel-inner > .item {
+            height: 200px;
+        }*/
+            .carousel img {
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            /*transition: 1.3s;*/
+            float: left;
+            width: 300px;
+            height:300px;
+            /*max-width: 300px;
+            max-height: 300px;
+            animation-name: zoom;
+            animation-duration: 1.6s;*/
+            opacity: 1;
+        }
 
+            .myImg:hover {
+                -webkit-filter: brightness(30%); /* Safari */
+                filter: brightness(125%);
+                opacity: 1;
+            }
+                /* width: inherit;
+            object-fit: contain;*/
+            }
+            /*.item > img {
+            width: 150px;
+            height: 20px;
+        }*/
+    </style>
+<br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -22,11 +54,11 @@
             @*<img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />*@
             <div id="myCarousel" class="carousel slide" data-ride="carousel" onclick="f1(@item.FishId, this)">
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
+                @*<ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
+                </ol>*@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
@@ -104,17 +136,4 @@
 
     }
 </script>
-<style>
-    /*.carousel-inner > .item {
-        height: 200px;
-    }*/
-    .carousel img {
-        height: 200px;
-        width: inherit;
-        object-fit: contain;
-    }
-    /*.item > img {
-        width: 150px;
-        height: 20px;
-    }*/
-</style>
+

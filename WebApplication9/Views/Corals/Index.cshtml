@@ -1,5 +1,35 @@
 ﻿@model IEnumerable<WebApplication9.Models.Coral>
+<style>
+    /*.carousel-inner > .item {
+            height: 200px;
+        }*/
+    .carousel img {
+        border-radius: 50px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 1.3s;
+        float: left;
+        width: 300px;
+        max-width: 300px;
+        max-height: 300px;
+        animation-name: zoom;
+        animation-duration: 1.6s;
+        opacity: 1;
+    }
 
+    .myImg:hover {
+        -webkit-filter: brightness(30%); /* Safari */
+        filter: brightness(125%);
+        opacity: 1;
+    }
+    /* width: inherit;
+            object-fit: contain;*/
+    }
+    /*.item > img {
+            width: 150px;
+            height: 20px;
+        }*/
+</style>
 @{
     ViewBag.Title = "Index";
 }
@@ -315,11 +345,7 @@
     function f1(item) {
 
         window.location = "/Corals/View/" + item;
-
-        @*var url = '@Url.Action("CoralPhoto", "Corals")';
-        url += '?id=' + item;
-        $("#attachments").load(url);*@
-
-
     }
+
 </script>
+
