@@ -10,6 +10,6 @@ Incorperated Google Maps to view user location.
 
 Incorporated Sendgrid API for account confirmation, notifications, and messages.
 
-Implemented Two-factor authentication (2FA) using SMS and email.
+Implemented Two-factor authentication (2FA) using SMS and email with AspSms.
  
 Implemented Git source control.
