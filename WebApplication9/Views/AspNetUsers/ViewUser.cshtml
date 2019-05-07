@@ -4,7 +4,7 @@
     ViewBag.Title = "View";
 }
 
-<h2>View</h2>
+<h2></h2>
 
 
 <head>
@@ -183,8 +183,17 @@
                             Feedback  : not implemented
                         </li>
                         <li>
-                            Last Online : @ViewBag.lastOnline
-                            
+                            @if (ViewBag.lastOnline == null)
+                            {
+                                <text>Last Online : Never Logged In</text>
+                                }
+                                else
+                                {
+                                    <text>    Last Online : @ViewBag.lastOnline  </text>
+
+
+                                }
+
                         </li>
                         <li>
                             Member Since : @ViewBag.RegistrationDate
