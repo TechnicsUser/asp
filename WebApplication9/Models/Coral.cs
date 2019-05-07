@@ -72,7 +72,7 @@ namespace WebApplication9.Models {
         public byte[] Photo { get; set; }
 
 
-
+        [Display (Name = "Contact")]
         public string UploadedBy { get; set; }
         public string UploadedOn { get; set; }
         public string Price { get; set; }

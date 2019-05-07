@@ -331,6 +331,14 @@
     <Compile Include="Migrations\201905051446449_removeDetailsShortened.Designer.cs">
       <DependentUpon>201905051446449_removeDetailsShortened.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905071051045_userLogin.cs" />
+    <Compile Include="Migrations\201905071051045_userLogin.Designer.cs">
+      <DependentUpon>201905071051045_userLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905071310420_coralViewModel.cs" />
+    <Compile Include="Migrations\201905071310420_coralViewModel.Designer.cs">
+      <DependentUpon>201905071310420_coralViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -624,6 +632,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905051446449_removeDetailsShortened.resx">
       <DependentUpon>201905051446449_removeDetailsShortened.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905071051045_userLogin.resx">
+      <DependentUpon>201905071051045_userLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905071310420_coralViewModel.resx">
+      <DependentUpon>201905071310420_coralViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

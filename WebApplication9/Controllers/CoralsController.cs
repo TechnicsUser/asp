@@ -16,6 +16,8 @@ using WebApplication9.Models;
 namespace WebApplication9.Controllers {
     public class CoralsController : Controller {
         private SiteDataContext db = new SiteDataContext();
+        private ApplicationDbContext db2 = new ApplicationDbContext();
+
 
         [NotificationFilter]
         [MessagesFilter]
@@ -25,9 +27,8 @@ namespace WebApplication9.Controllers {
         }
 
         public async Task<ActionResult> View(int id) {
-            SiteDataContext cp = new SiteDataContext();
-            byte[] ba = new byte[] { 0x0 };
-            List<CoralPhoto> rl = await cp.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToListAsync();
+             byte[] ba = new byte[] { 0x0 };
+            List<CoralPhoto> rl = await db.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToListAsync();
             Coral thisCoral = db.Corals.Find(id);
             ViewBag.thisCoral = thisCoral;
             thisCoral.Views++;
@@ -68,15 +69,31 @@ namespace WebApplication9.Controllers {
         }
 
         // GET: Corals/Details/5
-        public ActionResult Details(int? id) {
-            if (id == null) {
+        public async Task<ActionResult> Details(int? id) {
+       
+            if (id == null )
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Coral coral = db.Corals.Find(id);
-            if (coral == null) {
+             Coral coral = await db.Corals.FindAsync(id);
+            byte[] ba = new byte[] { 0x0 };
+            List<CoralPhoto> CoralPhotoList = await db.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToListAsync();
+            ApplicationUser Owner = await db2.Users.Where(x => x.UserName == coral.UploadedBy).FirstAsync();
+
+            if (coral == null)
+            {
                 return HttpNotFound();
             }
-            return View(coral);
+
+            CoralViewModel coralViewModal = new CoralViewModel(coral, Owner, CoralPhotoList);
+            coral.Views++;
+            db.Entry(coral).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            return View(coralViewModal);
+
+
+
         }
 
         // GET: Corals/Create

@@ -1,162 +1,458 @@
-﻿@model WebApplication9.Models.Coral
+﻿@model WebApplication9.Models.CoralViewModel
+
+
+
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "View";
+
 }
 
-<h2>Details</h2>
+<head>
 
-<div>
-    <h4>Coral</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+    <style>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
+        /* Style the Image Used to Trigger the Modal */
+        .myImg {
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            transition: 1.3s;
+            float: left;
+            width: 300px;
+            max-width: 300px;
+            animation-name: zoom;
+            animation-duration: 1.6s;
+            opacity: 1;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Light)
-        </dt>
+           .myImg:hover {
+                -webkit-filter: brightness(30%); /* Safari */
+                filter: brightness(125%);
+                opacity: 1;
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.Light)
-        </dd>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2; /* Sit on top */
+            padding-top: 10px; /* Location of the box */
+            left: 10px;
+            top: 10px;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Flow)
-        </dt>
+        /* Modal Content (Image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 700px;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Flow)
-        </dd>
+        /* Caption of Modal Image (Image Text) - Same Width as the Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Food)
-        </dt>
+        /* Add Animation - Zoom in the Modal */
+        .modal-content, #caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Food)
-        </dd>
+        @@keyframes zoom {
+            from {
+                transform: scale(0)
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            to {
+                transform: scale(1)
+            }
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ScientificName)
-        </dt>
+        /* The Close Button */
+        .close {
+            position: absolute;
+            float: left;
+            top: 50px;
+            right: 0px;
+            color: #ff0000;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 1; /* Sit on top */
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.ScientificName)
-        </dd>
+            .close:hover,
+            .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
+        /* 100% Image Width on Smaller Screens */
+        @@media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
 
-        <dd>
-            @Html.DisplayFor(model => model.Details)
-        </dd>
+</head>
+<body>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UploadedBy)
-        </dt>
+    <div class="col-lg-12" id="mainDiv">
+        <div class="container">
+            @{int x = 0;}
 
-        <dd>
-            @Html.DisplayFor(model => model.UploadedBy)
-        </dd>
+            <h2>
+                @Model.coral.Name
+            </h2>
+            <hr><br />
+            <h4>
+                @Model.coral.ScientificName
+            </h4>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            @*@for (int i = 0; i < @Model.PhotoCount; i++)
+                    {
+                <div id="myImg"  class="">
+                    <img class="myImg"  id="@x" onclick="popUp(this, @x)" src="@Url.Action("CoralPhoto3", "Corals", new { id = @Model.CoralId, number = i })" />
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
+                    }*@
 
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FragSize)
-        </dt>
+            @foreach (var r in Model.rl)
+            {
 
-        <dd>
-            @Html.DisplayFor(model => model.FragSize)
-        </dd>
+                /**/
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CommentId)
-        </dt>
+                if (r.Photo != null)
+                {
 
-        <dd>
-            @Html.DisplayFor(model => model.CommentId)
-        </dd>
+                    var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(r.Photo)}";
+                    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Likes)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Likes)
-        </dd>
+                        <img class="myImg" src="@imgSrc" alt="@x" id="@x" onclick="popUp(this, @x)">
+                        @{x++;}
+                    </div>
+                }
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DisLikes)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DisLikes)
-        </dd>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
+                <!-- The Close Button -->
+                <span class="close">X</span>
 
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="img01">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SoldOut)
-        </dt>
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"></div>
 
-        <dd>
-            @Html.DisplayFor(model => model.SoldOut)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FragAvailable)
-        </dt>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.FragAvailable)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FragAvailableFrom)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FragAvailableFrom)
-        </dd>
+        </div>
+    </div>
+    <div>
+        <div class="col-md-6">
+            @Html.DisplayNameFor(model => model.coral.Details)
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CoralId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <h5>
+                @Html.DisplayFor(model => model.coral.Details)
+            </h5>
+        </div>
+        <hr><br />
+        <h5>
+        </h5>
+        <h5>
+        </h5>
+
+
+        <br />
+  
+
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-4">
+            @Html.DisplayNameFor(model => model.coral.Price)
+
+            <h5>
+                @Html.DisplayFor(model => model.coral.Price)
+            </h5>
+        </div>
+        <div class="col-md-4">
+            @Html.DisplayNameFor(model => model.coral.Views)
+
+            <h5>
+                @Html.DisplayFor(model => model.coral.Views)
+            </h5>
+        </div>
+        <div class="col-md-4">
+            @Html.DisplayNameFor(model => model.coral.UploadedBy)
+
+            <h5>
+                <a href="@Url.Action("ViewUser","AspNetUsers", new { id = Model.user.Id })">@Model.coral.UploadedBy</a>
+            </h5>
+        </div>
+
+    </div>
+</body>
+
+
+<script>
+
+    function popUp(id, number) {
+
+
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = id;
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+        var x = number;
+        modal.onclick = function () {
+            //     alert(number +1 );
+            var ss = document.getElementsByClassName("myImg")[x++];
+            //for ( i = 0; i < ss.length; i++) {
+            //    ims = ss[i];
+            //}
+            modalImg.src = ss.src;
+            captionText.innerHTML = ss.alt;
+
+            var count = document.getElementsByClassName("myImg");
+            if (x == count.length) {
+                x = 0;
+            }
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+            x = 0;
+        }
+
+
+
+        // alert(this);
+        //  document.getElementById("myImage").style.width = "400px";
+
+        //$('#myImage').css({
+        //    right: '300px',
+        //    top: '450px',
+        //    border: '1px solid red',
+        //    width: '600'
+        //});
+    }
+    function popDown() {
+        //    document.getElementById("myImage").style.width = "150px";
+
+        $('#myImage').css({
+            right: '300px',
+            top: '450px',
+            border: '7px solid red',
+            width: '200'
+        });
+
+    }
+
+
+</script>
+@*<h2>
+        @Html.DisplayFor(model => model.Name)
+    </h2>
+    <hr><br />
+    <h4>
+        @Html.DisplayFor(model => model.ScientificName)
+    </h4>
+    <br />
+    <img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
+    <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
+
+    <h5>
+        @Html.DisplayFor(model => model.Details)
+    </h5>
+
+    <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
+
+
+    @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })*@
+
+
+@*Html.ActionLink("View", "View", new { id = item.CoralId }) |*@
+@* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+             @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Light)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Flow)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Food)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Growth)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ScientificName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Details)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UploadedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UploadedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FragSize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Likes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisLikes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Views)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SoldOut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FragAvailable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FragAvailableFrom)
+                </th>
+                <th></th>
+            </tr>
+
+
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Light, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.CoralId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Flow)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Food)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Growth)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScientificName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Details)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Photo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UploadedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UploadedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FragSize)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Likes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisLikes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Views)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoldOut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FragAvailable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FragAvailableFrom)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
+                    </td>
+                </tr>
+
+
+        </table>*@
