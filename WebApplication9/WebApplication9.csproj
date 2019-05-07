@@ -350,7 +350,7 @@
     <Compile Include="Models\CoralConnection.cs" />
     <Compile Include="Models\CoralConnectionViewModal.cs" />
     <Compile Include="Models\CoralPhoto.cs" />
-    <Compile Include="Models\CoralViewModal.cs" />
+    <Compile Include="Models\CoralDetailsViewModel.cs" />
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\fishPhoto.cs" />
     <Compile Include="Models\IdentityModels.cs" />

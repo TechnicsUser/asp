@@ -7,11 +7,11 @@ using static WebApplication9.Models.ApplicationUser;
 using static WebApplication9.Models.Coral;
 
 namespace WebApplication9.Models {
-    public class CoralViewModel {
+    public class CoralDetailsViewModel {
         public ApplicationUser user { get; set; }
         public List<CoralPhoto> rl { get; set; }
         public Coral coral   { get; set; }
-        public CoralViewModel(Coral coral, ApplicationUser user, List<CoralPhoto> rl)
+        public CoralDetailsViewModel(Coral coral, ApplicationUser user, List<CoralPhoto> rl)
         {
             this.coral = coral;
             this.user = user;

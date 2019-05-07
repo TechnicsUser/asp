@@ -85,7 +85,7 @@ namespace WebApplication9.Controllers {
                 return HttpNotFound();
             }
 
-            CoralViewModel coralViewModal = new CoralViewModel(coral, Owner, CoralPhotoList);
+            CoralDetailsViewModel coralViewModal = new CoralDetailsViewModel(coral, Owner, CoralPhotoList);
             coral.Views++;
             db.Entry(coral).State = EntityState.Modified;
             await db.SaveChangesAsync();
