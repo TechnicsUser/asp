@@ -24,7 +24,37 @@ namespace WebApplication9.Controllers {
         // GET: Corals
         public async Task<ActionResult> Index() {
             return  View(await db.Corals.ToListAsync());
+         }
+
+
+        // GET: Corals
+        public ActionResult Index2()
+        {
+            List<Coral> cl = db.Corals.ToList();
+            for (int i = 0; i < cl.Count; i++)
+            {
+                Coral c = cl[i];
+                combineCoral(c.CoralId);
+
+            }
+
+            CoralViewModel coralViewModel = new CoralViewModel(cl);
+
+            return View(coralViewModel);
+
+
         }
+        public Coral combineCoral(int id)
+        {
+            Coral coral =  db.Corals.Find(id);
+            byte[] ba = new byte[] { 0x0 };
+            List<CoralPhoto> CoralPhotoList =  db.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToList();
+            coral.PhotoList = CoralPhotoList;
+
+            return (coral);
+
+        }
+
 
         public async Task<ActionResult> View(int id) {
              byte[] ba = new byte[] { 0x0 };

@@ -7,6 +7,7 @@ using System.Web;
 namespace WebApplication9.Models {
     public class Coral {
 
+        public List<CoralPhoto> PhotoList { get; set; }
 
         public enum CoralType {
             Soft,

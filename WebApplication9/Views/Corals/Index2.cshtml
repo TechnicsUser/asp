@@ -1,0 +1,116 @@
+﻿@model WebApplication9.Models.CoralViewModel
+<style>
+    .carousel img {
+        border-radius: 50px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 1.3s;
+        float: left;
+        width: 300px;
+        max-width: 300px;
+        max-height: 300px;
+        animation-name: zoom;
+        animation-duration: 1.6s;
+        opacity: 1;
+    }
+
+    .myImg:hover {
+        -webkit-filter: brightness(30%); /* Safari */
+        filter: brightness(125%);
+        opacity: 1;
+    }
+    /* width: inherit;
+            object-fit: contain;*/
+    }
+    /*.item > img {
+            width: 150px;
+            height: 20px;
+        }*/
+</style>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2></h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (var coralModel in Model.coralList)
+{
+
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left"  onclick="f1(@coralModel.CoralId, this)">
+        <h4>        @Html.DisplayFor(modelItem => coralModel.Name)    </h4>
+        <hr>
+        <h5>        @Html.DisplayFor(modelItem => coralModel.ScientificName)    </h5>
+
+        @*<img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />*@
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            @if (coralModel.PhotoList.Count > 1)
+            {
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    @for (int i = 1; i < coralModel.PhotoList.Count; i++)
+                    {
+                        <li data-target="#myCarousel" data-slide-to="i"></li>
+
+                    }
+
+                </ol>
+
+            }
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                @*@var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.UserPhoto)}";*@
+
+                @if (coralModel.PhotoList != null)
+
+                {
+
+                    <div class="item active">
+                        @{
+                            var base64 = Convert.ToBase64String(coralModel.PhotoList[0].Photo);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+
+                        <img src="@imgSrc" />
+                        @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
+                    </div>
+
+                            for (int i = 1; i < coralModel.PhotoList.Count; i++)
+                            {
+
+
+                        <div class="item">
+                            @{
+                                var base642 = Convert.ToBase64String(coralModel.PhotoList[i].Photo);
+                                var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
+                            }
+
+                            <img src="@imgSrc2" />
+                            @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
+                        </div>
+                    }
+
+                }
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+}
+<script>
+    function f1(item) {
+
+        window.location = "/Corals/Details/" + item;
+    }
+
+</script>
+

@@ -339,6 +339,14 @@
     <Compile Include="Migrations\201905071310420_coralViewModel.Designer.cs">
       <DependentUpon>201905071310420_coralViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905071603527_coralViewModel2.cs" />
+    <Compile Include="Migrations\201905071603527_coralViewModel2.Designer.cs">
+      <DependentUpon>201905071603527_coralViewModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905071643452_coralViewModel3.cs" />
+    <Compile Include="Migrations\201905071643452_coralViewModel3.Designer.cs">
+      <DependentUpon>201905071643452_coralViewModel3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -351,6 +359,7 @@
     <Compile Include="Models\CoralConnectionViewModal.cs" />
     <Compile Include="Models\CoralPhoto.cs" />
     <Compile Include="Models\CoralDetailsViewModel.cs" />
+    <Compile Include="Models\CoralViewModel.cs" />
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\fishPhoto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -585,6 +594,7 @@
     <Content Include="Views\Param\Index.cshtml" />
     <Content Include="Views\Fish\View.cshtml" />
     <Content Include="Views\Fish\View1.cshtml" />
+    <Content Include="Views\Corals\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -638,6 +648,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905071310420_coralViewModel.resx">
       <DependentUpon>201905071310420_coralViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905071603527_coralViewModel2.resx">
+      <DependentUpon>201905071603527_coralViewModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905071643452_coralViewModel3.resx">
+      <DependentUpon>201905071643452_coralViewModel3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
