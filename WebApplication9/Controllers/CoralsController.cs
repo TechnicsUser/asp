@@ -67,12 +67,6 @@ namespace WebApplication9.Controllers {
             return View(rl);
         }
 
-        //private ActionResult View(List<CoralPhoto> rl, Coral thisCoral) {
-        //    throw new NotImplementedException();
-        //}
-
-
-
         public   FileContentResult CoralPhoto3(int id, int number) {
             try {
            //   CoralPhoto rl = await db.CoralPhoto.Where(x => x.CoralId == id).Skip(number).FirstAsync();
@@ -97,15 +91,15 @@ namespace WebApplication9.Controllers {
             }
 
         }
-
+      
         // GET: Corals/Details/5
         public async Task<ActionResult> Details(int? id) {
-       
-            if (id == null )
+
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             Coral coral = await db.Corals.FindAsync(id);
+            Coral coral = await db.Corals.FindAsync(id);
             byte[] ba = new byte[] { 0x0 };
             List<CoralPhoto> CoralPhotoList = await db.CoralPhoto.Where(x => x.CoralId == id).Where(x => x.Photo != ba).ToListAsync();
             ApplicationUser Owner = await db2.Users.Where(x => x.UserName == coral.UploadedBy).FirstAsync();
