@@ -37,7 +37,7 @@
                     <li>@Html.ActionLink("Messages", "Index", "Messages")</li>
 
                     <li>@Html.ActionLink("Notifications", "Index", "Notifications")</li>
-                    <li>@Html.ActionLink("Profile", "Index", "Notifications")</li>
+                    <li>  @Html.ActionLink("Profile", "ViewUser","AspNetUsers",  new { id =   @User.Identity.GetUserId()}, null) </li>
                     <li class="divider"></li>
 
                     <li>
@@ -46,9 +46,9 @@
                     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 
                     @*<li>
-                        @foreach(NotificationViewModel notification in ViewBag.Notifications) {
-                        <li><a href=“#”>@notification.NotificationType <span class=“badge badge-@notification.BadgeClass”>@notification.Count</span></a></li>
-                        }*@
+        @foreach(NotificationViewModel notification in ViewBag.Notifications) {
+        <li><a href=“#”>@notification.NotificationType <span class=“badge badge-@notification.BadgeClass”>@notification.Count</span></a></li>
+        }*@
 
 
 
