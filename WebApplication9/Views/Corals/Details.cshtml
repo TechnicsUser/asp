@@ -218,7 +218,15 @@
                     <a href="@Url.Action("ViewUser","AspNetUsers", new { id = Model.user.Id })">@Model.coral.UploadedBy</a>
                 </h5>
             </div>
+            @*@if (User.Identity.Name == Model.coral.UploadedBy)
+            {
+                <div>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.coral.CoralId })
+                </div>
 
+                @Html.ActionLink("Delete", "Delete", new { id = Model.coral.CoralId })
+
+            }*@
         </div>
     </body>
 

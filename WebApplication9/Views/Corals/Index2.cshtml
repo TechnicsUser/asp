@@ -158,41 +158,50 @@
             }
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+        <div class="carousel-inner">
 
-                @*@var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.UserPhoto)}";*@
+            @*@var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.UserPhoto)}";*@
 
-                @if (coralModel.PhotoList != null)
+            @if (coralModel.PhotoList != null)
 
-                {
+            {
 
-                    <div class="item active">
-                        @{
-                            var base64 = Convert.ToBase64String(coralModel.PhotoList[0].Photo);
-                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                        }
-
-                        <img src="@imgSrc" />
-                        @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
-                    </div>
-
-                    for (int i = 1; i < coralModel.PhotoList.Count; i++)
-                    {
-
-
-                        <div class="item">
-                            @{
-                                var base642 = Convert.ToBase64String(coralModel.PhotoList[i].Photo);
-                                var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
-                            }
-
-                            <img src="@imgSrc2" />
-                            @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
-                        </div>
+                <div class="item active">
+                    @{
+                        var base64 = Convert.ToBase64String(coralModel.PhotoList[0].Photo);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                     }
 
+                    <img src="@imgSrc" />
+                    @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
+                </div>
+
+                for (int i = 1; i < coralModel.PhotoList.Count; i++)
+                {
+
+
+                    <div class="item">
+                        @{
+                            var base642 = Convert.ToBase64String(coralModel.PhotoList[i].Photo);
+                            var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
+                        }
+
+                        <img src="@imgSrc2" />
+                        @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
+                    </div>
                 }
-            </div>
+                if (User.Identity.Name == coralModel.UploadedBy)
+                {
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new { id = coralModel.CoralId })
+                    </div>
+
+                    @Html.ActionLink("Delete", "Delete", new { id = coralModel.CoralId })
+
+                }
+
+            }
+        </div>
 
 
         </div>
