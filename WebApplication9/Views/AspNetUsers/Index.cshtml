@@ -101,41 +101,7 @@
 
 @foreach (var item in Model)
 {
-    //var User = System.Web.HttpContext.Current.Session.
-    //if (User != null)
-    //{
-    //    <h4>@User</h4>
-    //}
-    @*var ipAdd = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-        if (string.IsNullOrEmpty(ipAdd))
-        {
-            ipAdd = Request.ServerVariables["REMOTE_ADDR"];
-        }
-        else
-        {
-                <h4>@ipAdd</h4>
-
-         //   lblIPAddress.Text = ipAdd;
-        }*@
-    var userip = Request.UserHostAddress;
-    if (Request.UserHostAddress != null)
-    {
-        Int64 macinfo = new Int64();
-        string macSrc = macinfo.ToString("X");
-        if (macSrc == "0")
-        {
-            if (userip == "127.0.0.1")
-            {
-                Response.Write("visited Localhost!");
-            }
-            else
-            {
-                <h4>@userip</h4>
-            }
-        }
-    }
-
+   
     if (item.UserName != null)
     {
         var imgSrc = "";
