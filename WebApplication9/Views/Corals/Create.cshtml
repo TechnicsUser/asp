@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2></h2>
 
 
 @using (Html.BeginForm("Create", "Corals", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
@@ -44,13 +44,13 @@
         <div class="col-md-4">
             <div class="col-md-12">
                  @Html.TextAreaFor(model => model.Details, new { @style = "height: 130px; width: 250px; ",@placeholder = " Enter Details Here"  , htmlAttributes = new { @class = "form-control"} })
-                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "col-md-12 text-danger" })
             </div>
         </div>
         <div class="form-group col-md-3">
             <div class="col-md-6 col-md-push-2">
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Price" } })
-                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "col-md-12  text-danger" })
             </div>
             <br /><br /><br />
             <div class="col-md-6 col-md-push-2">

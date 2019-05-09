@@ -347,6 +347,10 @@
     <Compile Include="Migrations\201905071643452_coralViewModel3.Designer.cs">
       <DependentUpon>201905071643452_coralViewModel3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905090820134_coralDetails.cs" />
+    <Compile Include="Migrations\201905090820134_coralDetails.Designer.cs">
+      <DependentUpon>201905090820134_coralDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -572,7 +576,7 @@
     <Content Include="Views\Corals\Delete.cshtml" />
     <Content Include="Views\Corals\Details.cshtml" />
     <Content Include="Views\Corals\Edit.cshtml" />
-    <Content Include="Views\Corals\Index.cshtml" />
+    <Content Include="Views\Corals\Index1.cshtml" />
     <Content Include="Views\CoralConnections\Create.cshtml" />
     <Content Include="Views\CoralConnections\Delete.cshtml" />
     <Content Include="Views\CoralConnections\Details.cshtml" />
@@ -594,7 +598,7 @@
     <Content Include="Views\Param\Index.cshtml" />
     <Content Include="Views\Fish\View.cshtml" />
     <Content Include="Views\Fish\View1.cshtml" />
-    <Content Include="Views\Corals\Index2.cshtml" />
+    <Content Include="Views\Corals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -654,6 +658,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905071643452_coralViewModel3.resx">
       <DependentUpon>201905071643452_coralViewModel3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905090820134_coralDetails.resx">
+      <DependentUpon>201905090820134_coralDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

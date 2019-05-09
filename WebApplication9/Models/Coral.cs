@@ -60,9 +60,11 @@ namespace WebApplication9.Models {
         public FlowRequirement Flow { get; set; }
         public FoodRequirement Food { get; set; }
         public GrowthSpeed Growth { get; set; }
-
+        [Required]
         public string Name { get; set; }
         public string ScientificName { get; set; }
+        [Required]
+
         public string Details { get; set; }
        
        
@@ -76,6 +78,8 @@ namespace WebApplication9.Models {
         [Display (Name = "Contact")]
         public string UploadedBy { get; set; }
         public string UploadedOn { get; set; }
+        [Required]
+
         public string Price { get; set; }
         public string Size { get; set; }
         public string FragSize { get; set; }

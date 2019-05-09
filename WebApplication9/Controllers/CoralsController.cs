@@ -22,13 +22,13 @@ namespace WebApplication9.Controllers {
         [NotificationFilter]
         [MessagesFilter]
         // GET: Corals
-        public async Task<ActionResult> Index() {
+        public async Task<ActionResult> Index1() {
             return  View(await db.Corals.ToListAsync());
          }
 
 
         // GET: Corals
-        public ActionResult Index2()
+        public ActionResult Index()
         {
             List<Coral> cl = db.Corals.ToList();
             for (int i = 0; i < cl.Count; i++)
@@ -67,15 +67,16 @@ namespace WebApplication9.Controllers {
             return View(rl);
         }
 
-        public   FileContentResult CoralPhoto3(int id, int number) {
+        public async Task<FileContentResult> CoralPhoto3(int id, int number) {
             try {
-           //   CoralPhoto rl = await db.CoralPhoto.Where(x => x.CoralId == id).Skip(number).FirstAsync();
+                var pic = await db.CoralPhoto.Where(x => x.CoralId == id).OrderByDescending(x => x.Likes).
+                    Select(x => x.Photo).Skip(number).FirstAsync();
 
-                var pic =   (from  sn3 in db.CoralPhoto
-                              where sn3.CoralId == id
-                              orderby sn3.Likes descending
+                //var pic =   (  sn3 => db.CoralPhoto
+                //              where sn3.CoralId == id
+                //              orderby sn3.Likes descending
 
-                              select sn3.Photo).Skip(number).First();
+                //              select sn3.Photo).Skip(number).First();
 
 
                 return new FileContentResult(pic, "image/jpeg");
