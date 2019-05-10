@@ -102,7 +102,7 @@
 @foreach (var item in Model)
 {
    
-    if (item.UserName != null)
+    if (item.UserName != null && item.EmailConfirmed == true)
     {
         var imgSrc = "";
         try
@@ -118,30 +118,39 @@
 
 
         //onclick="f1(@item.Id, this)"
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.Id, this)">
-            <h4>        @Html.DisplayFor(modelItem => item.UserName)    </h4>
-            <hr>
-            <h5>        @Html.DisplayFor(modelItem => item.FirstName)    </h5>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.Id, this)">
+    @*<h4>        @Html.DisplayFor(modelItem => item.UserName)    </h4>*@
+    <hr>
+    <h4>            @Html.ActionLink(@item.UserName, "ViewUser", new { id = item.Id }) </h4>
+    <hr>
+    <h5>        @Html.DisplayFor(modelItem => item.FirstName)    </h5>
 
-            <img class="myImg" src="@imgSrc" height="50" style="width:160px;height:160px; background: #FFFFFF;
-    margin: auto;
-    -moz-border-radius: 60px;
-    border-radius: 100px;
-    padding: 6px;
-    box-shadow: 0px 0px 20px #888;" />
+    <img class="myImg" src="@imgSrc" height="50"  />
 
-            @*<img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />*@
+    @*<img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />*@
 
-            <h6>            @Html.DisplayFor(modelItem => item.PhoneNumber)                       </h6>
+    <h6>            @Html.DisplayFor(modelItem => item.PhoneNumber)                       </h6>
 
-            @Html.ActionLink("View", "ViewUser", new { id = item.Id }) |
+    @*@Html.ActionLink("View", "ViewUser", new { id = item.Id }) |*@
 
 
-            @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
-        </div>
+    @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
+</div>
     }
 }
 @*<div class="col-lg-3" style="float : none"></div>*@
 
+<style>
+    .myImg {
+       width:160px;
+        height:160px;
+        background: #FFFFFF;
+        margin: auto;
+        -moz-border-radius: 60px;
+        border-radius: 100px;
+        padding: 6px;
+        box-shadow: 0px 0px 20px #888;
+    }
+</style>

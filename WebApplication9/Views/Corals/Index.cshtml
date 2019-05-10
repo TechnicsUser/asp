@@ -19,13 +19,6 @@
         filter: brightness(125%);
         opacity: 1;
     }
-    /* width: inherit;
-            object-fit: contain;*/
-    }
-    /*.item > img {
-            width: 150px;
-            height: 20px;
-        }*/
 </style>
 
 
@@ -45,7 +38,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         @*<ul class="nav navbar-nav">
                                      <li class="active"><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
                                      <li class="dropdown">
                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Coral Type <b class="caret"></b></a>
                                          <ul class="dropdown-menu">
@@ -134,11 +127,11 @@
 {
 
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@coralModel.CoralId, this)">
-        <h4>        @Html.DisplayFor(modelItem => coralModel.Name)    </h4>
+        <hr />
+        <h4> @Html.ActionLink(@coralModel.Name, "View", new { id = @coralModel.CoralId }) </h4>
         <hr>
         <h5>        @Html.DisplayFor(modelItem => coralModel.ScientificName)    </h5>
 
-        @*<img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />*@
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             @if (coralModel.PhotoList.Count > 1)
             {
@@ -148,72 +141,47 @@
                     @for (int i = 1; i < coralModel.PhotoList.Count; i++)
                     {
                         <li data-target="#myCarousel" data-slide-to="i"></li>
-
                     }
-
                 </ol>
-
             }
 
             <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-
-            @*@var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.UserPhoto)}";*@
-
-            @if (coralModel.PhotoList != null)
-
-            {
-
-                <div class="item active">
-                    @{
-                        var base64 = Convert.ToBase64String(coralModel.PhotoList[0].Photo);
-                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                    }
-
-                    <img src="@imgSrc" />
-                    @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
-                </div>
-
-                for (int i = 1; i < coralModel.PhotoList.Count; i++)
+            <div class="carousel-inner">
+                @if (coralModel.PhotoList != null)
                 {
-
-
-                    <div class="item">
+                    <div class="item active">
                         @{
-                            var base642 = Convert.ToBase64String(coralModel.PhotoList[i].Photo);
-                            var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
+                            var base64 = Convert.ToBase64String(coralModel.PhotoList[0].Photo);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                         }
-
-                        <img src="@imgSrc2" />
-                        @*<img class="myImg" src="model.PhotoList.Skip(i).First().Photo)" alt="" id="">*@
-                    </div>
-                }
-                if (User.Identity.Name == coralModel.UploadedBy)
-                {
-                    <div>
-                        @Html.ActionLink("Edit", "Edit", new { id = coralModel.CoralId })
+                        <img src="@imgSrc" />
                     </div>
 
-                    @Html.ActionLink("Delete", "Delete", new { id = coralModel.CoralId })
-
+                    for (int i = 1; i < coralModel.PhotoList.Count; i++)
+                    {
+                        <div class="item">
+                            @{
+                                var base642 = Convert.ToBase64String(coralModel.PhotoList[i].Photo);
+                                var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
+                            }
+                            <img src="@imgSrc2" />
+                        </div>
+                    }
+                    if (User.Identity.Name == coralModel.UploadedBy)
+                    {
+                        <div class="col-md-12 col-md-push-4">
+                            @Html.ActionLink("Edit", "Edit", new { id = coralModel.CoralId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = coralModel.CoralId })
+                        </div>
+                    }
                 }
-
-            }
+            </div>
         </div>
-
-
-        </div>
-
-
-
     </div>
-
 }
 <script>
     function f1(item) {
-
         window.location = "/Corals/Details/" + item;
     }
-
 </script>
 

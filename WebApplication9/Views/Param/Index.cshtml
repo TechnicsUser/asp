@@ -1,7 +1,4 @@
 ﻿
-@{
-    ViewBag.Title = "View";
-}
 
 <html>
 <head>
@@ -20,21 +17,22 @@
                 padding: 25px;*/
             }
         .zoomNumber {
-            /*position:inherit;*/
-             /*top: 220px;
-            left:840px;*/
+              /*top: 180px;*/
+            left:40px;
                   width: 70px;
             height: 30px;
-             border: 0px;
-            z-index: 100;
+             z-index: 100;
             background-color:white;
-             margin:20px;
+             margin-bottom: 15px;
         }
-        .myBtn {
+        /*@@media only screen and (max-width: 900px) {*/
+
+        
+        .myBtnGroup {
             /*column-count: 3;*/
             display: block;
             position: absolute;
-            left:500px;
+            left:40px;
 
         }
 
@@ -80,6 +78,14 @@
         }
         .topnav{
             display: none;
+        }
+
+        .favcolor {
+            top: 210px;
+            left: 140px;
+            width: 60px;
+            height: 30px;
+
         }
     </style>
     <script>
@@ -162,12 +168,12 @@
 
     <div class="holder">
 
-        <iframe class="frame" align="left"  id="first" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/1?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Humid">   </iframe>
+        <iframe class="frame" id="first" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/1?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Sump">   </iframe>
 
-        <div class="test">
+        <div class="myBtnGroup">
             <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('first'))">
-            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('first') )">
-            <input type="color" id="firstColor" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('first') )">
+            <input type="color" class="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('first') )">
+            <input type="color"  class="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('first') )">
 
         </div>
 
@@ -178,12 +184,12 @@
 
     <div class="holder">
 
-        <iframe class="frame" id="second" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/2?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Humid"></iframe>
+        <iframe class="frame" id="second" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/2?bgcolor=%23000000&color=%23d62020&dynamic=true&width=auto&results=30&type=line&update=15&title=Sump"></iframe>
       
-        <div class="myBtn">
+        <div class="myBtnGroup">
             <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('second'))">
-            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('second') )">
-            <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('second') )">
+            <input type="color" class="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('second') )">
+            <input type="color" class="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('second') )">
         </div>
 
     </div>
@@ -192,28 +198,28 @@
     <br />
 
     <div class="holder">
-        <iframe class="frame" id="third" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/3?bgcolor=%23000030&color=%23d62020&dynamic=true&width=auto&results=20&type=line&update=15"></iframe>
-        <div class="myBtn">
+        <iframe class="frame" id="third" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/3?bgcolor=%23000030&color=%23d62020&dynamic=true&width=auto&results=20&type=line&update=15&title=Reef"></iframe>
+        <div class="myBtnGroup">
             <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('third'))">
-            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('third') )">
-            <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('third') )">
+            <input type="color" class="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('third') )">
+            <input type="color" class="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('third') )">
         </div>
     </div>
     <br />
     <br />
 
     <div class="holder">
-        <iframe class="frame" id="forth" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/4?bgcolor=%23000000&color=%23d620040&dynamic=true&width=auto&results=20&type=line&dynamic=true&update=15"></iframe>
-        <div class="myBtn">
+        <iframe class="frame" id="forth" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/459687/charts/4?bgcolor=%23000000&color=%23d620040&dynamic=true&width=auto&results=20&type=line&dynamic=true&update=15&title=Reef"></iframe>
+        <div class="myBtnGroup">
             <input type="number" class="zoomNumber" name="zoom" min="10" max="50" placeholder="Zoom" onchange="zoom(this.value, document.getElementById('forth'))">
-            <input type="color" name="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('forth') )">
-            <input type="color" name="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('forth') )">
+            <input type="color" class="favcolor" value="#ff0000" onchange="changeColor(this.value, document.getElementById('forth') )">
+            <input type="color" class="favcolor" value="#ff0000" onchange="changeBgColor(this.value, document.getElementById('forth') )">
         </div>
     </div>
     <br />
     <br />
 
-    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/232538"></iframe>
+    @*<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/matlab_visualizations/232538"></iframe>*@
     @*<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/plugins/232544"></iframe>
 
         <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/apps/plugins/232544"></iframe>*@
@@ -221,9 +227,9 @@
     <!-- increment button -->
     @*<input type='button' name='add' id="add" value='+' />*@
     <!-- quantity input -->
-    <input name='qty' id='qty' style="text-align:center;" type="text" value="1" autocomplete="off" size="2">
+    @*<input name='qty' id='qty' style="text-align:center;" type="text" value="1" autocomplete="off" size="2">*@
     <!-- decrement button -->
-    <input type='button' name='subtract' id="subtract" value='-' />
+    @*<input type='button' name='subtract' id="subtract" value='-' />
     <input type='button' name='button2' id="button2" value='button  2' />
     <input type='button' name='button3' id="back" value='button  ' />
 
@@ -255,7 +261,7 @@
     </button>
     <div id="collapse2" class="collapse">
         <div id="piechart_div" style="border: 1px solid #ccc"></div>
-    </div>
+    </div>*@
 
 </body>
 </html>
