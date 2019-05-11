@@ -128,7 +128,7 @@
 
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@coralModel.CoralId, this)">
         <hr />
-        <h4> @Html.ActionLink(@coralModel.Name, "View", new { id = @coralModel.CoralId }) </h4>
+        <h4> @Html.ActionLink(@coralModel.Name, "Details", new { id = @coralModel.CoralId }) </h4>
         <hr>
         <h5>        @Html.DisplayFor(modelItem => coralModel.ScientificName)    </h5>
 
@@ -147,7 +147,7 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                @if (coralModel.PhotoList != null)
+                @if (coralModel.PhotoList.Count > 0)
                 {
                     <div class="item active">
                         @{
