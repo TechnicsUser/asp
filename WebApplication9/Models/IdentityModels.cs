@@ -55,5 +55,9 @@ namespace WebApplication9.Models
         public System.Data.Entity.DbSet<WebApplication9.Models.fishPhoto> FishPhoto { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication9.Models.Notification> Notifications { get; set; }
-        }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.AspNetUser> AspNetUsers { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Messages> Messages { get; set; }
+    }
 }

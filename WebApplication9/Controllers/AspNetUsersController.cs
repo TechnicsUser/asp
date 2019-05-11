@@ -30,8 +30,6 @@ namespace WebApplication9.Controllers
         public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
 
          AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
-         ApplicationDbContext db2 = new ApplicationDbContext();
-
          ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
 
             List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
