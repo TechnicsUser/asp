@@ -8,10 +8,10 @@ using static WebApplication9.Models.Coral;
 
 namespace WebApplication9.Models {
     public class CoralDetailsViewModel {
-        public ApplicationUser user { get; set; }
+        public AspNetUser user { get; set; }
         public List<CoralPhoto> rl { get; set; }
         public Coral coral   { get; set; }
-        public CoralDetailsViewModel(Coral coral, ApplicationUser user, List<CoralPhoto> rl)
+        public CoralDetailsViewModel(Coral coral, AspNetUser user, List<CoralPhoto> rl)
         {
             this.coral = coral;
             this.user = user;
