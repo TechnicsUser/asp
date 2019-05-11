@@ -165,7 +165,11 @@ return View(model);
                             db2.SaveChanges();
                             }
                         }
-
+                    //var CredID = (from sn3 in db2.FishPhoto
+                    //              where sn3.FishId == fish.FishId
+                    //              select sn3.Photo).First();
+                    //db2.Entry(fish).Entity.Photo = CredID;
+                    // fish.UploadedBy = User.Identity.Name;
                     db.Entry(fish).State = EntityState.Modified;
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");

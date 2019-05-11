@@ -23,19 +23,12 @@ namespace WebApplication9.Models {
 
         public string Title { get; set; }
         public string Subject { get; set; }
-
-        [Required]
-        [Display(Name = "Message")]
-
         public string Content { get; set; }
 
         public bool IsReply { get; set; }
         public int[] PreviousMessages { get; set; }
 
-        [Display(Name = "Message To")]
         public string MessageTo { get; set; }
-        [Required]
-        [Display(Name = "Message From")]
         public string MessageFrom { get; set; }
         public string UserId { get; set; }
         public bool IsDismissed { get; set; }

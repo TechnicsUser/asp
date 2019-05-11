@@ -142,10 +142,10 @@
                 }
 
                 @*<div class=" icon-next" role="alert">
-                        <div class="alert alert-warning d-flex flex-row">
-                            Enter a valid email address
-                        </div>
-                    </div>*@
+                <div class="alert alert-warning d-flex flex-row">
+                    Enter a valid email address
+                </div>
+            </div>*@
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -167,7 +167,7 @@
 
                 <div class="col-lg-offset-6 col-md-offset-6">
                     <ul>
-                        <li>
+                        <li >
                             Fish Adds : @ViewBag.flSize
                         </li>
                         <li>
@@ -186,13 +186,13 @@
                             @if (ViewBag.lastOnline == null)
                             {
                                 <text>Last Online : Never Logged In</text>
-                            }
-                            else
-                            {
-                                <text>    Last Online : @ViewBag.lastOnline  </text>
+                                }
+                                else
+                                {
+                                    <text>    Last Online : @ViewBag.lastOnline  </text>
 
 
-                            }
+                                }
 
                         </li>
                         <li>
@@ -205,22 +205,20 @@
 
         </div>
     </div>
+ 
+        @*<img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
+            <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
 
-    @*<img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
-        <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
+            <h5>
+                @Html.DisplayFor(model => model.Details)
+            </h5>
 
-        <h5>
-            @Html.DisplayFor(model => model.Details)
-        </h5>
-
-        <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
-
-
-        @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })*@
-    @Html.ActionLink("Message", "CreateDirect", "Messages", new { id = @Model.Id, userid = @Model.IdUserName, userTo = @Model.UserName }, null);
+            <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
 
 
-</body>
+            @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })*@
+
+ </body>
 
 
 <script>

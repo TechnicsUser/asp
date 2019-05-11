@@ -351,14 +351,6 @@
     <Compile Include="Migrations\201905090820134_coralDetails.Designer.cs">
       <DependentUpon>201905090820134_coralDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905110832189_messagesDetails.cs" />
-    <Compile Include="Migrations\201905110832189_messagesDetails.Designer.cs">
-      <DependentUpon>201905110832189_messagesDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905110836334_messagesDetails2.cs" />
-    <Compile Include="Migrations\201905110836334_messagesDetails2.Designer.cs">
-      <DependentUpon>201905110836334_messagesDetails2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -377,7 +369,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Messages.cs" />
-    <Compile Include="Models\MessagesCreateViewModel.cs" />
     <Compile Include="Models\MessagesViewModel.cs" />
     <Compile Include="Models\myUsers.Context.cs">
       <AutoGen>True</AutoGen>
@@ -608,8 +599,6 @@
     <Content Include="Views\Fish\View.cshtml" />
     <Content Include="Views\Fish\View1.cshtml" />
     <Content Include="Views\Corals\Index.cshtml" />
-    <Content Include="Views\Messages\CreateDirect.cshtml" />
-    <Content Include="Views\Messages\Create3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -672,12 +661,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905090820134_coralDetails.resx">
       <DependentUpon>201905090820134_coralDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905110832189_messagesDetails.resx">
-      <DependentUpon>201905110832189_messagesDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905110836334_messagesDetails2.resx">
-      <DependentUpon>201905110836334_messagesDetails2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
