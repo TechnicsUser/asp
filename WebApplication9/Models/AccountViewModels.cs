@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication9.Models
@@ -50,7 +49,7 @@ namespace WebApplication9.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User Id")]
+        [Display(Name = "User Name")]
         //[EmailAddress]
         public string Email { get; set; }
 
@@ -66,7 +65,6 @@ namespace WebApplication9.Models
     public class RegisterViewModel
 
     {
-        public string CssTheme { get; set; }
 
         [Display(Name = "User Photo")]
         public byte[] UserPhoto { get; set; }
@@ -83,8 +81,7 @@ namespace WebApplication9.Models
         [Required]
 
         public string LastName { get; set; }
-        public DateTime LastLoginTime { get; set; }
-        public DateTime RegistrationDate { get; set; }
+       
 
 
         [Required]

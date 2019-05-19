@@ -16,7 +16,6 @@ namespace WebApplication9.Controllers
         private userEntities1 db = new userEntities1();
         private ApplicationDbContext db2 = new ApplicationDbContext();
 
-        [Authorize]
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index() {
@@ -26,6 +25,7 @@ namespace WebApplication9.Controllers
 
 
         // GET: AspNetUsers
+        [Authorize]
 
         public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
 
@@ -44,6 +44,7 @@ namespace WebApplication9.Controllers
 
             return View(aspNetUser);
             }
+        [Authorize]
 
         // GET: AspNetUsers/Details/5
         public async Task<ActionResult> Details(string id)
