@@ -608,6 +608,7 @@
     <Content Include="Views\Fish\View.cshtml" />
     <Content Include="Views\Fish\View1.cshtml" />
     <Content Include="Views\Corals\Index.cshtml" />
+    <Content Include="Views\Comments\CreatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
