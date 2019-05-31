@@ -11,7 +11,7 @@ namespace WebApplication9.Models
     public class ApplicationUser : IdentityUser
     {
 
-
+        
         public string CssTheme { get; set; }
 
         public byte[] UserPhoto { get; set; }

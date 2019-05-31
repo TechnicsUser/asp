@@ -52,6 +52,7 @@ namespace WebApplication9.Controllers
             if (ModelState.IsValid)
             {
                 comments.UserId = User.Identity.GetUserId();
+                //comments.= User.Identity.GetUserId();
                 comments.CommentOn = DateTime.Now.ToShortDateString();
                 db.Comments.Add(comments);
                 db.SaveChanges();
@@ -128,5 +129,6 @@ namespace WebApplication9.Controllers
             }
             base.Dispose(disposing);
         }
+    
     }
 }

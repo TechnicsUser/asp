@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace WebApplication9.Models {
-    public class Coral {
+    public class Coral : Item{
 
         public List<CoralPhoto> PhotoList { get; set; }
 
@@ -60,12 +60,7 @@ namespace WebApplication9.Models {
         public FlowRequirement Flow { get; set; }
         public FoodRequirement Food { get; set; }
         public GrowthSpeed Growth { get; set; }
-        [Required]
-        public string Name { get; set; }
-        public string ScientificName { get; set; }
-        [Required]
-
-        public string Details { get; set; }
+     
        
        
  
@@ -75,19 +70,13 @@ namespace WebApplication9.Models {
         public byte[] Photo { get; set; }
 
 
-        [Display (Name = "Contact")]
-        public string UploadedBy { get; set; }
-        public string UploadedOn { get; set; }
         [Required]
 
         public string Price { get; set; }
         public string Size { get; set; }
         public string FragSize { get; set; }
 
-        public string CommentId { get; set; }
-        public int Likes { get; set; }
-        public int DisLikes { get; set; }
-        public int Views { get; set; }
+   
 
         public bool SoldOut { get; set; }
         public bool FragAvailable { get; set; }

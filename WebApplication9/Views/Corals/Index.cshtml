@@ -1,4 +1,6 @@
-﻿@model WebApplication9.Models.CoralViewModel
+﻿@using WebApplication9.Models
+ @model WebApplication9.Models.CoralViewModel
+
 <style>
     .carousel img {
         border-radius: 50px;
@@ -178,7 +180,13 @@
             </div>
         </div>
     </div>
+    
+
+   
+         @*@Html.Partial("_PartialCreateComment");*@
+
 }
+
 <script>
     function f1(item) {
         window.location = "/Corals/Details/" + item;

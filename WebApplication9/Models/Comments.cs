@@ -15,7 +15,8 @@ namespace WebApplication9.Models {
             }
 
         [Key]
-        public string CommentId { get; set; }
+        public int CommentId { get; set; }
+
         public CommentType Type { get; set; }
 
         public string UserId { get; set; }

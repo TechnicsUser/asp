@@ -9,22 +9,27 @@ using System.Web.Mvc;
 using WebApplication9.Filters;
 using WebApplication9.Models;
 
-namespace WebApplication9.Controllers {
+namespace WebApplication9.Controllers
+{
     //[RequireHttps]
 
-    public class HomeController : Controller {
+    public class HomeController : Controller
+    {
 
         [NotificationFilter]
         [MessagesFilter]
 
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
 
             return View();
         }
 
 
-        public FileContentResult UserPhotos() {
-            if(User.Identity.IsAuthenticated) {
+        public FileContentResult UserPhotos()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
 
 
                 String userId = User.Identity.GetUserId();
@@ -33,8 +38,9 @@ namespace WebApplication9.Controllers {
                 var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
 
                 return new FileContentResult(userImage.UserPhoto, "image/jpeg");
-                }
-            else {
+            }
+            else
+            {
                 string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
 
                 byte[] imageData = null;
@@ -42,21 +48,26 @@ namespace WebApplication9.Controllers {
                 long imageFileLength = fileInfo.Length;
                 FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
-                imageData = br.ReadBytes((int)imageFileLength);
+                imageData = br.ReadBytes((int) imageFileLength);
                 return File(imageData, "image/png");
 
-                }
-            }
-        public ActionResult About() {
- 
-            return View();
-            }
-        //[Authorize]
-
-        public ActionResult Contact() {
- 
-            return View();
             }
         }
 
+        public ActionResult About()
+        {
+
+            return View();
+        }
+        //[Authorize]
+
+        public ActionResult Contact()
+        {
+
+            return View();
+        }
+
+
+
     }
+}

@@ -1,4 +1,5 @@
-﻿@model WebApplication9.Models.CoralDetailsViewModel
+﻿@using WebApplication9.Models
+@model WebApplication9.Models.CoralDetailsViewModel
 
 
 
@@ -217,6 +218,17 @@
                 <h5>
                     <a href="@Url.Action("ViewUser","AspNetUsers", new { id = Model.user.Id })">@Model.coral.UploadedBy</a>
                 </h5>
+            </div>
+            @foreach (var coralModel in Model.cl)
+            {
+                @Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModal(coralModel, null));
+
+            }
+
+            <div>
+    
+   
+
             </div>
             @*@if (User.Identity.Name == Model.coral.UploadedBy)
             {

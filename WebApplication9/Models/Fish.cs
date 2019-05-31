@@ -6,7 +6,7 @@ using System.Web;
 
 
 namespace WebApplication9.Models {
-    public class Fish {
+    public class Fish : Item {
 
         public enum FishType {
 
@@ -81,27 +81,19 @@ namespace WebApplication9.Models {
         //public FoodRequirement Food { get; set; }
         //public GrowthSpeed Growth { get; set; }
 
-        public string Name { get; set; }
-        public string ScientificName { get; set; }
-        public string Details { get; set; }
+
 
         public int[] PhotoId { get; set; }
         public byte[] Photo { get; set; }
 
 
 
-        public string UploadedBy { get; set; }
-        public string UploadedOn { get; set; }
+  
         public string Price { get; set; }
         public string Size { get; set; }
         public string FishSize { get; set; }
 
-        public string CommentId { get; set; }
-        public int Likes { get; set; }
-        public int DisLikes { get; set; }
-        public int Views { get; set; }
-
-        public bool SoldOut { get; set; }
+   
         public bool FishAvailable { get; set; }
         public string FishAvailableFrom { get; set; }
 

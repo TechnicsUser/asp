@@ -74,8 +74,9 @@ namespace WebApplication9.Controllers
             }
 
             var owner = await db.Users.Where(x => x.UserName == coral.UploadedBy).FirstAsync();
+            var comments = await db.Comments.Where(x => x.UserId == coral.CoralId.ToString()).ToListAsync();
 
-            var coralViewModal = new CoralDetailsViewModel(coral, owner, coralPhotoList);
+            var coralViewModal = new CoralDetailsViewModel(coral, owner, coralPhotoList, comments);
             coral.Views++;
             db.Entry(coral).State = EntityState.Modified;
             await db.SaveChangesAsync();
@@ -227,5 +228,6 @@ namespace WebApplication9.Controllers
             if (disposing) db.Dispose();
             base.Dispose(disposing);
         }
+      
     }
 }

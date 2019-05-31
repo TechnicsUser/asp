@@ -359,13 +359,18 @@
     <Compile Include="Migrations\201905111237503_messagesDetails4.Designer.cs">
       <DependentUpon>201905111237503_messagesDetails4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905302117148_commentEdit.cs" />
+    <Compile Include="Migrations\201905302117148_commentEdit.Designer.cs">
+      <DependentUpon>201905302117148_commentEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>myUsers.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\CommentViewModal.cs" />
+    <Compile Include="Models\DisplayCommentViewModal.cs" />
+    <Compile Include="Models\CreateCommentViewModal.cs" />
     <Compile Include="Models\Coral.cs" />
     <Compile Include="Models\CoralConnection.cs" />
     <Compile Include="Models\CoralConnectionViewModal.cs" />
@@ -375,6 +380,7 @@
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\fishPhoto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Messages.cs" />
     <Compile Include="Models\MessagesCreateViewModel.cs" />
@@ -608,7 +614,8 @@
     <Content Include="Views\Fish\View.cshtml" />
     <Content Include="Views\Fish\View1.cshtml" />
     <Content Include="Views\Corals\Index.cshtml" />
-    <Content Include="Views\Comments\CreatePartial.cshtml" />
+    <Content Include="Views\Shared\_CreateCommentPartial.cshtml" />
+    <Content Include="Views\Shared\_DisplayCommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -677,6 +684,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905111237503_messagesDetails4.resx">
       <DependentUpon>201905111237503_messagesDetails4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905302117148_commentEdit.resx">
+      <DependentUpon>201905302117148_commentEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
