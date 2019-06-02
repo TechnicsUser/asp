@@ -2,8 +2,7 @@
 
 
     
-        <h4>Comments</h4>
-        <hr />
+         <hr />
 
     <div class="row">
 
@@ -11,31 +10,32 @@
             @Html.DisplayFor(model => model.CommentOn)
         </div>*@
 
-        <div class="col-md-1 col-sm-1">
+        <div class="col-md-2 col-sm-2">
             @Html.DisplayFor(model => model.IdUserName)
-        </div>
-        @*<div>
+     
+        
 
             @{
                 var base64 = Convert.ToBase64String(Model.UserPhoto);
                 var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
             }
-            <img src="@imgSrc" style="width: 5%;" />
-        </div>*@
+            <img src="@imgSrc" style="width: 90%;" />
+        </div>
  
 
-        <div class="col-md-10">
+        <div class="col-md-5">
             @Html.DisplayFor(model => model.CommentText)
         </div>
 
-        <div class="col-md-10">
+        <div class="col-md-1">
             @Html.DisplayFor(model => model.CreatedOn)
         </div>
 
 
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class=" col-md-4">
+                <input type="submit" value="Reply" class="btn btn-default" />
                 <input type="submit" value="Report" class="btn btn-default" />
             </div>
         </div>

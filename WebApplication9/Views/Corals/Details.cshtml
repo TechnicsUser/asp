@@ -105,6 +105,17 @@
                 cursor: pointer;
             }
 
+        .displayCommentX {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
         /* 100% Image Width on Smaller Screens */
         @@media only screen and (max-width: 700px) {
             .modal-content {
@@ -180,7 +191,7 @@
         </div>
         <div>
             <div class="col-md-6">
-                @Html.DisplayNameFor(model => model.coral.Details)
+                <h3>   @Html.DisplayNameFor(model => model.coral.Details)</h3>
 
                 <h5>
                     @Html.DisplayFor(model => model.coral.Details)
@@ -197,40 +208,56 @@
 
 
         </div>
-        <div class="col-md-12">
-            <div class="col-md-4">
-                @Html.DisplayNameFor(model => model.coral.Price)
+<div class="col-md-12">
+    <div class="col-md-4">
+        @Html.DisplayNameFor(model => model.coral.Price)
 
-                <h5>
-                    @Html.DisplayFor(model => model.coral.Price)
-                </h5>
-            </div>
-            <div class="col-md-4">
-                @Html.DisplayNameFor(model => model.coral.Views)
+        <h5>
+            @Html.DisplayFor(model => model.coral.Price)
+        </h5>
+    </div>
+    <div class="col-md-4">
+        @Html.DisplayNameFor(model => model.coral.Views)
 
-                <h5>
-                    @Html.DisplayFor(model => model.coral.Views)
-                </h5>
-            </div>
-            <div class="col-md-4">
-                @Html.DisplayNameFor(model => model.coral.UploadedBy)
+        <h5>
+            @Html.DisplayFor(model => model.coral.Views)
+        </h5>
+    </div>
+    <div class="col-md-4">
+        @Html.DisplayNameFor(model => model.coral.UploadedBy)
 
-                <h5>
-                    <a href="@Url.Action("ViewUser","AspNetUsers", new { id = Model.user.Id })">@Model.coral.UploadedBy</a>
-                </h5>
-            </div>
-            @foreach (var coralModel in Model.cl)
+        <h5>
+            <a href="@Url.Action("ViewUser","AspNetUsers",new { id = Model.user.Id })">@Model.coral.UploadedBy</a>
+        </h5>
+    </div>
+
+    <div class="displayComment">
+        @if (Model.cl != null)
+        {
+            <hr />
+            <h3>Comments</h3>
+               
+            foreach (var coralModel in Model.cl)
             {
-                @Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModal(coralModel, null));
-
+                      
+                @Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModal(coralModel,  Model.user));
+                <hr />
             }
 
-            <div>
+        }
+                
+        <div>
+            @*@Html.Partial("_CreateCommentPartial",  new CreateCommentViewModal(Model.coral, Model.user ));*@
+
+        </div>
+    </div>
+
+    <div>
     
    
 
-            </div>
-            @*@if (User.Identity.Name == Model.coral.UploadedBy)
+    </div>
+    @*@if (User.Identity.Name == Model.coral.UploadedBy)
             {
                 <div>
                     @Html.ActionLink("Edit", "Edit", new { id = Model.coral.CoralId })
@@ -239,7 +266,9 @@
                 @Html.ActionLink("Delete", "Delete", new { id = Model.coral.CoralId })
 
             }*@
-        </div>
+</div>
+@Html.Partial("Create2",  new CreateCommentViewModal(Model.coral, Model.user ) );
+
     </body>
 
 

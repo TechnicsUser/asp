@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -74,7 +75,7 @@ namespace WebApplication9.Controllers
             }
 
             var owner = await db.Users.Where(x => x.UserName == coral.UploadedBy).FirstAsync();
-            var comments = await db.Comments.Where(x => x.UserId == coral.CoralId.ToString()).ToListAsync();
+            var comments = await db.Comments.Where(x => x.CommentOn == coral.CoralId.ToString()).ToListAsync();
 
             var coralViewModal = new CoralDetailsViewModel(coral, owner, coralPhotoList, comments);
             coral.Views++;
@@ -228,6 +229,31 @@ namespace WebApplication9.Controllers
             if (disposing) db.Dispose();
             base.Dispose(disposing);
         }
-      
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details([Bind(Include = "UserPhoto,CommentId,Type,UserId,CreatedOn,RemovedOn,CommentOn,CommentTitle,CommentText")] Comments comments)
+        {
+            if (ModelState.IsValid)
+            {
+                comments.CommentViews = 0;
+                    comments.Removed = false;
+                        comments.Reports = 0;
+                            comments.Likes = 0;
+                            comments.DisLikes = 0;
+                comments.CommentOn = "6";
+                comments.UserId = "6";
+                comments.CommentTitle = User.Identity.GetUserName();
+                  comments.CreatedOn = DateTime.Now.ToShortDateString();
+                db.Comments.Add(comments);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return PartialView();
+        }
+
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebApplication9.Models
 {
@@ -10,9 +8,12 @@ namespace WebApplication9.Models
 
         {
             CommentOn = c.CommentOn;
-            IdUserName = c.UserId;
+            CreatedOn = c.CreatedOn;
+
+                IdUserName = user.IdUserName;
             CommentText = c.CommentText;
-            //UserPhoto = user.UserPhoto;
+
+            UserPhoto = user.UserPhoto;
         }
 
         public DisplayCommentViewModal()
@@ -24,16 +25,17 @@ namespace WebApplication9.Models
  
 
         [Key]
-        public int CommentId { get;}
+        public int CommentId { get; set; }
 
-        public byte[] UserPhoto { get;  }
+        public byte[] UserPhoto { get; set; }
 
-        public string IdUserName { get; }
-        public string CreatedOn { get;}
- 
-        public string CommentOn { get; }
+        public string IdUserName { get; set; }
 
-         public string CommentText { get; }
+        public string CreatedOn { get; set; }
+        public string CommentOn { get; set; }
+        public string CommentBy { get; set; }
+
+        public string CommentText { get; set; }
      
 
 

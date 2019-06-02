@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using WebApplication9.Models;
 
@@ -47,19 +44,35 @@ namespace WebApplication9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentId,Type,UserId,CreatedOn,RemovedOn,CommentOn,CommentTitle,CommentText,CommentViews,Removed,Reports,Likes,DisLikes")] Comments comments)
+        public ActionResult Create([Bind(Include = "UserPhoto,CommentId,Type,UserId,CreatedOn,RemovedOn,CommentOn,CommentTitle,CommentText,CommentViews,Removed,Reports,Likes,DisLikes")] Comments comments)
         {
             if (ModelState.IsValid)
             {
                 comments.UserId = User.Identity.GetUserId();
-                //comments.= User.Identity.GetUserId();
-                comments.CommentOn = DateTime.Now.ToShortDateString();
+                comments.CommentTitle = User.Identity.GetUserName();
+                comments.CreatedOn = DateTime.Now.ToShortDateString();
+                db.Comments.Add(comments);
+                 db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(comments);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult _CreateCommentPartial([Bind(Include = "UserPhoto,CommentId,Type,UserId,CreatedOn,RemovedOn,CommentOn,CommentTitle,CommentText,CommentViews,Removed,Reports,Likes,DisLikes")] Comments comments)
+        {
+            if (ModelState.IsValid)
+            {
+                comments.UserId = User.Identity.GetUserId();
+                comments.CommentTitle = User.Identity.GetUserName();
+                comments.CreatedOn = DateTime.Now.ToShortDateString();
                 db.Comments.Add(comments);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(comments);
+            return PartialView();
         }
 
         // GET: Comments/Edit/5
@@ -130,5 +143,6 @@ namespace WebApplication9.Controllers
             base.Dispose(disposing);
         }
     
+
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication9.Models {
     public class Comments {
@@ -20,6 +16,8 @@ namespace WebApplication9.Models {
         public CommentType Type { get; set; }
 
         public string UserId { get; set; }
+        public byte[] UserPhoto { get; set; }
+
         public string CreatedOn { get; set; }
         public string RemovedOn { get; set; }
 

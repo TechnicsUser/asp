@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace WebApplication9.Models
 {
     public class CreateCommentViewModal {
-        public CreateCommentViewModal(Coral c)
+        public CreateCommentViewModal(Coral c, AspNetUser user)
 
         {
             CommentOn = c.CoralId.ToString();

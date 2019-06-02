@@ -363,6 +363,10 @@
     <Compile Include="Migrations\201905302117148_commentEdit.Designer.cs">
       <DependentUpon>201905302117148_commentEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905311738192_userPhotoComment.cs" />
+    <Compile Include="Migrations\201905311738192_userPhotoComment.Designer.cs">
+      <DependentUpon>201905311738192_userPhotoComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -616,6 +620,7 @@
     <Content Include="Views\Corals\Index.cshtml" />
     <Content Include="Views\Shared\_CreateCommentPartial.cshtml" />
     <Content Include="Views\Shared\_DisplayCommentPartial.cshtml" />
+    <Content Include="Views\Shared\Create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -687,6 +692,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905302117148_commentEdit.resx">
       <DependentUpon>201905302117148_commentEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311738192_userPhotoComment.resx">
+      <DependentUpon>201905311738192_userPhotoComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
