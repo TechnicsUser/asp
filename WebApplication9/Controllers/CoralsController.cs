@@ -13,8 +13,8 @@ namespace WebApplication9.Controllers
 {
     public class CoralsController : Controller
     {
-        private readonly SiteDataContext db= new SiteDataContext();
- 
+        private readonly SiteDataContext db = new SiteDataContext();
+
 
         [NotificationFilter]
         [MessagesFilter]
@@ -37,7 +37,7 @@ namespace WebApplication9.Controllers
             if (CoralPhotoList.Count == 0)
             {
                 id = 61;
-                CoralPhotoList.Add(  db.CoralPhoto.First(x => x.CoralId == id) );
+                CoralPhotoList.Add(db.CoralPhoto.First(x => x.CoralId == id));
             }
             coral.PhotoList = CoralPhotoList;
             return coral;
@@ -231,28 +231,39 @@ namespace WebApplication9.Controllers
         }
 
 
-
+        //******************************** Comments Create ***********************************************
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Details([Bind(Include = "UserPhoto,CommentId,Type,UserId,CreatedOn,RemovedOn,CommentOn,CommentTitle,CommentText")] Comments comments)
+        [Authorize]
+
+        public async Task<ActionResult> Details([Bind(Include = "UserPhoto,CommentId,Type,UserId,CreatedOn,CommentOn,CommentTitle,CommentText")] Comments comments)
         {
             if (ModelState.IsValid)
             {
                 comments.CommentViews = 0;
-                    comments.Removed = false;
-                        comments.Reports = 0;
-                            comments.Likes = 0;
-                            comments.DisLikes = 0;
-                comments.CommentOn = "6";
-                comments.UserId = "6";
-                comments.CommentTitle = User.Identity.GetUserName();
-                  comments.CreatedOn = DateTime.Now.ToShortDateString();
+                comments.Removed = false;
+                comments.Reports = 0;
+                comments.Likes = 0;
+                comments.DisLikes = 0;
+
+                try
+                {
+                    comments.UserPhoto = await db.Users.Where(x => x.UserName == comments.UserId).
+                        Select(x => x.UserPhoto).FirstAsync();
+                }
+                catch (Exception Ex)
+                {
+                    //return RedirectToAction("Login", "Account", null);
+                }
+
+                //comments.CommentTitle = User.Identity.GetUserName();
+                comments.CreatedOn = DateTime.Now.ToShortDateString();
                 db.Comments.Add(comments);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Corals", new { comments.CommentOn });
             }
 
-            return PartialView();
+            return View();
         }
 
     }

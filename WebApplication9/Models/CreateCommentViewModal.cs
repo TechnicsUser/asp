@@ -10,12 +10,18 @@ namespace WebApplication9.Models
 
         {
             CommentOn = c.CoralId.ToString();
-            IdUserName = c.UploadedBy;
+            UserId = user.IdUserName;
         }
 
         public CreateCommentViewModal()
         {
             throw new NotImplementedException();
+        }
+
+        public CreateCommentViewModal(Coral modelCoral, string identityName)
+        {
+            CommentOn = modelCoral.CoralId.ToString();
+            UserId = identityName;
         }
 
         //public int Count { get; set; }
@@ -36,11 +42,12 @@ namespace WebApplication9.Models
 
         public byte[] UserPhoto { get; set; }
 
-        public string IdUserName { get; set; }
+        public string UserId { get; set; }
         public string CreatedOn { get; set; }
  
         public string CommentOn { get; set; }
 
+        [Display(Name = "Say something...")]
          public string CommentText { get; set; }
      
 

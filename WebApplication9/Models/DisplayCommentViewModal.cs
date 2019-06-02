@@ -10,10 +10,10 @@ namespace WebApplication9.Models
             CommentOn = c.CommentOn;
             CreatedOn = c.CreatedOn;
 
-                IdUserName = user.IdUserName;
+                IdUserName = c.UserId;
             CommentText = c.CommentText;
 
-            UserPhoto = user.UserPhoto;
+            UserPhoto = c.UserPhoto;
         }
 
         public DisplayCommentViewModal()

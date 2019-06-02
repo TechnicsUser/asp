@@ -3,6 +3,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebApplication9.Models;
 
@@ -60,11 +61,12 @@ namespace WebApplication9.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult _CreateCommentPartial([Bind(Include = "UserPhoto,CommentId,Type,UserId,CreatedOn,RemovedOn,CommentOn,CommentTitle,CommentText,CommentViews,Removed,Reports,Likes,DisLikes")] Comments comments)
+        public async Task<ActionResult> _CreateCommentPartial([Bind(Include = "UserPhoto,CommentId,Type,UserId,CreatedOn,RemovedOn,CommentOn,CommentTitle,CommentText,CommentViews,Removed,Reports,Likes,DisLikes")] Comments comments)
         {
             if (ModelState.IsValid)
             {
                 comments.UserId = User.Identity.GetUserId();
+             
                 comments.CommentTitle = User.Identity.GetUserName();
                 comments.CreatedOn = DateTime.Now.ToShortDateString();
                 db.Comments.Add(comments);

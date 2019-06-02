@@ -139,17 +139,6 @@
                 @Model.coral.ScientificName
             </h4>
 
-            @*@for (int i = 0; i < @Model.PhotoCount; i++)
-            {
-        <div id="myImg"  class="">
-            <img class="myImg"  id="@x" onclick="popUp(this, @x)" src="@Url.Action("CoralPhoto3", "Corals", new { id = @Model.CoralId, number = i })" />
-
-        </div>
-
-            }*@
-
-
-            @*@foreach (var r in Model.rl)*@
             @for (int i = 0; i < Model.rl.Count; i++)
 
             {
@@ -164,7 +153,7 @@
 
 
                     <img class="myImg" src="@imgSrc" alt="@x" id="@x" onclick="popUp(this, @x)">
-                   {x++;}
+                    { x++; }
 
                 }
             }
@@ -184,80 +173,44 @@
 
 
             </div>
-
-
-
-        </div>
-        </div>
-        <div>
-            <div class="col-md-6">
-                <h3>   @Html.DisplayNameFor(model => model.coral.Details)</h3>
-
-                <h5>
-                    @Html.DisplayFor(model => model.coral.Details)
-                </h5>
-            </div>
-            <hr><br />
-            <h5>
-            </h5>
-            <h5>
-            </h5>
-
-
-            <br />
-
-
-        </div>
-<div class="col-md-12">
-    <div class="col-md-4">
-        @Html.DisplayNameFor(model => model.coral.Price)
-
-        <h5>
-            @Html.DisplayFor(model => model.coral.Price)
-        </h5>
-    </div>
-    <div class="col-md-4">
-        @Html.DisplayNameFor(model => model.coral.Views)
-
-        <h5>
-            @Html.DisplayFor(model => model.coral.Views)
-        </h5>
-    </div>
-    <div class="col-md-4">
-        @Html.DisplayNameFor(model => model.coral.UploadedBy)
-
-        <h5>
-            <a href="@Url.Action("ViewUser","AspNetUsers",new { id = Model.user.Id })">@Model.coral.UploadedBy</a>
-        </h5>
-    </div>
-
-    <div class="displayComment">
-        @if (Model.cl != null)
-        {
-            <hr />
-            <h3>Comments</h3>
-               
-            foreach (var coralModel in Model.cl)
-            {
-                      
-                @Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModal(coralModel,  Model.user));
-                <hr />
-            }
-
-        }
-                
-        <div>
-            @*@Html.Partial("_CreateCommentPartial",  new CreateCommentViewModal(Model.coral, Model.user ));*@
-
         </div>
     </div>
-
     <div>
-    
-   
+        <div class="col-md-6">
+            <h3>   @Html.DisplayNameFor(model => model.coral.Details)</h3>
 
+            <h5>
+                @Html.DisplayFor(model => model.coral.Details)
+            </h5>
+        </div>
+        <hr>
+        <br />
+     <br />
     </div>
-    @*@if (User.Identity.Name == Model.coral.UploadedBy)
+    <div class="col-md-12">
+        <div class="col-md-4">
+            @Html.DisplayNameFor(model => model.coral.Price)
+
+            <h5>
+                @Html.DisplayFor(model => model.coral.Price)
+            </h5>
+        </div>
+        <div class="col-md-4">
+            @Html.DisplayNameFor(model => model.coral.Views)
+
+            <h5>
+                @Html.DisplayFor(model => model.coral.Views)
+            </h5>
+        </div>
+        <div class="col-md-4">
+            @Html.DisplayNameFor(model => model.coral.UploadedBy)
+
+            <h5>
+                <a href="@Url.Action("ViewUser","AspNetUsers",new { id = Model.user.Id })">@Model.coral.UploadedBy</a>
+            </h5>
+        </div>
+
+        @*@if (User.Identity.Name == Model.coral.UploadedBy)
             {
                 <div>
                     @Html.ActionLink("Edit", "Edit", new { id = Model.coral.CoralId })
@@ -266,10 +219,27 @@
                 @Html.ActionLink("Delete", "Delete", new { id = Model.coral.CoralId })
 
             }*@
-</div>
-@Html.Partial("Create2",  new CreateCommentViewModal(Model.coral, Model.user ) );
+    </div>
+<br/>
+<div class="col-md-12">
+    @Html.Partial("_CreateCommentPartial", new CreateCommentViewModal(Model.coral, User.Identity.Name))
 
-    </body>
+    @if (Model.cl != null)
+    {
+        foreach (var coralModel in Model.cl)
+        {
+
+            @Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModal(coralModel, Model.user))
+            ;
+            <hr/>
+        }
+
+    }
+
+
+</div>
+
+</body>
 
 
     <script>
@@ -340,170 +310,3 @@
 
 
     </script>
-    @*<h2>
-            @Html.DisplayFor(model => model.Name)
-        </h2>
-        <hr><br />
-        <h4>
-            @Html.DisplayFor(model => model.ScientificName)
-        </h4>
-        <br />
-        <img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
-        <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
-
-        <h5>
-            @Html.DisplayFor(model => model.Details)
-        </h5>
-
-        <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
-
-
-        @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })*@
-
-
-        @*Html.ActionLink("View", "View", new { id = item.CoralId }) |*@
-        @* @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-             @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
-
-
-    @*<p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Type)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Light)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Flow)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Food)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Growth)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.ScientificName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Details)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Photo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UploadedBy)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UploadedOn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Size)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FragSize)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CommentId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Likes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DisLikes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Views)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SoldOut)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FragAvailable)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FragAvailableFrom)
-                </th>
-                <th></th>
-            </tr>
-
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Light, htmlAttributes: new { @class = "control-label col-md-2" })
-                    </td>
-                    <td>
-                        @Html.LabelFor(model => model.CoralId, htmlAttributes: new { @class = "control-label col-md-2" })
-                    </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.Flow)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Food)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Growth)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ScientificName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Details)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Photo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UploadedBy)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UploadedOn)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Size)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FragSize)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CommentId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Likes)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DisLikes)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Views)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SoldOut)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FragAvailable)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FragAvailableFrom)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })
-                    </td>
-                </tr>
-
-
-        </table>*@
