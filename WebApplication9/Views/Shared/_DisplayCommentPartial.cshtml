@@ -2,7 +2,7 @@
 
 
     
-         <hr />
+         @*<hr />*@
 
     <div class="row">
 
@@ -10,36 +10,42 @@
             @Html.DisplayFor(model => model.CommentOn)
         </div>*@
 
-        <div class="col-md-2 col-sm-2">
-            @Html.DisplayFor(model => model.IdUserName)
-     
-        
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            @*@Html.DisplayFor(model => model.IdUserName)*@
+          <a href="@Url.Action("ViewUser","AspNetUsers",new { id = Model.CommentBy })">@Model.IdUserName</a>
+
+
 
             @if (Model.UserPhoto != null)
             {
                 var base64 = Convert.ToBase64String(Model.UserPhoto);
                 var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 
-                <img src="@imgSrc" style="width: 90%;"/>
+                <img src="@imgSrc" style="width: 90%;" />
             }
-
+            else
+            {
+                <br />
+            }
+            <div class="col-md-1">
+                @Html.DisplayFor(model => model.CreatedOn)
             </div>
+
+        </div>
  
 
         <div class="col-md-5">
             @Html.DisplayFor(model => model.CommentText)
         </div>
 
-        <div class="col-md-1">
-            @Html.DisplayFor(model => model.CreatedOn)
-        </div>
+   
 
 
 
         <div class="form-group">
-            <div class=" col-md-4">
+            <div class="col-md-push-2 col-md-4">
                 <input type="submit" value="Reply" class="btn btn-default" />
-                <input type="submit" value="Report" class="btn btn-default" />
+                <input type="submit" value="Report" class="btn btn-danger" />
             </div>
         </div>
     </div>

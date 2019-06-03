@@ -61,6 +61,7 @@ namespace WebApplication9.Controllers
             return View(aspNetUser);
         }
 
+
         // GET: AspNetUsers/Create
         public ActionResult Create()
         {

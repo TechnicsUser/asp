@@ -256,7 +256,7 @@ namespace WebApplication9.Controllers
                     //return RedirectToAction("Login", "Account", null);
                 }
 
-                //comments.CommentTitle = User.Identity.GetUserName();
+                comments.UploadedBy = User.Identity.GetUserId();
                 comments.CreatedOn = DateTime.Now.ToShortDateString();
                 db.Comments.Add(comments);
                 db.SaveChanges();
