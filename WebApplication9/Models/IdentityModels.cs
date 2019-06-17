@@ -57,5 +57,9 @@ namespace WebApplication9.Models
         public System.Data.Entity.DbSet<WebApplication9.Models.Notification> Notifications { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication9.Models.Comments> Comments { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Messages> Messages { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.MessagesCreateViewModel> MessagesCreateViewModels { get; set; }
     }
 }

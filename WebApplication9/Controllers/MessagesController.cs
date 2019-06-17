@@ -21,7 +21,7 @@ namespace WebApplication9.Controllers
         {
             if(User.Identity.IsAuthenticated) {
 
-                var id = User.Identity.GetUserId();
+                var id = User.Identity.GetUserName();
                 List<Messages> ml = await db.Messages.Where(x => x.MessageTo == id).Where(x => x.RecieverDeleted == false).ToListAsync();
 
                 return View(ml);
@@ -30,8 +30,21 @@ namespace WebApplication9.Controllers
 
           
         }
+        public async Task<ActionResult> Sent()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
 
- 
+                var id = User.Identity.Name;
+                List<Messages> ml = await db.Messages.Where(x => x.MessageFrom == id).ToListAsync();
+
+                return View(ml);
+            }
+            return RedirectToAction("Login", "Account");
+
+
+        }
+
         // GET: Messages/Details/5
         public ActionResult Details(int? id) {
             if(id == null) {
@@ -83,8 +96,59 @@ namespace WebApplication9.Controllers
 
             return View(messages);
         }
+        private IEnumerable<SelectListItem> GetRoles()
+        {
+            //var dbUserRoles = new DbUserRoles();
+            var users = db.Users
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.IdUserName.ToString(),
+                                    Text = x.IdUserName
+                                });
 
- 
+            return new SelectList(users, "Value", "Text");
+        }
+        // GET: Messages/Create
+        public ActionResult MessagesCreateViewModel()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                MessagesCreateViewModel mc = new MessagesCreateViewModel();
+                mc.Users = db.Users.Where(x => x.Id != null).ToList();
+
+
+
+                return View(mc);
+            }
+            return RedirectToAction("Login", "Account");
+
+        }
+        // POST: Messages/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MessagesCreateViewModel( Messages messages)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+
+                if (ModelState.IsValid)
+                {
+                    messages.UserId = User.Identity.GetUserId();
+                    messages.MessageFrom = User.Identity.Name;
+                    messages.CreatedOn = DateTime.Now;
+                    db.Messages.Add(messages);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+
+
+            return View(messages);
+        }
+
 
         // GET: Messages/Delete/5
         public ActionResult Delete(int? id)
