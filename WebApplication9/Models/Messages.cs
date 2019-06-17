@@ -23,23 +23,32 @@ namespace WebApplication9.Models {
 
         public string Title { get; set; }
         public string Subject { get; set; }
+        [Display(Name = "Message")]
         public string Content { get; set; }
 
         public bool IsReply { get; set; }
         public int[] PreviousMessages { get; set; }
 
         public string MessageTo { get; set; }
+
+        [Display(Name = "From")]
         public string MessageFrom { get; set; }
         public string UserId { get; set; }
+
+        [Display(Name = "Read")]
         public bool IsDismissed { get; set; }
 
         public bool SenderDeleted { get; set; }
         public bool RecieverDeleted { get; set; }
 
         public bool IsReported { get; set; }
+
+        [Display(Name = "Received on")]
         public DateTime? CreatedOn { get; set; }
         public DateTime? DismissedOn { get; set; }
+        public DateTime? SenderDeletedOn { get; set; }
+        public DateTime? RecieverDeletedOn { get; set; }
 
 
     }
-    }
+}

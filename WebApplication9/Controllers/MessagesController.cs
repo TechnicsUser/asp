@@ -41,6 +41,12 @@ namespace WebApplication9.Controllers
             if(messages == null) {
                 return HttpNotFound();
                 }
+            if (messages.IsDismissed == false)
+            {
+                messages.IsDismissed = true;
+                messages.DismissedOn = DateTime.Now;
+                db.SaveChanges();
+            }
             return View(messages);
             }
 
@@ -102,7 +108,7 @@ namespace WebApplication9.Controllers
         {
             Messages messages = db.Messages.Find(id);
             // db.Messages.Remove(messages);              var id = User.Identity.GetUserId();
-            messages.DismissedOn = DateTime.Now;
+            messages.RecieverDeletedOn = DateTime.Now;
             if(messages.MessageTo == User.Identity.GetUserId()) messages.RecieverDeleted = true;
             //if(messages.MessageTo == User.Identity.GetUserId()) messages.SenderDeleted = true;
             db.SaveChanges();

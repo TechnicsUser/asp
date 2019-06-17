@@ -377,6 +377,10 @@
     <Compile Include="Migrations\201906030824467_unknown.Designer.cs">
       <DependentUpon>201906030824467_unknown.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906171803319_messageEdit.cs" />
+    <Compile Include="Migrations\201906171803319_messageEdit.Designer.cs">
+      <DependentUpon>201906171803319_messageEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -710,6 +714,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906030824467_unknown.resx">
       <DependentUpon>201906030824467_unknown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906171803319_messageEdit.resx">
+      <DependentUpon>201906171803319_messageEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
