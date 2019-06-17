@@ -45,7 +45,14 @@ namespace WebApplication9.Views.Notifications
             {
                 return HttpNotFound();
             }
-            return View(notification);
+            if (notification.UserId == User.Identity.GetUserId() )
+            {
+                return View(notification);
+            }
+
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
         }
 
         // GET: Notifications/Create

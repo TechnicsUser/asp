@@ -25,15 +25,7 @@
         <dd>
             @Html.DisplayFor(model => model.NotificationType)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Controller)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Controller)
-        </dd>
-
+            
         <dt>
             @Html.DisplayNameFor(model => model.Action)
         </dt>
@@ -41,25 +33,13 @@
         <dd>
             @Html.DisplayFor(model => model.Action)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDismissed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDismissed)
-        </dd>
+   
 
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") | 
+    @Html.ActionLink("Delete", "Delete", new { id = this.Model.NotificationId })
+
 </p>
