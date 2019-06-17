@@ -9,7 +9,7 @@ namespace WebApplication9.Models
         {
             CommentOn = c.CommentOn;
             CreatedOn = c.CreatedOn;
-
+            CommentId = c.CommentId;
                 IdUserName = c.UserId;
             CommentText = c.CommentText;
             CommentBy = c.UploadedBy;

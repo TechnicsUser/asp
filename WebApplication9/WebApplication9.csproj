@@ -630,7 +630,6 @@
     <Content Include="Views\Corals\Index.cshtml" />
     <Content Include="Views\Shared\_CreateCommentPartial.cshtml" />
     <Content Include="Views\Shared\_DisplayCommentPartial.cshtml" />
-    <Content Include="Views\Shared\Create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -144,7 +144,28 @@ namespace WebApplication9.Controllers
             }
             base.Dispose(disposing);
         }
-    
 
+
+        public ActionResult Report(int id)
+        {
+            Comments comments = db.Comments.Find(id);
+            comments.Reports++;
+            db.Entry(comments).State = EntityState.Modified;
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult Reply(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public ActionResult ActionMethod(string value)
+        {
+            //process value
+            throw new NotImplementedException();
+
+        }
     }
 }
