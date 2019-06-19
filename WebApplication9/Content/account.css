@@ -18,6 +18,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    color:black;
+    /* margin-right: -15px; */
+    /* margin-left: -15px; */
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -783,11 +786,11 @@ input.checkbox {
         }
     }*/
 
-.container {
+/*.container {
     width: 100%;
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 15px;
+    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
+}*/
 
