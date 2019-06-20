@@ -284,6 +284,7 @@
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\CoralConnectionsController.cs" />
     <Compile Include="Controllers\CoralsController.cs" />
+    <Compile Include="Controllers\FeedbacksController.cs" />
     <Compile Include="Controllers\FishController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -381,6 +382,30 @@
     <Compile Include="Migrations\201906171803319_messageEdit.Designer.cs">
       <DependentUpon>201906171803319_messageEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906200808372_feedback.cs" />
+    <Compile Include="Migrations\201906200808372_feedback.Designer.cs">
+      <DependentUpon>201906200808372_feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906200813354_feedbacks.cs" />
+    <Compile Include="Migrations\201906200813354_feedbacks.Designer.cs">
+      <DependentUpon>201906200813354_feedbacks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906200848293_feedbacks1.cs" />
+    <Compile Include="Migrations\201906200848293_feedbacks1.Designer.cs">
+      <DependentUpon>201906200848293_feedbacks1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201137289_feedbacks2.cs" />
+    <Compile Include="Migrations\201906201137289_feedbacks2.Designer.cs">
+      <DependentUpon>201906201137289_feedbacks2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201158301_feedbacks21.cs" />
+    <Compile Include="Migrations\201906201158301_feedbacks21.Designer.cs">
+      <DependentUpon>201906201158301_feedbacks21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201203010_feedbacks3.cs" />
+    <Compile Include="Migrations\201906201203010_feedbacks3.Designer.cs">
+      <DependentUpon>201906201203010_feedbacks3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -395,6 +420,7 @@
     <Compile Include="Models\CoralPhoto.cs" />
     <Compile Include="Models\CoralDetailsViewModel.cs" />
     <Compile Include="Models\CoralViewModel.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\fishPhoto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -422,6 +448,7 @@
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\SiteDataContext.cs" />
     <Compile Include="Models\UserPhotos.cs" />
+    <Compile Include="Models\UserViewViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -636,6 +663,13 @@
     <Content Include="Views\Shared\_DisplayCommentPartial.cshtml" />
     <Content Include="Views\Messages\Sent.cshtml" />
     <Content Include="Views\Messages\MessagesCreateViewModel.cshtml" />
+    <Content Include="Views\Feedbacks\Create.cshtml" />
+    <Content Include="Views\Feedbacks\Delete.cshtml" />
+    <Content Include="Views\Feedbacks\Details.cshtml" />
+    <Content Include="Views\Feedbacks\Edit.cshtml" />
+    <Content Include="Views\Feedbacks\Index.cshtml" />
+    <Content Include="Views\Shared\IndexPartial.cshtml" />
+    <Content Include="Views\AspNetUsers\UserViewViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -719,6 +753,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906171803319_messageEdit.resx">
       <DependentUpon>201906171803319_messageEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906200808372_feedback.resx">
+      <DependentUpon>201906200808372_feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906200813354_feedbacks.resx">
+      <DependentUpon>201906200813354_feedbacks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906200848293_feedbacks1.resx">
+      <DependentUpon>201906200848293_feedbacks1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201137289_feedbacks2.resx">
+      <DependentUpon>201906201137289_feedbacks2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201158301_feedbacks21.resx">
+      <DependentUpon>201906201158301_feedbacks21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201203010_feedbacks3.resx">
+      <DependentUpon>201906201203010_feedbacks3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

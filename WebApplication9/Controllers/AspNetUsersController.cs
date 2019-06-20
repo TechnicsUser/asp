@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication9.Models;
+using Microsoft.AspNet.Identity;
 
 namespace WebApplication9.Controllers
 {
@@ -16,9 +17,11 @@ namespace WebApplication9.Controllers
         private userEntities1 db = new userEntities1();
         private ApplicationDbContext db2 = new ApplicationDbContext();
 
+        private SiteDataContext db3 = new SiteDataContext();
 
         // GET: AspNetUsers
-        public async Task<ActionResult> Index() {
+        public async Task<ActionResult> Index()
+        {
              return View(await db.AspNetUsers.ToListAsync());
             
         }
@@ -44,6 +47,43 @@ namespace WebApplication9.Controllers
 
             return View(aspNetUser);
             }
+        // GET: AspNetUsers
+        [Authorize]
+
+        public async Task<ActionResult> UserViewViewModel([Bind(Include = "Id")]string id)
+        {
+
+            AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+            ApplicationDbContext db2 = new ApplicationDbContext();
+            ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
+            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
+             List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
+            //   var user = User.Identity.GetUserId();
+            //var list = db2.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
+
+     //   var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
+            var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
+            foreach (var item in list)
+            {
+                // assign to aspNetUser from FeedbackFromUserId for easy access to image
+                item.FeedbackFrom = db3.Users.Find(item.FeedbackFromUserId);
+
+            }
+
+            ViewBag.lastOnline = temp.LastLoginTime;
+            ViewBag.RegistrationDate = temp.RegistrationDate;
+
+            UserViewViewModel view = new UserViewViewModel
+            {
+                User = aspNetUser,
+                CoralAdds = cl.Count,
+                FishAdds = fl.Count,
+                Feedback = list
+                
+            };
+
+            return View(view);
+        }
         [Authorize]
 
         // GET: AspNetUsers/Details/5
@@ -85,7 +125,18 @@ namespace WebApplication9.Controllers
 
             return View(aspNetUser);
         }
+        //// GET: Feedbacks
+        //public ActionResult IndexPartial()
+        //{
+        //    var user = User.Identity.GetUserId();
+        //    var list = db2.Feedbacks.Where(x => x.FeedbackForUserId == user).ToList();
+        //    foreach (var item in list)
+        //    {
+        //        item.FeedbackFrom = db.AspNetUsers.Find(item.FeedbackFromUserId);
 
+        //    }
+        //    return PartialView(list);
+        //}
         //// GET: AspNetUsers/Edit/5
         //public async Task<ActionResult> Edit(string id)
         //{

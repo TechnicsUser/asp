@@ -18,11 +18,13 @@ namespace WebApplication9.Models
         [Required]
         public string Subject { get; set; }
         [Required]
+        [Display(Name = "Message")]
         public string Content { get; set; }
 
         [Required]
         [Display(Name = "Message To")]
         public string MessageTo { get; set; }
+        [Display(Name = "From")]
         public string MessageFrom { get; set; }
         public string UserId { get; set; }
         public bool IsDismissed { get; set; }

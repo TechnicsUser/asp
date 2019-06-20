@@ -43,7 +43,7 @@
     <div class="form-group col-md-12">
         <div class="col-md-4">
             <div class="col-md-12">
-                 @Html.TextAreaFor(model => model.Details, new { @style = "height: 130px; width: 250px; ",@placeholder = " Enter Details Here"  , htmlAttributes = new { @class = "form-control"} })
+                 @Html.EditorFor(model => model.Details, new {htmlAttributes = new { @class = "form-control",@placeholder = " Enter Details Here"  ,  @style = "height: 130px; width: 250px; "} })
                 @Html.ValidationMessageFor(model => model.Details, "", new { @class = "col-md-12 text-danger" })
             </div>
         </div>

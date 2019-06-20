@@ -4,19 +4,22 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication9.Models {
+namespace WebApplication9.Models
+{
 
-    public enum MessageType {
+    public enum MessageType
+    {
         Registration,
         Email,
         Purchase,
         Sale,
         Accounts,
         Other
-        }
+    }
 
 
-    public class Messages {
+    public class Messages
+    {
         [Key]
         public int MessageId { get; set; }
         public MessageType MessageType { get; set; }

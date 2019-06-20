@@ -78,7 +78,7 @@ namespace WebApplication9.Models {
 
    
 
-        public bool SoldOut { get; set; }
+        //public bool SoldOut { get; set; }
         public bool FragAvailable { get; set; }
         public string FragAvailableFrom { get; set; }
 

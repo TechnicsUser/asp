@@ -1,0 +1,129 @@
+﻿@model WebApplication9.Models.Feedback
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Feedback</h4>
+    <hr />
+    <div>
+        @{
+            var base64 = Convert.ToBase64String( Model.FeedbackFrom.UserPhoto);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        }
+        <img src="@imgSrc" />
+    </div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FeedbackFrom.IdUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FeedbackFrom.IdUserName)
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FeedbackType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeedbackType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReply)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsReply)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeedbackFromUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeedbackFromUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDismissed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDismissed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SenderDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SenderDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecieverDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecieverDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReported)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsReported)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DismissedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DismissedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SenderDeletedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SenderDeletedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecieverDeletedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecieverDeletedOn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FeedbackId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

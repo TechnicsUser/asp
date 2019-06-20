@@ -21,7 +21,8 @@ namespace WebApplication9.Models {
         public DbSet<CoralConnection> CoralConnections { get; set; }
         public DbSet<Fish> Fish { get; set; }
         public DbSet<fishPhoto> FishPhoto { get; set; }
-       //public  DbSet<ApplicationIdentity> UserLogins { get; set; }
-       // public object Roles { get; internal set; }
-        }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        //public  DbSet<ApplicationIdentity> UserLogins { get; set; }
+        // public object Roles { get; internal set; }
     }
+}

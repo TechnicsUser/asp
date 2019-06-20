@@ -15,6 +15,13 @@ namespace WebApplication9 {
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            }
+
+           // routes.MapRoute(
+           //    name: "feedback",
+           //    url: "{controller}/{action}/{id}",
+           //    defaults: new { controller = "FeedbacksController", action = "IndexPartial", id = UrlParameter.Optional }
+           //);
+
+        }
         }
     }

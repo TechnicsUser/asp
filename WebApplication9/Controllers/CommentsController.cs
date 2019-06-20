@@ -20,7 +20,7 @@ namespace WebApplication9.Controllers
         }
 
         // GET: Comments/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -70,7 +70,7 @@ namespace WebApplication9.Controllers
                 comments.CommentTitle = User.Identity.GetUserName();
                 comments.CreatedOn = DateTime.Now.ToShortDateString();
                 db.Comments.Add(comments);
-                db.SaveChanges();
+               await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -78,7 +78,7 @@ namespace WebApplication9.Controllers
         }
 
         // GET: Comments/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -109,7 +109,7 @@ namespace WebApplication9.Controllers
         }
 
         // GET: Comments/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {

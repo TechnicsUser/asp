@@ -1,0 +1,126 @@
+﻿@model IEnumerable<WebApplication9.Models.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Photo</th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackFrom.IdUserName)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsReply)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackFromUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeedbackForUserId)
+
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsDismissed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SenderDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecieverDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsReported)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DismissedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SenderDeletedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecieverDeletedOn)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           
+                @{
+                    var base64 = Convert.ToBase64String(item.FeedbackFrom.UserPhoto);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                }
+                <img src="@imgSrc" />
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeedbackFrom.IdUserName)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeedbackType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReply)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeedbackFromUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeedbackForUserId)
+
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsDismissed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SenderDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecieverDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReported)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DismissedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SenderDeletedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecieverDeletedOn)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FeedbackId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FeedbackId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FeedbackId })
+        </td>
+    </tr>
+}
+
+</table>
