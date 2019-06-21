@@ -15,9 +15,10 @@ namespace WebApplication9.Controllers
     public class AspNetUsersController : Controller
     {
       //  private userEntities1 db = new userEntities1();
-       // private ApplicationDbContext db2 = new ApplicationDbContext();
+        private ApplicationDbContext db2 = new ApplicationDbContext();
 
         private SiteDataContext db3 = new SiteDataContext();
+ 
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index()
@@ -33,29 +34,22 @@ namespace WebApplication9.Controllers
         public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
 
          AspNetUser aspNetUser = await db3.AspNetUser.FindAsync(id);
-         ApplicationDbContext db2 = new ApplicationDbContext();
 
          ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
 
             List<Fish> fl = db3.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
-            ViewBag.flSize = fl.Count;
-            List<Coral> cl = db3.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
-            ViewBag.clSize = cl.Count;
-            ViewBag.lastOnline = temp.LastLoginTime;
-            ViewBag.RegistrationDate = temp.RegistrationDate;
+             List<Coral> cl = db3.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
+          
 
 
             return View(aspNetUser);
             }
         // GET: AspNetUsers
         [Authorize]
-
         public async Task<ActionResult> UserViewViewModel([Bind(Include = "Id")]string id)
         {
-
             AspNetUser aspNetUser = await db3.AspNetUser.FindAsync(id);
-            ApplicationDbContext db2 = new ApplicationDbContext();
-            ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
+             ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
             List<Fish> fl = db3.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
              List<Coral> cl = db3.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
             //   var user = User.Identity.GetUserId();
@@ -84,6 +78,9 @@ namespace WebApplication9.Controllers
                 CoralAdds = cl.Count,
                 CoralAddsId = temp.UserName,
                 FishAdds = fl.Count,
+                FishAddsId = temp.UserName,
+                lastOnline = temp.LastLoginTime,
+                RegistrationDate = temp.RegistrationDate,
                 Feedback = list,
                 positiveFeedbacks = positiveFeedbacks,
                 negativeFeedbacks = negativeFeedbacks,

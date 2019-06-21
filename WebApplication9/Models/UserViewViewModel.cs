@@ -16,6 +16,10 @@ namespace WebApplication9.Models
         public int CoralAdds { get; set; }
         public string CoralAddsId { get; set; }
         public int FishAdds { get; set; }
+        public string FishAddsId { get; set; }
+        public DateTime? lastOnline { get; set; }
+        public DateTime? RegistrationDate { get; set; }
+
         public int positiveFeedbacks { get; set; }
         public int negativeFeedbacks { get; set; }
         public int nutralFeedbacks { get; set; }

@@ -1,4 +1,4 @@
-﻿ @model WebApplication9.Models.UserViewViewModel
+﻿@model WebApplication9.Models.UserViewViewModel
 
 @{
     ViewBag.Title = "View User";
@@ -173,15 +173,31 @@
 
 
                 <div class="col-lg-offset-6 col-md-offset-6">
-                    
+
 
 
                     <ul>
                         <li>
-                            Fish Adds : @Model.FishAdds
+                            @if (@Model.FishAdds > 0)
+                            {
+ <a href="@Url.Action("Index1", "Fish", new { id = @Model.FishAddsId })">Fish Adds</a><text>: @Model.FishAdds</text>
+                            }
+                            else
+                            {
+                                <text>Fish Adds : @Model.FishAdds</text>
+                            }
+
                         </li>
                         <li>
-                            <a href="@Url.Action("Index1", "Corals", new { id = @Model.CoralAddsId })">Coral Adds</a>: @Model.CoralAdds
+                            @if (@Model.CoralAdds > 0)
+                            {
+                                <a href="@Url.Action("Index1", "Corals", new { id = @Model.CoralAddsId })">Coral Adds</a><text>: @Model.CoralAdds</text>
+                            }
+                            else
+                            {
+                                <text>Coral Adds : @Model.CoralAdds</text>
+
+                            }
                         </li>
                         <li>
                             Equipment Adds : not implemented
@@ -197,13 +213,13 @@
                             }
                             else
                             {
-                                <text>Last Login : @ViewBag.lastOnline  </text>
+                                <text>Last Login : @Model.lastOnline  </text>
 
                             }
 
                         </li>
                         <li>
-                            Member Since : @ViewBag.RegistrationDate
+                            Member Since : @Model.RegistrationDate
 
                         </li>
                         <li>
@@ -235,7 +251,6 @@
 
 
         }
-        @*@Html.Partial("IndexPartial")*@
 
     </div>
 

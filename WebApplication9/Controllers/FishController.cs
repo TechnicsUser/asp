@@ -20,9 +20,16 @@ namespace WebApplication9.Controllers {
         [NotificationFilter]
         [MessagesFilter]
         // GET: Fish
-        public async Task<ActionResult> Index() {
+        public async Task<ActionResult> Index()
+        {
             return View(await db2.Fish.ToListAsync());
-            }
+        }
+        public async Task<ActionResult> Index1(string id)
+        {
+            List<Fish> fishList = await db2.Fish.Where(x => x.UploadedBy == id).ToListAsync();
+
+            return View(fishList);
+        }
 
         public ActionResult View(int id) {
             //   byte[] ba = new byte[] { 0x0 };  //.Where(x => x.Photo != ba)
