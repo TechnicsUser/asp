@@ -48,15 +48,15 @@ namespace WebApplication9.Controllers
         [Authorize]
         public async Task<ActionResult> UserViewViewModel([Bind(Include = "Id")]string id)
         {
-            AspNetUser aspNetUser = await db3.AspNetUser.FindAsync(id);
-             ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
+            AspNetUser aspNetUser =   db3.AspNetUser.Where(x => x.IdUserName == id).First();
+             ApplicationUser temp = db2.Users.Where(x => x.IdUserName == id).First();
             List<Fish> fl = db3.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
              List<Coral> cl = db3.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
             //   var user = User.Identity.GetUserId();
             //var list = db2.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
 
-     //   var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
-            var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
+            //   var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
+            var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == aspNetUser.Id).ToList();
             var positiveFeedbacks = 0;
             var negativeFeedbacks = 0;
             var nutralFeedbacks = 0;
@@ -69,10 +69,9 @@ namespace WebApplication9.Controllers
                 if (item.FeedbackType == FeedbackType.Nutral) nutralFeedbacks++;
             }
 
-            ViewBag.lastOnline = temp.LastLoginTime;
-            ViewBag.RegistrationDate = temp.RegistrationDate;
+           
 
-            UserViewViewModel view = new UserViewViewModel
+            UserViewViewModel view =   new UserViewViewModel
             {
                 User = aspNetUser,
                 CoralAdds = cl.Count,
