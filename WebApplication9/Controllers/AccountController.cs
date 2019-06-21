@@ -182,8 +182,7 @@ namespace WebApplication9.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    ApplicationDbContext db = new ApplicationDbContext();
- 
+  
 
                     Notification n = new Notification {
                         Title = "Welcome to the community " + @user.IdUserName + " !!!",

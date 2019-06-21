@@ -674,6 +674,7 @@
     <Content Include="Views\Feedbacks\Index.cshtml" />
     <Content Include="Views\Shared\IndexPartial.cshtml" />
     <Content Include="Views\AspNetUsers\UserViewViewModel.cshtml" />
+    <Content Include="Views\Shared\FeedbackDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

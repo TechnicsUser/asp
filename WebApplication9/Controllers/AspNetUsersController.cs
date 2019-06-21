@@ -63,11 +63,16 @@ namespace WebApplication9.Controllers
 
      //   var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
             var list = db3.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
+            var positiveFeedbacks = 0;
+            var negativeFeedbacks = 0;
+            var nutralFeedbacks = 0;
             foreach (var item in list)
             {
                 // assign to aspNetUser from FeedbackFromUserId for easy access to image
                 item.FeedbackFrom = db3.AspNetUser.Find(item.FeedbackFromUserId);
-
+                if (item.FeedbackType == FeedbackType.Positive) positiveFeedbacks++;
+                if (item.FeedbackType == FeedbackType.Negative) negativeFeedbacks++;
+                if (item.FeedbackType == FeedbackType.Nutral) nutralFeedbacks++;
             }
 
             ViewBag.lastOnline = temp.LastLoginTime;
@@ -77,8 +82,12 @@ namespace WebApplication9.Controllers
             {
                 User = aspNetUser,
                 CoralAdds = cl.Count,
+                CoralAddsId = temp.UserName,
                 FishAdds = fl.Count,
-                Feedback = list
+                Feedback = list,
+                positiveFeedbacks = positiveFeedbacks,
+                negativeFeedbacks = negativeFeedbacks,
+                nutralFeedbacks = nutralFeedbacks
                 
             };
 

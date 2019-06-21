@@ -1,11 +1,11 @@
-﻿@model WebApplication9.Models.UserViewViewModel
+﻿ @model WebApplication9.Models.UserViewViewModel
 
 @{
     ViewBag.Title = "View User";
- Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <h2>View User</h2>
+<h2>View User</h2>
 
 @{
     ViewBag.Title = "View";
@@ -173,12 +173,15 @@
 
 
                 <div class="col-lg-offset-6 col-md-offset-6">
+                    
+
+
                     <ul>
                         <li>
-                            Fish Adds : @ViewBag.flSize
+                            Fish Adds : @Model.FishAdds
                         </li>
                         <li>
-                            Coral Adds : @ViewBag.clSize
+                            <a href="@Url.Action("Index1", "Corals", new { id = @Model.CoralAddsId })">Coral Adds</a>: @Model.CoralAdds
                         </li>
                         <li>
                             Equipment Adds : not implemented
@@ -186,18 +189,15 @@
                         <li>
                             Coral Connections : not implemented
                         </li>
-                        <li>
-                            Feedback  : not implemented
-                        </li>
+
                         <li>
                             @if (ViewBag.lastOnline == null)
                             {
-                                <text>Last Online : Never Logged In</text>
+                                <text>Last Online : Never Logged In </text>
                             }
                             else
                             {
-                                <text>    Last Online : @ViewBag.lastOnline  </text>
-
+                                <text>Last Login : @ViewBag.lastOnline  </text>
 
                             }
 
@@ -206,6 +206,12 @@
                             Member Since : @ViewBag.RegistrationDate
 
                         </li>
+                        <li>
+                            <h4> Feedback </h4>
+                            Positive : @Model.positiveFeedbacks
+                            Neutal : @Model.nutralFeedbacks
+                            Negative : @Model.negativeFeedbacks
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -213,15 +219,20 @@
         </div>
     </div>
     <div>
+
+    </div>
+    <div>
         @if (Model.Feedback != null)
         {
             //foreach (var coralModel in Model.Feedback)
             //{
 
-                @Html.Partial("IndexPartial", Model.Feedback)
+            @Html.Partial("IndexPartial", Model.Feedback)
 
-                <hr />
-         //   }
+            <hr />
+            //   }
+            @Html.Partial("FeedbackDetailsPartial", Model.Feedback)
+
 
         }
         @*@Html.Partial("IndexPartial")*@
@@ -245,75 +256,75 @@
 
 <script>
 
-        function popUp(id, number) {
+    function popUp(id, number) {
 
 
-                // Get the modal
-                var modal = document.getElementById('myModal');
+        // Get the modal
+        var modal = document.getElementById('myModal');
 
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
-            var img =id;
-                var modalImg = document.getElementById("img01");
-                var captionText = document.getElementById("caption");
-                img.onclick = function () {
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    captionText.innerHTML = this.alt;
-            }
-         var   x = number;
-            modal.onclick = function () {
-           //     alert(number +1 );
-                var ss = document.getElementsByClassName("myImg")[x++];
-                //for ( i = 0; i < ss.length; i++) {
-                //    ims = ss[i];
-                //}
-                modalImg.src = ss.src;
-                captionText.innerHTML = ss.alt;
-
-                var count = document.getElementsByClassName("myImg");
-                if (x == count.length) {
-                    x = 0;
-                }
-            }
-
-                // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
-
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function () {
-                    modal.style.display = "none";
-                    x = 0;
-                }
-
-
-
-            // alert(this);
-            //  document.getElementById("myImage").style.width = "400px";
-
-            //$('#myImage').css({
-            //    right: '300px',
-            //    top: '450px',
-            //    border: '1px solid red',
-            //    width: '600'
-            //});
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = id;
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
         }
-        function popDown() {
-            //    document.getElementById("myImage").style.width = "150px";
+        var x = number;
+        modal.onclick = function () {
+            //     alert(number +1 );
+            var ss = document.getElementsByClassName("myImg")[x++];
+            //for ( i = 0; i < ss.length; i++) {
+            //    ims = ss[i];
+            //}
+            modalImg.src = ss.src;
+            captionText.innerHTML = ss.alt;
 
-            $('#myImage').css({
-                right: '300px',
-                top: '450px',
-                border: '7px solid red',
-                width: '200'
-            });
-
+            var count = document.getElementsByClassName("myImg");
+            if (x == count.length) {
+                x = 0;
+            }
         }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+            x = 0;
+        }
+
+
+
+        // alert(this);
+        //  document.getElementById("myImage").style.width = "400px";
+
+        //$('#myImage').css({
+        //    right: '300px',
+        //    top: '450px',
+        //    border: '1px solid red',
+        //    width: '600'
+        //});
+    }
+    function popDown() {
+        //    document.getElementById("myImage").style.width = "150px";
+
+        $('#myImage').css({
+            right: '300px',
+            top: '450px',
+            border: '7px solid red',
+            width: '200'
+        });
+
+    }
 
 
 </script>
 
 
 @*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ViewId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ViewId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

@@ -29,6 +29,16 @@ namespace WebApplication9.Controllers
             var coralViewModel = new CoralViewModel(cl);
             return View(coralViewModel);
         }
+        public ActionResult Index1(string id)
+        {
+            var cl = db.Corals.Where(x => x.UploadedBy == id).ToList();
+            foreach (var c in cl)
+            {
+                combineCoral(c.CoralId);
+            }
+            var coralViewModel = new CoralViewModel(cl);
+            return View(coralViewModel);
+        }
 
         public Coral combineCoral(int id)
         {
