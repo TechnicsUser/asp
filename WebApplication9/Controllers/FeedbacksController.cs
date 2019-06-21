@@ -24,7 +24,7 @@ namespace WebApplication9.Controllers
             foreach (var item in list)
             {
                 // assign to aspNetUser from FeedbackFromUserId for easy access to image
-                item.FeedbackFrom = db.Users.Find(item.FeedbackFromUserId);
+                item.FeedbackFrom = db.AspNetUser.Find(item.FeedbackFromUserId);
 
             }
             return View(list);
@@ -36,7 +36,7 @@ namespace WebApplication9.Controllers
             var list = db.Feedbacks.Where(x => x.FeedbackForUserId == user).ToList();
             foreach (var item in list)
             {
-                item.FeedbackFrom = db.Users.Find(item.FeedbackFromUserId);
+                item.FeedbackFrom = db.AspNetUser.Find(item.FeedbackFromUserId);
 
             }
             return View(list);
@@ -53,7 +53,7 @@ namespace WebApplication9.Controllers
             {
                 return HttpNotFound();
             }
-            feedback.FeedbackFrom = db.Users.Find(feedback.FeedbackFromUserId);
+            feedback.FeedbackFrom = db.AspNetUser.Find(feedback.FeedbackFromUserId);
                
             return View(feedback);
         }

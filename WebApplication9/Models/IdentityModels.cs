@@ -49,21 +49,21 @@ namespace WebApplication9.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<WebApplication9.Models.Coral> Corals { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.Coral> Corals { get; set; }
 
-        public System.Data.Entity.DbSet<WebApplication9.Models.Fish> Fish { get; set; }
-        public System.Data.Entity.DbSet<WebApplication9.Models.fishPhoto> FishPhoto { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.Fish> Fish { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.fishPhoto> FishPhoto { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication9.Models.Notification> Notifications { get; set; }
 
-        public System.Data.Entity.DbSet<WebApplication9.Models.Comments> Comments { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.Comments> Comments { get; set; }
 
-        public System.Data.Entity.DbSet<WebApplication9.Models.Messages> Messages { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.Messages> Messages { get; set; }
 
-        public System.Data.Entity.DbSet<WebApplication9.Models.MessagesCreateViewModel> MessagesCreateViewModels { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.MessagesCreateViewModel> MessagesCreateViewModels { get; set; }
 
-        public System.Data.Entity.DbSet<WebApplication9.Models.Feedback> Feedbacks { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.Feedback> Feedbacks { get; set; }
 
-        public System.Data.Entity.DbSet<WebApplication9.Models.UserViewViewModel> UserViewViewModels { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.UserViewViewModel> UserViewViewModels { get; set; }
     }
 }

@@ -14,15 +14,15 @@ namespace WebApplication9.Controllers
 {
     public class AspNetUsersController : Controller
     {
-        private userEntities1 db = new userEntities1();
-        private ApplicationDbContext db2 = new ApplicationDbContext();
+      //  private userEntities1 db = new userEntities1();
+       // private ApplicationDbContext db2 = new ApplicationDbContext();
 
         private SiteDataContext db3 = new SiteDataContext();
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index()
         {
-             return View(await db.AspNetUsers.ToListAsync());
+             return View(await db3.AspNetUser.ToListAsync());
             
         }
 
@@ -32,14 +32,14 @@ namespace WebApplication9.Controllers
 
         public async Task<ActionResult> ViewUser([Bind(Include = "Id")]string id) {
 
-         AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+         AspNetUser aspNetUser = await db3.AspNetUser.FindAsync(id);
          ApplicationDbContext db2 = new ApplicationDbContext();
 
          ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
 
-            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
+            List<Fish> fl = db3.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
             ViewBag.flSize = fl.Count;
-            List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
+            List<Coral> cl = db3.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
             ViewBag.clSize = cl.Count;
             ViewBag.lastOnline = temp.LastLoginTime;
             ViewBag.RegistrationDate = temp.RegistrationDate;
@@ -53,11 +53,11 @@ namespace WebApplication9.Controllers
         public async Task<ActionResult> UserViewViewModel([Bind(Include = "Id")]string id)
         {
 
-            AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+            AspNetUser aspNetUser = await db3.AspNetUser.FindAsync(id);
             ApplicationDbContext db2 = new ApplicationDbContext();
             ApplicationUser temp = db2.Users.Where(x => x.Id == id).First();
-            List<Fish> fl = db2.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
-             List<Coral> cl = db2.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
+            List<Fish> fl = db3.Fish.Where(x => x.UploadedBy == temp.UserName).ToList();
+             List<Coral> cl = db3.Corals.Where(x => x.UploadedBy == temp.UserName).ToList();
             //   var user = User.Identity.GetUserId();
             //var list = db2.Feedbacks.Where(x => x.FeedbackForUserId == id).ToList();
 
@@ -66,7 +66,7 @@ namespace WebApplication9.Controllers
             foreach (var item in list)
             {
                 // assign to aspNetUser from FeedbackFromUserId for easy access to image
-                item.FeedbackFrom = db3.Users.Find(item.FeedbackFromUserId);
+                item.FeedbackFrom = db3.AspNetUser.Find(item.FeedbackFromUserId);
 
             }
 
@@ -93,11 +93,12 @@ namespace WebApplication9.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetUser aspNetUser = await db.AspNetUsers.FindAsync(id);
+            AspNetUser aspNetUser = await db3.AspNetUser.FindAsync(id);
             if (aspNetUser == null)
             {
                 return HttpNotFound();
-            }
+          
+  }
             return View(aspNetUser);
         }
 
@@ -118,8 +119,8 @@ namespace WebApplication9.Controllers
             if (ModelState.IsValid)
             {
                 
-                db.AspNetUsers.Add(aspNetUser);
-                await db.SaveChangesAsync();
+                db3.AspNetUser.Add(aspNetUser);
+                await db3.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 

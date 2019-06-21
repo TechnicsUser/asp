@@ -74,7 +74,7 @@ namespace WebApplication9.Controllers
                 coralPhotoList.Add(db.CoralPhoto.First(x => x.CoralId == id));
             }
 
-            var owner = await db.Users.Where(x => x.UserName == coral.UploadedBy).FirstAsync();
+            var owner = await db.AspNetUser.Where(x => x.UserName == coral.UploadedBy).FirstAsync();
             var comments = await db.Comments.Where(x => x.CommentOn == coral.CoralId.ToString()).ToListAsync();
 
             var coralViewModal = new CoralDetailsViewModel(coral, owner, coralPhotoList, comments);
@@ -248,7 +248,7 @@ namespace WebApplication9.Controllers
 
                 try
                 {
-                    comments.UserPhoto = await db.Users.Where(x => x.UserName == comments.UserId).
+                    comments.UserPhoto = await db.AspNetUser.Where(x => x.UserName == comments.UserId).
                         Select(x => x.UserPhoto).FirstAsync();
                 }
                 catch (Exception Ex)

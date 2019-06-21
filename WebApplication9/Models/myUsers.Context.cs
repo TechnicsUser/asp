@@ -25,6 +25,6 @@ namespace WebApplication9.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUser { get; set; }
     }
 }

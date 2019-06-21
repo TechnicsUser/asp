@@ -13,7 +13,7 @@ namespace WebApplication9.Controllers
         public ActionResult Index() {
             userEntities1 db = new userEntities1();
 
-            var u = from m in db.AspNetUsers
+            var u = from m in db.AspNetUser
                          where m.LocationLat != null
                          select m;
 

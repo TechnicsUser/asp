@@ -21,13 +21,13 @@ namespace WebApplication9.Controllers {
         [MessagesFilter]
         // GET: Fish
         public async Task<ActionResult> Index() {
-            return View(await db.Fish.ToListAsync());
+            return View(await db2.Fish.ToListAsync());
             }
 
         public ActionResult View(int id) {
             //   byte[] ba = new byte[] { 0x0 };  //.Where(x => x.Photo != ba)
             List<fishPhoto> rl = db2.FishPhoto.Where(x => x.FishId == id).ToList();
-            Fish thisFish = db.Fish.Find(id);
+            Fish thisFish = db2.Fish.Find(id);
             ViewBag.thisFish = thisFish;
             thisFish.Views++;
             db2.Entry(thisFish).State = EntityState.Modified;
@@ -38,7 +38,7 @@ namespace WebApplication9.Controllers {
         public ActionResult View1(int id) {
 
             List<Fish> fl = db2.Fish.Where(x => x.FishId == id).ToList();
-            Fish thisFish = db.Fish.Find(id);
+            Fish thisFish = db2.Fish.Find(id);
             return View(thisFish);
             }
         public FileContentResult FishPhoto(int id, int number) {
@@ -66,7 +66,7 @@ namespace WebApplication9.Controllers {
             if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-            Fish fish = await db.Fish.FindAsync(id);
+            Fish fish = await db2.Fish.FindAsync(id);
             if(fish == null) {
                 return HttpNotFound();
                 }
@@ -95,7 +95,7 @@ return View(model);
 
                 fish.UploadedBy = User.Identity.Name;
                 fish.UploadedOn = DateTime.Now.ToShortDateString();
-                db.Fish.Add(fish);
+                db2.Fish.Add(fish);
                 await db.SaveChangesAsync();
 
                 byte[] imageData = null;
@@ -127,7 +127,7 @@ return View(model);
             if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-            Fish fish = await db.Fish.FindAsync(id);
+            Fish fish = await db2.Fish.FindAsync(id);
             List<fishPhoto> fl = db2.FishPhoto.Where(x => x.FishId == id).ToList();
            // ViewBag.fl = fl;
             ViewBag.count = fl.Count();
@@ -183,7 +183,7 @@ return View(model);
             if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-            Fish fish = await db.Fish.FindAsync(id);
+            Fish fish = await db2.Fish.FindAsync(id);
             if(fish == null) {
                 return HttpNotFound();
                 }
@@ -196,9 +196,9 @@ return View(model);
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id) {
-            Fish fish = await db.Fish.FindAsync(id);
+            Fish fish = await db2.Fish.FindAsync(id);
             if(fish.UploadedBy == User.Identity.Name) {
-                db.Fish.Remove(fish);
+                db2.Fish.Remove(fish);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
                 }

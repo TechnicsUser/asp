@@ -99,7 +99,7 @@ namespace WebApplication9.Controllers
         private IEnumerable<SelectListItem> GetRoles()
         {
             //var dbUserRoles = new DbUserRoles();
-            var users = db.Users
+            var users = db.AspNetUser
                         .Select(x =>
                                 new SelectListItem
                                 {
@@ -115,7 +115,7 @@ namespace WebApplication9.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 MessagesCreateViewModel mc = new MessagesCreateViewModel();
-                mc.Users = db.Users.Where(x => x.Id != null).ToList();
+                mc.Users = db.AspNetUser.Where(x => x.Id != null).ToList();
 
 
 
