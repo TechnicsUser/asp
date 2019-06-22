@@ -410,6 +410,18 @@
     <Compile Include="Migrations\201906211234024_dbcontext.Designer.cs">
       <DependentUpon>201906211234024_dbcontext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906221029266_feeedbackReportCount.cs" />
+    <Compile Include="Migrations\201906221029266_feeedbackReportCount.Designer.cs">
+      <DependentUpon>201906221029266_feeedbackReportCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906221030249_feeedbackReportCount2.cs" />
+    <Compile Include="Migrations\201906221030249_feeedbackReportCount2.Designer.cs">
+      <DependentUpon>201906221030249_feeedbackReportCount2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906221036326_feeedbackReportCount3.cs" />
+    <Compile Include="Migrations\201906221036326_feeedbackReportCount3.Designer.cs">
+      <DependentUpon>201906221036326_feeedbackReportCount3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -674,8 +686,9 @@
     <Content Include="Views\Feedbacks\Index.cshtml" />
     <Content Include="Views\Shared\IndexPartial.cshtml" />
     <Content Include="Views\AspNetUsers\UserViewViewModel.cshtml" />
-    <Content Include="Views\Shared\FeedbackDetailsPartial.cshtml" />
+    <Content Include="Views\Shared\FeedbackCreatePartial.cshtml" />
     <Content Include="Views\Fish\Index1.cshtml" />
+    <Content Include="Views\Shared\FeedbackCreate2Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -781,6 +794,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906211234024_dbcontext.resx">
       <DependentUpon>201906211234024_dbcontext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221029266_feeedbackReportCount.resx">
+      <DependentUpon>201906221029266_feeedbackReportCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221030249_feeedbackReportCount2.resx">
+      <DependentUpon>201906221030249_feeedbackReportCount2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906221036326_feeedbackReportCount3.resx">
+      <DependentUpon>201906221036326_feeedbackReportCount3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,6 @@
-﻿@model WebApplication9.Models.UserViewViewModel
+﻿@using WebApplication9.Models
+
+@model WebApplication9.Models.UserViewViewModel
 
 @{
     ViewBag.Title = "View User";
@@ -129,30 +131,19 @@
                 <h2>
                     @Model.User.UserName
                 </h2>
-                @*<hr><br />*@
                 <h4>
                     @Model.User.FirstName
                 </h4>
-
-
 
                 @if (Model.User.UserPhoto != null)
                 {
 
                     var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.User.UserPhoto)}";
                     <div>
-
-
                         <img class="myImg" src="@imgSrc" alt="@x" id="@x" onclick="popUp(this, @x)">
                         @{x++;}
                     </div>
                 }
-
-                @*<div class=" icon-next" role="alert">
-                        <div class="alert alert-warning d-flex flex-row">
-                            Enter a valid email address
-                        </div>
-                    </div>*@
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -165,17 +156,9 @@
 
                     <!-- Modal Caption (Image Text) -->
                     <div id="caption"></div>
-
-
                 </div>
 
-
-
-
                 <div class="col-lg-offset-6 col-md-offset-6">
-
-
-
                     <ul>
                         <li>
                             @if (@Model.FishAdds > 0)
@@ -207,7 +190,7 @@
                         </li>
 
                         <li>
-                            @if (ViewBag.lastOnline == null)
+                            @if (Model.lastOnline == null)
                             {
                                 <text>Last Online : Never Logged In </text>
                             }
@@ -219,7 +202,7 @@
 
                         </li>
                         <li>
-                            Member Since : @Model.RegistrationDate
+                            Member Since : @Model.RegistrationDate.ToString().Substring(0, 10)
 
                         </li>
                         <li>
@@ -238,33 +221,14 @@
 
     </div>
     <div>
-        @if (Model.Feedback != null)
+        @if (Model.Feedback.Count > 0)
         {
-            //foreach (var coralModel in Model.Feedback)
-            //{
-
             @Html.Partial("IndexPartial", Model.Feedback)
-
             <hr />
-            //   }
-            @Html.Partial("FeedbackDetailsPartial", Model.Feedback)
-
-
         }
 
+        @Html.Partial("FeedbackCreatePartial", new Feedback { FeedbackForUserId = Model.User.Id })
     </div>
-
-    @*<img src="@Url.Action(" CoralPhoto", "Corals" , new { id=@Model.CoralId })" width="150" />
-        <img src="@Url.Action("CoralPhoto2", "Corals", new { id = @Model.CoralId })" width="150" />
-
-        <h5>
-            @Html.DisplayFor(model => model.Details)
-        </h5>
-
-        <h6> Frags from @Html.DisplayFor(model => model.Price) dollars </h6>
-
-
-        @Html.ActionLink("Edit", "Edit", new { id = @Model.CoralId })*@
 
 </body>
 
@@ -312,19 +276,8 @@
         }
 
 
-
-        // alert(this);
-        //  document.getElementById("myImage").style.width = "400px";
-
-        //$('#myImage').css({
-        //    right: '300px',
-        //    top: '450px',
-        //    border: '1px solid red',
-        //    width: '600'
-        //});
     }
     function popDown() {
-        //    document.getElementById("myImage").style.width = "150px";
 
         $('#myImage').css({
             right: '300px',
@@ -338,8 +291,3 @@
 
 </script>
 
-
-@*<p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ViewId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@

@@ -44,7 +44,7 @@ namespace WebApplication9.Models
         public bool? RecieverDeleted { get; set; }
 
         public bool? IsReported { get; set; }
-        public string[] ReportedBy { get; set; }
+        public string ReportedBy { get; set; }
 
         [Display(Name = "Received on")]
         public DateTime? CreatedOn { get; set; }
@@ -58,7 +58,6 @@ namespace WebApplication9.Models
         public DateTime? DismissedOn { get; set; }
         public DateTime? SenderDeletedOn { get; set; }
         public DateTime? RecieverDeletedOn { get; set; }
-
-
+        public int? Reports { get; internal set; }
     }
 }

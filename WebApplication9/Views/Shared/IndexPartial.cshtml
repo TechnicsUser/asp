@@ -43,10 +43,12 @@
         @Html.DisplayFor(model => item.Content)
     </div>
     <div class="col-md-1 col-sm-1 col-xs-1">
-        @Html.DisplayFor(model => item.CreatedOn)
+        @item.CreatedOn.ToString().Substring(0, 10)
+        <a class="btn btn-danger" href="@Url.Action("Report","Feedbacks",new { id = item.FeedbackId })">Report</a>
+
     </div>
 
-
+   
 
 
     @*<div class="form-group">

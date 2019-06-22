@@ -69,11 +69,12 @@ namespace WebApplication9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FeedbackId,FeedbackType,Content,IsReply,FeedbackForUserId,IsDismissed,SenderDeleted,RecieverDeleted,IsReported,DismissedOn,SenderDeletedOn,RecieverDeletedOn")] Feedback feedback)
+        public ActionResult Create([Bind(Include = "FeedbackType,Content,FeedbackForUserId")] Feedback feedback)
         {
             if (ModelState.IsValid)
             {
                 feedback.FeedbackFromUserId = User.Identity.GetUserId();
+                feedback.FeedbackForUserId = feedback.FeedbackForUserId;
                 feedback.CreatedOn = DateTime.Now.Date;
                 feedback.IsReported = false;
                 feedback.RecieverDeleted = false;
@@ -81,7 +82,7 @@ namespace WebApplication9.Controllers
 
                 db.Feedbacks.Add(feedback);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserViewViewModel", "AspNetUsers",new { id = User.Identity.Name } );
             }
 
             return View(feedback);
@@ -151,6 +152,18 @@ namespace WebApplication9.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Report(int id)
+        {
+            Feedback feedback = db.Feedbacks.Find(id);
+            feedback.Reports++;
+            feedback.ReportedBy += User.Identity.Name + " : ";
+            db.Entry(feedback).State = EntityState.Modified;
+
+            db.SaveChanges();
+            return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = User.Identity.Name });
+
         }
     }
 }
