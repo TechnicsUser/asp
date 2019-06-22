@@ -13,7 +13,7 @@ namespace WebApplication9.Filters {
         public override void OnActionExecuted(ActionExecutedContext filterContext) {
             if(!filterContext.HttpContext.User.Identity.IsAuthenticated) return;
 
-            var userId = filterContext.HttpContext.User.Identity.GetUserId();
+            var userId = filterContext.HttpContext.User.Identity.Name;
 
             var context = new SiteDataContext();
             var messages = context.Messages
@@ -21,13 +21,11 @@ namespace WebApplication9.Filters {
                  .Where(x => x.RecieverDeleted == false)
                 .Where(n => n.Title != null)
                .Where(n => n.IsDismissed == false)
-                .GroupBy(n => n.MessageType)
+                .GroupBy(n => n.MessageTo)
                 .Select(g => new MessagesViewModel {
                     Count = g.Count(),
                     MessageType = g.Key.ToString(),
-                    BadgeClass = MessageType.Email == g.Key
-                        ? "success"
-                        : "info"
+                    BadgeClass =  "info"
                     });
 
             filterContext.Controller.ViewBag.Messages = messages;

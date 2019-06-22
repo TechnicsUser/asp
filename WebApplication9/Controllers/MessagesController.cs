@@ -87,6 +87,7 @@ namespace WebApplication9.Controllers
                     messages.UserId = User.Identity.GetUserId();
                     messages.MessageFrom = User.Identity.Name;
                     messages.CreatedOn = DateTime.Now;
+                    messages.MessageType = MessageType.Email;
                     db.Messages.Add(messages);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -136,9 +137,11 @@ namespace WebApplication9.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    messages.UserId = User.Identity.GetUserId();
+                    messages.UserId = messages.MessageTo;
                     messages.MessageFrom = User.Identity.Name;
                     messages.CreatedOn = DateTime.Now;
+                    messages.MessageType = MessageType.Email;
+
                     db.Messages.Add(messages);
                     db.SaveChanges();
                     return RedirectToAction("Index");

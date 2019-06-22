@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication9.Models;
@@ -30,17 +31,17 @@ namespace WebApplication9.Controllers
             return View(list);
         }
         // GET: Feedbacks
-        public ActionResult IndexPartial()
-        {
-            var user = User.Identity.GetUserId();
-            var list = db.Feedbacks.Where(x => x.FeedbackForUserId == user).ToList();
-            foreach (var item in list)
-            {
-                item.FeedbackFrom = db.AspNetUser.Find(item.FeedbackFromUserId);
+        //public ActionResult IndexPartial()
+        //{
+        //    var user = User.Identity.GetUserId();
+        //    var list = db.Feedbacks.Where(x => x.FeedbackForUserId == user).ToList();
+        //    foreach (var item in list)
+        //    {
+        //        item.FeedbackFrom = db.AspNetUser.Find(item.FeedbackFromUserId);
 
-            }
-            return View(list);
-        }
+        //    }
+        //    return View(list);
+        //}
         // GET: Feedbacks/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,17 +60,17 @@ namespace WebApplication9.Controllers
         }
 
         // GET: Feedbacks/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Feedbacks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FeedbackType,Content,FeedbackForUserId")] Feedback feedback)
+        public async Task<ActionResult> FeedbackCreatePartial([Bind(Include = "FeedbackType,Content,FeedbackForUserId")] Feedback feedback)
         {
             if (ModelState.IsValid)
             {
@@ -77,15 +78,31 @@ namespace WebApplication9.Controllers
                 feedback.FeedbackForUserId = feedback.FeedbackForUserId;
                 feedback.CreatedOn = DateTime.Now.Date;
                 feedback.IsReported = false;
+                feedback.Reports = 0;
                 feedback.RecieverDeleted = false;
                 feedback.SenderDeleted = false;
 
                 db.Feedbacks.Add(feedback);
-                db.SaveChanges();
-                return RedirectToAction("UserViewViewModel", "AspNetUsers",new { id = User.Identity.Name } );
+                await db.SaveChangesAsync();
+                Notification n = new Notification
+                {
+                    NotificationType = NotificationType.Feedback,
+                    Title = "You recieved feedback from " + User.Identity.Name  + " !!!",
+                    Action = "You recieved "+ feedback.FeedbackType.ToString()+ " feedback ",
+                    UserId = feedback.FeedbackForUserId
+                };
+                db.Notifications.Add(n);
+               await db.SaveChangesAsync();
+
+                var FeedbackFor =  db.AspNetUser.Find(feedback.FeedbackForUserId);
+                var idUserName = FeedbackFor.IdUserName;
+
+                return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = idUserName });
+        
+
             }
 
-            return View(feedback);
+            return View();
         }
 
         // GET: Feedbacks/Edit/5
@@ -154,7 +171,7 @@ namespace WebApplication9.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Report(int id)
+        public Task<ActionResult> Report2(int id)
         {
             Feedback feedback = db.Feedbacks.Find(id);
             feedback.Reports++;
@@ -162,8 +179,48 @@ namespace WebApplication9.Controllers
             db.Entry(feedback).State = EntityState.Modified;
 
             db.SaveChanges();
-            return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = User.Identity.Name });
 
+            return (ReturnToUserAsync(feedback.FeedbackForUserId));
+        
+        }
+        public ActionResult Report(int? id)
+        {
+
+            // ToDo display as popup
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Feedback feedback = db.Feedbacks.Find(id);
+            if (feedback == null)
+            {
+                return HttpNotFound();
+            }
+            return View(feedback);
+        }
+
+        // POST: Feedbacks/Delete/5
+        [HttpPost, ActionName("Report")]
+        [ValidateAntiForgeryToken]
+        public Task<ActionResult> Report(int id)
+        {
+            Feedback feedback = db.Feedbacks.Find(id);
+            feedback.Reports++;
+            feedback.ReportedBy += User.Identity.Name + " : ";
+            db.Entry(feedback).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+            return ReturnToUserAsync(feedback.FeedbackForUserId);
+        }
+
+
+        public async Task<ActionResult> ReturnToUserAsync(string id)
+        {
+            var FeedbackFor = await db.AspNetUser.FindAsync(id);
+            var idUserName = FeedbackFor.IdUserName;
+
+            return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = idUserName });
         }
     }
 }

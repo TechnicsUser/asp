@@ -17,16 +17,29 @@ namespace WebApplication9.Filters {
             var notifications = context.Notifications
                .Where(n => n.UserId == userId)
                 .Where(n => n.IsDismissed == false)
-                .GroupBy(n => n.NotificationType)
+                .GroupBy(n => n.UserId)
                 .Select(g => new NotificationViewModel {
                     Count = g.Count(),
                     NotificationType = g.Key.ToString(),
-                    BadgeClass = NotificationType.Email == g.Key
-                        ? "success"
-                        : "info"
+                    BadgeClass =   "info"
+                   
                     });
 
             filterContext.Controller.ViewBag.Notifications = notifications;
             }
         }
     }
+
+//var context = new SiteDataContext();
+//var notifications = context.Notifications
+//   .Where(n => n.UserId == userId)
+//    .Where(n => n.IsDismissed == false)
+//    .GroupBy(n => n.NotificationType)
+//    .Select(g => new NotificationViewModel
+//    {
+//        Count = g.Count(),
+//        NotificationType = g.Key.ToString(),
+//        BadgeClass = NotificationType.Email == g.Key
+//            ? "success"
+//            : "info"
+//    });

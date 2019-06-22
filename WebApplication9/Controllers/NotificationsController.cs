@@ -47,6 +47,12 @@ namespace WebApplication9.Views.Notifications
             }
             if (notification.UserId == User.Identity.GetUserId() )
             {
+                if (notification.IsDismissed == false)
+                {
+                    notification.IsDismissed = true;
+                    notification.DismissedOn = DateTime.Now;
+                    db.SaveChanges();
+                }
                 return View(notification);
             }
 

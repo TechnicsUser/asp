@@ -23,6 +23,7 @@ namespace WebApplication9.Models
 
 
         [Display(Name = "Feedback")]
+        [Required]
         public string Content { get; set; }
 
         public bool? IsReply { get; set; }

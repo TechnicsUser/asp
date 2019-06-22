@@ -226,8 +226,15 @@
             @Html.Partial("IndexPartial", Model.Feedback)
             <hr />
         }
+        @if (Model.User.UserName != User.Identity.Name)
+        {
 
+            @Html.Partial("FeedbackCreatePartial", new Feedback { FeedbackForUserId = Model.User.Id })
+        }
+        @*For testing*@
         @Html.Partial("FeedbackCreatePartial", new Feedback { FeedbackForUserId = Model.User.Id })
+
+
     </div>
 
 </body>

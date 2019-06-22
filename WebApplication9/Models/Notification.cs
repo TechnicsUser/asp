@@ -8,7 +8,8 @@ namespace WebApplication9.Models {
 
         public enum NotificationType {
             Registration,
-            Email
+            Email,
+            Feedback
             }
 
         public class Notification {

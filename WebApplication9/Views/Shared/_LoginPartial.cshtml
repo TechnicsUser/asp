@@ -37,7 +37,7 @@
                     <li>@Html.ActionLink("Messages", "Index", "Messages")</li>
 
                     <li>@Html.ActionLink("Notifications", "Index", "Notifications")</li>
-                    <li>  @Html.ActionLink("Profile", "ViewUser","AspNetUsers",  new { id =   @User.Identity.GetUserId()}, null) </li>
+                    <li>  @Html.ActionLink("Profile", "UserViewViewModel","AspNetUsers",  new { id =   @User.Identity.Name}, null) </li>
                     <li class="divider"></li>
 
                     <li>
