@@ -59,7 +59,6 @@
             </td>
             <td>
 
-                @Html.ActionLink("View", "Details", new { id = item.MessageId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
             </td>
         </tr>
@@ -120,7 +119,9 @@
     @Html.Partial("MessagesReplyViewModel", new MessagesReplyViewModel
     {
 MessageTo = Model.First().MessageFrom,
-PreviousMessage = Model.First().MessageId.ToString()
+PreviousMessage = Model.First().MessageId.ToString(),
+Title= Model.First().Title,
+Subject =  Model.First().Subject
 
 })
 

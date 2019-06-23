@@ -16,8 +16,9 @@ namespace WebApplication9.Models
         public string Title { get; set; }
         [Required]
         public string Subject { get; set; }
-        [Required]
+      
         [Display(Name = "Message")]
+        [Required]
         public string Content { get; set; }
 
         [Required]

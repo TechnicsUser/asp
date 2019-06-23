@@ -52,22 +52,28 @@ namespace WebApplication9.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Messages messages = db.Messages.Find(id);
-            if (messages == null)
+            if (messages == null )
             {
                 return HttpNotFound();
             }
-            if (messages.IsDismissed == false)
+            if (messages.MessageTo == User.Identity.Name | messages.MessageFrom == User.Identity.Name)
             {
-                messages.IsDismissed = true;
-                messages.DismissedOn = DateTime.Now;
-                db.SaveChanges();
+                if (messages.MessageTo == User.Identity.Name && messages.IsDismissed == false)
+                {
+                    messages.IsDismissed = true;
+                    messages.DismissedOn = DateTime.Now;
+                    db.SaveChanges();
+                }
+
+
+
+                List<Messages> ml = db.Messages.Where(x => x.MessageId == id | x.PreviousMessage == id.ToString()).ToList();
+
+                return View(ml);
             }
+            return HttpNotFound();
 
 
-
-            List<Messages> ml =  db.Messages.Where(x => x.MessageId == id | x.PreviousMessage == id.ToString()).ToList();
-
-            return View(ml);
         }
 
         // GET: Messages/Create
@@ -102,12 +108,35 @@ namespace WebApplication9.Controllers
                 }
           
 
-            return View(messages);
+            return MessagesReplyViewModel();
         }
+
+
+
+
+        // GET: Messages/Create
+        public ActionResult MessagesReplyViewModel()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                MessagesReplyViewModel mc = new MessagesReplyViewModel();
+ 
+
+
+                return View(mc);
+            }
+            return RedirectToAction("Login", "Account");
+
+        }
+
+
+
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateReply([Bind(Include = "MessageId,Title,MessageType,MessageTo,IsDismissed, Content, Subject,PreviousMessage")] Messages messages)
+        public ActionResult MessagesReplyViewModel([Bind(Include = "MessageId,Title,MessageType,MessageTo,IsDismissed, Content, Subject,PreviousMessage")] Messages messages)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -127,21 +156,13 @@ namespace WebApplication9.Controllers
             }
 
 
-            return View(messages);
+            return View();
         }
-        private IEnumerable<SelectListItem> GetRoles()
-        {
-            //var dbUserRoles = new DbUserRoles();
-            var users = db.AspNetUser
-                        .Select(x =>
-                                new SelectListItem
-                                {
-                                    Value = x.IdUserName.ToString(),
-                                    Text = x.IdUserName
-                                });
 
-            return new SelectList(users, "Value", "Text");
-        }
+
+
+
+
         // GET: Messages/Create
         public ActionResult MessagesCreateViewModel()
         {
@@ -232,6 +253,19 @@ namespace WebApplication9.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        private IEnumerable<SelectListItem> GetRoles()
+        {
+            //var dbUserRoles = new DbUserRoles();
+            var users = db.AspNetUser
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.IdUserName.ToString(),
+                                    Text = x.IdUserName
+                                });
+
+            return new SelectList(users, "Value", "Text");
         }
     }
 }

@@ -23,10 +23,12 @@ namespace WebApplication9.Models
         [Key]
         public int MessageId { get; set; }
         public MessageType MessageType { get; set; }
-
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string Subject { get; set; }
         [Display(Name = "Message")]
+        [Required]
         public string Content { get; set; }
 
         public bool IsReply { get; set; }
