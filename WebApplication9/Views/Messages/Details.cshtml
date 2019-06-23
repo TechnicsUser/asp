@@ -1,4 +1,5 @@
-﻿@model WebApplication9.Models.Messages
+﻿@using WebApplication9.Models
+@model IEnumerable<WebApplication9.Models.Messages>
 
 
 
@@ -6,56 +7,123 @@
     ViewBag.Title = "View";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Messages</h4>
-    <hr />
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MessageType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MessageType)
-        </dd>
-
-        <dt>
+<h2>Previous</h2>
+<table class="table">
+    <tr>
+        <th>
             @Html.DisplayNameFor(model => model.MessageFrom)
-        </dt>
+        </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.MessageFrom)
-        </dd>
-
-        <dt>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
-        </dt>
+        </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
+        <th>
             @Html.DisplayNameFor(model => model.Subject)
-        </dt>
+        </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Subject)
-        </dd>
-
-        <dt>
+        <th>
             @Html.DisplayNameFor(model => model.Content)
-        </dt>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDismissed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+    </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageFrom)
+            </td>
 
-   
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
 
-    </dl>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDismissed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+
+                @Html.ActionLink("View", "Details", new { id = item.MessageId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*<div>
+        <h4>Messages</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MessageType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MessageType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MessageFrom)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MessageFrom)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Subject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Content)
+            </dd>
+
+
+
+        </dl>
+    </div>*@
+<div>
+    @Html.Partial("MessagesReplyViewModel", new MessagesReplyViewModel
+    {
+MessageTo = Model.First().MessageFrom,
+PreviousMessage = Model.First().MessageId.ToString()
+
+})
+
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")

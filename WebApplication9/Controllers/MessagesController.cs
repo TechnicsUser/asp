@@ -36,7 +36,7 @@ namespace WebApplication9.Controllers
             {
 
                 var id = User.Identity.Name;
-                List<Messages> ml = await db.Messages.Where(x => x.MessageFrom == id).ToListAsync();
+                List<Messages> ml = await db.Messages.Where(x => x.MessageFrom == id).Where(x => x.SenderDeleted == false).ToListAsync();
 
                 return View(ml);
             }
@@ -47,21 +47,28 @@ namespace WebApplication9.Controllers
 
         // GET: Messages/Details/5
         public ActionResult Details(int? id) {
-            if(id == null) {
+            if (id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
+            }
             Messages messages = db.Messages.Find(id);
-            if(messages == null) {
+            if (messages == null)
+            {
                 return HttpNotFound();
-                }
+            }
             if (messages.IsDismissed == false)
             {
                 messages.IsDismissed = true;
                 messages.DismissedOn = DateTime.Now;
                 db.SaveChanges();
             }
-            return View(messages);
-            }
+
+
+
+            List<Messages> ml =  db.Messages.Where(x => x.MessageId == id | x.PreviousMessage == id.ToString()).ToList();
+
+            return View(ml);
+        }
 
         // GET: Messages/Create
         public ActionResult Create()
@@ -94,6 +101,31 @@ namespace WebApplication9.Controllers
                     }
                 }
           
+
+            return View(messages);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateReply([Bind(Include = "MessageId,Title,MessageType,MessageTo,IsDismissed, Content, Subject,PreviousMessage")] Messages messages)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+
+                if (ModelState.IsValid)
+                {
+                    messages.UserId = User.Identity.GetUserId();
+                    messages.MessageFrom = User.Identity.Name;
+                    messages.CreatedOn = DateTime.Now;
+                    messages.MessageType = MessageType.Email;
+                 //   messages.PreviousMessage = messages.PreviousMessage + ":"; 
+                    messages.IsReply = true;
+                    db.Messages.Add(messages);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+
 
             return View(messages);
         }
@@ -175,9 +207,20 @@ namespace WebApplication9.Controllers
         {
             Messages messages = db.Messages.Find(id);
             // db.Messages.Remove(messages);              var id = User.Identity.GetUserId();
-            messages.RecieverDeletedOn = DateTime.Now;
-            if(messages.MessageTo == User.Identity.GetUserId()) messages.RecieverDeleted = true;
-            //if(messages.MessageTo == User.Identity.GetUserId()) messages.SenderDeleted = true;
+ 
+            //  messages.RecieverDeleted = true;
+            if (messages.MessageTo == User.Identity.Name)
+            {
+                messages.RecieverDeleted = true;
+                messages.RecieverDeletedOn = DateTime.Now;
+
+            }
+            //if (messages.MessageTo == User.Identity.Name)
+            else{
+                messages.SenderDeleted = true;
+                messages.SenderDeletedOn = DateTime.Now;
+
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -426,6 +426,18 @@
     <Compile Include="Migrations\201906221329540_feeedbackReportCount4.Designer.cs">
       <DependentUpon>201906221329540_feeedbackReportCount4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906231034270_messagesPrevious.cs" />
+    <Compile Include="Migrations\201906231034270_messagesPrevious.Designer.cs">
+      <DependentUpon>201906231034270_messagesPrevious.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906231035311_messagesPrevious2.cs" />
+    <Compile Include="Migrations\201906231035311_messagesPrevious2.Designer.cs">
+      <DependentUpon>201906231035311_messagesPrevious2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906231058561_messagesPrevious3.cs" />
+    <Compile Include="Migrations\201906231058561_messagesPrevious3.Designer.cs">
+      <DependentUpon>201906231058561_messagesPrevious3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -448,6 +460,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Messages.cs" />
     <Compile Include="Models\MessagesCreateViewModel.cs" />
+    <Compile Include="Models\MessagesReplyViewModel.cs" />
     <Compile Include="Models\MessagesViewModel.cs" />
     <Compile Include="Models\myUsers.Context.cs">
       <AutoGen>True</AutoGen>
@@ -694,6 +707,7 @@
     <Content Include="Views\Fish\Index1.cshtml" />
     <Content Include="Views\Shared\FeedbackCreate2Partial.cshtml" />
     <Content Include="Views\Feedbacks\Report.cshtml" />
+    <Content Include="Views\Messages\MessagesReplyViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -811,6 +825,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906221329540_feeedbackReportCount4.resx">
       <DependentUpon>201906221329540_feeedbackReportCount4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906231034270_messagesPrevious.resx">
+      <DependentUpon>201906231034270_messagesPrevious.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906231035311_messagesPrevious2.resx">
+      <DependentUpon>201906231035311_messagesPrevious2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906231058561_messagesPrevious3.resx">
+      <DependentUpon>201906231058561_messagesPrevious3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

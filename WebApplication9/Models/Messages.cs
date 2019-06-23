@@ -30,7 +30,7 @@ namespace WebApplication9.Models
         public string Content { get; set; }
 
         public bool IsReply { get; set; }
-        public int[] PreviousMessages { get; set; }
+        public string PreviousMessage { get; set; }
 
         public string MessageTo { get; set; }
 
@@ -38,7 +38,7 @@ namespace WebApplication9.Models
         public string MessageFrom { get; set; }
         public string UserId { get; set; }
 
-        [Display(Name = "Read")]
+        [Display(Name = "Seen")]
         public bool IsDismissed { get; set; }
 
         public bool SenderDeleted { get; set; }
