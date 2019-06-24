@@ -17,9 +17,7 @@ namespace WebApplication9.Controllers {
         private ApplicationDbContext db = new ApplicationDbContext();
         private SiteDataContext db2 = new SiteDataContext();
 
-        [NotificationFilter]
-        [MessagesFilter]
-        // GET: Fish
+      
         public async Task<ActionResult> Index()
         {
             return View(await db2.Fish.ToListAsync());

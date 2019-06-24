@@ -60,16 +60,19 @@ namespace WebApplication9.Controllers
         }
 
         // GET: Feedbacks/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        public ActionResult FeedbackCreatePartial(string Content)
+        {
+            ViewBag.Content = Content;
+            return PartialView();
+        }
 
         // POST: Feedbacks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+         [Authorize]
+
         public async Task<ActionResult> FeedbackCreatePartial([Bind(Include = "FeedbackType,Content,FeedbackForUserId")] Feedback feedback)
         {
             if (ModelState.IsValid)
@@ -98,10 +101,11 @@ namespace WebApplication9.Controllers
                 var idUserName = FeedbackFor.IdUserName;
 
                 return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = idUserName });
-        
+ 
 
             }
-
+            ViewBag.Content = feedback.Content;
+            ViewBag.message = feedback.Content;
             return View();
         }
 

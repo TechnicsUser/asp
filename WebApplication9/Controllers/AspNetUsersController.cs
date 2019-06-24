@@ -23,13 +23,14 @@ namespace WebApplication9.Controllers
         // GET: AspNetUsers
         public async Task<ActionResult> Index()
         {
-             return View(await db3.AspNetUser.ToListAsync());
+            List<AspNetUser> lst = await db3.AspNetUser.Where(x => x.EmailConfirmed == true).ToListAsync();
+             return View(lst);
             
         }
 
 
         // GET: AspNetUsers
-        [Authorize]
+       // [Authorize]
         public async Task<ActionResult> UserViewViewModel([Bind(Include = "Id")]string id)
         {
             AspNetUser aspNetUser =   db3.AspNetUser.Where(x => x.IdUserName == id).First();

@@ -16,8 +16,7 @@ namespace WebApplication9.Controllers
         private readonly SiteDataContext db = new SiteDataContext();
 
 
-        [NotificationFilter]
-        [MessagesFilter]
+ 
         // GET: Corals
         public ActionResult Index()
         {
