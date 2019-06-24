@@ -171,6 +171,10 @@ namespace WebApplication9.Controllers
                 MessagesCreateViewModel mc = new MessagesCreateViewModel();
                 mc.Users = db.AspNetUser.Where(x => x.Id != null).ToList();
 
+                mc.Users = db.AspNetUser.Where(x => x.Id != null).ToList();
+                AspNetUser aspNetUser = db.AspNetUser.Where(x => x.IdUserName == User.Identity.Name).First();
+
+                mc.Users.Remove(aspNetUser);
 
 
                 return View(mc);
