@@ -712,6 +712,7 @@
     <Content Include="Views\Shared\FeedbackCreate2Partial.cshtml" />
     <Content Include="Views\Feedbacks\Report.cshtml" />
     <Content Include="Views\Messages\MessagesReplyViewModel.cshtml" />
+    <Content Include="Views\AspNetUsers\ProfileView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
