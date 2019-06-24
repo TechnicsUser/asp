@@ -5,13 +5,13 @@
 
 
 
-@using (Html.BeginForm("FeedbackCreatePartial", "Feedbacks", new {Content = "some text" },FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("FeedbackCreatePartial", "Feedbacks", FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form">
         <h4>Leave Feedback </h4>
-         <hr />
+        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <div class="col-md-2">
@@ -27,8 +27,8 @@
         </div>
 
         <div class="form-group">
-             @Html.HiddenFor(model => model.FeedbackForUserId, new { htmlAttributes = new { @class = "form-control" } })
-         </div>
+            @Html.HiddenFor(model => model.FeedbackForUserId, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
 
 
 
@@ -40,7 +40,12 @@
     </div>
 
 
-    
+
 }
 
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    
+}

@@ -60,10 +60,13 @@ namespace WebApplication9.Controllers
         }
 
         // GET: Feedbacks/Create
+        [HandleError(View = "Error")]
         public ActionResult FeedbackCreatePartial(string Content)
         {
-            ViewBag.Content = Content;
-            return PartialView();
+            //ViewBag.Content = Content;
+            //return PartialView();
+            return View();
+
         }
 
         // POST: Feedbacks/Create
@@ -72,6 +75,7 @@ namespace WebApplication9.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
          [Authorize]
+   //     [HandleError(View = "Error")]
 
         public async Task<ActionResult> FeedbackCreatePartial([Bind(Include = "FeedbackType,Content,FeedbackForUserId")] Feedback feedback)
         {
@@ -92,15 +96,16 @@ namespace WebApplication9.Controllers
                     NotificationType = NotificationType.Feedback,
                     Title = "You recieved feedback from " + User.Identity.Name  + " !!!",
                     Action = "You recieved "+ feedback.FeedbackType.ToString()+ " feedback ",
-                    UserId = feedback.FeedbackForUserId
+                    UserId = feedback.FeedbackForUserId,
+                    CreatedOn = DateTime.Now
                 };
                 db.Notifications.Add(n);
                await db.SaveChangesAsync();
 
-                var FeedbackFor =  db.AspNetUser.Find(feedback.FeedbackForUserId);
-                var idUserName = FeedbackFor.IdUserName;
+                var FeedbackFor =  db.AspNetUser.Find(feedback.FeedbackForUserId).IdUserName;
+               // var idUserName = FeedbackFor.IdUserName;
 
-                return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = idUserName });
+                return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = FeedbackFor });
  
 
             }

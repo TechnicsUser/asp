@@ -71,7 +71,7 @@ namespace WebApplication9.Models {
 
 
         [Required]
-
+        [DataType(DataType.Currency)]
         public string Price { get; set; }
         public string Size { get; set; }
         public string FragSize { get; set; }
