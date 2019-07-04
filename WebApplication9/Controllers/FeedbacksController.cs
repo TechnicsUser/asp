@@ -60,14 +60,15 @@ namespace WebApplication9.Controllers
         }
 
         // GET: Feedbacks/Create
-        [HandleError(View = "Error")]
-        public ActionResult FeedbackCreatePartial(string Content)
-        {
-            //ViewBag.Content = Content;
-            //return PartialView();
-            return View();
 
-        }
+        //[HandleError(View = "Error")]
+        //public ActionResult FeedbackCreatePartialNew([Bind(Include = "FeedbackType,Content,FeedbackForUserId")] Feedback feedback)
+        //{
+        //    //ViewBag.Content = Content;
+        //    //return PartialView();
+        //    return View();
+
+        //}
 
         // POST: Feedbacks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -109,8 +110,8 @@ namespace WebApplication9.Controllers
  
 
             }
-            ViewBag.Content = feedback.Content;
-            ViewBag.message = feedback.Content;
+            //ViewBag.Content = feedback.Content;
+            //ViewBag.message = feedback.Content;
             return View();
         }
 
