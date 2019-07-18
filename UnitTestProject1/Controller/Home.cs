@@ -62,9 +62,10 @@ namespace UnitTestProject1
 
             // Act
             FileContentResult result = controller.UserPhotos() as FileContentResult;
+            string textContents = new UTF8Encoding().GetString(result.FileContents);
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(textContents);
         }
 
         
