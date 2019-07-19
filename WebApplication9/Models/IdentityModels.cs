@@ -64,6 +64,6 @@ namespace WebApplication9.Models
 
         //public System.Data.Entity.DbSet<WebApplication9.Models.Feedback> Feedbacks { get; set; }
 
-        //public System.Data.Entity.DbSet<WebApplication9.Models.UserViewViewModel> UserViewViewModels { get; set; }
+        //public System.Data.Entity.DbSet<WebApplication9.Models.UserView> UserViews { get; set; }
     }
 }

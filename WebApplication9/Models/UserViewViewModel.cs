@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApplication9.Models
 {
-    public class UserViewViewModel
+    public class UserView
     {
         [Key]
         public int FeedbackId { get; set; }

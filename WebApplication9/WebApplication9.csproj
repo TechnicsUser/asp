@@ -690,7 +690,7 @@
     <Content Include="Views\AspNetUsers\Details.cshtml" />
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
-    <Content Include="Views\AspNetUsers\ViewUser.cshtml" />
+    <Content Include="Views\AspNetUsers\ViewUser2.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Fish\Create.cshtml" />
     <Content Include="Views\Fish\Delete.cshtml" />
@@ -711,7 +711,7 @@
     <Content Include="Views\Feedbacks\Edit.cshtml" />
     <Content Include="Views\Feedbacks\Index.cshtml" />
     <Content Include="Views\Shared\IndexPartial.cshtml" />
-    <Content Include="Views\AspNetUsers\UserViewViewModel.cshtml" />
+    <Content Include="Views\AspNetUsers\UserView.cshtml" />
     <Content Include="Views\Shared\FeedbackCreatePartial.cshtml" />
     <Content Include="Views\Fish\Index1.cshtml" />
     <Content Include="Views\Feedbacks\Report.cshtml" />

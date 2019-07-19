@@ -106,7 +106,7 @@ namespace WebApplication9.Controllers
                 var FeedbackFor =  db.AspNetUser.Find(feedback.FeedbackForUserId).IdUserName;
                // var idUserName = FeedbackFor.IdUserName;
 
-                return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = FeedbackFor });
+                return RedirectToAction("UserView", "AspNetUsers", new { id = FeedbackFor });
  
 
             }
@@ -230,7 +230,7 @@ namespace WebApplication9.Controllers
             var FeedbackFor = await db.AspNetUser.FindAsync(id);
             var idUserName = FeedbackFor.IdUserName;
 
-            return RedirectToAction("UserViewViewModel", "AspNetUsers", new { id = idUserName });
+            return RedirectToAction("UserView", "AspNetUsers", new { id = idUserName });
         }
     }
 }

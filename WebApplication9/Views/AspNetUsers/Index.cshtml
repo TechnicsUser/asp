@@ -59,7 +59,7 @@
         })
            .addListener('click', (function () {
             //   map.setZoom(9);
-            window.location.href = "/AspNetUsers/UserViewViewModel/" + "@item.IdUserName";
+            window.location.href = "/AspNetUsers/UserView/" + "@item.IdUserName";
         }))
         markers.push(marker);
 
@@ -121,7 +121,7 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.Id, this)">
     @*<h4>        @Html.DisplayFor(modelItem => item.UserName)    </h4>*@
     <hr>
-    <h4>            @Html.ActionLink(@item.UserName, "UserViewViewModel", new { id = item.IdUserName }) </h4>
+    <h4>            @Html.ActionLink(@item.UserName, "UserView", new { id = item.IdUserName }) </h4>
     <hr>
     <h5>        @Html.DisplayFor(modelItem => item.FirstName)    </h5>
 

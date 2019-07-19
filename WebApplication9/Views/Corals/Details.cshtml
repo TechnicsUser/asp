@@ -206,7 +206,7 @@
             @Html.DisplayNameFor(model => model.coral.UploadedBy)
 
             <h5>
-                <a href="@Url.Action("UserViewViewModel","AspNetUsers",new { id = Model.user.IdUserName })">@Model.coral.UploadedBy</a>
+                <a href="@Url.Action("UserView","AspNetUsers",new { id = Model.user.IdUserName })">@Model.coral.UploadedBy</a>
             </h5>
         </div>
 

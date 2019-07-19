@@ -31,7 +31,7 @@ namespace WebApplication9.Controllers
 
         // GET: AspNetUsers
        // [Authorize]
-        public async Task<ActionResult> UserViewViewModel([Bind(Include = "Id")]string id)
+        public async Task<ActionResult> UserView([Bind(Include = "Id")]string id)
         {
             AspNetUser aspNetUser =   db3.AspNetUser.Where(x => x.IdUserName == id).First();
              ApplicationUser temp = db2.Users.Where(x => x.IdUserName == id).First();
@@ -56,7 +56,7 @@ namespace WebApplication9.Controllers
 
            
 
-            UserViewViewModel view =   new UserViewViewModel
+            UserView view =   new UserView
             {
                 User = aspNetUser,
                 CoralAdds = cl.Count,
