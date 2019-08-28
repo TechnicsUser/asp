@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Reef-Connect</title>
     @{
-        var theme = Bootstrap.Theme.Stock;
+        var theme = Bootstrap.Theme.Darkly;
         if(User.Identity.IsAuthenticated) {
             var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(userStore);

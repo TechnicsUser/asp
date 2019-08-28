@@ -115,6 +115,7 @@ namespace WebApplication9.Controllers
             coral.UploadedBy = User.Identity.Name;
             db.Corals.Add(coral);
             db.SaveChanges();
+
             if (Request.Files.Count <= 0 || Request.Files[0].ContentLength <= 0) return RedirectToAction("Index");
 
             for (var i = 0; i < Request.Files.Count; i++)

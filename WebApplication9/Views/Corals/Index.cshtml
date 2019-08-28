@@ -127,8 +127,8 @@
 </div>
 @foreach (var coralModel in Model.coralList)
 {
-
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@coralModel.CoralId, this)">
+    // onclick="f1(@coralModel.CoralId, this)"
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left">
         <hr />
         <h4> @Html.ActionLink(@coralModel.Name, "Details", new { id = @coralModel.CoralId }) </h4>
         <hr>
@@ -142,7 +142,7 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     @for (int i = 1; i < coralModel.PhotoList.Count; i++)
                     {
-                        <li data-target="#myCarousel" data-slide-to="i"></li>
+                        <li data-target="#myCarousel" data-slide-to="@i"></li>
                     }
                 </ol>
             }

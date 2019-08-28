@@ -187,7 +187,7 @@ namespace WebApplication9.Controllers
                     Notification n = new Notification {
                         Title = "Welcome to the community " + @user.IdUserName + " !!!",
                         Action = "We have sent you an email to verify your account",
-                        UserId = "Admin"
+                        UserId = user.Id
                         };
                     db.Notifications.Add(n);
                     await db.SaveChangesAsync();

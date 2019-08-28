@@ -9,7 +9,7 @@ using WebApplication9.Models;
 namespace WebApplication9.Filters {
     public class NotificationFilter : ActionFilterAttribute {
         public override void OnActionExecuted(ActionExecutedContext filterContext) {
-            if(!filterContext.HttpContext.User.Identity.IsAuthenticated) return;
+          //  if(!filterContext.HttpContext.User.Identity.IsAuthenticated) return;
 
             var userId = filterContext.HttpContext.User.Identity.GetUserId();
 

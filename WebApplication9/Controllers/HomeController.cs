@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using com.sun.tools.doclets.@internal.toolkit.util;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,38 @@ namespace WebApplication9.Controllers
     //[RequireHttps]
 
     public class HomeController : Controller
-    {
-
-         
-
-        public ActionResult Index()
         {
 
-            return View();
+        private readonly SiteDataContext db = new SiteDataContext();
+
+        //[NotificationFilter]
+        //[MessagesFilter]
+     
+        public ActionResult Index()
+        {
+            var cl = db.Corals.Where(n => n.Views >= 3)
+    .OrderBy(n => n.Views)
+    .Take(5).ToList();
+
+            foreach (var c in cl)
+            {
+                combineCoral(c.CoralId);
+            }
+            var coralViewModel = new HomeViewModel(cl);
+            return View(coralViewModel);
+
+        }
+        public Coral combineCoral(int id)
+        {
+            var coral = db.Corals.Find(id);
+            var CoralPhotoList = db.CoralPhoto.Where(x => x.CoralId == id).ToList();
+            if (CoralPhotoList.Count == 0)
+            {
+                id = 61;
+                CoralPhotoList.Add(db.CoralPhoto.First(x => x.CoralId == id));
+            }
+            coral.PhotoList = CoralPhotoList;
+            return coral;
         }
 
 
