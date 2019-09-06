@@ -52,6 +52,7 @@ namespace WebApplication9.Controllers
                 comments.UserId = User.Identity.GetUserId();
                 comments.CommentTitle = User.Identity.GetUserName();
                 comments.CreatedOn = DateTime.Now.ToShortDateString();
+                comments.UploadedBy = User.Identity.GetUserName();
                 db.Comments.Add(comments);
                  db.SaveChanges();
                 return RedirectToAction("Index");

@@ -9,8 +9,10 @@
 <div class="row">
     <div class="col-md-2 col-sm-2 col-xs-6">
 
-        @Html.DisplayFor(modelItem => item.FeedbackFrom.IdUserName)
-        </div>
+        @*@Html.DisplayFor(modelItem => item.FeedbackFrom.IdUserName)*@
+        <a href="@Url.Action("UserView","AspNetUsers",new { id = item.FeedbackFrom.IdUserName })">@item.FeedbackFrom.IdUserName</a>
+
+    </div>
 
     </div>
 <div class="row">

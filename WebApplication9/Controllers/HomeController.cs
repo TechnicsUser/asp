@@ -12,7 +12,7 @@ using WebApplication9.Models;
 
 namespace WebApplication9.Controllers
 {
-    //[RequireHttps]
+  //  [RequireHttps]
 
     public class HomeController : Controller
         {

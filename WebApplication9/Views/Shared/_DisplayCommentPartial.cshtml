@@ -11,7 +11,7 @@
 
         <div class="col-md-2 col-sm-2 col-xs-2">
             @*@Html.DisplayFor(model => model.IdUserName)*@
-          <a href="@Url.Action("ViewUser","AspNetUsers",new { id = Model.CommentBy })">@Model.IdUserName</a>
+          <a href="@Url.Action("UserView","AspNetUsers",new { id = Model.IdUserName })">@Model.IdUserName</a>
 
 
 

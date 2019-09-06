@@ -530,6 +530,10 @@
     <Compile Include="Migrations\201906241847211_priceDataType.Designer.cs">
       <DependentUpon>201906241847211_priceDataType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909041943367_clean.cs" />
+    <Compile Include="Migrations\201909041943367_clean.Designer.cs">
+      <DependentUpon>201909041943367_clean.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -938,6 +942,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906241847211_priceDataType.resx">
       <DependentUpon>201906241847211_priceDataType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909041943367_clean.resx">
+      <DependentUpon>201909041943367_clean.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
