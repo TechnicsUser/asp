@@ -46,7 +46,6 @@ namespace WebApplication9.Controllers
             return View(thisFish);
             }
         public FileContentResult FishPhoto(int id, int number) {
-            //   if(User.Identity.IsAuthenticated) {
             try {
                 byte[] ba = new byte[] { 0x0 };
                 var CredID = (from sn3 in db2.FishPhoto.Where(x => x.Photo != ba)
