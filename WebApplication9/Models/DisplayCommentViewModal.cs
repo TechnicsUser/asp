@@ -4,17 +4,33 @@ using System.ComponentModel.DataAnnotations;
 namespace WebApplication9.Models
 {
     public class DisplayCommentViewModal {
-        public DisplayCommentViewModal(Comments c, AspNetUser user)
-
-        {
+        public DisplayCommentViewModal(Comments c, AspNetUser user) {
             CommentOn = c.CommentOn;
             CreatedOn = c.CreatedOn;
             CommentId = c.CommentId;
-                IdUserName = c.UserId;
+            IdUserName = c.UserId;
             CommentText = c.CommentText;
             CommentBy = c.UploadedBy;
             UserPhoto = c.UserPhoto;
-        }
+            }
+        public DisplayCommentViewModal(Comments c) {
+            CommentOn = c.CommentOn;
+            CreatedOn = c.CreatedOn;
+            CommentId = c.CommentId;
+            IdUserName = c.UserId;
+            CommentText = c.CommentText;
+            CommentBy = c.UploadedBy;
+            UserPhoto = c.UserPhoto;
+            }
+        //public DisplayCommentViewModal(Comments c, Coral coral) {
+        //    CommentOn = c.CommentOn;
+        //    CreatedOn = c.CreatedOn;
+        //    CommentId = c.CommentId;
+        //    IdUserName = c.UserId;
+        //    CommentText = c.CommentText;
+        //    CommentBy = c.UploadedBy;
+        //    UserPhoto = coral.Photo;
+        //    }
 
         public DisplayCommentViewModal()
         {

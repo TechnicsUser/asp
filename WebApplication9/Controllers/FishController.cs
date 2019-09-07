@@ -12,25 +12,24 @@ using System.Web.Mvc;
 using WebApplication9.Filters;
 using WebApplication9.Models;
 
-namespace WebApplication9.Controllers {
-    public class FishController : Controller {
+namespace WebApplication9.Controllers
+    {
+    public class FishController : Controller
+        {
         private ApplicationDbContext db = new ApplicationDbContext();
         private SiteDataContext db2 = new SiteDataContext();
 
-      
-        public async Task<ActionResult> Index()
-        {
+
+        public async Task<ActionResult> Index() {
             return View(await db2.Fish.ToListAsync());
-        }
-        public async Task<ActionResult> Index1(string id)
-        {
+            }
+        public async Task<ActionResult> Index1(string id) {
             List<Fish> fishList = await db2.Fish.Where(x => x.UploadedBy == id).ToListAsync();
 
             return View(fishList);
-        }
+            }
 
         public ActionResult View(int id) {
-            //   byte[] ba = new byte[] { 0x0 };  //.Where(x => x.Photo != ba)
             List<fishPhoto> rl = db2.FishPhoto.Where(x => x.FishId == id).ToList();
             Fish thisFish = db2.Fish.Find(id);
             ViewBag.thisFish = thisFish;
@@ -81,13 +80,12 @@ namespace WebApplication9.Controllers {
 
         // GET: Fish/Create
         public ActionResult Create() {
-            var model = new Fish()
-            {
+            var model = new Fish() {
 
                 TankSize = Fish.TankSizeRequirement.None,
-            };
-return View(model);
-           // return View();
+                };
+            return View(model);
+            // return View();
             }
 
         // POST: Fish/Create
@@ -134,7 +132,7 @@ return View(model);
                 }
             Fish fish = await db2.Fish.FindAsync(id);
             List<fishPhoto> fl = db2.FishPhoto.Where(x => x.FishId == id).ToList();
-           // ViewBag.fl = fl;
+            // ViewBag.fl = fl;
             ViewBag.count = fl.Count();
             if(fish == null) {
                 return HttpNotFound();
@@ -146,40 +144,34 @@ return View(model);
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]/* Flow,Food,Growth,*/
-        //[Bind(Exclude = "CommentId,Likes,DisLikes,Views,UploadedBy, UploadedOn", Include = "FishPhoto,FishId,Type,TankSize,Name,ScientificName,Details,Photo,Price,Size,FishSize,SoldOut,FishAvailable,FishAvailableFrom")]
-        //[Bind(Include = "Type,TankSize,Name,ScientificName,Details,Price,FishSize,SoldOut,FishAvailable,FishAvailableFrom")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "CommentId,Likes,DisLikes,Views,UploadedBy, UploadedOn,FishPhoto, FishId,Type,TankSize,Name,ScientificName,Details,Photo,Price,Size,FishSize,SoldOut,FishAvailable,FishAvailableFrom")]Fish fish) {
             if(ModelState.IsValid) {
                 byte[] imageData = null;
                 if(Request.Files.Count > 0 && Request.Files[0].ContentLength > 0) {
-                         for(int i = 0; i < Request.Files.Count; i++) {
-                            var hpf = Request.Files[i];
-                            using(var binary = new BinaryReader(hpf.InputStream)) {
-                                imageData = binary.ReadBytes(hpf.ContentLength);
-                                }
-                            fishPhoto cp = new fishPhoto();
-                            cp.UserId = User.Identity.GetUserId();
-                            cp.Photo = imageData;
-                            //cp.FishPhotoId = fish.FishId;
-                            cp.FishId = fish.FishId;
-                            cp.Views = 0;
-                            cp.Likes = 0;
-                            cp.DisLikes = 0;
-                            db2.FishPhoto.Add(cp);
-                            db2.SaveChanges();
+                    for(int i = 0; i < Request.Files.Count; i++) {
+                        var hpf = Request.Files[i];
+                        using(var binary = new BinaryReader(hpf.InputStream)) {
+                            imageData = binary.ReadBytes(hpf.ContentLength);
                             }
+                        fishPhoto cp = new fishPhoto();
+                        cp.UserId = User.Identity.GetUserId();
+                        cp.Photo = imageData;
+                        //cp.FishPhotoId = fish.FishId;
+                        cp.FishId = fish.FishId;
+                        cp.Views = 0;
+                        cp.Likes = 0;
+                        cp.DisLikes = 0;
+                        db2.FishPhoto.Add(cp);
+                        db2.SaveChanges();
                         }
-                    //var CredID = (from sn3 in db2.FishPhoto
-                    //              where sn3.FishId == fish.FishId
-                    //              select sn3.Photo).First();
-                    //db2.Entry(fish).Entity.Photo = CredID;
-                    // fish.UploadedBy = User.Identity.Name;
-                    db.Entry(fish).State = EntityState.Modified;
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
                     }
-                 
+
+                db.Entry(fish).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+                }
+
             return View(fish);
             }
 

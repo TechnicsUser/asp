@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers
-{
-    public class ProfileController : Controller
     {
+    public class ProfileController : Controller
+        {
         public ActionResult ChangeTheme(string themename) {
             var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
             var manager = new UserManager<ApplicationUser>(userStore);
@@ -18,7 +18,7 @@ namespace WebApplication9.Controllers
             user.CssTheme = themename;
             manager.Update(user);
             var ctx = userStore.Context;
-           
+
             ctx.SaveChanges();
 
 
@@ -29,4 +29,4 @@ namespace WebApplication9.Controllers
             return RedirectToAction("Index", "Home");
             }
         }
-}
+    }

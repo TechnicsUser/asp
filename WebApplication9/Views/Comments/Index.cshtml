@@ -1,40 +1,34 @@
-﻿@model IEnumerable<WebApplication9.Models.Comments>
+﻿@using WebApplication9.Models
+@model IEnumerable<WebApplication9.Models.Comments>
 
 
-<h2>Index</h2>
+<hr />
+@for(int i = 0; i < Model.Count(); i++) {
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    @*@Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModal(Model.ElementAt(i)))*@
+
+    <hr />
+    }
+
 <table class="table">
     <tr>
+
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.CreatedOn)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RemovedOn)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CommentOn)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentTitle)
-        </th>
+
+
         <th>
             @Html.DisplayNameFor(model => model.CommentText)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentViews)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Removed)
-        </th>
+
+
         <th>
             @Html.DisplayNameFor(model => model.Reports)
         </th>
@@ -47,50 +41,49 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RemovedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentViews)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Removed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reports)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Likes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DisLikes)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CommentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CommentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CommentId })
-        </td>
-    </tr>
-}
+    @foreach(var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentOn)
+                <br />
+
+                @if(item.UserPhoto != null) {
+                    var base64 = Convert.ToBase64String(item.UserPhoto);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                    <img src="@imgSrc" style="width: 20%;" />
+                    }
+                else {
+                    <br />
+                    }
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentText)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Reports)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Likes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisLikes)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.CommentId }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.CommentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CommentId })
+            </td>
+        </tr>
+        }
 
 </table>

@@ -375,7 +375,6 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ParamController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\readWriteController.cs" />
     <Compile Include="Filters\MessagesFilter.cs" />
     <Compile Include="Filters\NotificationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -621,6 +620,7 @@
     <Content Include="Images\highlighted.jpg" />
     <Content Include="Images\highlighted2.jpg" />
     <Content Include="Images\noImg.png" />
+    <Content Include="Images\YAFLogo.png" />
     <Content Include="Models\myUsers.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>myUsers.edmx</DependentUpon>
@@ -762,9 +762,7 @@
     <Content Include="Views\Messages\Details.cshtml" />
     <Content Include="Views\Messages\Cut_Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
-    <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />
-    <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Corals\Create.cshtml" />
@@ -778,12 +776,7 @@
     <Content Include="Views\CoralConnections\Edit.cshtml" />
     <Content Include="Views\CoralConnections\Index.cshtml" />
     <Content Include="Views\Corals\View.cshtml" />
-    <Content Include="Views\AspNetUsers\Create.cshtml" />
-    <Content Include="Views\AspNetUsers\Delete.cshtml" />
-    <Content Include="Views\AspNetUsers\Details.cshtml" />
-    <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
-    <Content Include="Views\AspNetUsers\ViewUser2.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Fish\Create.cshtml" />
     <Content Include="Views\Fish\Delete.cshtml" />
@@ -809,7 +802,6 @@
     <Content Include="Views\Fish\Index1.cshtml" />
     <Content Include="Views\Feedbacks\Report.cshtml" />
     <Content Include="Views\Messages\MessagesReplyViewModel.cshtml" />
-    <Content Include="Views\AspNetUsers\ProfileView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

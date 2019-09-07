@@ -11,14 +11,13 @@ using WebApplication9.Models;
 using Microsoft.AspNet.Identity;
 
 namespace WebApplication9.Views.Notifications
-{
-    public class NotificationsController : Controller
     {
+    public class NotificationsController : Controller
+        {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Notifications
-        public async Task<ActionResult> Index()
-        {
+        public async Task<ActionResult> Index() {
 
             if(User.Identity.IsAuthenticated) {
 
@@ -31,39 +30,33 @@ namespace WebApplication9.Views.Notifications
             return RedirectToAction("Login", "Account");
 
 
-        }
+            }
 
         // GET: Notifications/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<ActionResult> Details(int? id) {
+            if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                }
             Notification notification = await db.Notifications.FindAsync(id);
-            if (notification == null)
-            {
+            if(notification == null) {
                 return HttpNotFound();
-            }
-            if (notification.UserId == User.Identity.GetUserId() )
-            {
-                if (notification.IsDismissed == false)
-                {
+                }
+            if(notification.UserId == User.Identity.GetUserId()) {
+                if(notification.IsDismissed == false) {
                     notification.IsDismissed = true;
                     notification.DismissedOn = DateTime.Now;
                     db.SaveChanges();
-                }
+                    }
                 return View(notification);
-            }
+                }
 
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-        }
+            }
 
         // GET: Notifications/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create() {
             if(User.Identity.IsAuthenticated) {
 
 
@@ -72,41 +65,36 @@ namespace WebApplication9.Views.Notifications
             return RedirectToAction("Login", "Account");
 
 
-         
-        }
+
+            }
 
         // POST: Notifications/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "NotificationId,Title,NotificationType,Controller,Action,UserId,IsDismissed")] Notification notification)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<ActionResult> Create([Bind(Include = "NotificationId,Title,NotificationType,Controller,Action,UserId,IsDismissed")] Notification notification) {
+            if(ModelState.IsValid) {
                 notification.CreatedOn = DateTime.Now;
                 db.Notifications.Add(notification);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
-            }
+                }
 
             return View(notification);
-        }
+            }
 
 
 
         // GET: Notifications/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
+        public async Task<ActionResult> Delete(int? id) {
+            if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                }
             Notification notification = await db.Notifications.FindAsync(id);
-            if (notification == null)
-            {
+            if(notification == null) {
                 return HttpNotFound();
-            }
+                }
             if(notification.UserId == User.Identity.GetUserId()) {
                 return View(notification);
                 }
@@ -116,26 +104,23 @@ namespace WebApplication9.Views.Notifications
         // POST: Notifications/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
+        public async Task<ActionResult> DeleteConfirmed(int id) {
             Notification notification = await db.Notifications.FindAsync(id);
 
             if(notification.UserId == User.Identity.GetUserId())
-             notification.IsDismissed = true;
+                notification.IsDismissed = true;
             notification.DismissedOn = DateTime.Now;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
 
 
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
             }
+
+        protected override void Dispose(bool disposing) {
+            if(disposing) {
+                db.Dispose();
+                }
             base.Dispose(disposing);
+            }
         }
     }
-}
