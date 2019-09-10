@@ -17,20 +17,51 @@ namespace UnitTestProject1
     public class UnitTest1
     {
         [TestMethod]
-        public void Index()
-        {
+        public void Index() {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
 
-            // Assert
+            // Assert              return View(coralViewModel);
+
             Assert.IsNotNull(result);
-        }
+            }
 
         [TestMethod]
-        public void About()
+        public void combineCoral() {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
+
+            // Assert    coral.PhotoList = CoralPhotoList;    return coral;
+            Assert.IsNotNull(result);
+            }
+
+        [TestMethod]
+        public void UserPhotos()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            FileContentResult result = controller.UserPhotos() as FileContentResult;
+            string textContents = new UTF8Encoding().GetString(result.FileContents);
+
+            // Assert   return new FileContentResult(userImage.UserPhoto, "image/jpeg"); || return File(imageData, "image/png");
+            Assert.IsNotNull(textContents);
+        }
+
+
+
+
+
+
+        [TestMethod]
+        public void About()   // working
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -43,7 +74,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void Contact()
+        public void Contact()  // working
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -53,19 +84,6 @@ namespace UnitTestProject1
 
             // Assert
             Assert.IsNotNull(result);
-        }
-        [TestMethod]
-        public void UserPhotos()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            FileContentResult result = controller.UserPhotos() as FileContentResult;
-            string textContents = new UTF8Encoding().GetString(result.FileContents);
-
-            // Assert
-            Assert.IsNotNull(textContents);
         }
 
         

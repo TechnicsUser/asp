@@ -617,10 +617,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\YAFLogo.png" />
     <Content Include="Images\highlighted.jpg" />
     <Content Include="Images\highlighted2.jpg" />
     <Content Include="Images\noImg.png" />
-    <Content Include="Images\YAFLogo.png" />
+    <Content Include="Images\YAFLogo3.png" />
+    <Content Include="Images\YAFLogo0.png" />
+    <Content Include="Images\YAFLogo1.png" />
     <Content Include="Models\myUsers.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>myUsers.edmx</DependentUpon>

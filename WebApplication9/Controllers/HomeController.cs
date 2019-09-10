@@ -28,12 +28,14 @@ namespace WebApplication9.Controllers
                                     .Take(5).ToList();
 
             foreach(var c in cl) {
-                combineCoral(c.CoralId);
+                CoralsController cc = new CoralsController();
+           combineCoral(c.CoralId);
                 }
             var coralViewModel = new HomeViewModel(cl);
             return View(coralViewModel);
 
             }
+
         public Coral combineCoral(int id) {
             var coral = db.Corals.Find(id);
             var CoralPhotoList = db.CoralPhoto.Where(x => x.CoralId == id).ToList();

@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Edit";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Edit</h2>
@@ -28,7 +30,7 @@
             }*@
 
         @for (int i = 0; i < ViewBag.count; i++)
-        {<img id="@i" data-bind="@Model.CoralId" src="@Url.Action("CoralPhoto3", "Corals", new { id = Model.CoralId, number = i })" />}
+        {<img id="@i"class="myImg" data-bind="@Model.CoralId" src="@Url.Action("CoralPhoto3", "Corals", new { id = Model.CoralId, number = i })" />}
 
         <br />
         <div class="form-group">
@@ -45,7 +47,7 @@
 
         @*<input type='file' multiple />*@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+        <script src="~/Scripts/jquery-2.2.4.min.js"></script>
         <div id="myImg">        </div>
         <br />
 
@@ -191,7 +193,7 @@
     };
 </script>
 <style>
-    img {
+    .myImg {
         width: 250px;
         height: 200px;
     }
@@ -199,4 +201,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
 }

@@ -14,9 +14,12 @@ namespace WebApplication9.Controllers
         private SiteDataContext db = new SiteDataContext();
 
         // GET: Comments
-        public ActionResult Index() {
-            var user = User.Identity.GetUserName();
-            var list = db.Comments.Where(x => x.UserId == user).ToList();
+        public ActionResult Index(int userId) {
+
+
+         //   var user = User.Identity.GetUserName();
+            var list = db.Comments.Where(x => x.UserId == userId.ToString()).ToList();
+                
            
 
             foreach(var item in list) {
@@ -35,7 +38,6 @@ namespace WebApplication9.Controllers
                     }
 
                 //change commentOn to coral name
-
              var item2 = db.Corals.Where(x => x.CoralId.ToString() == item.CommentOn).First();
                 item.CommentOn = item2.Name;
                 item.UserId = item2.UploadedBy;
@@ -96,7 +98,7 @@ namespace WebApplication9.Controllers
             }
 
         // GET: Comments/Edit/5
-        public ActionResult Edit(int id) {
+        public ActionResult Edit(int? id) {
             if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
@@ -122,7 +124,7 @@ namespace WebApplication9.Controllers
             }
 
         // GET: Comments/Delete/5
-        public ActionResult Delete(int id) {
+        public ActionResult Delete(int? id) {
             if(id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }

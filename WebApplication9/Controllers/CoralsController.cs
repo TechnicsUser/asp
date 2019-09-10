@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using WebApplication9.Filters;
 using WebApplication9.Models;
 
@@ -21,7 +23,7 @@ namespace WebApplication9.Controllers
         public ActionResult Index() {
             var cl = db.Corals.ToList();
             foreach(var c in cl) {
-                combineCoral(c.CoralId);
+                CombineCoral(c.CoralId);
                 }
             var coralViewModel = new CoralViewModel(cl);
             return View(coralViewModel);
@@ -29,13 +31,13 @@ namespace WebApplication9.Controllers
         public ActionResult Index1(string id) {
             var cl = db.Corals.Where(x => x.UploadedBy == id).ToList();
             foreach(var c in cl) {
-                combineCoral(c.CoralId);
+                CombineCoral(c.CoralId);
                 }
             var coralViewModel = new CoralViewModel(cl);
             return View(coralViewModel);
             }
 
-        public Coral combineCoral(int id) {
+        public Coral CombineCoral(int id) {
             var coral = db.Corals.Find(id);
             var CoralPhotoList = db.CoralPhoto.Where(x => x.CoralId == id).ToList();
             if(CoralPhotoList.Count == 0) {
@@ -216,6 +218,32 @@ namespace WebApplication9.Controllers
             base.Dispose(disposing);
             }
 
+        public FileContentResult CoralPhoto3(int id, int number) {
+
+            try {
+                var lst = db.CoralPhoto.First(x => x.CoralId == id).Photo;
+                var count = lst.Count();
+               // var Image = lst.ElementAt(number).Photo;
+
+                return new FileContentResult(lst, "image/jpeg");
+
+                }
+            catch(Exception){
+                string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+
+                byte[] imageData = null;
+                FileInfo fileInfo = new FileInfo(fileName);
+                long imageFileLength = fileInfo.Length;
+                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                imageData = br.ReadBytes((int)imageFileLength);
+                br.Close();
+                return File(imageData, "image/png");
+
+                }
+
+
+            }
 
         //******************************** Comments Create ***********************************************
         [HttpPost]
@@ -234,8 +262,8 @@ namespace WebApplication9.Controllers
                     comments.UserPhoto = await db.AspNetUser.Where(x => x.UserName == comments.UserId).
                         Select(x => x.UserPhoto).FirstAsync();
                     }
-                catch(Exception Ex) {
-                    //return RedirectToAction("Login", "Account", null);
+                catch(Exception) {
+                    return RedirectToAction("Login", "Account", null);
                     }
 
                 comments.UploadedBy = User.Identity.GetUserName();
