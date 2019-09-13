@@ -783,12 +783,10 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Fish\Create.cshtml" />
     <Content Include="Views\Fish\Delete.cshtml" />
-    <Content Include="Views\Fish\Details.cshtml" />
     <Content Include="Views\Fish\Edit.cshtml" />
     <Content Include="Views\Fish\Index.cshtml" />
     <Content Include="Views\Param\Index.cshtml" />
     <Content Include="Views\Fish\View.cshtml" />
-    <Content Include="Views\Fish\View1.cshtml" />
     <Content Include="Views\Corals\Index.cshtml" />
     <Content Include="Views\Shared\_CreateCommentPartial.cshtml" />
     <Content Include="Views\Shared\_DisplayCommentPartial.cshtml" />
@@ -802,7 +800,6 @@
     <Content Include="Views\Shared\IndexPartial.cshtml" />
     <Content Include="Views\AspNetUsers\UserView.cshtml" />
     <Content Include="Views\Shared\FeedbackCreatePartial.cshtml" />
-    <Content Include="Views\Fish\Index1.cshtml" />
     <Content Include="Views\Feedbacks\Report.cshtml" />
     <Content Include="Views\Messages\MessagesReplyViewModel.cshtml" />
   </ItemGroup>

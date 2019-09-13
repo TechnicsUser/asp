@@ -156,7 +156,7 @@ namespace WebApplication9.Controllers
                         fishPhoto cp = new fishPhoto();
                         cp.UserId = User.Identity.GetUserId();
                         cp.Photo = imageData;
-                        //cp.FishPhotoId = fish.FishId;
+                        cp.FishPhotoId = fish.FishId;
                         cp.FishId = fish.FishId;
                         cp.Views = 0;
                         cp.Likes = 0;
