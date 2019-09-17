@@ -1,7 +1,10 @@
 ﻿@using WebApplication9.Models
 @model WebApplication9.Models.HomeViewModel
+
 @{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 
 }
 <h3>@ViewData["Message"]</h3>
@@ -17,6 +20,24 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>*@
+@*<div id="webchat" role="main"></div>*@
+@*<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>*@
+@*<script>
+        window.WebChat.renderWebChat(
+            {
+                activityRenderer: true,
+                sendTypingIndicator: true,
+                directLine: window.WebChat.createDirectLine({
+                    token: 'Dwc1w5CVaJU.wlOAeFZaFprzjrNcOO-mJXJd6x1s0nYTmfvQAS5zcUY'
+                }),
+                userID: 'secondqna-bot',
+            },
+            document.getElementById('webchat')
+        );
+    </script>
+
+    <iframe src='https://webchat.botframework.com/embed/secondqna-bot?s=Dwc1w5CVaJU.wlOAeFZaFprzjrNcOO-mJXJd6x1s0nYTmfvQAS5zcUY' style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>*@
+
 
 <div class="row">
     <div class="col-md-4">
@@ -24,22 +45,19 @@
             <h3>Top 5 Corals</h3>
             <p class="lead">Voted by users</p>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                @if (Model.coralList.Count > 1)
-                {
+                @if(Model.coralList.Count > 1) {
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        @for (int i = 1; i < Model.coralList.Count; i++)
-                        {
+                        @for(int i = 1; i < Model.coralList.Count; i++) {
                             <li data-target="#myCarousel" data-slide-to="@i"></li>
-                        }
+                            }
                     </ol>
-                }
+                    }
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    @if (Model.coralList.Count > 0)
-                    {
+                    @if(Model.coralList.Count > 0) {
                         <div class="item active">
                             <h4> @Html.ActionLink(Model.coralList[0].Name, "Details", "Corals", new { id = Model.coralList[0].CoralId }, null) </h4>
 
@@ -51,8 +69,7 @@
 
                         </div>
 
-                        for (int i = 1; i < Model.coralList.Count; i++)
-                        {
+                        for(int i = 1; i < Model.coralList.Count; i++) {
                             <div class="item">
                                 <h4> @Html.ActionLink(Model.coralList[i].Name, "Details", "Corals", new { id = Model.coralList[i].CoralId }, null) </h4>
 
@@ -65,17 +82,17 @@
                             </div>
 
 
-                        }
+                            }
 
-                    }
+                        }
                 </div>
                 <hr />
 
             </div>
             @*<img src="~/Images/highlighted.jpg" alt="" style="width: 100%; " />*@
             @*<p class="btn btn-default">
-                @Html.ActionLink("See more", "Index", "Corals")
-            </p>*@
+                    @Html.ActionLink("See more", "Index", "Corals")
+                </p>*@
         </div>
     </div>
     <div class="col-md-6">
@@ -155,6 +172,7 @@
         </p>
 
     </div>
+ 
 </div>
 
 

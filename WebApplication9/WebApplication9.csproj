@@ -707,6 +707,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <None Include="Views\Home\ChatOld.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -802,6 +803,8 @@
     <Content Include="Views\Shared\FeedbackCreatePartial.cshtml" />
     <Content Include="Views\Feedbacks\Report.cshtml" />
     <Content Include="Views\Messages\MessagesReplyViewModel.cshtml" />
+    <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

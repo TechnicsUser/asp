@@ -1,0 +1,40 @@
+﻿
+
+<link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+
+
+<div class="container">
+    <br />
+    <div id="bot" role="main" />
+    <br />
+</div>
+
+<script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+<script>
+    var user = {
+        id: 'test',
+        name: 'test-bot'
+    };
+    var botConnection = new BotChat.DirectLine({
+        token: 'Dwc1w5CVaJU.wlOAeFZaFprzjrNcOO-mJXJd6x1s0nYTmfvQAS5zcUY',
+        user: user
+    });
+    BotChat.App({
+        user: user,
+        botConnection: botConnection,
+        bot: { id: 'secondqna-bot', name: 'secondqna-bot' },
+        resize: 'detect'
+    }, document.getElementById("bot"));
+    botConnection
+        .postActivity({
+            from: user,
+            name: 'tips',
+            type: 'event',
+            text: 'acclimation'
+
+        })
+        .subscribe(function (id) {
+            console.log('"trigger requestWelcomeDialog" sent');
+        });
+</script>
+

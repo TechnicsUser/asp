@@ -9,7 +9,7 @@
             border-radius: 50px;
             padding: 10px;
             cursor: pointer;
-            /*transition: 1.3s;*/
+            transition: 5.3s;
             float: left;
             width: 200px;
             height: 200px;
@@ -39,10 +39,10 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-
-@foreach(var item in Model) {
+@{ var interval = 2000;
+foreach(var item in Model) {
     if(item.Name != null) {
-
+            interval += 2345;
 
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" style="float : left">
             <h4>        @Html.DisplayFor(modelItem => item.Name)    </h4>
@@ -50,7 +50,7 @@
             <h5>        @Html.DisplayFor(modelItem => item.ScientificName)    </h5>
 
             @*<img src="@Url.Action("CoralPhoto", "Corals", new { id = item.CoralId })" width="150" />*@
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" onclick="f1(@item.FishId, this)">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="@interval" onclick="f1(@item.FishId, this)">
                 <!-- Indicators -->
                 @*<ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -61,17 +61,17 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 0  })" />
+                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 0 })" />
                     </div>
 
                     <div class="item">
 
-                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 1  })" />
+                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 1 })" />
                     </div>
 
                     <div class="item">
 
-                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 2  })" />
+                        <img src="@Url.Action("FishPhoto", "Fish", new { id = item.FishId, number = 2 })" />
                     </div>
                 </div>
 
@@ -109,13 +109,14 @@
 
                 @Html.ActionLink("Delete", "Delete", new { id = item.FishId })
 
-                }
+    }
 
 
 
         </div>
         }
     }
+        }
 <div></div>
  
 <script>
