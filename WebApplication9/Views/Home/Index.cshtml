@@ -47,11 +47,15 @@
 
 <div class="col-md-4 col-sm-4 col-xs-6">
 
-    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.coralList, "Top 5 Corals", "Voted by users"))
+    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.display5CoralList, "Top 5 Corals", "Voted by users"))
 </div>
 <div class="col-md-4 col-sm-4 col-xs-6">
 
-    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.display5CoralList, "🎈 Free Coral  🎈", "First 20 Users in Ireland","FreeCoral"))
+    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.feeeCoralList, "🎈 Free Coral  🎈", "First 20 Users in Ireland","FreeCoral", "Home"))
+</div>
+<div class="col-md-4 col-sm-4 col-xs-6">
+
+    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.newCoralList, "Newest Corals", "Most recent"))
 </div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">

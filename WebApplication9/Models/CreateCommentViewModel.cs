@@ -5,20 +5,20 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebApplication9.Models
 {
-    public class CreateCommentViewModal {
-        public CreateCommentViewModal(Coral c, AspNetUser user)
+    public class CreateCommentViewModel {
+        public CreateCommentViewModel(Coral c, AspNetUser user)
 
         {
             CommentOn = c.CoralId.ToString();
             UserId = user.IdUserName;
         }
 
-        public CreateCommentViewModal()
+        public CreateCommentViewModel()
         {
             throw new NotImplementedException();
         }
 
-        public CreateCommentViewModal(Coral modelCoral, string identityName)
+        public CreateCommentViewModel(Coral modelCoral, string identityName)
         {
             CommentOn = modelCoral.CoralId.ToString();
             UserId = identityName;

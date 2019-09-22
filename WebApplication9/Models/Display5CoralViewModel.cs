@@ -15,6 +15,7 @@ namespace WebApplication9.Models
         public string MainHeading { get; set; }
         public string SubHeading { get; set; }
         public string LinkTo { get; set; }
+        public string Controller { get; set; }
 
         public Display5CoralViewModel(List<Coral> cl) {
             this.coralList = cl;
@@ -38,7 +39,13 @@ namespace WebApplication9.Models
             SubHeading = sub;
             LinkTo = link;
             }
-
+        public Display5CoralViewModel(List<Coral> cl, string mh, string sub, string link, string con) {
+            this.coralList = cl;
+            MainHeading = mh;
+            SubHeading = sub;
+            LinkTo = link;
+            Controller = con;
+            }
 
 
 

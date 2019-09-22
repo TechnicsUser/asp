@@ -222,14 +222,14 @@
     </div>
 <br/>
 <div class="col-md-12">
-    @Html.Partial("_CreateCommentPartial", new CreateCommentViewModal(Model.coral, User.Identity.Name))
+    @Html.Partial("_CreateCommentPartial", new CreateCommentViewModel(Model.coral, User.Identity.Name))
 
     @if (Model.cl != null)
     {
         foreach (var coralModel in Model.cl)
         {
 
-            @Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModal(coralModel, Model.user))
+            @Html.Partial("_DisplayCommentPartial", new DisplayCommentViewModel(coralModel, Model.user))
             
             <hr/>
         }

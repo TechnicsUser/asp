@@ -533,6 +533,10 @@
     <Compile Include="Migrations\201909041943367_clean.Designer.cs">
       <DependentUpon>201909041943367_clean.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909221902485_coralDateChange2.cs" />
+    <Compile Include="Migrations\201909221902485_coralDateChange2.Designer.cs">
+      <DependentUpon>201909221902485_coralDateChange2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
@@ -540,8 +544,8 @@
     </Compile>
     <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Display5CoralViewModel.cs" />
-    <Compile Include="Models\DisplayCommentViewModal.cs" />
-    <Compile Include="Models\CreateCommentViewModal.cs" />
+    <Compile Include="Models\DisplayCommentViewModel.cs" />
+    <Compile Include="Models\CreateCommentViewModel.cs" />
     <Compile Include="Models\Coral.cs" />
     <Compile Include="Models\CoralConnection.cs" />
     <Compile Include="Models\CoralConnectionViewModal.cs" />
@@ -946,6 +950,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909041943367_clean.resx">
       <DependentUpon>201909041943367_clean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909221902485_coralDateChange2.resx">
+      <DependentUpon>201909221902485_coralDateChange2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

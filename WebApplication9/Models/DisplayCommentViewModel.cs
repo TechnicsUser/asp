@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication9.Models
 {
-    public class DisplayCommentViewModal {
-        public DisplayCommentViewModal(Comments c, AspNetUser user) {
+    public class DisplayCommentViewModel {
+        public DisplayCommentViewModel(Comments c, AspNetUser user) {
             CommentOn = c.CommentOn;
             CreatedOn = c.CreatedOn;
             CommentId = c.CommentId;
@@ -13,7 +13,7 @@ namespace WebApplication9.Models
             CommentBy = c.UploadedBy;
             UserPhoto = c.UserPhoto;
             }
-        public DisplayCommentViewModal(Comments c) {
+        public DisplayCommentViewModel(Comments c) {
             CommentOn = c.CommentOn;
             CreatedOn = c.CreatedOn;
             CommentId = c.CommentId;
@@ -32,7 +32,7 @@ namespace WebApplication9.Models
         //    UserPhoto = coral.Photo;
         //    }
 
-        public DisplayCommentViewModal()
+        public DisplayCommentViewModel()
         {
             throw new NotImplementedException();
 

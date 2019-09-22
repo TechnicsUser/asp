@@ -23,34 +23,40 @@ namespace WebApplication9.Controllers
         //[MessagesFilter]
 
         public ActionResult Index() {
-            var cl = db.Corals.Where(n => n.Views >= 13)
-                                    .OrderBy(n => n.Views)
-                                    .Take(5).ToList();
 
-            foreach(var c in cl) {
-                //  CoralsController cc = new CoralsController();
-                combineCoral(c.CoralId);
+            //    newest coral
+            var newCoralList = db.Corals.Where(n => n.UploadedOn.Value < DateTime.Now)
+                                    .OrderBy(n => n.UploadedOn)
+                                    .Take(5).ToList();
+            //var newCoralList = db.Corals.Where(n => n.Views > 3)
+            //                    .OrderByDescending(n => n.Views)
+            //                    .Take(5).ToList();
+
+            foreach(var c in newCoralList) {
+                 combineCoral(c.CoralId);
                 }
 
-            var fcl = db.Corals.Where(n => n.Views > 3)
+
+            // free coral
+            var feeeCoralList = db.Corals.Where(n => n.Views > 3)
                                     .OrderByDescending(n => n.Views)
                                     .Take(5).ToList();
-
-            foreach(var c in fcl) {
-                //  CoralsController cc = new CoralsController();
-                combineCoral(c.CoralId);
+            foreach(var c in feeeCoralList) {
+                 combineCoral(c.CoralId);
                 }
 
-            var dcl = db.Corals.Where(n => n.Views > 3)
+
+            // most viewed
+            var display5CoralList = db.Corals.Where(n => n.Views > 3)
                            .OrderByDescending(n => n.Views)
                            .Take(5).ToList();
-
-            foreach(var c in dcl) {
-                //  CoralsController cc = new CoralsController();
+            foreach(var c in display5CoralList) {
                 combineCoral(c.CoralId);
                 }
-                var coralViewModel = new HomeViewModel(cl, fcl, dcl);
-                return View(coralViewModel);
+
+
+            var coralViewModel = new HomeViewModel(newCoralList, feeeCoralList, display5CoralList);
+            return View(coralViewModel);
 
                 
         }

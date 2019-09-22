@@ -7,7 +7,7 @@ namespace WebApplication9.Models
 {
     public class HomeViewModel
     {
-        public List<Coral> coralList { get; set; }
+        public List<Coral> newCoralList { get; set; }
         public List<Coral> feeeCoralList { get; set; }
         public List<Coral> display5CoralList { get; set; }
 
@@ -15,7 +15,7 @@ namespace WebApplication9.Models
         //    this.coralList = cl;
         //    }
         public HomeViewModel(List<Coral> cl, List<Coral> feeeCoralList, List<Coral> display5CoralList) {
-            this.coralList = cl;
+            this.newCoralList = cl;
             this.feeeCoralList = feeeCoralList;
             this.display5CoralList = display5CoralList;
             }

@@ -96,7 +96,7 @@ namespace WebApplication9.Controllers
             if(ModelState.IsValid) {
 
                 fish.UploadedBy = User.Identity.Name;
-                fish.UploadedOn = DateTime.Now.ToShortDateString();
+                fish.UploadedOn = DateTime.Now;
                 db2.Fish.Add(fish);
                 await db.SaveChangesAsync();
 

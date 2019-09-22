@@ -102,6 +102,7 @@ namespace WebApplication9.Controllers
             Coral coral) {
             if(!ModelState.IsValid) return View(coral);
 
+            coral.UploadedOn = DateTime.Now;
             coral.UploadedBy = User.Identity.Name;
             db.Corals.Add(coral);
             db.SaveChanges();

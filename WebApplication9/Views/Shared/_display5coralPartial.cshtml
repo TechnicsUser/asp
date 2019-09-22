@@ -6,7 +6,7 @@
         @{
           //  int randId = Model.coralList.First().Views;
             if(Model.LinkTo != null) {
-                <h3><a href="@Url.Action("FreeCoral","Home")">@Model.MainHeading</a></h3>
+                <h3><a href="@Url.Action(@Model.LinkTo, @Model.Controller)">@Model.MainHeading</a></h3>
 
                 }
             else {
