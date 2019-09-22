@@ -5549,7 +5549,7 @@ a.list-group-item.active > .badge,
     margin-left: 3px;
 }
 
-.jumbotron {
+/*.jumbotron {
     padding: 30px;
     margin-bottom: 30px;
     color: inherit;
@@ -5594,8 +5594,154 @@ a.list-group-item.active > .badge,
     .jumbotron .h1 {
         font-size: 63px;
     }
+}*/
+.jumbotron {
+    padding: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #303030;
 }
 
+    .jumbotron h1,
+    .jumbotron .h1 {
+        color: inherit;
+    }
+
+    .jumbotron p {
+        margin-bottom: 15px;
+        font-size: 23px;
+        font-weight: 200;
+    }
+
+    .jumbotron > hr {
+        border-top-color: #161616;
+    }
+
+.container .jumbotron {
+    border-radius: 6px;
+    max-width: 95%;
+}
+
+.jumbotron .container {
+}
+
+@media screen and (max-width: 1000px) {
+
+    .jumbotron {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .coralName {
+        font-size: 18px;
+    }
+
+    .container .jumbotron {
+        padding-left: 60px;
+        padding-right: 60px;
+        max-width: 95%;
+    }
+
+    .jumbotron h1,
+    .jumbotron .h1 {
+        /*font-size: 67.5px;*/
+    }
+
+    .jumbotron > h3 {
+        font-size: 20px;
+    }
+
+    .jumbotron > h4 {
+        font-size: 15px;
+    }
+
+    .jumbotron p {
+        margin-bottom: 1px;
+        font-size: 15px;
+        font-weight: 200;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .jumbotron {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .coralName {
+        font-size: 16px;
+    }
+
+    .container .jumbotron {
+        padding-left: 60px;
+        padding-right: 60px;
+        max-width: 95%;
+    }
+
+    .jumbotron h1,
+    .jumbotron .h1 {
+        /*font-size: 67.5px;*/
+    }
+
+    .jumbotron > h3 {
+        font-size: 20px;
+    }
+
+    .jumbotron > h4 {
+        font-size: 15px;
+    }
+
+    .jumbotron p {
+        margin-bottom: 1px;
+        font-size: 15px;
+        font-weight: 200;
+    }
+}
+
+@media screen and (max-width: 555px) {
+
+    .jumbotron {
+        padding: 30px;
+        margin-bottom: 3px;
+        color: inherit;
+        background-color: #303030;
+    }
+
+    .coralName {
+        font-size: 14px;
+    }
+
+    .jumbotron h1,
+    .jumbotron .h1 {
+        color: inherit;
+    }
+
+    .jumbotron > h3 {
+        font-size: 20px;
+    }
+
+    .jumbotron > h4 {
+        font-size: 12px;
+    }
+
+    .jumbotron p {
+        margin-bottom: 1px;
+        font-size: 15px;
+        font-weight: 200;
+    }
+
+    .jumbotron > hr {
+        border-top-color: blue;
+    }
+
+    .container .jumbotron {
+        border-radius: 6px;
+        max-width: 95%;
+    }
+
+    .jumbotron .container {
+    }
+}
 .thumbnail {
     display: block;
     padding: 4px;
@@ -7646,4 +7792,23 @@ a.thumbnail.active {
 
 .popover {
     color: #444444;
+}
+.carousel img {
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 1.3s;
+    float: left;
+    width: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    animation-name: zoom;
+    animation-duration: 1.6s;
+    opacity: 1;
+}
+
+.myImg:hover {
+    -webkit-filter: brightness(30%); /* Safari */
+    filter: brightness(125%);
+    opacity: 1;
 }

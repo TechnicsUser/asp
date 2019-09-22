@@ -12,6 +12,18 @@
     <title></title>
 </head>
 <body>
+    @{ 
+        var id = "";
+        if(User.Identity.Name == null) {
+            id = "you";
+            }
+        else {
+
+            id = User.Identity.Name;
+
+            }
+    }
+    <div id="user" class="@id"></div>
     <div>
 
         <div class="container">
@@ -22,9 +34,11 @@
 
         <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
         <script>
-    var user = {
-        id: 'user',
-        name: 'You'
+            var user = {
+                id: 'user',
+                //name: 'You'
+       
+        name: document.getElementById("user").className
     };
     var botConnection = new BotChat.DirectLine({
         token: 'Dwc1w5CVaJU.wlOAeFZaFprzjrNcOO-mJXJd6x1s0nYTmfvQAS5zcUY',

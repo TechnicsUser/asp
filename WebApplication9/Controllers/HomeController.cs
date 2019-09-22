@@ -23,18 +23,37 @@ namespace WebApplication9.Controllers
         //[MessagesFilter]
 
         public ActionResult Index() {
-            var cl = db.Corals.Where(n => n.Views >= 3)
+            var cl = db.Corals.Where(n => n.Views >= 13)
                                     .OrderBy(n => n.Views)
                                     .Take(5).ToList();
 
             foreach(var c in cl) {
-                CoralsController cc = new CoralsController();
-           combineCoral(c.CoralId);
+                //  CoralsController cc = new CoralsController();
+                combineCoral(c.CoralId);
                 }
-            var coralViewModel = new HomeViewModel(cl);
-            return View(coralViewModel);
 
-            }
+            var fcl = db.Corals.Where(n => n.Views > 3)
+                                    .OrderByDescending(n => n.Views)
+                                    .Take(5).ToList();
+
+            foreach(var c in fcl) {
+                //  CoralsController cc = new CoralsController();
+                combineCoral(c.CoralId);
+                }
+
+            var dcl = db.Corals.Where(n => n.Views > 3)
+                           .OrderByDescending(n => n.Views)
+                           .Take(5).ToList();
+
+            foreach(var c in dcl) {
+                //  CoralsController cc = new CoralsController();
+                combineCoral(c.CoralId);
+                }
+                var coralViewModel = new HomeViewModel(cl, fcl, dcl);
+                return View(coralViewModel);
+
+                
+        }
 
         public Coral combineCoral(int id) {
             var coral = db.Corals.Find(id);
@@ -91,6 +110,22 @@ namespace WebApplication9.Controllers
         public ActionResult Chat() {
 
             return View();
+            }
+        public ActionResult FreeCoral() {
+            var cl = db.Corals.Where(n => n.Views >= 13)
+                              .OrderBy(n => n.Views)
+                              .Take(5).ToList();
+
+            foreach(var c in cl) {
+                //  CoralsController cc = new CoralsController();
+                combineCoral(c.CoralId);
+                }
+
+
+
+            CoralViewModel cvm = new CoralViewModel(cl);
+
+            return View(cvm);
             }
 
 

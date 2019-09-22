@@ -8,6 +8,13 @@
 
 }
 <h3>@ViewData["Message"]</h3>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8368664719015492",
+        enable_page_level_ads: true
+    });
+</script>
 
 <!-- Hotjar Tracking Code for www.reef-connect.com -->
 @*<script>
@@ -38,142 +45,86 @@
 
     <iframe src='https://webchat.botframework.com/embed/secondqna-bot?s=Dwc1w5CVaJU.wlOAeFZaFprzjrNcOO-mJXJd6x1s0nYTmfvQAS5zcUY' style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>*@
 
+<div class="col-md-4 col-sm-4 col-xs-6">
 
-<div class="row">
-    <div class="col-md-4">
-        <div class="jumbotron" style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
-            <h3>Top 5 Corals</h3>
-            <p class="lead">Voted by users</p>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                @if(Model.coralList.Count > 1) {
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        @for(int i = 1; i < Model.coralList.Count; i++) {
-                            <li data-target="#myCarousel" data-slide-to="@i"></li>
-                            }
-                    </ol>
-                    }
+    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.coralList, "Top 5 Corals", "Voted by users"))
+</div>
+<div class="col-md-4 col-sm-4 col-xs-6">
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    @if(Model.coralList.Count > 0) {
-                        <div class="item active">
-                            <h4> @Html.ActionLink(Model.coralList[0].Name, "Details", "Corals", new { id = Model.coralList[0].CoralId }, null) </h4>
+    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.display5CoralList, "🎈 Free Coral  🎈", "First 20 Users in Ireland","FreeCoral"))
+</div>
 
-                            @{
-                                var base64 = Convert.ToBase64String(Model.coralList[0].PhotoList.First().Photo);
-                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                            }
-                            <img src="@imgSrc" />
+<div class="col-md-12 col-sm-12 col-xs-12">
 
-                        </div>
+    <div class="row" style="text-align-last:center;">
+        <div class="col-md-3 col-sm-6">
+            <h2>Fish</h2>
+            <ul>
 
-                        for(int i = 1; i < Model.coralList.Count; i++) {
-                            <div class="item">
-                                <h4> @Html.ActionLink(Model.coralList[i].Name, "Details", "Corals", new { id = Model.coralList[i].CoralId }, null) </h4>
+                <li>Track down that fish you've been looking for.</li>
+                <li>Let people know about your rare find.</li>
+                <li>Share what your local fish store has on sale.</li>
+            </ul>
 
-                                @{
-                                    var base642 = Convert.ToBase64String(Model.coralList[i].PhotoList.First().Photo);
-                                    var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
-                                }
-                                <img src="@imgSrc2" />
+            <p class="btn btn-default">
+                @Html.ActionLink("Something fishy", "Index", "Fish")
+            </p>
 
-                            </div>
-
-
-                            }
-
-                        }
-                </div>
-                <hr />
-
-            </div>
-            @*<img src="~/Images/highlighted.jpg" alt="" style="width: 100%; " />*@
-            @*<p class="btn btn-default">
-                    @Html.ActionLink("See more", "Index", "Corals")
-                </p>*@
         </div>
-    </div>
-    <div class="col-md-6">
 
-        <div class="jumbotron" style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
-            <h3>Most Viewed Tank</h3>
-            <p class="lead">Most viewed this week</p>
+        <div class="col-md-3 col-sm-6" style="text-align-last:center;">
+            <h2>Coral</h2>
+            <p>
+                <ul>
 
-            <img src="~/Images/highlighted2.jpg" alt="" style="width:100%; padding-top:25px;" />
-            <p><a href="#" class="btn btn-primary btn-lg">See more &raquo;</a></p>
+                    <li>Sell/trade your frags.</li>
+                    <li>Show off your new addition.</li>
+                    <li>Let people know what your looking for.</li>
+                    <li>Pre-order your frags.</li>
+                    <li>Create coral connections</li>
+                </ul>
+            </p>
+            <p class="btn btn-default">
+                @Html.ActionLink("Eye candy", "Index", "Corals")
+            </p>
+
+        </div>
+        <div class="col-md-3 col-sm-6  col-xs-12" style="text-align-last:center;">
+            <h2>Equipment</h2>
+            <p>
+                <ul>
+                    <li>Buy pre-loved equipment.</li>
+                    <li>Sell when you've upgraded.</li>
+                    <li>Let people know what you need.</li>
+                    <li>What's new.</li>
+                    <li>Coming soon </li>
+                </ul>
+            </p>
+            <p class="btn btn-default">
+                @Html.ActionLink("See more", "Index", "Corals")
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12" style="text-align-last:center;">
+            <h2>Forum</h2>
+            <p>
+                <ul>
+                    <li>Meet local reefers</li>
+                    <li>Learn, Teach or show off.</li>
+                    <li>Ask the experts.</li>
+                    <li>Links to the latest news</li>
+                    <li>The beginner tips we all forget.</li>
+                </ul>
+            </p>
+            <p class="btn btn-default">
+                @*@Html.ActionLink("I'm in ", "Index", "Corals")*@
+                <a href="http://forum.reef-connect.com/">I'm in </a>
+
+            </p>
+
         </div>
     </div>
 </div>
 
-
-<div class="row" style="text-align-last:center;">
-    <div class="col-md-3 col-sm-6">
-        <h2>Fish</h2>
-        <ul>
-
-            <li>Track down that fish you've been looking for.</li>
-            <li>Let people know about your rare find.</li>
-            <li>Share what your local fish store has on sale.</li>
-        </ul>
-
-        <p class="btn btn-default">
-            @Html.ActionLink("Something fishy", "Index", "Fish")
-        </p>
-
-    </div>
-
-    <div class="col-md-3 col-sm-6" style="text-align-last:center;">
-        <h2>Coral</h2>
-        <p>
-            <ul>
-
-                <li>Sell/trade your frags.</li>
-                <li>Show off your new addition.</li>
-                <li>Let people know what your looking for.</li>
-                <li>Pre-order your frags.</li>
-                <li>Create coral connections</li>
-            </ul>
-        </p>
-        <p class="btn btn-default">
-            @Html.ActionLink("Eye candy", "Index", "Corals")
-        </p>
-
-    </div>
-    <div class="col-md-3 col-sm-6  col-xs-12" style="text-align-last:center;">
-        <h2>Equipment</h2>
-        <p>
-            <ul>
-                <li>Buy pre-loved equipment.</li>
-                <li>Sell when you've upgraded.</li>
-                <li>Let people know what you need.</li>
-                <li>What's new.</li>
-                <li>Coming soon </li>
-            </ul>
-        </p>
-        <p class="btn btn-default">
-            @Html.ActionLink("See more", "Index", "Corals")
-        </p>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12" style="text-align-last:center;">
-        <h2>Forum</h2>
-        <p>
-            <ul>
-                <li>Meet local reefers</li>
-                <li>Learn, Teach or show off.</li>
-                <li>Ask the experts.</li>
-                <li>Links to the latest news</li>
-                <li>The beginner tips we all forget.</li>
-            </ul>
-        </p>
-        <p class="btn btn-default">
-            @Html.ActionLink("I'm in ", "Index", "Corals")
-        </p>
-
-    </div>
- 
-</div>
 
 
 

@@ -1,0 +1,47 @@
+﻿@using WebApplication9.Models
+@model WebApplication9.Models.CoralViewModel
+
+@{
+    ViewBag.Title = "Free Coral";
+    ViewBag.Message = "Ireland Only ";
+}
+<div class="col-md-7">
+    <h1>Earn Free Coral in 5 Steps</h1>
+    <ul>
+        <li>
+           5 Likes on Corals
+            <p>...</p>
+        </li>
+
+        <li>
+            4 comments on coral or fish
+            <p> random comments</p>
+        </li>
+
+        <li>
+            3 ReefBot questions
+            <p>Find 3 questions the ReefBot doesn't know and help the bot learn.</p>
+        <li>
+        <li>
+            2 Activities on the forum
+            <p> Ask 1 questions and place 1 reply on the forum.</p>
+        <li>
+        <li>
+            1 introduction in the forum
+            <p>Introduce yourself on the forum.</p>
+        </li>
+
+    </ul>
+    <p>Pay shipping charges</p>
+    <p>Coral will have a value greater than double shipping charges.</p>
+</div>
+<div class="col-md-4 col-sm-6 col-xs-6">
+
+
+    @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.coralList, "🎈 Free Corals 🎈", "💖 Just for you 💖"))
+
+
+</div>
+<div class="col-md-12">
+
+</div>

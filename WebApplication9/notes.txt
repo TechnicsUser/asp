@@ -1,0 +1,130 @@
+﻿
+<hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr /><hr />
+<div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="jumbotron" style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
+            <h3>Top 5 Corals</h3>
+            <p class="lead">Voted by users</p>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                @if(Model.coralList.Count > 1) {
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        @for(int i = 1; i < Model.coralList.Count; i++) {
+                            <li data-target="#myCarousel" data-slide-to="@i"></li>
+                            }
+                    </ol>
+                    }
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @if(Model.coralList.Count > 0) {
+                        <div class="item active">
+                            <h4 class="coralName"> @Html.ActionLink(Model.coralList[0].Name, "Details", "Corals", new { id = Model.coralList[0].CoralId }, null) </h4>
+
+                            @{
+                                var base64 = Convert.ToBase64String(Model.coralList[0].PhotoList.First().Photo);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            }
+                            <img src="@imgSrc" />
+
+                        </div>
+
+                        for(int i = 1; i < Model.coralList.Count; i++) {
+                            <div class="item">
+                                <h4 class="coralName"> @Html.ActionLink(Model.coralList[i].Name, "Details", "Corals", new { id = Model.coralList[i].CoralId }, null) </h4>
+
+                                @{
+                                    var base642 = Convert.ToBase64String(Model.coralList[i].PhotoList.First().Photo);
+                                    var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
+                                }
+                                <img src="@imgSrc2" />
+
+                            </div>
+
+
+                            }
+
+                        }
+                </div>
+                <hr />
+
+            </div>
+            @*<img src="~/Images/highlighted.jpg" alt="" style="width: 100%; " />*@
+            @*<p class="btn btn-default">
+                    @Html.ActionLink("See more", "Index", "Corals")
+                </p>*@
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="jumbotron" style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
+            <h3>🎈 Free Coral  🎈 </h3>
+            <h4>First 20 Users in Ireland</h4>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                @if(Model.feeeCoralList.Count > 1) {
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        @for(int i = 1; i < Model.feeeCoralList.Count; i++) {
+                            <li data-target="#myCarousel" data-slide-to="@i"></li>
+                            }
+                    </ol>
+                    }
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @if(Model.feeeCoralList.Count > 0) {
+                        <div class="item active">
+                            <h4 class="coralName"> @Html.ActionLink(Model.feeeCoralList[0].Name, "Details", "Corals", new { id = Model.coralList[0].CoralId }, null) </h4>
+
+                            @{
+                                var base64 = Convert.ToBase64String(Model.feeeCoralList[0].PhotoList.First().Photo);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            }
+                            <img src="@imgSrc" />
+
+                        </div>
+
+                        for(int i = 1; i < Model.feeeCoralList.Count; i++) {
+                            <div class="item">
+                                <h4 class="coralName"> @Html.ActionLink(Model.feeeCoralList[i].Name, "Details", "Corals", new { id = Model.coralList[i].CoralId }, null) </h4>
+
+                                @{
+                                    var base642 = Convert.ToBase64String(Model.feeeCoralList[i].PhotoList.First().Photo);
+                                    var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
+                                }
+                                <img src="@imgSrc2" />
+
+                            </div>
+
+
+                            }
+
+                        }
+                </div>
+                <hr />
+
+            </div>
+            @*<img src="~/Images/highlighted.jpg" alt="" style="width: 100%; " />*@
+            @*<p class="btn btn-default">
+                    @Html.ActionLink("See more", "Index", "Corals")
+                </p>*@
+        </div>
+    </div>
+
+
+
+
+    <div class="col-md-4 col-sm-4 col-xs-12">
+
+        <div class="jumbotron" style="align-items:center; padding: 1px;padding-left:15px; padding-right:15px; margin:1em; border:0em;">
+            <h3>Most Viewed Tank</h3>
+            <p class="lead">Most viewed this week</p>
+
+            <img src="~/Images/highlighted2.jpg" alt="" style="width:100%; padding-top:25px;" />
+            <p><a href="#" class="btn btn-primary btn-lg">See more &raquo;</a></p>
+        </div>
+    </div>
+</div>
+<img src="~/Images/free coral.png" />

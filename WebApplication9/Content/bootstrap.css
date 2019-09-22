@@ -1297,7 +1297,7 @@ p {
 }
 @media (min-width: 768px) {
   .lead {
-    font-size: 21px;
+    font-size: 14px;
   }
 }
 small,
@@ -3632,7 +3632,7 @@ tbody.collapse.in {
   bottom: 100%;
   margin-bottom: 2px;
 }
-@media (min-width: 768px) {
+@media (max-width: 968px) {
   .navbar-right .dropdown-menu {
     right: 0;
     left: auto;
