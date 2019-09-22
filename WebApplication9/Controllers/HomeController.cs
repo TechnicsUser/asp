@@ -26,11 +26,11 @@ namespace WebApplication9.Controllers
 
             //    newest coral
             var newCoralList = db.Corals.Where(n => n.UploadedOn.Value < DateTime.Now)
-                                    .OrderBy(n => n.UploadedOn)
+                                    .OrderByDescending(n => n.UploadedOn)
                                     .Take(5).ToList();
             //var newCoralList = db.Corals.Where(n => n.Views > 3)
-            //                    .OrderByDescending(n => n.Views)
-            //                    .Take(5).ToList();
+            //.OrderByDescending(n => n.Views)
+            //.Take(5).ToList();
 
             foreach(var c in newCoralList) {
                  combineCoral(c.CoralId);
@@ -65,7 +65,7 @@ namespace WebApplication9.Controllers
             var coral = db.Corals.Find(id);
             var CoralPhotoList = db.CoralPhoto.Where(x => x.CoralId == id).ToList();
             if(CoralPhotoList.Count == 0) {
-                id = 61;
+                id = 8;
                 CoralPhotoList.Add(db.CoralPhoto.First(x => x.CoralId == id));
                 }
             coral.PhotoList = CoralPhotoList;
