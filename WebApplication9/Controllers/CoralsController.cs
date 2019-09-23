@@ -21,7 +21,8 @@ namespace WebApplication9.Controllers
 
         // GET: Corals
         public ActionResult Index() {
-            var cl = db.Corals.ToList();
+            var cl = db.Corals.Where(x => x.Name != "test").ToList();
+           
             foreach(var c in cl) {
                 CombineCoral(c.CoralId);
                 }
