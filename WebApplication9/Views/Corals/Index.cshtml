@@ -18,7 +18,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        @*<ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
                                      <li class="active"><a href="#">Link</a></li>
                                     <li><a href="#">Link</a></li>
                                      <li class="dropdown">
@@ -34,7 +34,7 @@
                                              <li><a href="#">One more separated link</a></li>
                                          </ul>
                                      </li>
-                                 </ul>*@
+                                 </ul>
 
         <div class="checkbox navbar-btn navbar-left">
 
@@ -105,55 +105,55 @@
         @Html.ActionLink("Create New", "Create")
     </h1>
 </div>
-@foreach (var coralModel in Model.coralList)
+
+@for(int x = 0; x < Model.coralList.Count; x++)
 {
     // onclick="f1(@coralModel.CoralId, this)"
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left">
         <hr />
-        <h4> @Html.ActionLink(@coralModel.Name, "Details", new { id = @coralModel.CoralId }) </h4>
+        <h4> @Html.ActionLink(Model.coralList[x].Name, "Details", new { id = Model.coralList[x].CoralId }) </h4>
         <hr>
-        <h5>        @Html.DisplayFor(modelItem => coralModel.ScientificName)    </h5>
+        <h5>        @Html.DisplayFor(modelItem => Model.coralList[x].ScientificName)    </h5>
 
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            @if (coralModel.PhotoList.Count > 1)
+        <div id="@x" class="carousel slide" data-ride="carousel">
+            @if (Model.coralList[x].PhotoList.Count > 1)
             {
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    @for (int i = 1; i < coralModel.PhotoList.Count; i++)
+                    <li data-target="#@x" data-slide-to="0" class="active"></li>
+                    @for (int i = 1; i < Model.coralList[x].PhotoList.Count; i++)
                     {
-                        <li data-target="#myCarousel" data-slide-to="@i"></li>
+                        <li data-target="#@x" data-slide-to="@i"></li>
                     }
                 </ol>
             }
-
-            <!-- Wrapper for slides -->
+             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                @if (coralModel.PhotoList.Count > 0)
+                @if (Model.coralList[x].PhotoList.Count > 0)
                 {
                     <div class="item active">
                         @{
-                            var base64 = Convert.ToBase64String(coralModel.PhotoList[0].Photo);
+                            var base64 = Convert.ToBase64String(Model.coralList[x].PhotoList[0].Photo);
                             var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                         }
                         <img src="@imgSrc" />
                     </div>
 
-                    for (int i = 1; i < coralModel.PhotoList.Count; i++)
+                    for (int i = 1; i < Model.coralList[x].PhotoList.Count; i++)
                     {
                         <div class="item">
                             @{
-                                var base642 = Convert.ToBase64String(coralModel.PhotoList[i].Photo);
+                                var base642 = Convert.ToBase64String(Model.coralList[x].PhotoList[i].Photo);
                                 var imgSrc2 = String.Format("data:image/gif;base64,{0}", base642);
                             }
                             <img src="@imgSrc2" />
                         </div>
                     }
-                    if (User.Identity.Name == coralModel.UploadedBy)
+                    if (User.Identity.Name == Model.coralList[x].UploadedBy)
                     {
                         <div class="col-md-12 col-md-push-4">
-                            @Html.ActionLink("Edit", "Edit", new { id = coralModel.CoralId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = coralModel.CoralId })
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.coralList[x].CoralId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = Model.coralList[x].CoralId })
                         </div>
                     }
                 }
