@@ -135,15 +135,14 @@
                     @Model.User.FirstName
                 </h4>
 
-                @if (Model.User.UserPhoto != null)
-                {
+                @if(Model.User.UserPhoto != null) {
 
                     var imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(Model.User.UserPhoto)}";
                     <div>
                         <img class="myImg" src="@imgSrc" alt="@x" id="@x" onclick="popUp(this, @x)">
                         @{x++;}
                     </div>
-                }
+                    }
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -161,26 +160,22 @@
                 <div class="col-lg-offset-6 col-md-offset-6">
                     <ul>
                         <li>
-                            @if (@Model.FishAdds > 0)
-                            {
+                            @if(@Model.FishAdds > 0) {
                                 <a href="@Url.Action("Index1", "Fish", new { id = @Model.FishAddsId })">Fish Adds</a><text>: @Model.FishAdds</text>
-                            }
-                            else
-                            {
+                                }
+                            else {
                                 <text>Fish Adds : @Model.FishAdds</text>
-                            }
+                                }
 
                         </li>
                         <li>
-                            @if (@Model.CoralAdds > 0)
-                            {
+                            @if(@Model.CoralAdds > 0) {
                                 <a href="@Url.Action("Index1", "Corals", new { id = @Model.CoralAddsId })">Coral Adds</a><text>: @Model.CoralAdds</text>
-                            }
-                            else
-                            {
+                                }
+                            else {
                                 <text>Coral Adds : @Model.CoralAdds</text>
 
-                            }
+                                }
                         </li>
                         <li>
                             Equipment Adds : not implemented
@@ -190,15 +185,13 @@
                         </li>
 
                         <li>
-                            @if (Model.lastOnline == null)
-                            {
+                            @if(Model.lastOnline == null) {
                                 <text>Last Online : Never Logged In </text>
-                            }
-                            else
-                            {
+                                }
+                            else {
                                 <text>Last Login : @Model.lastOnline  </text>
 
-                            }
+                                }
 
                         </li>
                         <li>
@@ -217,21 +210,28 @@
 
         </div>
     </div>
-    <div>
 
+    <div class="row">
+        <div class="btn btn-info col-md-offset-4">
+            <a href="@Url.Action("MessagesCreateViewModel", "Messages" ,new { user = @Model.User.IdUserName })">Send Message</a>
+        </div>
+        <div class="btn btn-danger col-md-offset-1">
+
+            <a href="@Url.Action("MessagesCreateViewModel", "Messages", new { id = @Model.User.IdUserName })">Report User</a>
+        </div>
     </div>
+
+
     <div>
-        @if (Model.Feedback.Count > 0)
-        {
+        @if(Model.Feedback.Count > 0) {
             @Html.Partial("IndexPartial", Model.Feedback)
             <hr />
-        }
-        @if (Model.User.UserName != User.Identity.Name)
-        {
+            }
+        @if(Model.User.UserName != User.Identity.Name) {
 
             @Html.Partial("FeedbackCreatePartial", new Feedback { FeedbackForUserId = Model.User.Id })
             @*@Html.Partial("FeedbackCreatePartialNew", new Feedback())*@
-        }
+            }
         @*For testing*@
         @*@Html.Partial("FeedbackCreatePartial", new Feedback { FeedbackForUserId = Model.User.Id })*@
 

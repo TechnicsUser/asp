@@ -8,6 +8,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using WebApplication9.Models;
 
 namespace WebApplication9.Controllers
@@ -148,24 +149,29 @@ namespace WebApplication9.Controllers
 
 
 
-
+        [Authorize]
         // GET: Messages/Create
-        public ActionResult MessagesCreateViewModel() {
-            if(User.Identity.IsAuthenticated) {
-                MessagesCreateViewModel mc = new MessagesCreateViewModel();
-                mc.Users = db.AspNetUser.Where(x => x.Id != null).ToList();
+        public ActionResult MessagesCreateViewModel(string user) {
+            MessagesCreateViewModel mc = new MessagesCreateViewModel();
+            if(user != null) {
+                mc.Users = db.AspNetUser.Where(x => x.IdUserName.Equals(user)).ToList();
 
-                mc.Users = db.AspNetUser.Where(x => x.Id != null).ToList();
+                }
+            else {
+
+               mc.Users = db.AspNetUser.Where(x => x.Id != null).ToList();
                 AspNetUser aspNetUser = db.AspNetUser.Where(x => x.IdUserName == User.Identity.Name).First();
 
                 mc.Users.Remove(aspNetUser);
+                }
 
 
                 return View(mc);
-                }
-            return RedirectToAction("Login", "Account");
+       //         }
+       //     return RedirectToAction("Login", "Account");
 
             }
+ 
         // POST: Messages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
