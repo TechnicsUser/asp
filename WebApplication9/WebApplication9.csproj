@@ -565,6 +565,8 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Views\Home\FreeCoral.cshtml" />
+    <Content Include="Views\Fish\Index - Copy.cshtml" />
+    <Content Include="Views\Fish\Index1.cshtml" />
     <None Include="Views\Home\ChatOld.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -27,7 +27,7 @@ namespace WebApplication9.Controllers
             //    newest coral
             var newCoralList = db.Corals.Where(n => n.UploadedOn.Value < DateTime.Now && n.Name != "test" )
                                     .OrderByDescending(n => n.UploadedOn)
-                                    .Take(5).ToList();
+                                    .Take(3).ToList();
             //var newCoralList = db.Corals.Where(n => n.Views > 3)
             //.OrderByDescending(n => n.Views)
             //.Take(5).ToList();
@@ -40,7 +40,7 @@ namespace WebApplication9.Controllers
             // free coral
             var feeeCoralList = db.Corals.Where(n => n.Views > 3 && n.Name != "test")
                                     .OrderByDescending(n => n.Views)
-                                    .Take(5).ToList();
+                                    .Take(6).ToList();
             foreach(var c in feeeCoralList) {
                  combineCoral(c.CoralId);
                 }
@@ -117,6 +117,7 @@ namespace WebApplication9.Controllers
 
             return View();
             }
+        [Authorize]
         public ActionResult FreeCoral() {
             var cl = db.Corals.Where(n => n.Views >= 13)
                               .OrderBy(n => n.Views)
