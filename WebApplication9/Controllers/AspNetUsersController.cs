@@ -25,8 +25,14 @@ namespace WebApplication9.Controllers
             List<AspNetUser> lst = await db3.AspNetUser.Where(x => x.EmailConfirmed == true).ToListAsync();
             return View(lst);
 
-            }
 
+            }
+        // GET: AspNetUsers
+        public async Task<ActionResult> View() {
+            List<AspNetUser> lst = await db3.AspNetUser.Where(x => x.EmailConfirmed == true).ToListAsync();
+            return View(lst);
+
+            }
 
         // GET: AspNetUsers
         // [Authorize]

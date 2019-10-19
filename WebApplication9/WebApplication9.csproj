@@ -567,6 +567,7 @@
     <Content Include="Views\Home\FreeCoral.cshtml" />
     <Content Include="Views\Fish\Index - Copy.cshtml" />
     <Content Include="Views\Fish\Index1.cshtml" />
+    <Content Include="Views\AspNetUsers\View.cshtml" />
     <None Include="Views\Home\ChatOld.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

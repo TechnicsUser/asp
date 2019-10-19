@@ -60,8 +60,8 @@ namespace WebApplication9
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "831273074489-f4oin5rq5kkiht6plhqrud4lg0nsa6lk.apps.googleusercontent.com",
-                ClientSecret = "swtPygVwKwLW9Cys_-MEOfsJ"
+                ClientId = "896825502027-7v7jriileqa5okc9gmefso3efvublnk2.apps.googleusercontent.com",
+                ClientSecret = "XLq4QtJT7cpF72DbT7-8zM0U"
                 });
         }
         }

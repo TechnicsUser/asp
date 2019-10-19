@@ -1,106 +1,22 @@
-﻿@model IEnumerable<WebApplication9.Models.AspNetUser>
+﻿@*subscriptionKey: 'WqA65ZDJ_NQkFGPuUd4DhuVb749ucEIhW7VeY1y8QG0'*@
+@model IEnumerable<WebApplication9.Models.AspNetUser>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show popup on hover - Azure Maps Web SDK Samples</title>
 
-@*<script>
-        function f1(item) {
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Reef-Connect" />
+    <meta name="keywords" content="map, gis, API, SDK, pins, symbols, pushpins, markers, infobox, infowindow, hover" />
+    <meta name="author" content="Reef-Connect" />
 
+    <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
-            window.location = "/AspNetUsers/ViewUser/" + item;
-
-
-        }
-    </script>
-    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDZ3lksBTFTW4dbhlIe46K2BlM9BgCa9TY"></script>
-
-    <script>
-
-        //var myVar = setInterval(getLocation, 1500);
-        //clearInterval(myVar);
-         function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-             }
-        }
-
-        function showPosition(position) {
-
-            var lat = position.coords.latitude;
-            var lon = position.coords.longitude;
-
-            var latlon = new google.maps.LatLng(lat, lon)
-            var mapholder = document.getElementById('mapholder')
-            mapholder.style.height = '250px';
-            mapholder.style.width = window.screen.width;
-
-            var myOptions = {
-                center: latlon, zoom: 5,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                mapTypeControl: true,
-                navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
-
-            }
-
-            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-
-               var markers = [];
-
-             @foreach (var item in Model)
-             {
-                 if (item.LocationLat != null)
-                 {
-
-
-             <text>
-            var marker = new google.maps.Marker({
-                map: map,
-                position: { lat: @item.LocationLat, lng: @item.LocationLon },
-                title: '@item.UserName'
-
-            })
-               .addListener('click', (function () {
-                //   map.setZoom(9);
-                window.location.href = "/AspNetUsers/UserView/" + "@item.IdUserName";
-            }))
-            markers.push(marker);
-
-            </text>
-                     }
-                 }
-
-
-             }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    x.innerHTML = "User denied the request for Geolocation."
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    x.innerHTML = "Location information is unavailable."
-                    break;
-                case error.TIMEOUT:
-                    x.innerHTML = "The request to get user location timed out."
-                    break;
-                case error.UNKNOWN_ERROR:
-                    x.innerHTML = "An unknown error occurred."
-                    break;
-            }
-        }
-          window.onload = getLocation;
-    </script>*@
-
-<meta charset="utf-8" />
-<meta http-equiv="x-ua-compatible" content="IE=Edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="Reef-Connect" />
-<meta name="keywords" content="map, gis, API, SDK, pins, symbols, pushpins, markers, infobox, infowindow, hover" />
-<meta name="author" content="Reef-Connect" />
-
-<!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-
-<script type='text/javascript'>
+    <script type='text/javascript'>
         var map, datasource, popup, symbolLayer;
         //Define an HTML template for a custom popup content laypout.
         var popupTemplate = '<div class="customInfobox"><div class="name">{name}</div>{description}</div>';
@@ -108,7 +24,7 @@
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 center: [ @Model.First().LocationLon, @Model.First().LocationLat],
-                zoom: 4,
+                zoom: 11,
                 view: 'Auto',
                 //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
                 authOptions: {
@@ -166,7 +82,7 @@
                 //Close the popup on mouseout or touchend.
                 //map.events.add('mouseout', symbolLayer, closePopup);
                 //map.events.add('touchend', closePopup);
-
+        
             });
         }
         function go() {
@@ -231,86 +147,34 @@
             html.push('</table>');
             return html.join('');
         }
-</script>
-<style>
-    /* CSS styles used by custom popup template */
-    b, tr, td {
-        color: black;
-    }
-
-    .customInfobox {
-        max-width: 200px;
-        padding: 10px;
-        font-size: 12px;
-    }
-
-        .customInfobox .name {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-</style>
-
-<body onload="GetMap()">
-
-    <div class="col-md-12">
-    <div id="myMap" style="margin-top:50px; width:100%;min-width:290px;height:300px;"></div>
-
-    </div>
-
-
-    @foreach(var item in Model) {
-
-        if(item.UserName != null) {
-            var imgSrc = "";
-            try {
-                imgSrc = $"data:image/jpg;base64,{Convert.ToBase64String(item.UserPhoto)}";
-
-                }
-            catch {
-                imgSrc = "../Images/noImg.png";
-
-                }
-
-
-            //onclick="f1(@item.Id, this)"
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="float : left" onclick="f1(@item.Id, this)">
-                @*<h4>        @Html.DisplayFor(modelItem => item.UserName)    </h4>*@
-                <hr>
-                <h4>
-                    @Html.ActionLink(@item.UserName, "UserView", new {
-        id = item.IdUserName
-        })
-                </h4>
-                <hr>
-                <h5>        @Html.DisplayFor(modelItem => item.FirstName)    </h5>
-
-                <img class="myImg" src="@imgSrc" height="50" />
-
-                @*<img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />*@
-
-                <h6>            @Html.DisplayFor(modelItem => item.PhoneNumber)                       </h6>
-
-                @*@Html.ActionLink("View", "ViewUser", new { id = item.Id }) |*@
-
-
-                @*@Html.ActionLink("Details", "Details", new { id = item.CoralId }) |
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CoralId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CoralId })*@
-            </div>
-            }
-        }
-    @*<div class="col-lg-3" style="float : none"></div>*@
-    </body>
+    </script>
     <style>
-        .myImg {
-            width: 160px;
-            height: 160px;
-            background: #FFFFFF;
-            margin: auto;
-            -moz-border-radius: 60px;
-            border-radius: 100px;
-            padding: 6px;
-            box-shadow: 0px 0px 20px #888;
+        /* CSS styles used by custom popup template */
+        b,tr,td{
+            color:black;
         }
+        .customInfobox {
+            max-width: 200px;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+            .customInfobox .name {
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
     </style>
+</head>
+<body onload="GetMap()">
+    <div id="myMap" style="position:relative;width:100%;min-width:290px;height:600px;"></div>
+
+    <fieldset style="width:calc(100% - 30px);min-width:290px;margin-top:10px;">
+        <legend>Show popup on hover</legend>
+        This sample shows how to show a popup when the mouse hovers over or touches a shape.
+        This sample uses the mouse move event to detect when hovering over a shape instead of the mouse over event.
+        The mouse enter and over events only fires when initially hovering over a shape in a layer.
+        If two shapes overlap, these events won't fire again. The mouse move event will fire while moving the mouse over shapes in the layer.
+    </fieldset>
+</body>
+</html>

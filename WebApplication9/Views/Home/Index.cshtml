@@ -15,35 +15,6 @@
     });
 </script>
 
-<!-- Hotjar Tracking Code for www.reef-connect.com -->
-@*<script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:1345699,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>*@
-@*<div id="webchat" role="main"></div>*@
-@*<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>*@
-@*<script>
-        window.WebChat.renderWebChat(
-            {
-                activityRenderer: true,
-                sendTypingIndicator: true,
-                directLine: window.WebChat.createDirectLine({
-                    token: 'Dwc1w5CVaJU.wlOAeFZaFprzjrNcOO-mJXJd6x1s0nYTmfvQAS5zcUY'
-                }),
-                userID: 'secondqna-bot',
-            },
-            document.getElementById('webchat')
-        );
-    </script>
-
-    <iframe src='https://webchat.botframework.com/embed/secondqna-bot?s=Dwc1w5CVaJU.wlOAeFZaFprzjrNcOO-mJXJd6x1s0nYTmfvQAS5zcUY' style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>*@
-
 <div class="col-md-4 col-sm-4 col-xs-12">
 
     @Html.Partial("_display5coralPartial", new Display5CoralViewModel(Model.display5CoralList, "Top 5 Corals", "Voted by users"))
@@ -60,7 +31,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
 
     <div class="row" style="text-align-last:center;">
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-4 col-sm-6">
             <h2>Fish</h2>
             <ul>
 
@@ -75,7 +46,7 @@
 
         </div>
 
-        <div class="col-md-3 col-sm-6" style="text-align-last:center;">
+        <div class="col-md-4 col-sm-6" style="text-align-last:center;">
             <h2>Coral</h2>
             <p>
                 <ul>
@@ -92,7 +63,7 @@
             </p>
 
         </div>
-        <div class="col-md-3 col-sm-6  col-xs-12" style="text-align-last:center;">
+        @*<div class="col-md-3 col-sm-6  col-xs-12" style="text-align-last:center;">
             <h2>Equipment</h2>
             <p>
                 <ul>
@@ -106,8 +77,8 @@
             <p class="btn btn-default">
                 @Html.ActionLink("See more", "Index", "Corals")
             </p>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12" style="text-align-last:center;">
+        </div>*@
+        <div class="col-md-4 col-sm-6 col-xs-12" style="text-align-last:center;">
             <h2>Forum</h2>
             <p>
                 <ul>
